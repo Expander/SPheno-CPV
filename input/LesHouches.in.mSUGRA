@@ -10,14 +10,13 @@ Block SMINPUTS               # Standard Model inputs
 Block MINPAR                 # Input parameters
  1   7.000000E+01       # m0
  2   2.500000E+02       # m12
+ 3   1.000000E+01       # tanb
  4   1                  # sign(mu)
  5  -3.000000E+02       # A0
-Block EXTPAR                 # Input parameters
-25   1.000000E+01       # tanb
 Block SPhenoInput       # SPheno specific input
  1  -1                  # error level
  2   1                  # SPA conventions
-11   1                  # calculate branching ratios
+11   0                  # calculate branching ratios
 12   1.00000000E-04     # write only branching ratios larger than this value
 21   0                  # calculate cross section 
 
