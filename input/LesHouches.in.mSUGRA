@@ -15,7 +15,7 @@ Block MINPAR                 # Input parameters
  5  -3.000000E+02       # A0
 Block SPhenoInput       # SPheno specific input
  1  -1                  # error level
- 2   1                  # SPA conventions
+ 2   0                  # SPA conventions
 11   0                  # calculate branching ratios
 12   1.00000000E-04     # write only branching ratios larger than this value
 21   0                  # calculate cross section 
