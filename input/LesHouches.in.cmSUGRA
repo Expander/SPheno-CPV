@@ -1,0 +1,48 @@
+Block MODSEL                 # Select model
+ 1    1                      # mSugra
+ 5    2                      # full CP violation
+Block SMINPUTS               # Standard Model inputs
+ 2   1.166379E-05       # G_F, Fermi constant
+ 3   1.184000E-01       # alpha_s(MZ) SM MSbar
+ 4   9.118760E+01       # Z-boson pole mass
+ 5   4.180000E+00       # m_b(mb) SM MSbar
+ 6   1.731000E+02       # m_top(pole)
+ 7   1.776820E+00       # m_tau(pole)
+Block MINPAR                 # Input parameters
+ 1   7.000000E+01       # m0
+ 2   2.500000E+02       # m12
+ 3   1.000000E+01       # tanb
+ 4   1                  # sign(mu)
+ 5  -3.000000E+02       # A0
+Block EXTPAR                 # Input parameters
+# Block VCKMIN
+#  1   0                  # lambda
+#  2   0                  # A
+#  3   0                  # rho-bar
+#  4   0                  # eta-bar
+Block SPhenoInput       # SPheno specific input
+ 1  -1                  # error level
+ 2   0                  # SPA conventions
+ 7   1                  # Skip 2-loop Higgs corrections
+11   0                  # calculate branching ratios
+12   1.00000000E-04     # write only branching ratios larger than this value
+21   0                  # calculate cross section 
+55   1                  # Calculate one loop masses
+Block FlexibleSUSY
+    0   1.000000000e-04      # precision goal
+    1   0                    # max. iterations (0 = automatic)
+    2   0                    # algorithm (0 = two_scale, 1 = lattice)
+    3   0                    # calculate SM pole masses
+    4   1                    # pole mass loop order
+    5   1                    # EWSB loop order
+    6   2                    # beta-functions loop order
+    7   1                    # threshold corrections loop order
+    8   1                    # Higgs 2-loop corrections O(alpha_t alpha_s)
+    9   1                    # Higgs 2-loop corrections O(alpha_b alpha_s)
+   10   1                    # Higgs 2-loop corrections O(alpha_t^2 + alpha_t alpha_b + alpha_b^2)
+   11   1                    # Higgs 2-loop corrections O(alpha_tau^2)
+   12   0                    # force output
+   13   1                    # Top quark 2-loop corrections QCD
+   14   1.000000000e-11      # beta-function zero threshold
+Block EXTPAR
+  100   0.001                  # etaInput
