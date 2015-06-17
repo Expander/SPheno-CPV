@@ -8,7 +8,7 @@ run_sg() {
     local point="$1"
     shift
 
-    out="output/`basename $sg`.out.`basename $point | sed 's/LesHouches\.in\.//'`"
+    out="output/`basename $point | sed 's/\.in\./.out./'`"
 
     echo ">>> running $sg <<<"
     echo "    Input : $point"
