@@ -36,10 +36,10 @@ Block MINPAR                 # Input parameters
  3   1.000000E+01       # tanb
  4   1                  # sign(mu)
  5  -3.000000E+02       # A0
+ 6   $eta               # etaInput (for SPheno)
 Block EXTPAR
-  100   $eta            # etaInput
+  100   $eta            # etaInput (for FlexibleSUSY)
 EOF
-
 
     run_sg --sg=bin/SPheno                --point="$point" --pattern="mh_sp,h0"   --verbose=0
     run_sg --sg=bin/SPhenoMSSMCPV         --point="$point" --pattern="mh_sa,hh_2" --verbose=0
