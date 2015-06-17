@@ -3,12 +3,14 @@
 start="0"
 stop="6.28319"
 steps=30
-printf_comment="# %12s %20s %20s %20s\n"
-printf_pattern="  %12s %20s %20s %20s\n"
+printf_pattern="%12s %20s %20s %20s %20s %20s %20s %20s %20s %20s\n"
 
 source run_sg.sh
 
-printf "$printf_comment" "eta" "h1(SPheno)" "h1(SPhenoMSSMCPV)" "h1(FlexibleSUSY)"
+printf "# $printf_pattern" "eta" \
+    "h1(SPheno)" "h1(SPhenoMSSMCPV)" "h1(FlexibleSUSY)" \
+    "h2(SPheno)" "h2(SPhenoMSSMCPV)" "h2(FlexibleSUSY)" \
+    "h3(SPheno)" "h3(SPhenoMSSMCPV)" "h3(FlexibleSUSY)"
 
 for i in `seq 0 $steps`
 do
@@ -45,9 +47,12 @@ Block EXTPAR
   100   $eta            # etaInput (for FlexibleSUSY)
 EOF
 
-    run_sg --sg=bin/SPheno                --point="$point" --pattern="mh_sp,h0"   --verbose=0
-    run_sg --sg=bin/SPhenoMSSMCPV         --point="$point" --pattern="mh_sa,hh_2" --verbose=0
-    run_sg --sg=bin/FlexibleSUSY-CMSSMCPV --point="$point" --pattern="mh_fs,hh(2" --verbose=0
+    run_sg --sg=bin/SPheno                --point="$point" --pattern="mh1_sp,h0"   --pattern="mh2_sp,H0"   --pattern="mh3_sp,A0"   --verbose=0
+    run_sg --sg=bin/SPhenoMSSMCPV         --point="$point" --pattern="mh1_sa,hh_2" --pattern="mh2_sa,hh_3" --pattern="mh3_sa,hh_4" --verbose=0
+    run_sg --sg=bin/FlexibleSUSY-CMSSMCPV --point="$point" --pattern="mh1_fs,hh(2" --pattern="mh2_fs,hh(3" --pattern="mh3_fs,hh(4" --verbose=0
 
-    printf "$printf_pattern" "$eta" "$mh_sp" "$mh_sa" "$mh_fs"
+    printf "  $printf_pattern" "$eta" \
+        "$mh1_sp" "$mh1_sa" "$mh1_fs" \
+        "$mh2_sp" "$mh2_sa" "$mh2_fs" \
+        "$mh3_sp" "$mh3_sa" "$mh3_fs"
 done
