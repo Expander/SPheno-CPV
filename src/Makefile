@@ -22,7 +22,7 @@ ifeq (${F90},ifortg)
 endif
 
 # gfortran
-ifeq (${F90},gfortran)
+ifneq (,$(findstring gfortran,${F90}))
  comp = -c -O -J${Mdir} -I${InDir}
  LFlagsB = -O  
 endif
