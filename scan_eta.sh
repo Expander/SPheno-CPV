@@ -1,10 +1,14 @@
 #!/bin/sh
 
 start="0"
-stop="3.141"
-steps=20
+stop="6.28319"
+steps=30
+printf_comment="# %12s %20s %20s %20s\n"
+printf_pattern="  %12s %20s %20s %20s\n"
 
 source run_sg.sh
+
+printf "$printf_comment" "eta" "h1(SPheno)" "h1(SPhenoMSSMCPV)" "h1(FlexibleSUSY)"
 
 for i in `seq 0 $steps`
 do
@@ -24,7 +28,7 @@ Block MODSEL            # Select model
  1    1                 # mSugra
  5    2                 # full CP violation
 Block SMINPUTS          # Standard Model inputs
- 2   1.166379E-05       # G_F, Fermi constant
+ 2   1.206379E-05       # G_F, Fermi constant
  3   1.184000E-01       # alpha_s(MZ) SM MSbar
  4   9.118760E+01       # Z-boson pole mass
  5   4.180000E+00       # m_b(mb) SM MSbar
@@ -45,9 +49,5 @@ EOF
     run_sg --sg=bin/SPhenoMSSMCPV         --point="$point" --pattern="mh_sa,hh_2" --verbose=0
     run_sg --sg=bin/FlexibleSUSY-CMSSMCPV --point="$point" --pattern="mh_fs,hh(2" --verbose=0
 
-    echo ""
-    echo "eta = $eta"
-    echo "SPheno       : $mh_sp"
-    echo "SPhenoMSSMCPV: $mh_sa"
-    echo "FlexibleSUSY : $mh_fs"
+    printf "$printf_pattern" "$eta" "$mh_sp" "$mh_sa" "$mh_fs"
 done
