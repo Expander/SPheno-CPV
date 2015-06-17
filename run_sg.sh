@@ -2,16 +2,35 @@
 # [2] SLHA input file
 # [*] "variable,pattern" sets variable to the value with pattern in the output file
 run_sg() {
-    local sg="$1"
-    shift
-    local point="$1"
-    shift
+
+    local sg=
+    local point=
+    local pattern=
+    local verbose=1
+
+    while test ! "x$1" = "x" ; do
+        case "$1" in
+            -*=*) optarg=`echo "$1" | sed 's/[-_a-zA-Z0-9]*=//'` ;;
+            *) optarg= ;;
+        esac
+
+        case $1 in
+            --sg=*)         sg=$optarg ;;
+            --pattern=*)    pattern="$pattern $optarg" ;;
+            --point=*)      point=$optarg ;;
+            --verbose=*)    verbose=$optarg ;;
+            *)  echo "run_sg: invalid option '$1'." ; exit 1 ;;
+        esac
+        shift
+    done
 
     out="output/`basename $point | sed 's/\.in\./.out./'`"
 
-    echo ">>> running $sg <<<"
-    echo "    Input : $point"
-    echo "    Output: $out"
+    if test "$verbose" -gt "0"; then
+        echo ">>> running $sg <<<"
+        echo "    Input : $point"
+        echo "    Output: $out"
+    fi
 
     case "`basename $sg`" in
         SPheno*)       cmd="$sg $point $out" ;;
@@ -25,8 +44,11 @@ run_sg() {
     local exit_code="$?"
 
     if test "$exit_code" != "0" -o ! -e "$out"; then
-        echo "    Error: program failed"
+        if test "$verbose" -gt "0"; then
+            echo "    Error: program failed"
+        fi
 
+        set -- $pattern
         while test ! "x$1" = "x" ; do
             local var="`echo $1 | awk -F , '{print $1}'`"
             local pat="`echo $1 | awk -F , '{print $2}'`"
@@ -37,6 +59,7 @@ run_sg() {
         return 1
     fi
 
+    set -- $pattern
     while test ! "x$1" = "x" ; do
         local var="`echo $1 | awk -F , '{print $1}'`"
         local pat="`echo $1 | awk -F , '{print $2}'`"
