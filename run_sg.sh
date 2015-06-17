@@ -63,7 +63,7 @@ run_sg() {
     while test ! "x$1" = "x" ; do
         local var="`echo $1 | awk -F , '{print $1}'`"
         local pat="`echo $1 | awk -F , '{print $2}'`"
-        local val="`grep $pat $out | awk '{print $2}'`"
+        local val="`grep $pat $out | tail -n 1 | awk '{print $2}'`"
         eval "$var=$val"
         shift
     done
