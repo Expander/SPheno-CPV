@@ -5,7 +5,7 @@ stop="6.28319"
 steps=30
 printf_pattern="%12s %20s %20s %20s %20s %20s %20s %20s %20s %20s\n"
 
-source run_sg.sh
+. ./run_sg.sh
 
 printf "# $printf_pattern" "eta" \
     "h1(SPheno)" "h1(SPhenoMSSMCPV)" "h1(FlexibleSUSY)" \
