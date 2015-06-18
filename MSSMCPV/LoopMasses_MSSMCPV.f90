@@ -421,7 +421,7 @@ Call SolveTadpoleEquations(g1,g2,g3,Yd,Ye,Yu,Mu,Td,Te,Tu,Bmu,mq2,ml2,mHd2,      
 
 Mu1L = Mu
 Bmu1L = Bmu
-Tad1Loop(1:2) = Tad1Loop(1:2) - ti_ep2L 
+! Tad1Loop(1:2) = Tad1Loop(1:2) - ti_ep2L 
 Call SolveTadpoleEquations(g1,g2,g3,Yd,Ye,Yu,Mu,Td,Te,Tu,Bmu,mq2,ml2,mHd2,            & 
 & mHu2,md2,mu2,me2,M1,M2,M3,vd,vu,Tad1Loop)
 
