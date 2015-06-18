@@ -1,9 +1,9 @@
 ! -----------------------------------------------------------------------------  
-! This file was automatically created by SARAH version 4.5.7 
+! This file was automatically created by SARAH version 4.5.8b1 
 ! SARAH References: arXiv:0806.0538, 0909.2863, 1002.0840, 1207.0906, 1309.7223  
 ! (c) Florian Staub, 2013  
 ! ------------------------------------------------------------------------------  
-! File created at 13:41 on 16.6.2015   
+! File created at 22:35 on 17.6.2015   
 ! ----------------------------------------------------------------------  
  
  
@@ -30,12 +30,12 @@ Implicit None
 Real(dp),Intent(in) :: g1,g2,g3,mHd2,mHu2,vd,vu,MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),            & 
 & MFe(3),MFe2(3),MFu(3),MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),              & 
 & MSd(6),MSd2(6),MSe(6),MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,            & 
-& MVZ2,TW,v,ZZ(2,2)
+& MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp),Intent(in) :: Yd(3,3),Ye(3,3),Yu(3,3),Mu,Td(3,3),Te(3,3),Tu(3,3),Bmu,mq2(3,3),ml2(3,3),             & 
 & md2(3,3),mu2(3,3),me2(3,3),M1,M2,M3,pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),               & 
-& ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),           & 
-& ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),          & 
+& ZV(3,3),ZW(2,2)
 
 Complex(dp) :: cplChaFucSdL(2,3,6),cplChaFucSdR(2,3,6),cplChiFdcSdL(4,3,6),cplChiFdcSdR(4,3,6),      & 
 & cplGluFdcSdL(3,6),cplGluFdcSdR(3,6),cplhhSdcSd(4,6,6),cplHpmSucSd(2,6,6),              & 
@@ -240,12 +240,12 @@ Implicit None
 Real(dp),Intent(in) :: g1,g2,g3,mHd2,mHu2,vd,vu,MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),            & 
 & MFe(3),MFe2(3),MFu(3),MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),              & 
 & MSd(6),MSd2(6),MSe(6),MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,            & 
-& MVZ2,TW,v,ZZ(2,2)
+& MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp),Intent(in) :: Yd(3,3),Ye(3,3),Yu(3,3),Mu,Td(3,3),Te(3,3),Tu(3,3),Bmu,mq2(3,3),ml2(3,3),             & 
 & md2(3,3),mu2(3,3),me2(3,3),M1,M2,M3,pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),               & 
-& ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),           & 
-& ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),          & 
+& ZV(3,3),ZW(2,2)
 
 Complex(dp) :: cplChiFucSuL(4,3,6),cplChiFucSuR(4,3,6),cplcChaFdcSuL(2,3,6),cplcChaFdcSuR(2,3,6),    & 
 & cplGluFucSuL(3,6),cplGluFucSuR(3,6),cplhhSucSu(4,6,6),cplSdcHpmcSu(6,2,6),             & 
@@ -450,12 +450,12 @@ Implicit None
 Real(dp),Intent(in) :: g1,g2,g3,mHd2,mHu2,vd,vu,MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),            & 
 & MFe(3),MFe2(3),MFu(3),MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),              & 
 & MSd(6),MSd2(6),MSe(6),MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,            & 
-& MVZ2,TW,v,ZZ(2,2)
+& MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp),Intent(in) :: Yd(3,3),Ye(3,3),Yu(3,3),Mu,Td(3,3),Te(3,3),Tu(3,3),Bmu,mq2(3,3),ml2(3,3),             & 
 & md2(3,3),mu2(3,3),me2(3,3),M1,M2,M3,pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),               & 
-& ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),           & 
-& ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),          & 
+& ZV(3,3),ZW(2,2)
 
 Complex(dp) :: cplChaFvcSeL(2,3,6),cplChaFvcSeR(2,3,6),cplChiFecSeL(4,3,6),cplChiFecSeR(4,3,6),      & 
 & cplhhSecSe(4,6,6),cplHpmSvcSe(2,3,6),cplSecSeVZ(6,6),cplSvcSeVWm(3,6)
@@ -641,12 +641,12 @@ Implicit None
 Real(dp),Intent(in) :: g1,g2,g3,mHd2,mHu2,vd,vu,MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),            & 
 & MFe(3),MFe2(3),MFu(3),MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),              & 
 & MSd(6),MSd2(6),MSe(6),MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,            & 
-& MVZ2,TW,v,ZZ(2,2)
+& MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp),Intent(in) :: Yd(3,3),Ye(3,3),Yu(3,3),Mu,Td(3,3),Te(3,3),Tu(3,3),Bmu,mq2(3,3),ml2(3,3),             & 
 & md2(3,3),mu2(3,3),me2(3,3),M1,M2,M3,pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),               & 
-& ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),           & 
-& ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),          & 
+& ZV(3,3),ZW(2,2)
 
 Complex(dp) :: cplChiFvcSvL(4,3,3),cplChiFvcSvR(4,3,3),cplcChaFecSvL(2,3,3),cplcChaFecSvR(2,3,3),    & 
 & cplhhSvcSv(4,3,3),cplSecHpmcSv(6,2,3),cplSecSvcVWm(6,3),cplSvcSvVZ(3,3)
@@ -832,12 +832,12 @@ Implicit None
 Real(dp),Intent(in) :: g1,g2,g3,mHd2,mHu2,vd,vu,MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),            & 
 & MFe(3),MFe2(3),MFu(3),MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),              & 
 & MSd(6),MSd2(6),MSe(6),MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,            & 
-& MVZ2,TW,v,ZZ(2,2)
+& MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp),Intent(in) :: Yd(3,3),Ye(3,3),Yu(3,3),Mu,Td(3,3),Te(3,3),Tu(3,3),Bmu,mq2(3,3),ml2(3,3),             & 
 & md2(3,3),mu2(3,3),me2(3,3),M1,M2,M3,pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),               & 
-& ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),           & 
-& ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),          & 
+& ZV(3,3),ZW(2,2)
 
 Complex(dp) :: cplHiggsPP(4),cplHiggsGG(4),cplHiggsZZvirt(4),cplHiggsWWvirt(4),cplcChaChahhL(2,2,4), & 
 & cplcChaChahhR(2,2,4),cplChiChihhL(4,4,4),cplChiChihhR(4,4,4),cplcFdFdhhL(3,3,4),       & 
@@ -1301,12 +1301,12 @@ Implicit None
 Real(dp),Intent(in) :: g1,g2,g3,mHd2,mHu2,vd,vu,MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),            & 
 & MFe(3),MFe2(3),MFu(3),MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),              & 
 & MSd(6),MSd2(6),MSe(6),MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,            & 
-& MVZ2,TW,v,ZZ(2,2)
+& MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp),Intent(in) :: Yd(3,3),Ye(3,3),Yu(3,3),Mu,Td(3,3),Te(3,3),Tu(3,3),Bmu,mq2(3,3),ml2(3,3),             & 
 & md2(3,3),mu2(3,3),me2(3,3),M1,M2,M3,pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),               & 
-& ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),           & 
-& ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),          & 
+& ZV(3,3),ZW(2,2)
 
 Complex(dp) :: cplChiChacHpmL(4,2,2),cplChiChacHpmR(4,2,2),cplcFuFdcHpmL(3,3,2),cplcFuFdcHpmR(3,3,2),& 
 & cplcFvFecHpmL(3,3,2),cplcFvFecHpmR(3,3,2),cplhhHpmcHpm(4,2,2),cplhhcHpmVWm(4,2),       & 
@@ -1556,12 +1556,12 @@ Implicit None
 Real(dp),Intent(in) :: g1,g2,g3,mHd2,mHu2,vd,vu,MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),            & 
 & MFe(3),MFe2(3),MFu(3),MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),              & 
 & MSd(6),MSd2(6),MSe(6),MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,            & 
-& MVZ2,TW,v,ZZ(2,2)
+& MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp),Intent(in) :: Yd(3,3),Ye(3,3),Yu(3,3),Mu,Td(3,3),Te(3,3),Tu(3,3),Bmu,mq2(3,3),ml2(3,3),             & 
 & md2(3,3),mu2(3,3),me2(3,3),M1,M2,M3,pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),               & 
-& ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),           & 
-& ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),          & 
+& ZV(3,3),ZW(2,2)
 
 Complex(dp) :: cplGluFdcSdL(3,6),cplGluFdcSdR(3,6),cplGluFucSuL(3,6),cplGluFucSuR(3,6)
 
@@ -1667,12 +1667,12 @@ Implicit None
 Real(dp),Intent(in) :: g1,g2,g3,mHd2,mHu2,vd,vu,MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),            & 
 & MFe(3),MFe2(3),MFu(3),MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),              & 
 & MSd(6),MSd2(6),MSe(6),MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,            & 
-& MVZ2,TW,v,ZZ(2,2)
+& MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp),Intent(in) :: Yd(3,3),Ye(3,3),Yu(3,3),Mu,Td(3,3),Te(3,3),Tu(3,3),Bmu,mq2(3,3),ml2(3,3),             & 
 & md2(3,3),mu2(3,3),me2(3,3),M1,M2,M3,pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),               & 
-& ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),           & 
-& ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),          & 
+& ZV(3,3),ZW(2,2)
 
 Complex(dp) :: cplChiChacHpmL(4,2,2),cplChiChacHpmR(4,2,2),cplChiChacVWmL(4,2),cplChiChacVWmR(4,2),  & 
 & cplChiChihhL(4,4,4),cplChiChihhR(4,4,4),cplChiChiVZL(4,4),cplChiChiVZR(4,4),           & 
@@ -1906,12 +1906,12 @@ Implicit None
 Real(dp),Intent(in) :: g1,g2,g3,mHd2,mHu2,vd,vu,MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),            & 
 & MFe(3),MFe2(3),MFu(3),MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),              & 
 & MSd(6),MSd2(6),MSe(6),MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,            & 
-& MVZ2,TW,v,ZZ(2,2)
+& MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp),Intent(in) :: Yd(3,3),Ye(3,3),Yu(3,3),Mu,Td(3,3),Te(3,3),Tu(3,3),Bmu,mq2(3,3),ml2(3,3),             & 
 & md2(3,3),mu2(3,3),me2(3,3),M1,M2,M3,pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),               & 
-& ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),           & 
-& ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),          & 
+& ZV(3,3),ZW(2,2)
 
 Complex(dp) :: cplcChaChahhL(2,2,4),cplcChaChahhR(2,2,4),cplcChaChaVZL(2,2),cplcChaChaVZR(2,2),      & 
 & cplcChaChiHpmL(2,4,2),cplcChaChiHpmR(2,4,2),cplcChaChiVWmL(2,4),cplcChaChiVWmR(2,4),   & 
@@ -2145,12 +2145,12 @@ Implicit None
 Real(dp),Intent(in) :: g1,g2,g3,mHd2,mHu2,vd,vu,MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),            & 
 & MFe(3),MFe2(3),MFu(3),MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),              & 
 & MSd(6),MSd2(6),MSe(6),MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,            & 
-& MVZ2,TW,v,ZZ(2,2)
+& MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp),Intent(in) :: Yd(3,3),Ye(3,3),Yu(3,3),Mu,Td(3,3),Te(3,3),Tu(3,3),Bmu,mq2(3,3),ml2(3,3),             & 
 & md2(3,3),mu2(3,3),me2(3,3),M1,M2,M3,pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),               & 
-& ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),           & 
-& ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),          & 
+& ZV(3,3),ZW(2,2)
 
 Complex(dp) :: cplcFuChiSuL(3,4,6),cplcFuChiSuR(3,4,6),cplcFuFdcHpmL(3,3,2),cplcFuFdcHpmR(3,3,2),    & 
 & cplcFuFdcVWmL(3,3),cplcFuFdcVWmR(3,3),cplcFuFuhhL(3,3,4),cplcFuFuhhR(3,3,4),           & 

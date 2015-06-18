@@ -1,9 +1,9 @@
 ! -----------------------------------------------------------------------------  
-! This file was automatically created by SARAH version 4.5.7 
+! This file was automatically created by SARAH version 4.5.8b1 
 ! SARAH References: arXiv:0806.0538, 0909.2863, 1002.0840, 1207.0906, 1309.7223  
 ! (c) Florian Staub, 2013  
 ! ------------------------------------------------------------------------------  
-! File created at 13:40 on 16.6.2015   
+! File created at 22:35 on 17.6.2015   
 ! ----------------------------------------------------------------------  
  
  
@@ -237,9 +237,9 @@ Subroutine DeltaVB(sinW2,sinW2_dr,rho,MCha,MChi,MFe,Mhh,MHpm,MSe,MSv,MVWm,      
 & g1,g2,UM,UP,vd,vu,Ye,ZE,ZEL,ZER,ZH,ZN,ZP,ZV,res)
 
 Implicit None 
-Real(dp),Intent(in) :: MCha(2),MChi(4),MFe(3),Mhh(4),MHpm(2),MSe(6),MSv(3),MVWm,g1,g2,vd,vu
+Real(dp),Intent(in) :: MCha(2),MChi(4),MFe(3),Mhh(4),MHpm(2),MSe(6),MSv(3),MVWm,g1,g2,vd,vu,ZH(4,4)
 
-Complex(dp),Intent(in) :: UM(2,2),UP(2,2),Ye(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),ZH(4,4),ZN(4,4),ZP(2,2),ZV(3,3)
+Complex(dp),Intent(in) :: UM(2,2),UP(2,2),Ye(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),ZN(4,4),ZP(2,2),ZV(3,3)
 
 Real(dp) :: MCha2(2),MChi2(4),MFe2(3),Mhh2(4),MHpm2(2),MSe2(6),MSv2(3),MVWm2
 

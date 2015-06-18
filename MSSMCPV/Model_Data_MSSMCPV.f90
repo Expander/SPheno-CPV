@@ -1,9 +1,9 @@
 ! -----------------------------------------------------------------------------  
-! This file was automatically created by SARAH version 4.5.7 
+! This file was automatically created by SARAH version 4.5.8b1 
 ! SARAH References: arXiv:0806.0538, 0909.2863, 1002.0840, 1207.0906, 1309.7223  
 ! (c) Florian Staub, 2013  
 ! ------------------------------------------------------------------------------  
-! File created at 13:43 on 16.6.2015   
+! File created at 22:38 on 17.6.2015   
 ! ----------------------------------------------------------------------  
  
  
@@ -185,10 +185,10 @@ Complex(dp) :: MuGUT,TdGUT(3,3),TeGUT(3,3),TuGUT(3,3),BmuGUT,mq2GUT(3,3),ml2GUT(
 
 Real(dp) :: MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),MFe(3),MFe2(3),MFu(3),               & 
 & MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),MSd(6),MSd2(6),MSe(6),              & 
-& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZZ(2,2)
+& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp) :: pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),               & 
-& ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
 
 Real(dp) :: vd,vu
 
@@ -276,6 +276,8 @@ Logical, save :: InputValueforM2 =.False.
 Logical, save :: InputValueforM3 =.False. 
 Complex(dp) :: CKMcomplex(3,3) 
 Real(dp) :: Xi = 1._dp 
+Real(dp) :: RXi = 1._dp 
+Real(dp) :: RXiNew = 1._dp 
 Real(dp), save :: RXiG = 1._dp 
 Real(dp), save :: RXiP = 1._dp 
 Real(dp), save :: RXiWm = 1._dp 

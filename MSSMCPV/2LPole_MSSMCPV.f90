@@ -12,7 +12,7 @@ Use Pole2LFunctions
 Contains 
  
 Subroutine CalculatePi2S(p2,vd,vu,g1,g2,g3,Yd,Ye,Yu,Mu,Td,Te,Tu,Bmu,mq2,              & 
-& ml2,mHd2,mHu2,md2,mu2,me2,M1,M2,M3,kont,tad2L,Pi2S)
+& ml2,mHd2,mHu2,md2,mu2,me2,M1,M2,M3,kont,tad2L,Pi2S,Pi2P)
 
 Implicit None 
 Real(dp),Intent(in) :: g1,g2,g3,mHd2,mHu2
@@ -24,10 +24,10 @@ Real(dp),Intent(in) :: vd,vu
 
 Real(dp) :: MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),MFe(3),MFe2(3),MFu(3),               & 
 & MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),MSd(6),MSd2(6),MSe(6),              & 
-& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZZ(2,2)
+& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp) :: pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),               & 
-& ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
 
 Complex(dp) :: cplhhSdcSd(4,6,6),cplhhSecSe(4,6,6),cplhhSucSu(4,6,6),cplHpmSucSd(2,6,6),             & 
 & cplHpmSvcSe(2,3,6),cplSdcHpmcSu(6,2,6),cplSecHpmcSv(6,2,3),cplSdcSdVG(6,6),            & 
@@ -62,6 +62,7 @@ Real(dp)  :: tempcont(4,4)
 Real(dp)  :: runningval(4,4)
 Real(dp), Intent(out) :: tad2l(4)
 Real(dp), Intent(out) :: Pi2S(4,4)
+Real(dp), Intent(out) :: Pi2P(4,4)
 complex(dp) :: coup1,coup2,coup3,coup4
 complex(dp) :: coup1L,coup1R,coup2l,coup2r,coup3l,coup3r,coup4l,coup4r
 real(dp) :: epsFmass
@@ -73,6 +74,7 @@ logical :: nonzerocoupling
 
 tad2l(:)=0
 Pi2S(:,:)=0
+Pi2P(:,:)=0
 Qscale=getrenormalizationscale()
 epsfmass=0._dp
 epscouplings=0._dp

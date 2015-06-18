@@ -1,9 +1,9 @@
 ! -----------------------------------------------------------------------------  
-! This file was automatically created by SARAH version 4.5.7 
+! This file was automatically created by SARAH version 4.5.8b1 
 ! SARAH References: arXiv:0806.0538, 0909.2863, 1002.0840, 1207.0906, 1309.7223  
 ! (c) Florian Staub, 2013  
 ! ------------------------------------------------------------------------------  
-! File created at 13:45 on 16.6.2015   
+! File created at 22:41 on 17.6.2015   
 ! ----------------------------------------------------------------------  
  
  
@@ -50,11 +50,11 @@ Real(dp),Intent(in) :: MChainput(2),MCha2input(2),MChiinput(4),MChi2input(4),MFd
 & MFeinput(3),MFe2input(3),MFuinput(3),MFu2input(3),MGluinput,MGlu2input,Mhhinput(4),    & 
 & Mhh2input(4),MHpminput(2),MHpm2input(2),MSdinput(6),MSd2input(6),MSeinput(6),          & 
 & MSe2input(6),MSuinput(6),MSu2input(6),MSvinput(3),MSv2input(3),MVWminput,              & 
-& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZZinput(2,2)
+& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZHinput(4,4),ZZinput(2,2)
 
 Complex(dp),Intent(in) :: pGinput,UMinput(2,2),UPinput(2,2),ZDinput(6,6),ZDLinput(3,3),ZDRinput(3,3),           & 
-& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZHinput(4,4),ZNinput(4,4),ZPinput(2,2),       & 
-& ZUinput(6,6),ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
+& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZNinput(4,4),ZPinput(2,2),ZUinput(6,6),       & 
+& ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
 
 Real(dp) :: g1,g2,g3,mHd2,mHu2,vd,vu
 
@@ -69,10 +69,10 @@ Real(dp) ::  g1D(215)
 Integer :: i2, i3, gt1, gt2, gt3, kont 
 Real(dp) :: MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),MFe(3),MFe2(3),MFu(3),               & 
 & MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),MSd(6),MSd2(6),MSe(6),              & 
-& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZZ(2,2)
+& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp) :: pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),               & 
-& ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
 
 Real(dp) :: gSM(11), sinW2, dt, tz, Qin 
 Iname = Iname + 1 
@@ -258,11 +258,11 @@ Real(dp),Intent(in) :: MChainput(2),MCha2input(2),MChiinput(4),MChi2input(4),MFd
 & MFeinput(3),MFe2input(3),MFuinput(3),MFu2input(3),MGluinput,MGlu2input,Mhhinput(4),    & 
 & Mhh2input(4),MHpminput(2),MHpm2input(2),MSdinput(6),MSd2input(6),MSeinput(6),          & 
 & MSe2input(6),MSuinput(6),MSu2input(6),MSvinput(3),MSv2input(3),MVWminput,              & 
-& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZZinput(2,2)
+& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZHinput(4,4),ZZinput(2,2)
 
 Complex(dp),Intent(in) :: pGinput,UMinput(2,2),UPinput(2,2),ZDinput(6,6),ZDLinput(3,3),ZDRinput(3,3),           & 
-& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZHinput(4,4),ZNinput(4,4),ZPinput(2,2),       & 
-& ZUinput(6,6),ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
+& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZNinput(4,4),ZPinput(2,2),ZUinput(6,6),       & 
+& ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
 
 Real(dp) :: g1,g2,g3,mHd2,mHu2,vd,vu
 
@@ -277,10 +277,10 @@ Real(dp) ::  g1D(215)
 Integer :: i2, i3, gt1, gt2, gt3, kont 
 Real(dp) :: MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),MFe(3),MFe2(3),MFu(3),               & 
 & MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),MSd(6),MSd2(6),MSe(6),              & 
-& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZZ(2,2)
+& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp) :: pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),               & 
-& ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
 
 Real(dp) :: gSM(11), sinW2, dt, tz, Qin 
 Iname = Iname + 1 
@@ -466,11 +466,11 @@ Real(dp),Intent(in) :: MChainput(2),MCha2input(2),MChiinput(4),MChi2input(4),MFd
 & MFeinput(3),MFe2input(3),MFuinput(3),MFu2input(3),MGluinput,MGlu2input,Mhhinput(4),    & 
 & Mhh2input(4),MHpminput(2),MHpm2input(2),MSdinput(6),MSd2input(6),MSeinput(6),          & 
 & MSe2input(6),MSuinput(6),MSu2input(6),MSvinput(3),MSv2input(3),MVWminput,              & 
-& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZZinput(2,2)
+& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZHinput(4,4),ZZinput(2,2)
 
 Complex(dp),Intent(in) :: pGinput,UMinput(2,2),UPinput(2,2),ZDinput(6,6),ZDLinput(3,3),ZDRinput(3,3),           & 
-& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZHinput(4,4),ZNinput(4,4),ZPinput(2,2),       & 
-& ZUinput(6,6),ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
+& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZNinput(4,4),ZPinput(2,2),ZUinput(6,6),       & 
+& ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
 
 Real(dp) :: g1,g2,g3,mHd2,mHu2,vd,vu
 
@@ -484,10 +484,10 @@ Real(dp) ::  g1D(215)
 Integer :: i2, i3, gt1, gt2, gt3, kont 
 Real(dp) :: MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),MFe(3),MFe2(3),MFu(3),               & 
 & MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),MSd(6),MSd2(6),MSe(6),              & 
-& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZZ(2,2)
+& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp) :: pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),               & 
-& ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
 
 Real(dp) :: gSM(11), sinW2, dt, tz, Qin 
 Iname = Iname + 1 
@@ -662,11 +662,11 @@ Real(dp),Intent(in) :: MChainput(2),MCha2input(2),MChiinput(4),MChi2input(4),MFd
 & MFeinput(3),MFe2input(3),MFuinput(3),MFu2input(3),MGluinput,MGlu2input,Mhhinput(4),    & 
 & Mhh2input(4),MHpminput(2),MHpm2input(2),MSdinput(6),MSd2input(6),MSeinput(6),          & 
 & MSe2input(6),MSuinput(6),MSu2input(6),MSvinput(3),MSv2input(3),MVWminput,              & 
-& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZZinput(2,2)
+& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZHinput(4,4),ZZinput(2,2)
 
 Complex(dp),Intent(in) :: pGinput,UMinput(2,2),UPinput(2,2),ZDinput(6,6),ZDLinput(3,3),ZDRinput(3,3),           & 
-& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZHinput(4,4),ZNinput(4,4),ZPinput(2,2),       & 
-& ZUinput(6,6),ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
+& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZNinput(4,4),ZPinput(2,2),ZUinput(6,6),       & 
+& ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
 
 Real(dp) :: g1,g2,g3,mHd2,mHu2,vd,vu
 
@@ -680,10 +680,10 @@ Real(dp) ::  g1D(215)
 Integer :: i2, i3, gt1, gt2, gt3, kont 
 Real(dp) :: MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),MFe(3),MFe2(3),MFu(3),               & 
 & MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),MSd(6),MSd2(6),MSe(6),              & 
-& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZZ(2,2)
+& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp) :: pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),               & 
-& ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
 
 Real(dp) :: gSM(11), sinW2, dt, tz, Qin 
 Iname = Iname + 1 
@@ -860,11 +860,11 @@ Real(dp),Intent(in) :: MChainput(2),MCha2input(2),MChiinput(4),MChi2input(4),MFd
 & MFeinput(3),MFe2input(3),MFuinput(3),MFu2input(3),MGluinput,MGlu2input,Mhhinput(4),    & 
 & Mhh2input(4),MHpminput(2),MHpm2input(2),MSdinput(6),MSd2input(6),MSeinput(6),          & 
 & MSe2input(6),MSuinput(6),MSu2input(6),MSvinput(3),MSv2input(3),MVWminput,              & 
-& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZZinput(2,2)
+& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZHinput(4,4),ZZinput(2,2)
 
 Complex(dp),Intent(in) :: pGinput,UMinput(2,2),UPinput(2,2),ZDinput(6,6),ZDLinput(3,3),ZDRinput(3,3),           & 
-& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZHinput(4,4),ZNinput(4,4),ZPinput(2,2),       & 
-& ZUinput(6,6),ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
+& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZNinput(4,4),ZPinput(2,2),ZUinput(6,6),       & 
+& ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
 
 Real(dp) :: g1,g2,g3,mHd2,mHu2,vd,vu
 
@@ -882,10 +882,10 @@ Real(dp) ::  g1D(215)
 Integer :: i2, i3, gt1, gt2, gt3, kont 
 Real(dp) :: MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),MFe(3),MFe2(3),MFu(3),               & 
 & MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),MSd(6),MSd2(6),MSe(6),              & 
-& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZZ(2,2)
+& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp) :: pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),               & 
-& ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
 
 Complex(dp) :: ratCha(2),ratFd(3),ratFe(3),ratFu(3),ratHpm(2),ratSd(6),ratSe(6),ratSu(6),ratVWm
 
@@ -1409,11 +1409,11 @@ Real(dp),Intent(in) :: MChainput(2),MCha2input(2),MChiinput(4),MChi2input(4),MFd
 & MFeinput(3),MFe2input(3),MFuinput(3),MFu2input(3),MGluinput,MGlu2input,Mhhinput(4),    & 
 & Mhh2input(4),MHpminput(2),MHpm2input(2),MSdinput(6),MSd2input(6),MSeinput(6),          & 
 & MSe2input(6),MSuinput(6),MSu2input(6),MSvinput(3),MSv2input(3),MVWminput,              & 
-& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZZinput(2,2)
+& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZHinput(4,4),ZZinput(2,2)
 
 Complex(dp),Intent(in) :: pGinput,UMinput(2,2),UPinput(2,2),ZDinput(6,6),ZDLinput(3,3),ZDRinput(3,3),           & 
-& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZHinput(4,4),ZNinput(4,4),ZPinput(2,2),       & 
-& ZUinput(6,6),ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
+& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZNinput(4,4),ZPinput(2,2),ZUinput(6,6),       & 
+& ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
 
 Real(dp) :: g1,g2,g3,mHd2,mHu2,vd,vu
 
@@ -1428,10 +1428,10 @@ Real(dp) ::  g1D(215)
 Integer :: i2, i3, gt1, gt2, gt3, kont 
 Real(dp) :: MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),MFe(3),MFe2(3),MFu(3),               & 
 & MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),MSd(6),MSd2(6),MSe(6),              & 
-& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZZ(2,2)
+& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp) :: pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),               & 
-& ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
 
 Real(dp) :: gSM(11), sinW2, dt, tz, Qin 
 Iname = Iname + 1 
@@ -1644,11 +1644,11 @@ Real(dp),Intent(in) :: MChainput(2),MCha2input(2),MChiinput(4),MChi2input(4),MFd
 & MFeinput(3),MFe2input(3),MFuinput(3),MFu2input(3),MGluinput,MGlu2input,Mhhinput(4),    & 
 & Mhh2input(4),MHpminput(2),MHpm2input(2),MSdinput(6),MSd2input(6),MSeinput(6),          & 
 & MSe2input(6),MSuinput(6),MSu2input(6),MSvinput(3),MSv2input(3),MVWminput,              & 
-& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZZinput(2,2)
+& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZHinput(4,4),ZZinput(2,2)
 
 Complex(dp),Intent(in) :: pGinput,UMinput(2,2),UPinput(2,2),ZDinput(6,6),ZDLinput(3,3),ZDRinput(3,3),           & 
-& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZHinput(4,4),ZNinput(4,4),ZPinput(2,2),       & 
-& ZUinput(6,6),ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
+& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZNinput(4,4),ZPinput(2,2),ZUinput(6,6),       & 
+& ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
 
 Real(dp) :: g1,g2,g3,mHd2,mHu2,vd,vu
 
@@ -1661,10 +1661,10 @@ Real(dp) ::  g1D(215)
 Integer :: i2, i3, gt1, gt2, gt3, kont 
 Real(dp) :: MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),MFe(3),MFe2(3),MFu(3),               & 
 & MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),MSd(6),MSd2(6),MSe(6),              & 
-& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZZ(2,2)
+& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp) :: pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),               & 
-& ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
 
 Real(dp) :: gSM(11), sinW2, dt, tz, Qin 
 Iname = Iname + 1 
@@ -1794,11 +1794,11 @@ Real(dp),Intent(in) :: MChainput(2),MCha2input(2),MChiinput(4),MChi2input(4),MFd
 & MFeinput(3),MFe2input(3),MFuinput(3),MFu2input(3),MGluinput,MGlu2input,Mhhinput(4),    & 
 & Mhh2input(4),MHpminput(2),MHpm2input(2),MSdinput(6),MSd2input(6),MSeinput(6),          & 
 & MSe2input(6),MSuinput(6),MSu2input(6),MSvinput(3),MSv2input(3),MVWminput,              & 
-& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZZinput(2,2)
+& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZHinput(4,4),ZZinput(2,2)
 
 Complex(dp),Intent(in) :: pGinput,UMinput(2,2),UPinput(2,2),ZDinput(6,6),ZDLinput(3,3),ZDRinput(3,3),           & 
-& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZHinput(4,4),ZNinput(4,4),ZPinput(2,2),       & 
-& ZUinput(6,6),ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
+& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZNinput(4,4),ZPinput(2,2),ZUinput(6,6),       & 
+& ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
 
 Real(dp) :: g1,g2,g3,mHd2,mHu2,vd,vu
 
@@ -1814,10 +1814,10 @@ Real(dp) ::  g1D(215)
 Integer :: i2, i3, gt1, gt2, gt3, kont 
 Real(dp) :: MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),MFe(3),MFe2(3),MFu(3),               & 
 & MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),MSd(6),MSd2(6),MSe(6),              & 
-& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZZ(2,2)
+& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp) :: pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),               & 
-& ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
 
 Real(dp) :: gSM(11), sinW2, dt, tz, Qin 
 Iname = Iname + 1 
@@ -2025,11 +2025,11 @@ Real(dp),Intent(in) :: MChainput(2),MCha2input(2),MChiinput(4),MChi2input(4),MFd
 & MFeinput(3),MFe2input(3),MFuinput(3),MFu2input(3),MGluinput,MGlu2input,Mhhinput(4),    & 
 & Mhh2input(4),MHpminput(2),MHpm2input(2),MSdinput(6),MSd2input(6),MSeinput(6),          & 
 & MSe2input(6),MSuinput(6),MSu2input(6),MSvinput(3),MSv2input(3),MVWminput,              & 
-& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZZinput(2,2)
+& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZHinput(4,4),ZZinput(2,2)
 
 Complex(dp),Intent(in) :: pGinput,UMinput(2,2),UPinput(2,2),ZDinput(6,6),ZDLinput(3,3),ZDRinput(3,3),           & 
-& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZHinput(4,4),ZNinput(4,4),ZPinput(2,2),       & 
-& ZUinput(6,6),ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
+& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZNinput(4,4),ZPinput(2,2),ZUinput(6,6),       & 
+& ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
 
 Real(dp) :: g1,g2,g3,mHd2,mHu2,vd,vu
 
@@ -2045,10 +2045,10 @@ Real(dp) ::  g1D(215)
 Integer :: i2, i3, gt1, gt2, gt3, kont 
 Real(dp) :: MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),MFe(3),MFe2(3),MFu(3),               & 
 & MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),MSd(6),MSd2(6),MSe(6),              & 
-& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZZ(2,2)
+& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp) :: pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),               & 
-& ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
 
 Real(dp) :: gSM(11), sinW2, dt, tz, Qin 
 Iname = Iname + 1 
@@ -2256,11 +2256,11 @@ Real(dp),Intent(in) :: MChainput(2),MCha2input(2),MChiinput(4),MChi2input(4),MFd
 & MFeinput(3),MFe2input(3),MFuinput(3),MFu2input(3),MGluinput,MGlu2input,Mhhinput(4),    & 
 & Mhh2input(4),MHpminput(2),MHpm2input(2),MSdinput(6),MSd2input(6),MSeinput(6),          & 
 & MSe2input(6),MSuinput(6),MSu2input(6),MSvinput(3),MSv2input(3),MVWminput,              & 
-& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZZinput(2,2)
+& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZHinput(4,4),ZZinput(2,2)
 
 Complex(dp),Intent(in) :: pGinput,UMinput(2,2),UPinput(2,2),ZDinput(6,6),ZDLinput(3,3),ZDRinput(3,3),           & 
-& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZHinput(4,4),ZNinput(4,4),ZPinput(2,2),       & 
-& ZUinput(6,6),ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
+& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZNinput(4,4),ZPinput(2,2),ZUinput(6,6),       & 
+& ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
 
 Real(dp) :: g1,g2,g3,mHd2,mHu2,vd,vu
 
@@ -2276,10 +2276,10 @@ Real(dp) ::  g1D(215)
 Integer :: i2, i3, gt1, gt2, gt3, kont 
 Real(dp) :: MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),MFe(3),MFe2(3),MFu(3),               & 
 & MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),MSd(6),MSd2(6),MSe(6),              & 
-& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZZ(2,2)
+& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp) :: pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),               & 
-& ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
 
 Real(dp) :: gSM(11), sinW2, dt, tz, Qin 
 Iname = Iname + 1 
@@ -2479,11 +2479,11 @@ Real(dp),Intent(in) :: MChainput(2),MCha2input(2),MChiinput(4),MChi2input(4),MFd
 & MFeinput(3),MFe2input(3),MFuinput(3),MFu2input(3),MGluinput,MGlu2input,Mhhinput(4),    & 
 & Mhh2input(4),MHpminput(2),MHpm2input(2),MSdinput(6),MSd2input(6),MSeinput(6),          & 
 & MSe2input(6),MSuinput(6),MSu2input(6),MSvinput(3),MSv2input(3),MVWminput,              & 
-& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZZinput(2,2)
+& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZHinput(4,4),ZZinput(2,2)
 
 Complex(dp),Intent(in) :: pGinput,UMinput(2,2),UPinput(2,2),ZDinput(6,6),ZDLinput(3,3),ZDRinput(3,3),           & 
-& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZHinput(4,4),ZNinput(4,4),ZPinput(2,2),       & 
-& ZUinput(6,6),ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
+& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZNinput(4,4),ZPinput(2,2),ZUinput(6,6),       & 
+& ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
 
 Real(dp) :: g1,g2,g3,mHd2,mHu2,vd,vu
 
@@ -2500,10 +2500,10 @@ Real(dp) ::  g1D(215)
 Integer :: i2, i3, gt1, gt2, gt3, kont 
 Real(dp) :: MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),MFe(3),MFe2(3),MFu(3),               & 
 & MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),MSd(6),MSd2(6),MSe(6),              & 
-& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZZ(2,2)
+& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp) :: pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),               & 
-& ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
 
 Real(dp) :: gSM(11), sinW2, dt, tz, Qin 
 Iname = Iname + 1 
@@ -2740,11 +2740,11 @@ Real(dp),Intent(in) :: MChainput(2),MCha2input(2),MChiinput(4),MChi2input(4),MFd
 & MFeinput(3),MFe2input(3),MFuinput(3),MFu2input(3),MGluinput,MGlu2input,Mhhinput(4),    & 
 & Mhh2input(4),MHpminput(2),MHpm2input(2),MSdinput(6),MSd2input(6),MSeinput(6),          & 
 & MSe2input(6),MSuinput(6),MSu2input(6),MSvinput(3),MSv2input(3),MVWminput,              & 
-& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZZinput(2,2)
+& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZHinput(4,4),ZZinput(2,2)
 
 Complex(dp),Intent(in) :: pGinput,UMinput(2,2),UPinput(2,2),ZDinput(6,6),ZDLinput(3,3),ZDRinput(3,3),           & 
-& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZHinput(4,4),ZNinput(4,4),ZPinput(2,2),       & 
-& ZUinput(6,6),ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
+& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZNinput(4,4),ZPinput(2,2),ZUinput(6,6),       & 
+& ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
 
 Real(dp) :: g1,g2,g3,mHd2,mHu2,vd,vu
 
@@ -2774,10 +2774,10 @@ Real(dp) ::  g1D(215)
 Integer :: i2, i3, gt1, gt2, gt3, kont 
 Real(dp) :: MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),MFe(3),MFe2(3),MFu(3),               & 
 & MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),MSd(6),MSd2(6),MSe(6),              & 
-& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZZ(2,2)
+& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp) :: pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),               & 
-& ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
 
 Real(dp) :: gSM(11), sinW2, dt, tz, Qin 
 Iname = Iname + 1 
@@ -3308,11 +3308,11 @@ Real(dp),Intent(in) :: MChainput(2),MCha2input(2),MChiinput(4),MChi2input(4),MFd
 & MFeinput(3),MFe2input(3),MFuinput(3),MFu2input(3),MGluinput,MGlu2input,Mhhinput(4),    & 
 & Mhh2input(4),MHpminput(2),MHpm2input(2),MSdinput(6),MSd2input(6),MSeinput(6),          & 
 & MSe2input(6),MSuinput(6),MSu2input(6),MSvinput(3),MSv2input(3),MVWminput,              & 
-& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZZinput(2,2)
+& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZHinput(4,4),ZZinput(2,2)
 
 Complex(dp),Intent(in) :: pGinput,UMinput(2,2),UPinput(2,2),ZDinput(6,6),ZDLinput(3,3),ZDRinput(3,3),           & 
-& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZHinput(4,4),ZNinput(4,4),ZPinput(2,2),       & 
-& ZUinput(6,6),ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
+& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZNinput(4,4),ZPinput(2,2),ZUinput(6,6),       & 
+& ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
 
 Real(dp) :: g1,g2,g3,mHd2,mHu2,vd,vu
 
@@ -3341,10 +3341,10 @@ Real(dp) ::  g1D(215)
 Integer :: i2, i3, gt1, gt2, gt3, kont 
 Real(dp) :: MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),MFe(3),MFe2(3),MFu(3),               & 
 & MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),MSd(6),MSd2(6),MSe(6),              & 
-& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZZ(2,2)
+& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp) :: pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),               & 
-& ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
 
 Real(dp) :: gSM(11), sinW2, dt, tz, Qin 
 Iname = Iname + 1 
@@ -3858,11 +3858,11 @@ Real(dp),Intent(in) :: MChainput(2),MCha2input(2),MChiinput(4),MChi2input(4),MFd
 & MFeinput(3),MFe2input(3),MFuinput(3),MFu2input(3),MGluinput,MGlu2input,Mhhinput(4),    & 
 & Mhh2input(4),MHpminput(2),MHpm2input(2),MSdinput(6),MSd2input(6),MSeinput(6),          & 
 & MSe2input(6),MSuinput(6),MSu2input(6),MSvinput(3),MSv2input(3),MVWminput,              & 
-& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZZinput(2,2)
+& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZHinput(4,4),ZZinput(2,2)
 
 Complex(dp),Intent(in) :: pGinput,UMinput(2,2),UPinput(2,2),ZDinput(6,6),ZDLinput(3,3),ZDRinput(3,3),           & 
-& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZHinput(4,4),ZNinput(4,4),ZPinput(2,2),       & 
-& ZUinput(6,6),ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
+& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZNinput(4,4),ZPinput(2,2),ZUinput(6,6),       & 
+& ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
 
 Real(dp) :: g1,g2,g3,mHd2,mHu2,vd,vu
 
@@ -3893,10 +3893,10 @@ Real(dp) ::  g1D(215)
 Integer :: i2, i3, gt1, gt2, gt3, kont 
 Real(dp) :: MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),MFe(3),MFe2(3),MFu(3),               & 
 & MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),MSd(6),MSd2(6),MSe(6),              & 
-& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZZ(2,2)
+& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp) :: pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),               & 
-& ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
 
 Real(dp) :: gSM(11), sinW2, dt, tz, Qin 
 Iname = Iname + 1 
@@ -4499,11 +4499,11 @@ Real(dp),Intent(in) :: MChainput(2),MCha2input(2),MChiinput(4),MChi2input(4),MFd
 & MFeinput(3),MFe2input(3),MFuinput(3),MFu2input(3),MGluinput,MGlu2input,Mhhinput(4),    & 
 & Mhh2input(4),MHpminput(2),MHpm2input(2),MSdinput(6),MSd2input(6),MSeinput(6),          & 
 & MSe2input(6),MSuinput(6),MSu2input(6),MSvinput(3),MSv2input(3),MVWminput,              & 
-& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZZinput(2,2)
+& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZHinput(4,4),ZZinput(2,2)
 
 Complex(dp),Intent(in) :: pGinput,UMinput(2,2),UPinput(2,2),ZDinput(6,6),ZDLinput(3,3),ZDRinput(3,3),           & 
-& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZHinput(4,4),ZNinput(4,4),ZPinput(2,2),       & 
-& ZUinput(6,6),ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
+& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZNinput(4,4),ZPinput(2,2),ZUinput(6,6),       & 
+& ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
 
 Real(dp) :: g1,g2,g3,mHd2,mHu2,vd,vu
 
@@ -4535,10 +4535,10 @@ Real(dp) ::  g1D(215)
 Integer :: i2, i3, gt1, gt2, gt3, kont 
 Real(dp) :: MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),MFe(3),MFe2(3),MFu(3),               & 
 & MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),MSd(6),MSd2(6),MSe(6),              & 
-& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZZ(2,2)
+& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp) :: pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),               & 
-& ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
 
 Real(dp) :: gSM(11), sinW2, dt, tz, Qin 
 Iname = Iname + 1 
@@ -5140,11 +5140,11 @@ Real(dp),Intent(in) :: MChainput(2),MCha2input(2),MChiinput(4),MChi2input(4),MFd
 & MFeinput(3),MFe2input(3),MFuinput(3),MFu2input(3),MGluinput,MGlu2input,Mhhinput(4),    & 
 & Mhh2input(4),MHpminput(2),MHpm2input(2),MSdinput(6),MSd2input(6),MSeinput(6),          & 
 & MSe2input(6),MSuinput(6),MSu2input(6),MSvinput(3),MSv2input(3),MVWminput,              & 
-& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZZinput(2,2)
+& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZHinput(4,4),ZZinput(2,2)
 
 Complex(dp),Intent(in) :: pGinput,UMinput(2,2),UPinput(2,2),ZDinput(6,6),ZDLinput(3,3),ZDRinput(3,3),           & 
-& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZHinput(4,4),ZNinput(4,4),ZPinput(2,2),       & 
-& ZUinput(6,6),ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
+& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZNinput(4,4),ZPinput(2,2),ZUinput(6,6),       & 
+& ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
 
 Real(dp) :: g1,g2,g3,mHd2,mHu2,vd,vu
 
@@ -5174,10 +5174,10 @@ Real(dp) ::  g1D(215)
 Integer :: i2, i3, gt1, gt2, gt3, kont 
 Real(dp) :: MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),MFe(3),MFe2(3),MFu(3),               & 
 & MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),MSd(6),MSd2(6),MSe(6),              & 
-& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZZ(2,2)
+& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp) :: pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),               & 
-& ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
 
 Real(dp) :: gSM(11), sinW2, dt, tz, Qin 
 Iname = Iname + 1 
@@ -5738,11 +5738,11 @@ Real(dp),Intent(in) :: MChainput(2),MCha2input(2),MChiinput(4),MChi2input(4),MFd
 & MFeinput(3),MFe2input(3),MFuinput(3),MFu2input(3),MGluinput,MGlu2input,Mhhinput(4),    & 
 & Mhh2input(4),MHpminput(2),MHpm2input(2),MSdinput(6),MSd2input(6),MSeinput(6),          & 
 & MSe2input(6),MSuinput(6),MSu2input(6),MSvinput(3),MSv2input(3),MVWminput,              & 
-& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZZinput(2,2)
+& MVWm2input,MVZinput,MVZ2input,TWinput,vinput,ZHinput(4,4),ZZinput(2,2)
 
 Complex(dp),Intent(in) :: pGinput,UMinput(2,2),UPinput(2,2),ZDinput(6,6),ZDLinput(3,3),ZDRinput(3,3),           & 
-& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZHinput(4,4),ZNinput(4,4),ZPinput(2,2),       & 
-& ZUinput(6,6),ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
+& ZEinput(6,6),ZELinput(3,3),ZERinput(3,3),ZNinput(4,4),ZPinput(2,2),ZUinput(6,6),       & 
+& ZULinput(3,3),ZURinput(3,3),ZVinput(3,3),ZWinput(2,2)
 
 Real(dp) :: g1,g2,g3,mHd2,mHu2,vd,vu
 
@@ -5772,10 +5772,10 @@ Real(dp) ::  g1D(215)
 Integer :: i2, i3, gt1, gt2, gt3, kont 
 Real(dp) :: MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),MFe(3),MFe2(3),MFu(3),               & 
 & MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),MSd(6),MSd2(6),MSe(6),              & 
-& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZZ(2,2)
+& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp) :: pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),               & 
-& ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
 
 Real(dp) :: gSM(11), sinW2, dt, tz, Qin 
 Iname = Iname + 1 

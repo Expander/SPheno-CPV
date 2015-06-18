@@ -96,10 +96,10 @@ Real(dp),Intent(in) :: vd,vu
 
 Real(dp) :: MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),MFe(3),MFe2(3),MFu(3),               & 
 & MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),MSd(6),MSd2(6),MSe(6),              & 
-& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZZ(2,2)
+& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp) :: pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),               & 
-& ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
 
 Integer, Intent(inout):: kont
 Integer :: i 
@@ -187,10 +187,10 @@ Real(dp),Intent(in) :: vd,vu
 
 Real(dp) :: MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),MFe(3),MFe2(3),MFu(3),               & 
 & MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),MSd(6),MSd2(6),MSe(6),              & 
-& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZZ(2,2)
+& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp) :: pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),               & 
-& ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
 
 Integer, Intent(inout):: kont
 Real(dp), Intent(out) :: effpot2L
@@ -3506,10 +3506,10 @@ Complex(dp) :: cplhhhhSdcSd(4,4,6,6),cplhhhhSecSe(4,4,6,6),cplhhhhSucSu(4,4,6,6)
 
 Real(dp) :: MCha(2),MCha2(2),MChi(4),MChi2(4),MFd(3),MFd2(3),MFe(3),MFe2(3),MFu(3),               & 
 & MFu2(3),MGlu,MGlu2,Mhh(4),Mhh2(4),MHpm(2),MHpm2(2),MSd(6),MSd2(6),MSe(6),              & 
-& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZZ(2,2)
+& MSe2(6),MSu(6),MSu2(6),MSv(3),MSv2(3),MVWm,MVWm2,MVZ,MVZ2,TW,v,ZH(4,4),ZZ(2,2)
 
 Complex(dp) :: pG,UM(2,2),UP(2,2),ZD(6,6),ZDL(3,3),ZDR(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),               & 
-& ZH(4,4),ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
+& ZN(4,4),ZP(2,2),ZU(6,6),ZUL(3,3),ZUR(3,3),ZV(3,3),ZW(2,2)
 
 vd=vevs(1) 
 vu=vevs(2) 

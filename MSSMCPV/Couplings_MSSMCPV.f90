@@ -1,9 +1,9 @@
 ! -----------------------------------------------------------------------------  
-! This file was automatically created by SARAH version 4.5.7 
+! This file was automatically created by SARAH version 4.5.8b1 
 ! SARAH References: arXiv:0806.0538, 0909.2863, 1002.0840, 1207.0906, 1309.7223  
 ! (c) Florian Staub, 2013  
 ! ------------------------------------------------------------------------------  
-! File created at 13:40 on 16.6.2015   
+! File created at 22:34 on 17.6.2015   
 ! ----------------------------------------------------------------------  
  
  
@@ -60,11 +60,11 @@ Contains
 & cplcgZgWpCHpm,cplcgZgZhh,cplcgWmgZHpm,cplcgWpCgZcHpm)
 
 Implicit None 
-Real(dp), Intent(in) :: g1,g2,vd,vu,eta,g3,TW
+Real(dp), Intent(in) :: g1,g2,vd,vu,ZH(4,4),eta,g3,TW
 
-Complex(dp), Intent(in) :: ZH(4,4),ZP(2,2),Mu,Yd(3,3),Td(3,3),ZD(6,6),Ye(3,3),Te(3,3),ZE(6,6),Yu(3,3),           & 
-& Tu(3,3),ZU(6,6),ZV(3,3),ZN(4,4),UM(2,2),UP(2,2),ZUL(3,3),ZUR(3,3),ZDL(3,3),            & 
-& ZDR(3,3),ZEL(3,3),ZER(3,3),pG
+Complex(dp), Intent(in) :: ZP(2,2),Mu,Yd(3,3),Td(3,3),ZD(6,6),Ye(3,3),Te(3,3),ZE(6,6),Yu(3,3),Tu(3,3),           & 
+& ZU(6,6),ZV(3,3),ZN(4,4),UM(2,2),UP(2,2),ZUL(3,3),ZUR(3,3),ZDL(3,3),ZDR(3,3),           & 
+& ZEL(3,3),ZER(3,3),pG
 
 Complex(dp), Intent(out) :: cplhhhhhh(4,4,4),cplhhHpmcHpm(4,2,2),cplhhSdcSd(4,6,6),cplhhSecSe(4,6,6),             & 
 & cplhhSucSu(4,6,6),cplhhSvcSv(4,3,3),cplHpmSucSd(2,6,6),cplHpmSvcSe(2,3,6),             & 
@@ -1947,11 +1947,11 @@ Subroutine AllCouplings(g1,g2,vd,vu,ZH,ZP,Mu,Yd,Td,eta,ZD,Ye,Te,ZE,Yu,Tu,       
 & cplcFeFvVWmL,cplcFeFvVWmR,cplcFvFvVZL,cplcFvFvVZR,cplGluGluVGL,cplGluGluVGR)
 
 Implicit None 
-Real(dp), Intent(in) :: g1,g2,vd,vu,eta,TW,g3
+Real(dp), Intent(in) :: g1,g2,vd,vu,ZH(4,4),eta,TW,g3
 
-Complex(dp), Intent(in) :: ZH(4,4),ZP(2,2),Mu,Yd(3,3),Td(3,3),ZD(6,6),Ye(3,3),Te(3,3),ZE(6,6),Yu(3,3),           & 
-& Tu(3,3),ZU(6,6),ZV(3,3),ZN(4,4),UM(2,2),UP(2,2),ZUL(3,3),ZUR(3,3),ZDL(3,3),            & 
-& ZDR(3,3),ZEL(3,3),ZER(3,3),pG
+Complex(dp), Intent(in) :: ZP(2,2),Mu,Yd(3,3),Td(3,3),ZD(6,6),Ye(3,3),Te(3,3),ZE(6,6),Yu(3,3),Tu(3,3),           & 
+& ZU(6,6),ZV(3,3),ZN(4,4),UM(2,2),UP(2,2),ZUL(3,3),ZUR(3,3),ZDL(3,3),ZDR(3,3),           & 
+& ZEL(3,3),ZER(3,3),pG
 
 Complex(dp), Intent(out) :: cplhhhhhh(4,4,4),cplhhHpmcHpm(4,2,2),cplhhSdcSd(4,6,6),cplhhSecSe(4,6,6),             & 
 & cplhhSucSu(4,6,6),cplhhSvcSv(4,3,3),cplHpmSucSd(2,6,6),cplHpmSvcSe(2,3,6),             & 
@@ -2907,9 +2907,7 @@ Subroutine CouplinghhhhhhT(gt1,gt2,gt3,g1,g2,vd,vu,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Real(dp), Intent(in) :: g1,g2,vd,vu
-
-Complex(dp), Intent(in) :: ZH(4,4)
+Real(dp), Intent(in) :: g1,g2,vd,vu,ZH(4,4)
 
 Complex(dp), Intent(out) :: res 
  
@@ -2942,46 +2940,46 @@ If ((gt3.Lt.1).Or.(gt3.Gt.4)) Then
 End If 
 
 res = 0._dp 
-res = res+(-3*g1**2*vd*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,1)))/4._dp
-res = res+(-3*g2**2*vd*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,1)))/4._dp
-res = res+(g1**2*vu*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,1)))/4._dp
-res = res+(g2**2*vu*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,1)))/4._dp
-res = res+(g1**2*vu*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,1)))/4._dp
-res = res+(g2**2*vu*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,1)))/4._dp
-res = res+(g1**2*vd*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,1)))/4._dp
-res = res+(g2**2*vd*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,1)))/4._dp
-res = res-(g1**2*vd*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,1)))/4._dp
-res = res-(g2**2*vd*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,1)))/4._dp
-res = res+(g1**2*vd*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,1)))/4._dp
-res = res+(g2**2*vd*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,1)))/4._dp
-res = res+(g1**2*vu*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,2)))/4._dp
-res = res+(g2**2*vu*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,2)))/4._dp
-res = res+(g1**2*vd*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,2)))/4._dp
-res = res+(g2**2*vd*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,2)))/4._dp
-res = res+(g1**2*vd*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,2)))/4._dp
-res = res+(g2**2*vd*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,2)))/4._dp
-res = res+(-3*g1**2*vu*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,2)))/4._dp
-res = res+(-3*g2**2*vu*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,2)))/4._dp
-res = res+(g1**2*vu*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,2)))/4._dp
-res = res+(g2**2*vu*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,2)))/4._dp
-res = res-(g1**2*vu*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,2)))/4._dp
-res = res-(g2**2*vu*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,2)))/4._dp
-res = res-(g1**2*vd*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,3)))/4._dp
-res = res-(g2**2*vd*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,3)))/4._dp
-res = res+(g1**2*vu*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,3)))/4._dp
-res = res+(g2**2*vu*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,3)))/4._dp
-res = res-(g1**2*vd*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,3)))/4._dp
-res = res-(g2**2*vd*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,3)))/4._dp
-res = res+(g1**2*vu*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,3)))/4._dp
-res = res+(g2**2*vu*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,3)))/4._dp
-res = res+(g1**2*vd*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,4)))/4._dp
-res = res+(g2**2*vd*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,4)))/4._dp
-res = res-(g1**2*vu*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,4)))/4._dp
-res = res-(g2**2*vu*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,4)))/4._dp
-res = res+(g1**2*vd*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,4)))/4._dp
-res = res+(g2**2*vd*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,4)))/4._dp
-res = res-(g1**2*vu*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,4)))/4._dp
-res = res-(g2**2*vu*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,4)))/4._dp
+res = res+(-3*g1**2*vd*ZH(gt1,1)*ZH(gt2,1)*ZH(gt3,1))/4._dp
+res = res+(-3*g2**2*vd*ZH(gt1,1)*ZH(gt2,1)*ZH(gt3,1))/4._dp
+res = res+(g1**2*vu*ZH(gt1,2)*ZH(gt2,1)*ZH(gt3,1))/4._dp
+res = res+(g2**2*vu*ZH(gt1,2)*ZH(gt2,1)*ZH(gt3,1))/4._dp
+res = res+(g1**2*vu*ZH(gt1,1)*ZH(gt2,2)*ZH(gt3,1))/4._dp
+res = res+(g2**2*vu*ZH(gt1,1)*ZH(gt2,2)*ZH(gt3,1))/4._dp
+res = res+(g1**2*vd*ZH(gt1,2)*ZH(gt2,2)*ZH(gt3,1))/4._dp
+res = res+(g2**2*vd*ZH(gt1,2)*ZH(gt2,2)*ZH(gt3,1))/4._dp
+res = res-(g1**2*vd*ZH(gt1,3)*ZH(gt2,3)*ZH(gt3,1))/4._dp
+res = res-(g2**2*vd*ZH(gt1,3)*ZH(gt2,3)*ZH(gt3,1))/4._dp
+res = res+(g1**2*vd*ZH(gt1,4)*ZH(gt2,4)*ZH(gt3,1))/4._dp
+res = res+(g2**2*vd*ZH(gt1,4)*ZH(gt2,4)*ZH(gt3,1))/4._dp
+res = res+(g1**2*vu*ZH(gt1,1)*ZH(gt2,1)*ZH(gt3,2))/4._dp
+res = res+(g2**2*vu*ZH(gt1,1)*ZH(gt2,1)*ZH(gt3,2))/4._dp
+res = res+(g1**2*vd*ZH(gt1,2)*ZH(gt2,1)*ZH(gt3,2))/4._dp
+res = res+(g2**2*vd*ZH(gt1,2)*ZH(gt2,1)*ZH(gt3,2))/4._dp
+res = res+(g1**2*vd*ZH(gt1,1)*ZH(gt2,2)*ZH(gt3,2))/4._dp
+res = res+(g2**2*vd*ZH(gt1,1)*ZH(gt2,2)*ZH(gt3,2))/4._dp
+res = res+(-3*g1**2*vu*ZH(gt1,2)*ZH(gt2,2)*ZH(gt3,2))/4._dp
+res = res+(-3*g2**2*vu*ZH(gt1,2)*ZH(gt2,2)*ZH(gt3,2))/4._dp
+res = res+(g1**2*vu*ZH(gt1,3)*ZH(gt2,3)*ZH(gt3,2))/4._dp
+res = res+(g2**2*vu*ZH(gt1,3)*ZH(gt2,3)*ZH(gt3,2))/4._dp
+res = res-(g1**2*vu*ZH(gt1,4)*ZH(gt2,4)*ZH(gt3,2))/4._dp
+res = res-(g2**2*vu*ZH(gt1,4)*ZH(gt2,4)*ZH(gt3,2))/4._dp
+res = res-(g1**2*vd*ZH(gt1,3)*ZH(gt2,1)*ZH(gt3,3))/4._dp
+res = res-(g2**2*vd*ZH(gt1,3)*ZH(gt2,1)*ZH(gt3,3))/4._dp
+res = res+(g1**2*vu*ZH(gt1,3)*ZH(gt2,2)*ZH(gt3,3))/4._dp
+res = res+(g2**2*vu*ZH(gt1,3)*ZH(gt2,2)*ZH(gt3,3))/4._dp
+res = res-(g1**2*vd*ZH(gt1,1)*ZH(gt2,3)*ZH(gt3,3))/4._dp
+res = res-(g2**2*vd*ZH(gt1,1)*ZH(gt2,3)*ZH(gt3,3))/4._dp
+res = res+(g1**2*vu*ZH(gt1,2)*ZH(gt2,3)*ZH(gt3,3))/4._dp
+res = res+(g2**2*vu*ZH(gt1,2)*ZH(gt2,3)*ZH(gt3,3))/4._dp
+res = res+(g1**2*vd*ZH(gt1,4)*ZH(gt2,1)*ZH(gt3,4))/4._dp
+res = res+(g2**2*vd*ZH(gt1,4)*ZH(gt2,1)*ZH(gt3,4))/4._dp
+res = res-(g1**2*vu*ZH(gt1,4)*ZH(gt2,2)*ZH(gt3,4))/4._dp
+res = res-(g2**2*vu*ZH(gt1,4)*ZH(gt2,2)*ZH(gt3,4))/4._dp
+res = res+(g1**2*vd*ZH(gt1,1)*ZH(gt2,4)*ZH(gt3,4))/4._dp
+res = res+(g2**2*vd*ZH(gt1,1)*ZH(gt2,4)*ZH(gt3,4))/4._dp
+res = res-(g1**2*vu*ZH(gt1,2)*ZH(gt2,4)*ZH(gt3,4))/4._dp
+res = res-(g2**2*vu*ZH(gt1,2)*ZH(gt2,4)*ZH(gt3,4))/4._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -2998,9 +2996,9 @@ Subroutine CouplinghhHpmcHpmT(gt1,gt2,gt3,g1,g2,vd,vu,ZH,ZP,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Real(dp), Intent(in) :: g1,g2,vd,vu
+Real(dp), Intent(in) :: g1,g2,vd,vu,ZH(4,4)
 
-Complex(dp), Intent(in) :: ZH(4,4),ZP(2,2)
+Complex(dp), Intent(in) :: ZP(2,2)
 
 Complex(dp), Intent(out) :: res 
  
@@ -3033,22 +3031,22 @@ If ((gt3.Lt.1).Or.(gt3.Gt.2)) Then
 End If 
 
 res = 0._dp 
-res = res-(g1**2*vd*Conjg(ZH(gt1,1))*Conjg(ZP(gt2,1))*ZP(gt3,1))/4._dp
-res = res-(g2**2*vd*Conjg(ZH(gt1,1))*Conjg(ZP(gt2,1))*ZP(gt3,1))/4._dp
-res = res+(g1**2*vu*Conjg(ZH(gt1,2))*Conjg(ZP(gt2,1))*ZP(gt3,1))/4._dp
-res = res-(g2**2*vu*Conjg(ZH(gt1,2))*Conjg(ZP(gt2,1))*ZP(gt3,1))/4._dp
-res = res-(g2**2*vu*Conjg(ZH(gt1,1))*Conjg(ZP(gt2,2))*ZP(gt3,1))/4._dp
-res = res-(g2**2*vd*Conjg(ZH(gt1,2))*Conjg(ZP(gt2,2))*ZP(gt3,1))/4._dp
-res = res-1._dp/4._dp*(0.,1._dp)*g2**2*vu*Conjg(ZH(gt1,3))*Conjg(ZP(gt2,2))*ZP(gt3,1)
-res = res-1._dp/4._dp*(0.,1._dp)*g2**2*vd*Conjg(ZH(gt1,4))*Conjg(ZP(gt2,2))*ZP(gt3,1)
-res = res-(g2**2*vu*Conjg(ZH(gt1,1))*Conjg(ZP(gt2,1))*ZP(gt3,2))/4._dp
-res = res-(g2**2*vd*Conjg(ZH(gt1,2))*Conjg(ZP(gt2,1))*ZP(gt3,2))/4._dp
-res = res+1._dp/4._dp*(0.,1._dp)*g2**2*vu*Conjg(ZH(gt1,3))*Conjg(ZP(gt2,1))*ZP(gt3,2)
-res = res+1._dp/4._dp*(0.,1._dp)*g2**2*vd*Conjg(ZH(gt1,4))*Conjg(ZP(gt2,1))*ZP(gt3,2)
-res = res+(g1**2*vd*Conjg(ZH(gt1,1))*Conjg(ZP(gt2,2))*ZP(gt3,2))/4._dp
-res = res-(g2**2*vd*Conjg(ZH(gt1,1))*Conjg(ZP(gt2,2))*ZP(gt3,2))/4._dp
-res = res-(g1**2*vu*Conjg(ZH(gt1,2))*Conjg(ZP(gt2,2))*ZP(gt3,2))/4._dp
-res = res-(g2**2*vu*Conjg(ZH(gt1,2))*Conjg(ZP(gt2,2))*ZP(gt3,2))/4._dp
+res = res-(g1**2*vd*Conjg(ZP(gt2,1))*ZH(gt1,1)*ZP(gt3,1))/4._dp
+res = res-(g2**2*vd*Conjg(ZP(gt2,1))*ZH(gt1,1)*ZP(gt3,1))/4._dp
+res = res-(g2**2*vu*Conjg(ZP(gt2,2))*ZH(gt1,1)*ZP(gt3,1))/4._dp
+res = res+(g1**2*vu*Conjg(ZP(gt2,1))*ZH(gt1,2)*ZP(gt3,1))/4._dp
+res = res-(g2**2*vu*Conjg(ZP(gt2,1))*ZH(gt1,2)*ZP(gt3,1))/4._dp
+res = res-(g2**2*vd*Conjg(ZP(gt2,2))*ZH(gt1,2)*ZP(gt3,1))/4._dp
+res = res-1._dp/4._dp*(0.,1._dp)*g2**2*vu*Conjg(ZP(gt2,2))*ZH(gt1,3)*ZP(gt3,1)
+res = res-1._dp/4._dp*(0.,1._dp)*g2**2*vd*Conjg(ZP(gt2,2))*ZH(gt1,4)*ZP(gt3,1)
+res = res-(g2**2*vu*Conjg(ZP(gt2,1))*ZH(gt1,1)*ZP(gt3,2))/4._dp
+res = res+(g1**2*vd*Conjg(ZP(gt2,2))*ZH(gt1,1)*ZP(gt3,2))/4._dp
+res = res-(g2**2*vd*Conjg(ZP(gt2,2))*ZH(gt1,1)*ZP(gt3,2))/4._dp
+res = res-(g2**2*vd*Conjg(ZP(gt2,1))*ZH(gt1,2)*ZP(gt3,2))/4._dp
+res = res-(g1**2*vu*Conjg(ZP(gt2,2))*ZH(gt1,2)*ZP(gt3,2))/4._dp
+res = res-(g2**2*vu*Conjg(ZP(gt2,2))*ZH(gt1,2)*ZP(gt3,2))/4._dp
+res = res+1._dp/4._dp*(0.,1._dp)*g2**2*vu*Conjg(ZP(gt2,1))*ZH(gt1,3)*ZP(gt3,2)
+res = res+1._dp/4._dp*(0.,1._dp)*g2**2*vd*Conjg(ZP(gt2,1))*ZH(gt1,4)*ZP(gt3,2)
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -3065,9 +3063,9 @@ Subroutine CouplinghhSdcSdT(gt1,gt2,gt3,g1,g2,Mu,Yd,Td,eta,vd,vu,ZD,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Real(dp), Intent(in) :: g1,g2,eta,vd,vu
+Real(dp), Intent(in) :: g1,g2,eta,vd,vu,ZH(4,4)
 
-Complex(dp), Intent(in) :: Mu,Yd(3,3),Td(3,3),ZD(6,6),ZH(4,4)
+Complex(dp), Intent(in) :: Mu,Yd(3,3),Td(3,3),ZD(6,6)
 
 Complex(dp), Intent(out) :: res 
  
@@ -3101,74 +3099,74 @@ End If
 
 res = 0._dp 
 Do j1 = 1,3
-res = res+(g1**2*vd*Conjg(ZD(gt2,j1))*Conjg(ZH(gt1,1))*ZD(gt3,j1))/12._dp
+res = res+(g1**2*vd*Conjg(ZD(gt2,j1))*ZD(gt3,j1)*ZH(gt1,1))/12._dp
 End Do 
 Do j1 = 1,3
-res = res+(g2**2*vd*Conjg(ZD(gt2,j1))*Conjg(ZH(gt1,1))*ZD(gt3,j1))/4._dp
+res = res+(g2**2*vd*Conjg(ZD(gt2,j1))*ZD(gt3,j1)*ZH(gt1,1))/4._dp
 End Do 
 Do j1 = 1,3
-res = res-(g1**2*vu*Conjg(ZD(gt2,j1))*Conjg(ZH(gt1,2))*ZD(gt3,j1))/12._dp
+res = res+(g1**2*vd*Conjg(ZD(gt2,3 + j1))*ZD(gt3,3 + j1)*ZH(gt1,1))/6._dp
 End Do 
 Do j1 = 1,3
-res = res-(g2**2*vu*Conjg(ZD(gt2,j1))*Conjg(ZH(gt1,2))*ZD(gt3,j1))/4._dp
+res = res-(g1**2*vu*Conjg(ZD(gt2,j1))*ZD(gt3,j1)*ZH(gt1,2))/12._dp
 End Do 
 Do j1 = 1,3
-res = res+(g1**2*vd*Conjg(ZD(gt2,3 + j1))*Conjg(ZH(gt1,1))*ZD(gt3,3 + j1))/6._dp
+res = res-(g2**2*vu*Conjg(ZD(gt2,j1))*ZD(gt3,j1)*ZH(gt1,2))/4._dp
 End Do 
 Do j1 = 1,3
-res = res-(g1**2*vu*Conjg(ZD(gt2,3 + j1))*Conjg(ZH(gt1,2))*ZD(gt3,3 + j1))/6._dp
+res = res-(g1**2*vu*Conjg(ZD(gt2,3 + j1))*ZD(gt3,3 + j1)*ZH(gt1,2))/6._dp
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(Conjg(Mu)*Conjg(ZD(gt2,j2))*Conjg(ZH(gt1,2))*Yd(j1,j2)*ZD(gt3,3 + j1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
-End Do 
-End Do 
-Do j2 = 1,3
-Do j1 = 1,3
-res = res+(-1*(0.,1._dp)*Conjg(Mu)*Conjg(ZD(gt2,j2))*Conjg(ZH(gt1,4))*Yd(j1,j2)*ZD(gt3,3 + j1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+res = res-((Conjg(ZD(gt2,3 + j1))*Conjg(Td(j1,j2))*ZD(gt3,j2)*ZH(gt1,1))/sqrt(2._dp))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(exp((0._dp,1._dp)*eta)*Mu*Conjg(Yd(j1,j2))*Conjg(ZD(gt2,3 + j1))*Conjg(ZH(gt1,2))*ZD(gt3,j2))/sqrt(2._dp)
+res = res+(Conjg(Mu)*Conjg(ZD(gt2,j2))*Yd(j1,j2)*ZD(gt3,3 + j1)*ZH(gt1,2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*exp((0._dp,1._dp)*eta)*Mu*Conjg(Yd(j1,j2))*Conjg(ZD(gt2,3 + j1))*Conjg(ZH(gt1,4))*ZD(gt3,j2))/sqrt(2._dp)
+res = res+(exp((0._dp,1._dp)*eta)*Mu*Conjg(Yd(j1,j2))*Conjg(ZD(gt2,3 + j1))*ZD(gt3,j2)*ZH(gt1,2))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-((Conjg(ZD(gt2,3 + j1))*Conjg(ZH(gt1,1))*Conjg(Td(j1,j2))*ZD(gt3,j2))/sqrt(2._dp))
+res = res+((0._dp,1._dp)*Conjg(ZD(gt2,3 + j1))*Conjg(Td(j1,j2))*ZD(gt3,j2)*ZH(gt1,3))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*Conjg(ZD(gt2,3 + j1))*Conjg(ZH(gt1,3))*Conjg(Td(j1,j2))*ZD(gt3,j2))/sqrt(2._dp)
+res = res+(-1*(0.,1._dp)*Conjg(Mu)*Conjg(ZD(gt2,j2))*Yd(j1,j2)*ZD(gt3,3 + j1)*ZH(gt1,4))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-((Conjg(ZD(gt2,j2))*Conjg(ZH(gt1,1))*ZD(gt3,3 + j1)*Td(j1,j2))/sqrt(2._dp))
+res = res+((0._dp,1._dp)*exp((0._dp,1._dp)*eta)*Mu*Conjg(Yd(j1,j2))*Conjg(ZD(gt2,3 + j1))*ZD(gt3,j2)*ZH(gt1,4))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(-1*(0.,1._dp)*Conjg(ZD(gt2,j2))*Conjg(ZH(gt1,3))*ZD(gt3,3 + j1)*Td(j1,j2))/sqrt(2._dp)
+res = res-((Conjg(ZD(gt2,j2))*ZD(gt3,3 + j1)*ZH(gt1,1)*Td(j1,j2))/sqrt(2._dp))
+End Do 
+End Do 
+Do j2 = 1,3
+Do j1 = 1,3
+res = res+(-1*(0.,1._dp)*Conjg(ZD(gt2,j2))*ZD(gt3,3 + j1)*ZH(gt1,3)*Td(j1,j2))/sqrt(2._dp)
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(vd*Conjg(Yd(j3,j1))*Conjg(ZD(gt2,3 + j3))*Conjg(ZH(gt1,1))*Yd(j2,j1)*ZD(gt3,3 + j2))
+res = res-(vd*Conjg(Yd(j3,j1))*Conjg(ZD(gt2,3 + j3))*Yd(j2,j1)*ZD(gt3,3 + j2)*ZH(gt1,1))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(vd*Conjg(Yd(j1,j3))*Conjg(ZD(gt2,j2))*Conjg(ZH(gt1,1))*Yd(j1,j2)*ZD(gt3,j3))
+res = res-(vd*Conjg(Yd(j1,j3))*Conjg(ZD(gt2,j2))*Yd(j1,j2)*ZD(gt3,j3)*ZH(gt1,1))
 End Do 
 End Do 
 End Do 
@@ -3188,9 +3186,9 @@ Subroutine CouplinghhSecSeT(gt1,gt2,gt3,g1,g2,Mu,Ye,Te,eta,vd,vu,ZE,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Real(dp), Intent(in) :: g1,g2,eta,vd,vu
+Real(dp), Intent(in) :: g1,g2,eta,vd,vu,ZH(4,4)
 
-Complex(dp), Intent(in) :: Mu,Ye(3,3),Te(3,3),ZE(6,6),ZH(4,4)
+Complex(dp), Intent(in) :: Mu,Ye(3,3),Te(3,3),ZE(6,6)
 
 Complex(dp), Intent(out) :: res 
  
@@ -3224,74 +3222,74 @@ End If
 
 res = 0._dp 
 Do j1 = 1,3
-res = res-(g1**2*vd*Conjg(ZE(gt2,j1))*Conjg(ZH(gt1,1))*ZE(gt3,j1))/4._dp
+res = res-(g1**2*vd*Conjg(ZE(gt2,j1))*ZE(gt3,j1)*ZH(gt1,1))/4._dp
 End Do 
 Do j1 = 1,3
-res = res+(g2**2*vd*Conjg(ZE(gt2,j1))*Conjg(ZH(gt1,1))*ZE(gt3,j1))/4._dp
+res = res+(g2**2*vd*Conjg(ZE(gt2,j1))*ZE(gt3,j1)*ZH(gt1,1))/4._dp
 End Do 
 Do j1 = 1,3
-res = res+(g1**2*vu*Conjg(ZE(gt2,j1))*Conjg(ZH(gt1,2))*ZE(gt3,j1))/4._dp
+res = res+(g1**2*vd*Conjg(ZE(gt2,3 + j1))*ZE(gt3,3 + j1)*ZH(gt1,1))/2._dp
 End Do 
 Do j1 = 1,3
-res = res-(g2**2*vu*Conjg(ZE(gt2,j1))*Conjg(ZH(gt1,2))*ZE(gt3,j1))/4._dp
+res = res+(g1**2*vu*Conjg(ZE(gt2,j1))*ZE(gt3,j1)*ZH(gt1,2))/4._dp
 End Do 
 Do j1 = 1,3
-res = res+(g1**2*vd*Conjg(ZE(gt2,3 + j1))*Conjg(ZH(gt1,1))*ZE(gt3,3 + j1))/2._dp
+res = res-(g2**2*vu*Conjg(ZE(gt2,j1))*ZE(gt3,j1)*ZH(gt1,2))/4._dp
 End Do 
 Do j1 = 1,3
-res = res-(g1**2*vu*Conjg(ZE(gt2,3 + j1))*Conjg(ZH(gt1,2))*ZE(gt3,3 + j1))/2._dp
+res = res-(g1**2*vu*Conjg(ZE(gt2,3 + j1))*ZE(gt3,3 + j1)*ZH(gt1,2))/2._dp
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(Conjg(Mu)*Conjg(ZE(gt2,j2))*Conjg(ZH(gt1,2))*Ye(j1,j2)*ZE(gt3,3 + j1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
-End Do 
-End Do 
-Do j2 = 1,3
-Do j1 = 1,3
-res = res+(-1*(0.,1._dp)*Conjg(Mu)*Conjg(ZE(gt2,j2))*Conjg(ZH(gt1,4))*Ye(j1,j2)*ZE(gt3,3 + j1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+res = res-((Conjg(ZE(gt2,3 + j1))*Conjg(Te(j1,j2))*ZE(gt3,j2)*ZH(gt1,1))/sqrt(2._dp))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(exp((0._dp,1._dp)*eta)*Mu*Conjg(Ye(j1,j2))*Conjg(ZE(gt2,3 + j1))*Conjg(ZH(gt1,2))*ZE(gt3,j2))/sqrt(2._dp)
+res = res+(Conjg(Mu)*Conjg(ZE(gt2,j2))*Ye(j1,j2)*ZE(gt3,3 + j1)*ZH(gt1,2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*exp((0._dp,1._dp)*eta)*Mu*Conjg(Ye(j1,j2))*Conjg(ZE(gt2,3 + j1))*Conjg(ZH(gt1,4))*ZE(gt3,j2))/sqrt(2._dp)
+res = res+(exp((0._dp,1._dp)*eta)*Mu*Conjg(Ye(j1,j2))*Conjg(ZE(gt2,3 + j1))*ZE(gt3,j2)*ZH(gt1,2))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-((Conjg(ZE(gt2,3 + j1))*Conjg(ZH(gt1,1))*Conjg(Te(j1,j2))*ZE(gt3,j2))/sqrt(2._dp))
+res = res+((0._dp,1._dp)*Conjg(ZE(gt2,3 + j1))*Conjg(Te(j1,j2))*ZE(gt3,j2)*ZH(gt1,3))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*Conjg(ZE(gt2,3 + j1))*Conjg(ZH(gt1,3))*Conjg(Te(j1,j2))*ZE(gt3,j2))/sqrt(2._dp)
+res = res+(-1*(0.,1._dp)*Conjg(Mu)*Conjg(ZE(gt2,j2))*Ye(j1,j2)*ZE(gt3,3 + j1)*ZH(gt1,4))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-((Conjg(ZE(gt2,j2))*Conjg(ZH(gt1,1))*ZE(gt3,3 + j1)*Te(j1,j2))/sqrt(2._dp))
+res = res+((0._dp,1._dp)*exp((0._dp,1._dp)*eta)*Mu*Conjg(Ye(j1,j2))*Conjg(ZE(gt2,3 + j1))*ZE(gt3,j2)*ZH(gt1,4))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(-1*(0.,1._dp)*Conjg(ZE(gt2,j2))*Conjg(ZH(gt1,3))*ZE(gt3,3 + j1)*Te(j1,j2))/sqrt(2._dp)
+res = res-((Conjg(ZE(gt2,j2))*ZE(gt3,3 + j1)*ZH(gt1,1)*Te(j1,j2))/sqrt(2._dp))
+End Do 
+End Do 
+Do j2 = 1,3
+Do j1 = 1,3
+res = res+(-1*(0.,1._dp)*Conjg(ZE(gt2,j2))*ZE(gt3,3 + j1)*ZH(gt1,3)*Te(j1,j2))/sqrt(2._dp)
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(vd*Conjg(Ye(j3,j1))*Conjg(ZE(gt2,3 + j3))*Conjg(ZH(gt1,1))*Ye(j2,j1)*ZE(gt3,3 + j2))
+res = res-(vd*Conjg(Ye(j3,j1))*Conjg(ZE(gt2,3 + j3))*Ye(j2,j1)*ZE(gt3,3 + j2)*ZH(gt1,1))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(vd*Conjg(Ye(j1,j3))*Conjg(ZE(gt2,j2))*Conjg(ZH(gt1,1))*Ye(j1,j2)*ZE(gt3,j3))
+res = res-(vd*Conjg(Ye(j1,j3))*Conjg(ZE(gt2,j2))*Ye(j1,j2)*ZE(gt3,j3)*ZH(gt1,1))
 End Do 
 End Do 
 End Do 
@@ -3311,9 +3309,9 @@ Subroutine CouplinghhSucSuT(gt1,gt2,gt3,g1,g2,Mu,Yu,Tu,eta,vd,vu,ZU,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Real(dp), Intent(in) :: g1,g2,eta,vd,vu
+Real(dp), Intent(in) :: g1,g2,eta,vd,vu,ZH(4,4)
 
-Complex(dp), Intent(in) :: Mu,Yu(3,3),Tu(3,3),ZU(6,6),ZH(4,4)
+Complex(dp), Intent(in) :: Mu,Yu(3,3),Tu(3,3),ZU(6,6)
 
 Complex(dp), Intent(out) :: res 
  
@@ -3347,74 +3345,74 @@ End If
 
 res = 0._dp 
 Do j1 = 1,3
-res = res+(g1**2*vd*Conjg(ZH(gt1,1))*Conjg(ZU(gt2,j1))*ZU(gt3,j1))/12._dp
+res = res+(g1**2*vd*Conjg(ZU(gt2,j1))*ZH(gt1,1)*ZU(gt3,j1))/12._dp
 End Do 
 Do j1 = 1,3
-res = res-(g2**2*vd*Conjg(ZH(gt1,1))*Conjg(ZU(gt2,j1))*ZU(gt3,j1))/4._dp
+res = res-(g2**2*vd*Conjg(ZU(gt2,j1))*ZH(gt1,1)*ZU(gt3,j1))/4._dp
 End Do 
 Do j1 = 1,3
-res = res-(g1**2*vu*Conjg(ZH(gt1,2))*Conjg(ZU(gt2,j1))*ZU(gt3,j1))/12._dp
+res = res-(g1**2*vu*Conjg(ZU(gt2,j1))*ZH(gt1,2)*ZU(gt3,j1))/12._dp
 End Do 
 Do j1 = 1,3
-res = res+(g2**2*vu*Conjg(ZH(gt1,2))*Conjg(ZU(gt2,j1))*ZU(gt3,j1))/4._dp
+res = res+(g2**2*vu*Conjg(ZU(gt2,j1))*ZH(gt1,2)*ZU(gt3,j1))/4._dp
 End Do 
 Do j1 = 1,3
-res = res-(g1**2*vd*Conjg(ZH(gt1,1))*Conjg(ZU(gt2,3 + j1))*ZU(gt3,3 + j1))/3._dp
+res = res-(g1**2*vd*Conjg(ZU(gt2,3 + j1))*ZH(gt1,1)*ZU(gt3,3 + j1))/3._dp
 End Do 
 Do j1 = 1,3
-res = res+(g1**2*vu*Conjg(ZH(gt1,2))*Conjg(ZU(gt2,3 + j1))*ZU(gt3,3 + j1))/3._dp
+res = res+(g1**2*vu*Conjg(ZU(gt2,3 + j1))*ZH(gt1,2)*ZU(gt3,3 + j1))/3._dp
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(Conjg(Mu)*Conjg(ZH(gt1,1))*Conjg(ZU(gt2,j2))*Yu(j1,j2)*ZU(gt3,3 + j1))/sqrt(2._dp)
-End Do 
-End Do 
-Do j2 = 1,3
-Do j1 = 1,3
-res = res+(-1*(0.,1._dp)*Conjg(Mu)*Conjg(ZH(gt1,3))*Conjg(ZU(gt2,j2))*Yu(j1,j2)*ZU(gt3,3 + j1))/sqrt(2._dp)
+res = res+(Conjg(Mu)*Conjg(ZU(gt2,j2))*Yu(j1,j2)*ZH(gt1,1)*ZU(gt3,3 + j1))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(Mu*Conjg(Yu(j1,j2))*Conjg(ZH(gt1,1))*Conjg(ZU(gt2,3 + j1))*ZU(gt3,j2))/sqrt(2._dp)
+res = res+(-1*(0.,1._dp)*Conjg(Mu)*Conjg(ZU(gt2,j2))*Yu(j1,j2)*ZH(gt1,3)*ZU(gt3,3 + j1))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*Mu*Conjg(Yu(j1,j2))*Conjg(ZH(gt1,3))*Conjg(ZU(gt2,3 + j1))*ZU(gt3,j2))/sqrt(2._dp)
+res = res+(Mu*Conjg(Yu(j1,j2))*Conjg(ZU(gt2,3 + j1))*ZH(gt1,1)*ZU(gt3,j2))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-((Conjg(ZH(gt1,2))*Conjg(ZU(gt2,3 + j1))*Conjg(Tu(j1,j2))*ZU(gt3,j2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta)))
+res = res-((Conjg(ZU(gt2,3 + j1))*Conjg(Tu(j1,j2))*ZH(gt1,2)*ZU(gt3,j2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta)))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*Conjg(ZH(gt1,4))*Conjg(ZU(gt2,3 + j1))*Conjg(Tu(j1,j2))*ZU(gt3,j2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+res = res+((0._dp,1._dp)*Mu*Conjg(Yu(j1,j2))*Conjg(ZU(gt2,3 + j1))*ZH(gt1,3)*ZU(gt3,j2))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-((exp((0._dp,1._dp)*eta)*Conjg(ZH(gt1,2))*Conjg(ZU(gt2,j2))*ZU(gt3,3 + j1)*Tu(j1,j2))/sqrt(2._dp))
+res = res+((0._dp,1._dp)*Conjg(ZU(gt2,3 + j1))*Conjg(Tu(j1,j2))*ZH(gt1,4)*ZU(gt3,j2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(-1*(0.,1._dp)*exp((0._dp,1._dp)*eta)*Conjg(ZH(gt1,4))*Conjg(ZU(gt2,j2))*ZU(gt3,3 + j1)*Tu(j1,j2))/sqrt(2._dp)
+res = res-((exp((0._dp,1._dp)*eta)*Conjg(ZU(gt2,j2))*ZH(gt1,2)*ZU(gt3,3 + j1)*Tu(j1,j2))/sqrt(2._dp))
+End Do 
+End Do 
+Do j2 = 1,3
+Do j1 = 1,3
+res = res+(-1*(0.,1._dp)*exp((0._dp,1._dp)*eta)*Conjg(ZU(gt2,j2))*ZH(gt1,4)*ZU(gt3,3 + j1)*Tu(j1,j2))/sqrt(2._dp)
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(vu*Conjg(Yu(j3,j1))*Conjg(ZH(gt1,2))*Conjg(ZU(gt2,3 + j3))*Yu(j2,j1)*ZU(gt3,3 + j2))
+res = res-(vu*Conjg(Yu(j3,j1))*Conjg(ZU(gt2,3 + j3))*Yu(j2,j1)*ZH(gt1,2)*ZU(gt3,3 + j2))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(vu*Conjg(Yu(j1,j3))*Conjg(ZH(gt1,2))*Conjg(ZU(gt2,j2))*Yu(j1,j2)*ZU(gt3,j3))
+res = res-(vu*Conjg(Yu(j1,j3))*Conjg(ZU(gt2,j2))*Yu(j1,j2)*ZH(gt1,2)*ZU(gt3,j3))
 End Do 
 End Do 
 End Do 
@@ -3434,9 +3432,7 @@ Subroutine CouplinghhSvcSvT(gt1,gt2,gt3,g1,g2,vd,vu,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Real(dp), Intent(in) :: g1,g2,vd,vu
-
-Complex(dp), Intent(in) :: ZH(4,4)
+Real(dp), Intent(in) :: g1,g2,vd,vu,ZH(4,4)
 
 Complex(dp), Intent(out) :: res 
  
@@ -3470,16 +3466,16 @@ End If
 
 res = 0._dp 
 If ((gt2.eq.gt3)) Then 
-res = res-(g1**2*vd*Conjg(ZH(gt1,1)))/4._dp
+res = res-(g1**2*vd*ZH(gt1,1))/4._dp
 End If 
 If ((gt2.eq.gt3)) Then 
-res = res-(g2**2*vd*Conjg(ZH(gt1,1)))/4._dp
+res = res-(g2**2*vd*ZH(gt1,1))/4._dp
 End If 
 If ((gt2.eq.gt3)) Then 
-res = res+(g1**2*vu*Conjg(ZH(gt1,2)))/4._dp
+res = res+(g1**2*vu*ZH(gt1,2))/4._dp
 End If 
 If ((gt2.eq.gt3)) Then 
-res = res+(g2**2*vu*Conjg(ZH(gt1,2)))/4._dp
+res = res+(g2**2*vu*ZH(gt1,2))/4._dp
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -3857,9 +3853,7 @@ Subroutine CouplinghhhhhhhhT(gt1,gt2,gt3,gt4,g1,g2,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3,gt4
-Real(dp), Intent(in) :: g1,g2
-
-Complex(dp), Intent(in) :: ZH(4,4)
+Real(dp), Intent(in) :: g1,g2,ZH(4,4)
 
 Complex(dp), Intent(out) :: res 
  
@@ -3900,86 +3894,86 @@ If ((gt4.Lt.1).Or.(gt4.Gt.4)) Then
 End If 
 
 res = 0._dp 
-res = res+(-3*g1**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,1)))/4._dp
-res = res+(-3*g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,1)))/4._dp
-res = res+(g1**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,1)))/4._dp
-res = res+(g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,1)))/4._dp
-res = res-(g1**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,1)))/4._dp
-res = res-(g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,1)))/4._dp
-res = res+(g1**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,1)))/4._dp
-res = res+(g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,1)))/4._dp
-res = res+(g1**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,1)))/4._dp
-res = res+(g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,1)))/4._dp
-res = res+(g1**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,1)))/4._dp
-res = res+(g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,1)))/4._dp
-res = res-(g1**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,1)))/4._dp
-res = res-(g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,1)))/4._dp
-res = res-(g1**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,1)))/4._dp
-res = res-(g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,1)))/4._dp
-res = res+(g1**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,1)))/4._dp
-res = res+(g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,1)))/4._dp
-res = res+(g1**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,1)))/4._dp
-res = res+(g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,1)))/4._dp
-res = res+(g1**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,2)))/4._dp
-res = res+(g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,2)))/4._dp
-res = res+(g1**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,2)))/4._dp
-res = res+(g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,2)))/4._dp
-res = res+(g1**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,2)))/4._dp
-res = res+(g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,2)))/4._dp
-res = res+(-3*g1**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,2)))/4._dp
-res = res+(-3*g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,2)))/4._dp
-res = res+(g1**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,2)))/4._dp
-res = res+(g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,2)))/4._dp
-res = res-(g1**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,2)))/4._dp
-res = res-(g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,2)))/4._dp
-res = res+(g1**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,2)))/4._dp
-res = res+(g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,2)))/4._dp
-res = res+(g1**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,2)))/4._dp
-res = res+(g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,2)))/4._dp
-res = res-(g1**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,2)))/4._dp
-res = res-(g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,2)))/4._dp
-res = res-(g1**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,2)))/4._dp
-res = res-(g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,2)))/4._dp
-res = res-(g1**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,3)))/4._dp
-res = res-(g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,3)))/4._dp
-res = res-(g1**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,3)))/4._dp
-res = res-(g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,3)))/4._dp
-res = res+(g1**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,3)))/4._dp
-res = res+(g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,3)))/4._dp
-res = res+(g1**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,3)))/4._dp
-res = res+(g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,3)))/4._dp
-res = res-(g1**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,3)))/4._dp
-res = res-(g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,3)))/4._dp
-res = res+(g1**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,3)))/4._dp
-res = res+(g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,3)))/4._dp
-res = res+(-3*g1**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,3)))/4._dp
-res = res+(-3*g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,3)))/4._dp
-res = res+(g1**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,3)))/4._dp
-res = res+(g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,3)))/4._dp
-res = res+(g1**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,3)))/4._dp
-res = res+(g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,3)))/4._dp
-res = res+(g1**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,3)))/4._dp
-res = res+(g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,3)))/4._dp
-res = res+(g1**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,4)))/4._dp
-res = res+(g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,4)))/4._dp
-res = res+(g1**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,4)))/4._dp
-res = res+(g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,4)))/4._dp
-res = res-(g1**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,4)))/4._dp
-res = res-(g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,4)))/4._dp
-res = res-(g1**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,4)))/4._dp
-res = res-(g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,4)))/4._dp
-res = res+(g1**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,4)))/4._dp
-res = res+(g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,4)))/4._dp
-res = res+(g1**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,4)))/4._dp
-res = res+(g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,4)))/4._dp
-res = res+(g1**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,4)))/4._dp
-res = res+(g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,4)))/4._dp
-res = res-(g1**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,4)))/4._dp
-res = res-(g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,4)))/4._dp
-res = res+(g1**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,4)))/4._dp
-res = res+(g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,4)))/4._dp
-res = res+(-3*g1**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,4)))/4._dp
-res = res+(-3*g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,4)))/4._dp
+res = res+(-3*g1**2*ZH(gt1,1)*ZH(gt2,1)*ZH(gt3,1)*ZH(gt4,1))/4._dp
+res = res+(-3*g2**2*ZH(gt1,1)*ZH(gt2,1)*ZH(gt3,1)*ZH(gt4,1))/4._dp
+res = res+(g1**2*ZH(gt1,2)*ZH(gt2,2)*ZH(gt3,1)*ZH(gt4,1))/4._dp
+res = res+(g2**2*ZH(gt1,2)*ZH(gt2,2)*ZH(gt3,1)*ZH(gt4,1))/4._dp
+res = res-(g1**2*ZH(gt1,3)*ZH(gt2,3)*ZH(gt3,1)*ZH(gt4,1))/4._dp
+res = res-(g2**2*ZH(gt1,3)*ZH(gt2,3)*ZH(gt3,1)*ZH(gt4,1))/4._dp
+res = res+(g1**2*ZH(gt1,4)*ZH(gt2,4)*ZH(gt3,1)*ZH(gt4,1))/4._dp
+res = res+(g2**2*ZH(gt1,4)*ZH(gt2,4)*ZH(gt3,1)*ZH(gt4,1))/4._dp
+res = res+(g1**2*ZH(gt1,2)*ZH(gt2,1)*ZH(gt3,2)*ZH(gt4,1))/4._dp
+res = res+(g2**2*ZH(gt1,2)*ZH(gt2,1)*ZH(gt3,2)*ZH(gt4,1))/4._dp
+res = res+(g1**2*ZH(gt1,1)*ZH(gt2,2)*ZH(gt3,2)*ZH(gt4,1))/4._dp
+res = res+(g2**2*ZH(gt1,1)*ZH(gt2,2)*ZH(gt3,2)*ZH(gt4,1))/4._dp
+res = res-(g1**2*ZH(gt1,3)*ZH(gt2,1)*ZH(gt3,3)*ZH(gt4,1))/4._dp
+res = res-(g2**2*ZH(gt1,3)*ZH(gt2,1)*ZH(gt3,3)*ZH(gt4,1))/4._dp
+res = res-(g1**2*ZH(gt1,1)*ZH(gt2,3)*ZH(gt3,3)*ZH(gt4,1))/4._dp
+res = res-(g2**2*ZH(gt1,1)*ZH(gt2,3)*ZH(gt3,3)*ZH(gt4,1))/4._dp
+res = res+(g1**2*ZH(gt1,4)*ZH(gt2,1)*ZH(gt3,4)*ZH(gt4,1))/4._dp
+res = res+(g2**2*ZH(gt1,4)*ZH(gt2,1)*ZH(gt3,4)*ZH(gt4,1))/4._dp
+res = res+(g1**2*ZH(gt1,1)*ZH(gt2,4)*ZH(gt3,4)*ZH(gt4,1))/4._dp
+res = res+(g2**2*ZH(gt1,1)*ZH(gt2,4)*ZH(gt3,4)*ZH(gt4,1))/4._dp
+res = res+(g1**2*ZH(gt1,2)*ZH(gt2,1)*ZH(gt3,1)*ZH(gt4,2))/4._dp
+res = res+(g2**2*ZH(gt1,2)*ZH(gt2,1)*ZH(gt3,1)*ZH(gt4,2))/4._dp
+res = res+(g1**2*ZH(gt1,1)*ZH(gt2,2)*ZH(gt3,1)*ZH(gt4,2))/4._dp
+res = res+(g2**2*ZH(gt1,1)*ZH(gt2,2)*ZH(gt3,1)*ZH(gt4,2))/4._dp
+res = res+(g1**2*ZH(gt1,1)*ZH(gt2,1)*ZH(gt3,2)*ZH(gt4,2))/4._dp
+res = res+(g2**2*ZH(gt1,1)*ZH(gt2,1)*ZH(gt3,2)*ZH(gt4,2))/4._dp
+res = res+(-3*g1**2*ZH(gt1,2)*ZH(gt2,2)*ZH(gt3,2)*ZH(gt4,2))/4._dp
+res = res+(-3*g2**2*ZH(gt1,2)*ZH(gt2,2)*ZH(gt3,2)*ZH(gt4,2))/4._dp
+res = res+(g1**2*ZH(gt1,3)*ZH(gt2,3)*ZH(gt3,2)*ZH(gt4,2))/4._dp
+res = res+(g2**2*ZH(gt1,3)*ZH(gt2,3)*ZH(gt3,2)*ZH(gt4,2))/4._dp
+res = res-(g1**2*ZH(gt1,4)*ZH(gt2,4)*ZH(gt3,2)*ZH(gt4,2))/4._dp
+res = res-(g2**2*ZH(gt1,4)*ZH(gt2,4)*ZH(gt3,2)*ZH(gt4,2))/4._dp
+res = res+(g1**2*ZH(gt1,3)*ZH(gt2,2)*ZH(gt3,3)*ZH(gt4,2))/4._dp
+res = res+(g2**2*ZH(gt1,3)*ZH(gt2,2)*ZH(gt3,3)*ZH(gt4,2))/4._dp
+res = res+(g1**2*ZH(gt1,2)*ZH(gt2,3)*ZH(gt3,3)*ZH(gt4,2))/4._dp
+res = res+(g2**2*ZH(gt1,2)*ZH(gt2,3)*ZH(gt3,3)*ZH(gt4,2))/4._dp
+res = res-(g1**2*ZH(gt1,4)*ZH(gt2,2)*ZH(gt3,4)*ZH(gt4,2))/4._dp
+res = res-(g2**2*ZH(gt1,4)*ZH(gt2,2)*ZH(gt3,4)*ZH(gt4,2))/4._dp
+res = res-(g1**2*ZH(gt1,2)*ZH(gt2,4)*ZH(gt3,4)*ZH(gt4,2))/4._dp
+res = res-(g2**2*ZH(gt1,2)*ZH(gt2,4)*ZH(gt3,4)*ZH(gt4,2))/4._dp
+res = res-(g1**2*ZH(gt1,3)*ZH(gt2,1)*ZH(gt3,1)*ZH(gt4,3))/4._dp
+res = res-(g2**2*ZH(gt1,3)*ZH(gt2,1)*ZH(gt3,1)*ZH(gt4,3))/4._dp
+res = res-(g1**2*ZH(gt1,1)*ZH(gt2,3)*ZH(gt3,1)*ZH(gt4,3))/4._dp
+res = res-(g2**2*ZH(gt1,1)*ZH(gt2,3)*ZH(gt3,1)*ZH(gt4,3))/4._dp
+res = res+(g1**2*ZH(gt1,3)*ZH(gt2,2)*ZH(gt3,2)*ZH(gt4,3))/4._dp
+res = res+(g2**2*ZH(gt1,3)*ZH(gt2,2)*ZH(gt3,2)*ZH(gt4,3))/4._dp
+res = res+(g1**2*ZH(gt1,2)*ZH(gt2,3)*ZH(gt3,2)*ZH(gt4,3))/4._dp
+res = res+(g2**2*ZH(gt1,2)*ZH(gt2,3)*ZH(gt3,2)*ZH(gt4,3))/4._dp
+res = res-(g1**2*ZH(gt1,1)*ZH(gt2,1)*ZH(gt3,3)*ZH(gt4,3))/4._dp
+res = res-(g2**2*ZH(gt1,1)*ZH(gt2,1)*ZH(gt3,3)*ZH(gt4,3))/4._dp
+res = res+(g1**2*ZH(gt1,2)*ZH(gt2,2)*ZH(gt3,3)*ZH(gt4,3))/4._dp
+res = res+(g2**2*ZH(gt1,2)*ZH(gt2,2)*ZH(gt3,3)*ZH(gt4,3))/4._dp
+res = res+(-3*g1**2*ZH(gt1,3)*ZH(gt2,3)*ZH(gt3,3)*ZH(gt4,3))/4._dp
+res = res+(-3*g2**2*ZH(gt1,3)*ZH(gt2,3)*ZH(gt3,3)*ZH(gt4,3))/4._dp
+res = res+(g1**2*ZH(gt1,4)*ZH(gt2,4)*ZH(gt3,3)*ZH(gt4,3))/4._dp
+res = res+(g2**2*ZH(gt1,4)*ZH(gt2,4)*ZH(gt3,3)*ZH(gt4,3))/4._dp
+res = res+(g1**2*ZH(gt1,4)*ZH(gt2,3)*ZH(gt3,4)*ZH(gt4,3))/4._dp
+res = res+(g2**2*ZH(gt1,4)*ZH(gt2,3)*ZH(gt3,4)*ZH(gt4,3))/4._dp
+res = res+(g1**2*ZH(gt1,3)*ZH(gt2,4)*ZH(gt3,4)*ZH(gt4,3))/4._dp
+res = res+(g2**2*ZH(gt1,3)*ZH(gt2,4)*ZH(gt3,4)*ZH(gt4,3))/4._dp
+res = res+(g1**2*ZH(gt1,4)*ZH(gt2,1)*ZH(gt3,1)*ZH(gt4,4))/4._dp
+res = res+(g2**2*ZH(gt1,4)*ZH(gt2,1)*ZH(gt3,1)*ZH(gt4,4))/4._dp
+res = res+(g1**2*ZH(gt1,1)*ZH(gt2,4)*ZH(gt3,1)*ZH(gt4,4))/4._dp
+res = res+(g2**2*ZH(gt1,1)*ZH(gt2,4)*ZH(gt3,1)*ZH(gt4,4))/4._dp
+res = res-(g1**2*ZH(gt1,4)*ZH(gt2,2)*ZH(gt3,2)*ZH(gt4,4))/4._dp
+res = res-(g2**2*ZH(gt1,4)*ZH(gt2,2)*ZH(gt3,2)*ZH(gt4,4))/4._dp
+res = res-(g1**2*ZH(gt1,2)*ZH(gt2,4)*ZH(gt3,2)*ZH(gt4,4))/4._dp
+res = res-(g2**2*ZH(gt1,2)*ZH(gt2,4)*ZH(gt3,2)*ZH(gt4,4))/4._dp
+res = res+(g1**2*ZH(gt1,4)*ZH(gt2,3)*ZH(gt3,3)*ZH(gt4,4))/4._dp
+res = res+(g2**2*ZH(gt1,4)*ZH(gt2,3)*ZH(gt3,3)*ZH(gt4,4))/4._dp
+res = res+(g1**2*ZH(gt1,3)*ZH(gt2,4)*ZH(gt3,3)*ZH(gt4,4))/4._dp
+res = res+(g2**2*ZH(gt1,3)*ZH(gt2,4)*ZH(gt3,3)*ZH(gt4,4))/4._dp
+res = res+(g1**2*ZH(gt1,1)*ZH(gt2,1)*ZH(gt3,4)*ZH(gt4,4))/4._dp
+res = res+(g2**2*ZH(gt1,1)*ZH(gt2,1)*ZH(gt3,4)*ZH(gt4,4))/4._dp
+res = res-(g1**2*ZH(gt1,2)*ZH(gt2,2)*ZH(gt3,4)*ZH(gt4,4))/4._dp
+res = res-(g2**2*ZH(gt1,2)*ZH(gt2,2)*ZH(gt3,4)*ZH(gt4,4))/4._dp
+res = res+(g1**2*ZH(gt1,3)*ZH(gt2,3)*ZH(gt3,4)*ZH(gt4,4))/4._dp
+res = res+(g2**2*ZH(gt1,3)*ZH(gt2,3)*ZH(gt3,4)*ZH(gt4,4))/4._dp
+res = res+(-3*g1**2*ZH(gt1,4)*ZH(gt2,4)*ZH(gt3,4)*ZH(gt4,4))/4._dp
+res = res+(-3*g2**2*ZH(gt1,4)*ZH(gt2,4)*ZH(gt3,4)*ZH(gt4,4))/4._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -3996,9 +3990,9 @@ Subroutine CouplinghhhhHpmcHpmT(gt1,gt2,gt3,gt4,g1,g2,ZH,ZP,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3,gt4
-Real(dp), Intent(in) :: g1,g2
+Real(dp), Intent(in) :: g1,g2,ZH(4,4)
 
-Complex(dp), Intent(in) :: ZH(4,4),ZP(2,2)
+Complex(dp), Intent(in) :: ZP(2,2)
 
 Complex(dp), Intent(out) :: res 
  
@@ -4039,38 +4033,38 @@ If ((gt4.Lt.1).Or.(gt4.Gt.2)) Then
 End If 
 
 res = 0._dp 
-res = res-(g1**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Conjg(ZP(gt3,1))*ZP(gt4,1))/4._dp
-res = res-(g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Conjg(ZP(gt3,1))*ZP(gt4,1))/4._dp
-res = res+(g1**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Conjg(ZP(gt3,1))*ZP(gt4,1))/4._dp
-res = res-(g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Conjg(ZP(gt3,1))*ZP(gt4,1))/4._dp
-res = res-(g1**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Conjg(ZP(gt3,1))*ZP(gt4,1))/4._dp
-res = res-(g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Conjg(ZP(gt3,1))*ZP(gt4,1))/4._dp
-res = res+(g1**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Conjg(ZP(gt3,1))*ZP(gt4,1))/4._dp
-res = res-(g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Conjg(ZP(gt3,1))*ZP(gt4,1))/4._dp
-res = res-(g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,1))*Conjg(ZP(gt3,2))*ZP(gt4,1))/4._dp
-res = res-1._dp/4._dp*(0.,1._dp)*g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,1))*Conjg(ZP(gt3,2))*ZP(gt4,1)
-res = res-(g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,2))*Conjg(ZP(gt3,2))*ZP(gt4,1))/4._dp
-res = res-1._dp/4._dp*(0.,1._dp)*g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,2))*Conjg(ZP(gt3,2))*ZP(gt4,1)
-res = res-1._dp/4._dp*(0.,1._dp)*g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,3))*Conjg(ZP(gt3,2))*ZP(gt4,1)
-res = res+(g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,3))*Conjg(ZP(gt3,2))*ZP(gt4,1))/4._dp
-res = res-1._dp/4._dp*(0.,1._dp)*g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,4))*Conjg(ZP(gt3,2))*ZP(gt4,1)
-res = res+(g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,4))*Conjg(ZP(gt3,2))*ZP(gt4,1))/4._dp
-res = res-(g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,1))*Conjg(ZP(gt3,1))*ZP(gt4,2))/4._dp
-res = res+1._dp/4._dp*(0.,1._dp)*g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,1))*Conjg(ZP(gt3,1))*ZP(gt4,2)
-res = res-(g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,2))*Conjg(ZP(gt3,1))*ZP(gt4,2))/4._dp
-res = res+1._dp/4._dp*(0.,1._dp)*g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,2))*Conjg(ZP(gt3,1))*ZP(gt4,2)
-res = res+1._dp/4._dp*(0.,1._dp)*g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,3))*Conjg(ZP(gt3,1))*ZP(gt4,2)
-res = res+(g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,3))*Conjg(ZP(gt3,1))*ZP(gt4,2))/4._dp
-res = res+1._dp/4._dp*(0.,1._dp)*g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,4))*Conjg(ZP(gt3,1))*ZP(gt4,2)
-res = res+(g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,4))*Conjg(ZP(gt3,1))*ZP(gt4,2))/4._dp
-res = res+(g1**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Conjg(ZP(gt3,2))*ZP(gt4,2))/4._dp
-res = res-(g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Conjg(ZP(gt3,2))*ZP(gt4,2))/4._dp
-res = res-(g1**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Conjg(ZP(gt3,2))*ZP(gt4,2))/4._dp
-res = res-(g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Conjg(ZP(gt3,2))*ZP(gt4,2))/4._dp
-res = res+(g1**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Conjg(ZP(gt3,2))*ZP(gt4,2))/4._dp
-res = res-(g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Conjg(ZP(gt3,2))*ZP(gt4,2))/4._dp
-res = res-(g1**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Conjg(ZP(gt3,2))*ZP(gt4,2))/4._dp
-res = res-(g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Conjg(ZP(gt3,2))*ZP(gt4,2))/4._dp
+res = res-(g1**2*Conjg(ZP(gt3,1))*ZH(gt1,1)*ZH(gt2,1)*ZP(gt4,1))/4._dp
+res = res-(g2**2*Conjg(ZP(gt3,1))*ZH(gt1,1)*ZH(gt2,1)*ZP(gt4,1))/4._dp
+res = res-(g2**2*Conjg(ZP(gt3,2))*ZH(gt1,2)*ZH(gt2,1)*ZP(gt4,1))/4._dp
+res = res-1._dp/4._dp*(0.,1._dp)*g2**2*Conjg(ZP(gt3,2))*ZH(gt1,4)*ZH(gt2,1)*ZP(gt4,1)
+res = res-(g2**2*Conjg(ZP(gt3,2))*ZH(gt1,1)*ZH(gt2,2)*ZP(gt4,1))/4._dp
+res = res+(g1**2*Conjg(ZP(gt3,1))*ZH(gt1,2)*ZH(gt2,2)*ZP(gt4,1))/4._dp
+res = res-(g2**2*Conjg(ZP(gt3,1))*ZH(gt1,2)*ZH(gt2,2)*ZP(gt4,1))/4._dp
+res = res-1._dp/4._dp*(0.,1._dp)*g2**2*Conjg(ZP(gt3,2))*ZH(gt1,3)*ZH(gt2,2)*ZP(gt4,1)
+res = res-1._dp/4._dp*(0.,1._dp)*g2**2*Conjg(ZP(gt3,2))*ZH(gt1,2)*ZH(gt2,3)*ZP(gt4,1)
+res = res-(g1**2*Conjg(ZP(gt3,1))*ZH(gt1,3)*ZH(gt2,3)*ZP(gt4,1))/4._dp
+res = res-(g2**2*Conjg(ZP(gt3,1))*ZH(gt1,3)*ZH(gt2,3)*ZP(gt4,1))/4._dp
+res = res+(g2**2*Conjg(ZP(gt3,2))*ZH(gt1,4)*ZH(gt2,3)*ZP(gt4,1))/4._dp
+res = res-1._dp/4._dp*(0.,1._dp)*g2**2*Conjg(ZP(gt3,2))*ZH(gt1,1)*ZH(gt2,4)*ZP(gt4,1)
+res = res+(g2**2*Conjg(ZP(gt3,2))*ZH(gt1,3)*ZH(gt2,4)*ZP(gt4,1))/4._dp
+res = res+(g1**2*Conjg(ZP(gt3,1))*ZH(gt1,4)*ZH(gt2,4)*ZP(gt4,1))/4._dp
+res = res-(g2**2*Conjg(ZP(gt3,1))*ZH(gt1,4)*ZH(gt2,4)*ZP(gt4,1))/4._dp
+res = res+(g1**2*Conjg(ZP(gt3,2))*ZH(gt1,1)*ZH(gt2,1)*ZP(gt4,2))/4._dp
+res = res-(g2**2*Conjg(ZP(gt3,2))*ZH(gt1,1)*ZH(gt2,1)*ZP(gt4,2))/4._dp
+res = res-(g2**2*Conjg(ZP(gt3,1))*ZH(gt1,2)*ZH(gt2,1)*ZP(gt4,2))/4._dp
+res = res+1._dp/4._dp*(0.,1._dp)*g2**2*Conjg(ZP(gt3,1))*ZH(gt1,4)*ZH(gt2,1)*ZP(gt4,2)
+res = res-(g2**2*Conjg(ZP(gt3,1))*ZH(gt1,1)*ZH(gt2,2)*ZP(gt4,2))/4._dp
+res = res-(g1**2*Conjg(ZP(gt3,2))*ZH(gt1,2)*ZH(gt2,2)*ZP(gt4,2))/4._dp
+res = res-(g2**2*Conjg(ZP(gt3,2))*ZH(gt1,2)*ZH(gt2,2)*ZP(gt4,2))/4._dp
+res = res+1._dp/4._dp*(0.,1._dp)*g2**2*Conjg(ZP(gt3,1))*ZH(gt1,3)*ZH(gt2,2)*ZP(gt4,2)
+res = res+1._dp/4._dp*(0.,1._dp)*g2**2*Conjg(ZP(gt3,1))*ZH(gt1,2)*ZH(gt2,3)*ZP(gt4,2)
+res = res+(g1**2*Conjg(ZP(gt3,2))*ZH(gt1,3)*ZH(gt2,3)*ZP(gt4,2))/4._dp
+res = res-(g2**2*Conjg(ZP(gt3,2))*ZH(gt1,3)*ZH(gt2,3)*ZP(gt4,2))/4._dp
+res = res+(g2**2*Conjg(ZP(gt3,1))*ZH(gt1,4)*ZH(gt2,3)*ZP(gt4,2))/4._dp
+res = res+1._dp/4._dp*(0.,1._dp)*g2**2*Conjg(ZP(gt3,1))*ZH(gt1,1)*ZH(gt2,4)*ZP(gt4,2)
+res = res+(g2**2*Conjg(ZP(gt3,1))*ZH(gt1,3)*ZH(gt2,4)*ZP(gt4,2))/4._dp
+res = res-(g1**2*Conjg(ZP(gt3,2))*ZH(gt1,4)*ZH(gt2,4)*ZP(gt4,2))/4._dp
+res = res-(g2**2*Conjg(ZP(gt3,2))*ZH(gt1,4)*ZH(gt2,4)*ZP(gt4,2))/4._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -4087,9 +4081,9 @@ Subroutine CouplinghhhhSdcSdT(gt1,gt2,gt3,gt4,g1,g2,Yd,ZD,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3,gt4
-Real(dp), Intent(in) :: g1,g2
+Real(dp), Intent(in) :: g1,g2,ZH(4,4)
 
-Complex(dp), Intent(in) :: Yd(3,3),ZD(6,6),ZH(4,4)
+Complex(dp), Intent(in) :: Yd(3,3),ZD(6,6)
 
 Complex(dp), Intent(out) :: res 
  
@@ -4131,66 +4125,66 @@ End If
 
 res = 0._dp 
 Do j1 = 1,3
-res = res+(g1**2*Conjg(ZD(gt3,j1))*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*ZD(gt4,j1))/12._dp
+res = res+(g1**2*Conjg(ZD(gt3,j1))*ZD(gt4,j1)*ZH(gt1,1)*ZH(gt2,1))/12._dp
 End Do 
 Do j1 = 1,3
-res = res+(g2**2*Conjg(ZD(gt3,j1))*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*ZD(gt4,j1))/4._dp
+res = res+(g2**2*Conjg(ZD(gt3,j1))*ZD(gt4,j1)*ZH(gt1,1)*ZH(gt2,1))/4._dp
 End Do 
 Do j1 = 1,3
-res = res-(g1**2*Conjg(ZD(gt3,j1))*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*ZD(gt4,j1))/12._dp
+res = res+(g1**2*Conjg(ZD(gt3,3 + j1))*ZD(gt4,3 + j1)*ZH(gt1,1)*ZH(gt2,1))/6._dp
 End Do 
 Do j1 = 1,3
-res = res-(g2**2*Conjg(ZD(gt3,j1))*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*ZD(gt4,j1))/4._dp
+res = res-(g1**2*Conjg(ZD(gt3,j1))*ZD(gt4,j1)*ZH(gt1,2)*ZH(gt2,2))/12._dp
 End Do 
 Do j1 = 1,3
-res = res+(g1**2*Conjg(ZD(gt3,j1))*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*ZD(gt4,j1))/12._dp
+res = res-(g2**2*Conjg(ZD(gt3,j1))*ZD(gt4,j1)*ZH(gt1,2)*ZH(gt2,2))/4._dp
 End Do 
 Do j1 = 1,3
-res = res+(g2**2*Conjg(ZD(gt3,j1))*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*ZD(gt4,j1))/4._dp
+res = res-(g1**2*Conjg(ZD(gt3,3 + j1))*ZD(gt4,3 + j1)*ZH(gt1,2)*ZH(gt2,2))/6._dp
 End Do 
 Do j1 = 1,3
-res = res-(g1**2*Conjg(ZD(gt3,j1))*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*ZD(gt4,j1))/12._dp
+res = res+(g1**2*Conjg(ZD(gt3,j1))*ZD(gt4,j1)*ZH(gt1,3)*ZH(gt2,3))/12._dp
 End Do 
 Do j1 = 1,3
-res = res-(g2**2*Conjg(ZD(gt3,j1))*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*ZD(gt4,j1))/4._dp
+res = res+(g2**2*Conjg(ZD(gt3,j1))*ZD(gt4,j1)*ZH(gt1,3)*ZH(gt2,3))/4._dp
 End Do 
 Do j1 = 1,3
-res = res+(g1**2*Conjg(ZD(gt3,3 + j1))*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*ZD(gt4,3 + j1))/6._dp
+res = res+(g1**2*Conjg(ZD(gt3,3 + j1))*ZD(gt4,3 + j1)*ZH(gt1,3)*ZH(gt2,3))/6._dp
 End Do 
 Do j1 = 1,3
-res = res-(g1**2*Conjg(ZD(gt3,3 + j1))*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*ZD(gt4,3 + j1))/6._dp
+res = res-(g1**2*Conjg(ZD(gt3,j1))*ZD(gt4,j1)*ZH(gt1,4)*ZH(gt2,4))/12._dp
 End Do 
 Do j1 = 1,3
-res = res+(g1**2*Conjg(ZD(gt3,3 + j1))*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*ZD(gt4,3 + j1))/6._dp
+res = res-(g2**2*Conjg(ZD(gt3,j1))*ZD(gt4,j1)*ZH(gt1,4)*ZH(gt2,4))/4._dp
 End Do 
 Do j1 = 1,3
-res = res-(g1**2*Conjg(ZD(gt3,3 + j1))*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*ZD(gt4,3 + j1))/6._dp
+res = res-(g1**2*Conjg(ZD(gt3,3 + j1))*ZD(gt4,3 + j1)*ZH(gt1,4)*ZH(gt2,4))/6._dp
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(Conjg(Yd(j3,j1))*Conjg(ZD(gt3,3 + j3))*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Yd(j2,j1)*ZD(gt4,3 + j2))
-End Do 
-End Do 
-End Do 
-Do j3 = 1,3
-Do j2 = 1,3
-Do j1 = 1,3
-res = res-(Conjg(Yd(j3,j1))*Conjg(ZD(gt3,3 + j3))*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Yd(j2,j1)*ZD(gt4,3 + j2))
+res = res-(Conjg(Yd(j3,j1))*Conjg(ZD(gt3,3 + j3))*Yd(j2,j1)*ZD(gt4,3 + j2)*ZH(gt1,1)*ZH(gt2,1))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(Conjg(Yd(j1,j3))*Conjg(ZD(gt3,j2))*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Yd(j1,j2)*ZD(gt4,j3))
+res = res-(Conjg(Yd(j1,j3))*Conjg(ZD(gt3,j2))*Yd(j1,j2)*ZD(gt4,j3)*ZH(gt1,1)*ZH(gt2,1))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(Conjg(Yd(j1,j3))*Conjg(ZD(gt3,j2))*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Yd(j1,j2)*ZD(gt4,j3))
+res = res-(Conjg(Yd(j3,j1))*Conjg(ZD(gt3,3 + j3))*Yd(j2,j1)*ZD(gt4,3 + j2)*ZH(gt1,3)*ZH(gt2,3))
+End Do 
+End Do 
+End Do 
+Do j3 = 1,3
+Do j2 = 1,3
+Do j1 = 1,3
+res = res-(Conjg(Yd(j1,j3))*Conjg(ZD(gt3,j2))*Yd(j1,j2)*ZD(gt4,j3)*ZH(gt1,3)*ZH(gt2,3))
 End Do 
 End Do 
 End Do 
@@ -4210,9 +4204,9 @@ Subroutine CouplinghhhhSecSeT(gt1,gt2,gt3,gt4,g1,g2,Ye,ZE,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3,gt4
-Real(dp), Intent(in) :: g1,g2
+Real(dp), Intent(in) :: g1,g2,ZH(4,4)
 
-Complex(dp), Intent(in) :: Ye(3,3),ZE(6,6),ZH(4,4)
+Complex(dp), Intent(in) :: Ye(3,3),ZE(6,6)
 
 Complex(dp), Intent(out) :: res 
  
@@ -4254,66 +4248,66 @@ End If
 
 res = 0._dp 
 Do j1 = 1,3
-res = res-(g1**2*Conjg(ZE(gt3,j1))*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*ZE(gt4,j1))/4._dp
+res = res-(g1**2*Conjg(ZE(gt3,j1))*ZE(gt4,j1)*ZH(gt1,1)*ZH(gt2,1))/4._dp
 End Do 
 Do j1 = 1,3
-res = res+(g2**2*Conjg(ZE(gt3,j1))*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*ZE(gt4,j1))/4._dp
+res = res+(g2**2*Conjg(ZE(gt3,j1))*ZE(gt4,j1)*ZH(gt1,1)*ZH(gt2,1))/4._dp
 End Do 
 Do j1 = 1,3
-res = res+(g1**2*Conjg(ZE(gt3,j1))*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*ZE(gt4,j1))/4._dp
+res = res+(g1**2*Conjg(ZE(gt3,3 + j1))*ZE(gt4,3 + j1)*ZH(gt1,1)*ZH(gt2,1))/2._dp
 End Do 
 Do j1 = 1,3
-res = res-(g2**2*Conjg(ZE(gt3,j1))*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*ZE(gt4,j1))/4._dp
+res = res+(g1**2*Conjg(ZE(gt3,j1))*ZE(gt4,j1)*ZH(gt1,2)*ZH(gt2,2))/4._dp
 End Do 
 Do j1 = 1,3
-res = res-(g1**2*Conjg(ZE(gt3,j1))*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*ZE(gt4,j1))/4._dp
+res = res-(g2**2*Conjg(ZE(gt3,j1))*ZE(gt4,j1)*ZH(gt1,2)*ZH(gt2,2))/4._dp
 End Do 
 Do j1 = 1,3
-res = res+(g2**2*Conjg(ZE(gt3,j1))*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*ZE(gt4,j1))/4._dp
+res = res-(g1**2*Conjg(ZE(gt3,3 + j1))*ZE(gt4,3 + j1)*ZH(gt1,2)*ZH(gt2,2))/2._dp
 End Do 
 Do j1 = 1,3
-res = res+(g1**2*Conjg(ZE(gt3,j1))*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*ZE(gt4,j1))/4._dp
+res = res-(g1**2*Conjg(ZE(gt3,j1))*ZE(gt4,j1)*ZH(gt1,3)*ZH(gt2,3))/4._dp
 End Do 
 Do j1 = 1,3
-res = res-(g2**2*Conjg(ZE(gt3,j1))*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*ZE(gt4,j1))/4._dp
+res = res+(g2**2*Conjg(ZE(gt3,j1))*ZE(gt4,j1)*ZH(gt1,3)*ZH(gt2,3))/4._dp
 End Do 
 Do j1 = 1,3
-res = res+(g1**2*Conjg(ZE(gt3,3 + j1))*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*ZE(gt4,3 + j1))/2._dp
+res = res+(g1**2*Conjg(ZE(gt3,3 + j1))*ZE(gt4,3 + j1)*ZH(gt1,3)*ZH(gt2,3))/2._dp
 End Do 
 Do j1 = 1,3
-res = res-(g1**2*Conjg(ZE(gt3,3 + j1))*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*ZE(gt4,3 + j1))/2._dp
+res = res+(g1**2*Conjg(ZE(gt3,j1))*ZE(gt4,j1)*ZH(gt1,4)*ZH(gt2,4))/4._dp
 End Do 
 Do j1 = 1,3
-res = res+(g1**2*Conjg(ZE(gt3,3 + j1))*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*ZE(gt4,3 + j1))/2._dp
+res = res-(g2**2*Conjg(ZE(gt3,j1))*ZE(gt4,j1)*ZH(gt1,4)*ZH(gt2,4))/4._dp
 End Do 
 Do j1 = 1,3
-res = res-(g1**2*Conjg(ZE(gt3,3 + j1))*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*ZE(gt4,3 + j1))/2._dp
+res = res-(g1**2*Conjg(ZE(gt3,3 + j1))*ZE(gt4,3 + j1)*ZH(gt1,4)*ZH(gt2,4))/2._dp
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(Conjg(Ye(j3,j1))*Conjg(ZE(gt3,3 + j3))*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Ye(j2,j1)*ZE(gt4,3 + j2))
-End Do 
-End Do 
-End Do 
-Do j3 = 1,3
-Do j2 = 1,3
-Do j1 = 1,3
-res = res-(Conjg(Ye(j3,j1))*Conjg(ZE(gt3,3 + j3))*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Ye(j2,j1)*ZE(gt4,3 + j2))
+res = res-(Conjg(Ye(j3,j1))*Conjg(ZE(gt3,3 + j3))*Ye(j2,j1)*ZE(gt4,3 + j2)*ZH(gt1,1)*ZH(gt2,1))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(Conjg(Ye(j1,j3))*Conjg(ZE(gt3,j2))*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Ye(j1,j2)*ZE(gt4,j3))
+res = res-(Conjg(Ye(j1,j3))*Conjg(ZE(gt3,j2))*Ye(j1,j2)*ZE(gt4,j3)*ZH(gt1,1)*ZH(gt2,1))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(Conjg(Ye(j1,j3))*Conjg(ZE(gt3,j2))*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Ye(j1,j2)*ZE(gt4,j3))
+res = res-(Conjg(Ye(j3,j1))*Conjg(ZE(gt3,3 + j3))*Ye(j2,j1)*ZE(gt4,3 + j2)*ZH(gt1,3)*ZH(gt2,3))
+End Do 
+End Do 
+End Do 
+Do j3 = 1,3
+Do j2 = 1,3
+Do j1 = 1,3
+res = res-(Conjg(Ye(j1,j3))*Conjg(ZE(gt3,j2))*Ye(j1,j2)*ZE(gt4,j3)*ZH(gt1,3)*ZH(gt2,3))
 End Do 
 End Do 
 End Do 
@@ -4333,9 +4327,9 @@ Subroutine CouplinghhhhSucSuT(gt1,gt2,gt3,gt4,g1,g2,Yu,ZU,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3,gt4
-Real(dp), Intent(in) :: g1,g2
+Real(dp), Intent(in) :: g1,g2,ZH(4,4)
 
-Complex(dp), Intent(in) :: Yu(3,3),ZU(6,6),ZH(4,4)
+Complex(dp), Intent(in) :: Yu(3,3),ZU(6,6)
 
 Complex(dp), Intent(out) :: res 
  
@@ -4377,66 +4371,66 @@ End If
 
 res = 0._dp 
 Do j1 = 1,3
-res = res+(g1**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Conjg(ZU(gt3,j1))*ZU(gt4,j1))/12._dp
+res = res+(g1**2*Conjg(ZU(gt3,j1))*ZH(gt1,1)*ZH(gt2,1)*ZU(gt4,j1))/12._dp
 End Do 
 Do j1 = 1,3
-res = res-(g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Conjg(ZU(gt3,j1))*ZU(gt4,j1))/4._dp
+res = res-(g2**2*Conjg(ZU(gt3,j1))*ZH(gt1,1)*ZH(gt2,1)*ZU(gt4,j1))/4._dp
 End Do 
 Do j1 = 1,3
-res = res-(g1**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Conjg(ZU(gt3,j1))*ZU(gt4,j1))/12._dp
+res = res-(g1**2*Conjg(ZU(gt3,j1))*ZH(gt1,2)*ZH(gt2,2)*ZU(gt4,j1))/12._dp
 End Do 
 Do j1 = 1,3
-res = res+(g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Conjg(ZU(gt3,j1))*ZU(gt4,j1))/4._dp
+res = res+(g2**2*Conjg(ZU(gt3,j1))*ZH(gt1,2)*ZH(gt2,2)*ZU(gt4,j1))/4._dp
 End Do 
 Do j1 = 1,3
-res = res+(g1**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Conjg(ZU(gt3,j1))*ZU(gt4,j1))/12._dp
+res = res+(g1**2*Conjg(ZU(gt3,j1))*ZH(gt1,3)*ZH(gt2,3)*ZU(gt4,j1))/12._dp
 End Do 
 Do j1 = 1,3
-res = res-(g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Conjg(ZU(gt3,j1))*ZU(gt4,j1))/4._dp
+res = res-(g2**2*Conjg(ZU(gt3,j1))*ZH(gt1,3)*ZH(gt2,3)*ZU(gt4,j1))/4._dp
 End Do 
 Do j1 = 1,3
-res = res-(g1**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Conjg(ZU(gt3,j1))*ZU(gt4,j1))/12._dp
+res = res-(g1**2*Conjg(ZU(gt3,j1))*ZH(gt1,4)*ZH(gt2,4)*ZU(gt4,j1))/12._dp
 End Do 
 Do j1 = 1,3
-res = res+(g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Conjg(ZU(gt3,j1))*ZU(gt4,j1))/4._dp
+res = res+(g2**2*Conjg(ZU(gt3,j1))*ZH(gt1,4)*ZH(gt2,4)*ZU(gt4,j1))/4._dp
 End Do 
 Do j1 = 1,3
-res = res-(g1**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Conjg(ZU(gt3,3 + j1))*ZU(gt4,3 + j1))/3._dp
+res = res-(g1**2*Conjg(ZU(gt3,3 + j1))*ZH(gt1,1)*ZH(gt2,1)*ZU(gt4,3 + j1))/3._dp
 End Do 
 Do j1 = 1,3
-res = res+(g1**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Conjg(ZU(gt3,3 + j1))*ZU(gt4,3 + j1))/3._dp
+res = res+(g1**2*Conjg(ZU(gt3,3 + j1))*ZH(gt1,2)*ZH(gt2,2)*ZU(gt4,3 + j1))/3._dp
 End Do 
 Do j1 = 1,3
-res = res-(g1**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Conjg(ZU(gt3,3 + j1))*ZU(gt4,3 + j1))/3._dp
+res = res-(g1**2*Conjg(ZU(gt3,3 + j1))*ZH(gt1,3)*ZH(gt2,3)*ZU(gt4,3 + j1))/3._dp
 End Do 
 Do j1 = 1,3
-res = res+(g1**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Conjg(ZU(gt3,3 + j1))*ZU(gt4,3 + j1))/3._dp
+res = res+(g1**2*Conjg(ZU(gt3,3 + j1))*ZH(gt1,4)*ZH(gt2,4)*ZU(gt4,3 + j1))/3._dp
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(Conjg(Yu(j3,j1))*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Conjg(ZU(gt3,3 + j3))*Yu(j2,j1)*ZU(gt4,3 + j2))
-End Do 
-End Do 
-End Do 
-Do j3 = 1,3
-Do j2 = 1,3
-Do j1 = 1,3
-res = res-(Conjg(Yu(j3,j1))*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Conjg(ZU(gt3,3 + j3))*Yu(j2,j1)*ZU(gt4,3 + j2))
+res = res-(Conjg(Yu(j3,j1))*Conjg(ZU(gt3,3 + j3))*Yu(j2,j1)*ZH(gt1,2)*ZH(gt2,2)*ZU(gt4,3 + j2))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(Conjg(Yu(j1,j3))*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Conjg(ZU(gt3,j2))*Yu(j1,j2)*ZU(gt4,j3))
+res = res-(Conjg(Yu(j3,j1))*Conjg(ZU(gt3,3 + j3))*Yu(j2,j1)*ZH(gt1,4)*ZH(gt2,4)*ZU(gt4,3 + j2))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(Conjg(Yu(j1,j3))*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Conjg(ZU(gt3,j2))*Yu(j1,j2)*ZU(gt4,j3))
+res = res-(Conjg(Yu(j1,j3))*Conjg(ZU(gt3,j2))*Yu(j1,j2)*ZH(gt1,2)*ZH(gt2,2)*ZU(gt4,j3))
+End Do 
+End Do 
+End Do 
+Do j3 = 1,3
+Do j2 = 1,3
+Do j1 = 1,3
+res = res-(Conjg(Yu(j1,j3))*Conjg(ZU(gt3,j2))*Yu(j1,j2)*ZH(gt1,4)*ZH(gt2,4)*ZU(gt4,j3))
 End Do 
 End Do 
 End Do 
@@ -4456,9 +4450,7 @@ Subroutine CouplinghhhhSvcSvT(gt1,gt2,gt3,gt4,g1,g2,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3,gt4
-Real(dp), Intent(in) :: g1,g2
-
-Complex(dp), Intent(in) :: ZH(4,4)
+Real(dp), Intent(in) :: g1,g2,ZH(4,4)
 
 Complex(dp), Intent(out) :: res 
  
@@ -4500,28 +4492,28 @@ End If
 
 res = 0._dp 
 If ((gt3.eq.gt4)) Then 
-res = res-(g1**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1)))/4._dp
+res = res-(g1**2*ZH(gt1,1)*ZH(gt2,1))/4._dp
 End If 
 If ((gt3.eq.gt4)) Then 
-res = res-(g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1)))/4._dp
+res = res-(g2**2*ZH(gt1,1)*ZH(gt2,1))/4._dp
 End If 
 If ((gt3.eq.gt4)) Then 
-res = res+(g1**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2)))/4._dp
+res = res+(g1**2*ZH(gt1,2)*ZH(gt2,2))/4._dp
 End If 
 If ((gt3.eq.gt4)) Then 
-res = res+(g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2)))/4._dp
+res = res+(g2**2*ZH(gt1,2)*ZH(gt2,2))/4._dp
 End If 
 If ((gt3.eq.gt4)) Then 
-res = res-(g1**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3)))/4._dp
+res = res-(g1**2*ZH(gt1,3)*ZH(gt2,3))/4._dp
 End If 
 If ((gt3.eq.gt4)) Then 
-res = res-(g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3)))/4._dp
+res = res-(g2**2*ZH(gt1,3)*ZH(gt2,3))/4._dp
 End If 
 If ((gt3.eq.gt4)) Then 
-res = res+(g1**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4)))/4._dp
+res = res+(g1**2*ZH(gt1,4)*ZH(gt2,4))/4._dp
 End If 
 If ((gt3.eq.gt4)) Then 
-res = res+(g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4)))/4._dp
+res = res+(g2**2*ZH(gt1,4)*ZH(gt2,4))/4._dp
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -4539,9 +4531,9 @@ Subroutine CouplinghhHpmSucSdT(gt1,gt2,gt3,gt4,g2,Yd,Yu,eta,ZD,ZU,ZH,ZP,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3,gt4
-Real(dp), Intent(in) :: g2,eta
+Real(dp), Intent(in) :: g2,eta,ZH(4,4)
 
-Complex(dp), Intent(in) :: Yd(3,3),Yu(3,3),ZD(6,6),ZU(6,6),ZH(4,4),ZP(2,2)
+Complex(dp), Intent(in) :: Yd(3,3),Yu(3,3),ZD(6,6),ZU(6,6),ZP(2,2)
 
 Complex(dp), Intent(out) :: res 
  
@@ -4583,70 +4575,70 @@ End If
 
 res = 0._dp 
 Do j1 = 1,3
-res = res-(g2**2*Conjg(ZH(gt1,1))*Conjg(ZP(gt2,1))*Conjg(ZU(gt3,j1))*ZD(gt4,j1))/(2._dp*sqrt(2._dp))
+res = res-(g2**2*Conjg(ZP(gt2,1))*Conjg(ZU(gt3,j1))*ZD(gt4,j1)*ZH(gt1,1))/(2._dp*sqrt(2._dp))
 End Do 
 Do j1 = 1,3
-res = res+(1._dp/2._dp*(0.,1._dp)*g2**2*Conjg(ZH(gt1,3))*Conjg(ZP(gt2,1))*Conjg(ZU(gt3,j1))*ZD(gt4,j1))/sqrt(2._dp)
+res = res-(g2**2*Conjg(ZP(gt2,2))*Conjg(ZU(gt3,j1))*ZD(gt4,j1)*ZH(gt1,2))/(2._dp*sqrt(2._dp))
 End Do 
 Do j1 = 1,3
-res = res-(g2**2*Conjg(ZH(gt1,2))*Conjg(ZP(gt2,2))*Conjg(ZU(gt3,j1))*ZD(gt4,j1))/(2._dp*sqrt(2._dp))
+res = res+(1._dp/2._dp*(0.,1._dp)*g2**2*Conjg(ZP(gt2,1))*Conjg(ZU(gt3,j1))*ZD(gt4,j1)*ZH(gt1,3))/sqrt(2._dp)
 End Do 
 Do j1 = 1,3
-res = res+(-1._dp/2._dp*(0.,1._dp)*g2**2*Conjg(ZH(gt1,4))*Conjg(ZP(gt2,2))*Conjg(ZU(gt3,j1))*ZD(gt4,j1))/sqrt(2._dp)
+res = res+(-1._dp/2._dp*(0.,1._dp)*g2**2*Conjg(ZP(gt2,2))*Conjg(ZU(gt3,j1))*ZD(gt4,j1)*ZH(gt1,4))/sqrt(2._dp)
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(Conjg(Yu(j3,j1))*Conjg(ZH(gt1,2))*Conjg(ZP(gt2,1))*Conjg(ZU(gt3,3 + j3))*Yd(j2,j1)*ZD(gt4,3 + j2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
-End Do 
-End Do 
-End Do 
-Do j3 = 1,3
-Do j2 = 1,3
-Do j1 = 1,3
-res = res+(-1*(0.,1._dp)*Conjg(Yu(j3,j1))*Conjg(ZH(gt1,4))*Conjg(ZP(gt2,1))*Conjg(ZU(gt3,3 + j3))*Yd(j2,j1)*ZD(gt4,3 + j2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+res = res+(Conjg(Yu(j3,j1))*Conjg(ZP(gt2,2))*Conjg(ZU(gt3,3 + j3))*Yd(j2,j1)*ZD(gt4,3 + j2)*ZH(gt1,1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(Conjg(Yu(j3,j1))*Conjg(ZH(gt1,1))*Conjg(ZP(gt2,2))*Conjg(ZU(gt3,3 + j3))*Yd(j2,j1)*ZD(gt4,3 + j2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+res = res+(Conjg(Yd(j1,j3))*Conjg(ZP(gt2,1))*Conjg(ZU(gt3,j2))*Yd(j1,j2)*ZD(gt4,j3)*ZH(gt1,1))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*Conjg(Yu(j3,j1))*Conjg(ZH(gt1,3))*Conjg(ZP(gt2,2))*Conjg(ZU(gt3,3 + j3))*Yd(j2,j1)*ZD(gt4,3 + j2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+res = res+(Conjg(Yu(j3,j1))*Conjg(ZP(gt2,1))*Conjg(ZU(gt3,3 + j3))*Yd(j2,j1)*ZD(gt4,3 + j2)*ZH(gt1,2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(Conjg(Yd(j1,j3))*Conjg(ZH(gt1,1))*Conjg(ZP(gt2,1))*Conjg(ZU(gt3,j2))*Yd(j1,j2)*ZD(gt4,j3))/sqrt(2._dp)
+res = res+(Conjg(Yu(j1,j3))*Conjg(ZP(gt2,2))*Conjg(ZU(gt3,j2))*Yu(j1,j2)*ZD(gt4,j3)*ZH(gt1,2))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(-1*(0.,1._dp)*Conjg(Yd(j1,j3))*Conjg(ZH(gt1,3))*Conjg(ZP(gt2,1))*Conjg(ZU(gt3,j2))*Yd(j1,j2)*ZD(gt4,j3))/sqrt(2._dp)
+res = res+((0._dp,1._dp)*Conjg(Yu(j3,j1))*Conjg(ZP(gt2,2))*Conjg(ZU(gt3,3 + j3))*Yd(j2,j1)*ZD(gt4,3 + j2)*ZH(gt1,3))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(Conjg(Yu(j1,j3))*Conjg(ZH(gt1,2))*Conjg(ZP(gt2,2))*Conjg(ZU(gt3,j2))*Yu(j1,j2)*ZD(gt4,j3))/sqrt(2._dp)
+res = res+(-1*(0.,1._dp)*Conjg(Yd(j1,j3))*Conjg(ZP(gt2,1))*Conjg(ZU(gt3,j2))*Yd(j1,j2)*ZD(gt4,j3)*ZH(gt1,3))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*Conjg(Yu(j1,j3))*Conjg(ZH(gt1,4))*Conjg(ZP(gt2,2))*Conjg(ZU(gt3,j2))*Yu(j1,j2)*ZD(gt4,j3))/sqrt(2._dp)
+res = res+(-1*(0.,1._dp)*Conjg(Yu(j3,j1))*Conjg(ZP(gt2,1))*Conjg(ZU(gt3,3 + j3))*Yd(j2,j1)*ZD(gt4,3 + j2)*ZH(gt1,4))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+End Do 
+End Do 
+End Do 
+Do j3 = 1,3
+Do j2 = 1,3
+Do j1 = 1,3
+res = res+((0._dp,1._dp)*Conjg(Yu(j1,j3))*Conjg(ZP(gt2,2))*Conjg(ZU(gt3,j2))*Yu(j1,j2)*ZD(gt4,j3)*ZH(gt1,4))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
@@ -4666,9 +4658,9 @@ Subroutine CouplinghhHpmSvcSeT(gt1,gt2,gt3,gt4,g2,Ye,ZE,ZV,ZH,ZP,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3,gt4
-Real(dp), Intent(in) :: g2
+Real(dp), Intent(in) :: g2,ZH(4,4)
 
-Complex(dp), Intent(in) :: Ye(3,3),ZE(6,6),ZV(3,3),ZH(4,4),ZP(2,2)
+Complex(dp), Intent(in) :: Ye(3,3),ZE(6,6),ZV(3,3),ZP(2,2)
 
 Complex(dp), Intent(out) :: res 
  
@@ -4710,28 +4702,28 @@ End If
 
 res = 0._dp 
 Do j1 = 1,3
-res = res-(g2**2*Conjg(ZH(gt1,1))*Conjg(ZP(gt2,1))*Conjg(ZV(gt3,j1))*ZE(gt4,j1))/(2._dp*sqrt(2._dp))
+res = res-(g2**2*Conjg(ZP(gt2,1))*Conjg(ZV(gt3,j1))*ZE(gt4,j1)*ZH(gt1,1))/(2._dp*sqrt(2._dp))
 End Do 
 Do j1 = 1,3
-res = res+(1._dp/2._dp*(0.,1._dp)*g2**2*Conjg(ZH(gt1,3))*Conjg(ZP(gt2,1))*Conjg(ZV(gt3,j1))*ZE(gt4,j1))/sqrt(2._dp)
+res = res-(g2**2*Conjg(ZP(gt2,2))*Conjg(ZV(gt3,j1))*ZE(gt4,j1)*ZH(gt1,2))/(2._dp*sqrt(2._dp))
 End Do 
 Do j1 = 1,3
-res = res-(g2**2*Conjg(ZH(gt1,2))*Conjg(ZP(gt2,2))*Conjg(ZV(gt3,j1))*ZE(gt4,j1))/(2._dp*sqrt(2._dp))
+res = res+(1._dp/2._dp*(0.,1._dp)*g2**2*Conjg(ZP(gt2,1))*Conjg(ZV(gt3,j1))*ZE(gt4,j1)*ZH(gt1,3))/sqrt(2._dp)
 End Do 
 Do j1 = 1,3
-res = res+(-1._dp/2._dp*(0.,1._dp)*g2**2*Conjg(ZH(gt1,4))*Conjg(ZP(gt2,2))*Conjg(ZV(gt3,j1))*ZE(gt4,j1))/sqrt(2._dp)
+res = res+(-1._dp/2._dp*(0.,1._dp)*g2**2*Conjg(ZP(gt2,2))*Conjg(ZV(gt3,j1))*ZE(gt4,j1)*ZH(gt1,4))/sqrt(2._dp)
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(Conjg(Ye(j1,j3))*Conjg(ZH(gt1,1))*Conjg(ZP(gt2,1))*Conjg(ZV(gt3,j2))*Ye(j1,j2)*ZE(gt4,j3))/sqrt(2._dp)
+res = res+(Conjg(Ye(j1,j3))*Conjg(ZP(gt2,1))*Conjg(ZV(gt3,j2))*Ye(j1,j2)*ZE(gt4,j3)*ZH(gt1,1))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(-1*(0.,1._dp)*Conjg(Ye(j1,j3))*Conjg(ZH(gt1,3))*Conjg(ZP(gt2,1))*Conjg(ZV(gt3,j2))*Ye(j1,j2)*ZE(gt4,j3))/sqrt(2._dp)
+res = res+(-1*(0.,1._dp)*Conjg(Ye(j1,j3))*Conjg(ZP(gt2,1))*Conjg(ZV(gt3,j2))*Ye(j1,j2)*ZE(gt4,j3)*ZH(gt1,3))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
@@ -4751,9 +4743,9 @@ Subroutine CouplinghhSdcHpmcSuT(gt1,gt2,gt3,gt4,g2,Yd,Yu,eta,ZD,ZU,ZH,ZP,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3,gt4
-Real(dp), Intent(in) :: g2,eta
+Real(dp), Intent(in) :: g2,eta,ZH(4,4)
 
-Complex(dp), Intent(in) :: Yd(3,3),Yu(3,3),ZD(6,6),ZU(6,6),ZH(4,4),ZP(2,2)
+Complex(dp), Intent(in) :: Yd(3,3),Yu(3,3),ZD(6,6),ZU(6,6),ZP(2,2)
 
 Complex(dp), Intent(out) :: res 
  
@@ -4795,70 +4787,70 @@ End If
 
 res = 0._dp 
 Do j1 = 1,3
-res = res-(g2**2*Conjg(ZD(gt2,j1))*Conjg(ZH(gt1,1))*ZP(gt3,1)*ZU(gt4,j1))/(2._dp*sqrt(2._dp))
+res = res-(g2**2*Conjg(ZD(gt2,j1))*ZH(gt1,1)*ZP(gt3,1)*ZU(gt4,j1))/(2._dp*sqrt(2._dp))
 End Do 
 Do j1 = 1,3
-res = res+(-1._dp/2._dp*(0.,1._dp)*g2**2*Conjg(ZD(gt2,j1))*Conjg(ZH(gt1,3))*ZP(gt3,1)*ZU(gt4,j1))/sqrt(2._dp)
+res = res+(-1._dp/2._dp*(0.,1._dp)*g2**2*Conjg(ZD(gt2,j1))*ZH(gt1,3)*ZP(gt3,1)*ZU(gt4,j1))/sqrt(2._dp)
 End Do 
 Do j1 = 1,3
-res = res-(g2**2*Conjg(ZD(gt2,j1))*Conjg(ZH(gt1,2))*ZP(gt3,2)*ZU(gt4,j1))/(2._dp*sqrt(2._dp))
+res = res-(g2**2*Conjg(ZD(gt2,j1))*ZH(gt1,2)*ZP(gt3,2)*ZU(gt4,j1))/(2._dp*sqrt(2._dp))
 End Do 
 Do j1 = 1,3
-res = res+(1._dp/2._dp*(0.,1._dp)*g2**2*Conjg(ZD(gt2,j1))*Conjg(ZH(gt1,4))*ZP(gt3,2)*ZU(gt4,j1))/sqrt(2._dp)
+res = res+(1._dp/2._dp*(0.,1._dp)*g2**2*Conjg(ZD(gt2,j1))*ZH(gt1,4)*ZP(gt3,2)*ZU(gt4,j1))/sqrt(2._dp)
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(exp((0._dp,1._dp)*eta)*Conjg(Yd(j3,j1))*Conjg(ZD(gt2,3 + j3))*Conjg(ZH(gt1,2))*Yu(j2,j1)*ZP(gt3,1)*ZU(gt4,3 + j2))/sqrt(2._dp)
-End Do 
-End Do 
-End Do 
-Do j3 = 1,3
-Do j2 = 1,3
-Do j1 = 1,3
-res = res+((0._dp,1._dp)*exp((0._dp,1._dp)*eta)*Conjg(Yd(j3,j1))*Conjg(ZD(gt2,3 + j3))*Conjg(ZH(gt1,4))*Yu(j2,j1)*ZP(gt3,1)*ZU(gt4,3 + j2))/sqrt(2._dp)
+res = res+(exp((0._dp,1._dp)*eta)*Conjg(Yd(j3,j1))*Conjg(ZD(gt2,3 + j3))*Yu(j2,j1)*ZH(gt1,2)*ZP(gt3,1)*ZU(gt4,3 + j2))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(exp((0._dp,1._dp)*eta)*Conjg(Yd(j3,j1))*Conjg(ZD(gt2,3 + j3))*Conjg(ZH(gt1,1))*Yu(j2,j1)*ZP(gt3,2)*ZU(gt4,3 + j2))/sqrt(2._dp)
+res = res+((0._dp,1._dp)*exp((0._dp,1._dp)*eta)*Conjg(Yd(j3,j1))*Conjg(ZD(gt2,3 + j3))*Yu(j2,j1)*ZH(gt1,4)*ZP(gt3,1)*ZU(gt4,3 + j2))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(-1*(0.,1._dp)*exp((0._dp,1._dp)*eta)*Conjg(Yd(j3,j1))*Conjg(ZD(gt2,3 + j3))*Conjg(ZH(gt1,3))*Yu(j2,j1)*ZP(gt3,2)*ZU(gt4,3 + j2))/sqrt(2._dp)
+res = res+(exp((0._dp,1._dp)*eta)*Conjg(Yd(j3,j1))*Conjg(ZD(gt2,3 + j3))*Yu(j2,j1)*ZH(gt1,1)*ZP(gt3,2)*ZU(gt4,3 + j2))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(Conjg(Yd(j1,j3))*Conjg(ZD(gt2,j2))*Conjg(ZH(gt1,1))*Yd(j1,j2)*ZP(gt3,1)*ZU(gt4,j3))/sqrt(2._dp)
+res = res+(-1*(0.,1._dp)*exp((0._dp,1._dp)*eta)*Conjg(Yd(j3,j1))*Conjg(ZD(gt2,3 + j3))*Yu(j2,j1)*ZH(gt1,3)*ZP(gt3,2)*ZU(gt4,3 + j2))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*Conjg(Yd(j1,j3))*Conjg(ZD(gt2,j2))*Conjg(ZH(gt1,3))*Yd(j1,j2)*ZP(gt3,1)*ZU(gt4,j3))/sqrt(2._dp)
+res = res+(Conjg(Yd(j1,j3))*Conjg(ZD(gt2,j2))*Yd(j1,j2)*ZH(gt1,1)*ZP(gt3,1)*ZU(gt4,j3))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(Conjg(Yu(j1,j3))*Conjg(ZD(gt2,j2))*Conjg(ZH(gt1,2))*Yu(j1,j2)*ZP(gt3,2)*ZU(gt4,j3))/sqrt(2._dp)
+res = res+((0._dp,1._dp)*Conjg(Yd(j1,j3))*Conjg(ZD(gt2,j2))*Yd(j1,j2)*ZH(gt1,3)*ZP(gt3,1)*ZU(gt4,j3))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(-1*(0.,1._dp)*Conjg(Yu(j1,j3))*Conjg(ZD(gt2,j2))*Conjg(ZH(gt1,4))*Yu(j1,j2)*ZP(gt3,2)*ZU(gt4,j3))/sqrt(2._dp)
+res = res+(Conjg(Yu(j1,j3))*Conjg(ZD(gt2,j2))*Yu(j1,j2)*ZH(gt1,2)*ZP(gt3,2)*ZU(gt4,j3))/sqrt(2._dp)
+End Do 
+End Do 
+End Do 
+Do j3 = 1,3
+Do j2 = 1,3
+Do j1 = 1,3
+res = res+(-1*(0.,1._dp)*Conjg(Yu(j1,j3))*Conjg(ZD(gt2,j2))*Yu(j1,j2)*ZH(gt1,4)*ZP(gt3,2)*ZU(gt4,j3))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
@@ -4878,9 +4870,9 @@ Subroutine CouplinghhSecHpmcSvT(gt1,gt2,gt3,gt4,g2,Ye,ZE,ZV,ZH,ZP,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3,gt4
-Real(dp), Intent(in) :: g2
+Real(dp), Intent(in) :: g2,ZH(4,4)
 
-Complex(dp), Intent(in) :: Ye(3,3),ZE(6,6),ZV(3,3),ZH(4,4),ZP(2,2)
+Complex(dp), Intent(in) :: Ye(3,3),ZE(6,6),ZV(3,3),ZP(2,2)
 
 Complex(dp), Intent(out) :: res 
  
@@ -4922,28 +4914,28 @@ End If
 
 res = 0._dp 
 Do j1 = 1,3
-res = res-(g2**2*Conjg(ZE(gt2,j1))*Conjg(ZH(gt1,1))*ZP(gt3,1)*ZV(gt4,j1))/(2._dp*sqrt(2._dp))
+res = res-(g2**2*Conjg(ZE(gt2,j1))*ZH(gt1,1)*ZP(gt3,1)*ZV(gt4,j1))/(2._dp*sqrt(2._dp))
 End Do 
 Do j1 = 1,3
-res = res+(-1._dp/2._dp*(0.,1._dp)*g2**2*Conjg(ZE(gt2,j1))*Conjg(ZH(gt1,3))*ZP(gt3,1)*ZV(gt4,j1))/sqrt(2._dp)
+res = res+(-1._dp/2._dp*(0.,1._dp)*g2**2*Conjg(ZE(gt2,j1))*ZH(gt1,3)*ZP(gt3,1)*ZV(gt4,j1))/sqrt(2._dp)
 End Do 
 Do j1 = 1,3
-res = res-(g2**2*Conjg(ZE(gt2,j1))*Conjg(ZH(gt1,2))*ZP(gt3,2)*ZV(gt4,j1))/(2._dp*sqrt(2._dp))
+res = res-(g2**2*Conjg(ZE(gt2,j1))*ZH(gt1,2)*ZP(gt3,2)*ZV(gt4,j1))/(2._dp*sqrt(2._dp))
 End Do 
 Do j1 = 1,3
-res = res+(1._dp/2._dp*(0.,1._dp)*g2**2*Conjg(ZE(gt2,j1))*Conjg(ZH(gt1,4))*ZP(gt3,2)*ZV(gt4,j1))/sqrt(2._dp)
+res = res+(1._dp/2._dp*(0.,1._dp)*g2**2*Conjg(ZE(gt2,j1))*ZH(gt1,4)*ZP(gt3,2)*ZV(gt4,j1))/sqrt(2._dp)
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(Conjg(Ye(j1,j3))*Conjg(ZE(gt2,j2))*Conjg(ZH(gt1,1))*Ye(j1,j2)*ZP(gt3,1)*ZV(gt4,j3))/sqrt(2._dp)
+res = res+(Conjg(Ye(j1,j3))*Conjg(ZE(gt2,j2))*Ye(j1,j2)*ZH(gt1,1)*ZP(gt3,1)*ZV(gt4,j3))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*Conjg(Ye(j1,j3))*Conjg(ZE(gt2,j2))*Conjg(ZH(gt1,3))*Ye(j1,j2)*ZP(gt3,1)*ZV(gt4,j3))/sqrt(2._dp)
+res = res+((0._dp,1._dp)*Conjg(Ye(j1,j3))*Conjg(ZE(gt2,j2))*Ye(j1,j2)*ZH(gt1,3)*ZP(gt3,1)*ZV(gt4,j3))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
@@ -7002,9 +6994,7 @@ Subroutine CouplinghhhhVZT(gt1,gt2,g1,g2,ZH,TW,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2
-Real(dp), Intent(in) :: g1,g2,TW
-
-Complex(dp), Intent(in) :: ZH(4,4)
+Real(dp), Intent(in) :: g1,g2,ZH(4,4),TW
 
 Complex(dp), Intent(out) :: res 
  
@@ -7029,14 +7019,14 @@ If ((gt2.Lt.1).Or.(gt2.Gt.4)) Then
 End If 
 
 res = 0._dp 
-res = res-(g2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,1))*Cos(TW))/2._dp
-res = res+(g2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,2))*Cos(TW))/2._dp
-res = res+(g2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,3))*Cos(TW))/2._dp
-res = res-(g2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,4))*Cos(TW))/2._dp
-res = res-(g1*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,1))*Sin(TW))/2._dp
-res = res+(g1*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,2))*Sin(TW))/2._dp
-res = res+(g1*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,3))*Sin(TW))/2._dp
-res = res-(g1*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,4))*Sin(TW))/2._dp
+res = res-(g2*Cos(TW)*ZH(gt1,3)*ZH(gt2,1))/2._dp
+res = res-(g1*Sin(TW)*ZH(gt1,3)*ZH(gt2,1))/2._dp
+res = res+(g2*Cos(TW)*ZH(gt1,4)*ZH(gt2,2))/2._dp
+res = res+(g1*Sin(TW)*ZH(gt1,4)*ZH(gt2,2))/2._dp
+res = res+(g2*Cos(TW)*ZH(gt1,1)*ZH(gt2,3))/2._dp
+res = res+(g1*Sin(TW)*ZH(gt1,1)*ZH(gt2,3))/2._dp
+res = res-(g2*Cos(TW)*ZH(gt1,2)*ZH(gt2,4))/2._dp
+res = res-(g1*Sin(TW)*ZH(gt1,2)*ZH(gt2,4))/2._dp
 res = (0.,1.)*res 
  
 If (Real(res,dp).ne.Real(res,dp)) Then 
@@ -7055,9 +7045,9 @@ Subroutine CouplinghhHpmcVWmT(gt1,gt2,g2,ZH,ZP,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2
-Real(dp), Intent(in) :: g2
+Real(dp), Intent(in) :: g2,ZH(4,4)
 
-Complex(dp), Intent(in) :: ZH(4,4),ZP(2,2)
+Complex(dp), Intent(in) :: ZP(2,2)
 
 Complex(dp), Intent(out) :: res 
  
@@ -7082,10 +7072,10 @@ If ((gt2.Lt.1).Or.(gt2.Gt.2)) Then
 End If 
 
 res = 0._dp 
-res = res-(g2*Conjg(ZH(gt1,1))*Conjg(ZP(gt2,1)))/2._dp
-res = res+1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZH(gt1,3))*Conjg(ZP(gt2,1))
-res = res+(g2*Conjg(ZH(gt1,2))*Conjg(ZP(gt2,2)))/2._dp
-res = res+1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZH(gt1,4))*Conjg(ZP(gt2,2))
+res = res-(g2*Conjg(ZP(gt2,1))*ZH(gt1,1))/2._dp
+res = res+(g2*Conjg(ZP(gt2,2))*ZH(gt1,2))/2._dp
+res = res+1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZP(gt2,1))*ZH(gt1,3)
+res = res+1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZP(gt2,2))*ZH(gt1,4)
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -7102,9 +7092,9 @@ Subroutine CouplinghhcHpmVWmT(gt1,gt2,g2,ZH,ZP,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2
-Real(dp), Intent(in) :: g2
+Real(dp), Intent(in) :: g2,ZH(4,4)
 
-Complex(dp), Intent(in) :: ZH(4,4),ZP(2,2)
+Complex(dp), Intent(in) :: ZP(2,2)
 
 Complex(dp), Intent(out) :: res 
  
@@ -7129,10 +7119,10 @@ If ((gt2.Lt.1).Or.(gt2.Gt.2)) Then
 End If 
 
 res = 0._dp 
-res = res+(g2*Conjg(ZH(gt1,1))*ZP(gt2,1))/2._dp
-res = res+1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZH(gt1,3))*ZP(gt2,1)
-res = res-(g2*Conjg(ZH(gt1,2))*ZP(gt2,2))/2._dp
-res = res+1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZH(gt1,4))*ZP(gt2,2)
+res = res+(g2*ZH(gt1,1)*ZP(gt2,1))/2._dp
+res = res+1._dp/2._dp*(0.,1._dp)*g2*ZH(gt1,3)*ZP(gt2,1)
+res = res-(g2*ZH(gt1,2)*ZP(gt2,2))/2._dp
+res = res+1._dp/2._dp*(0.,1._dp)*g2*ZH(gt1,4)*ZP(gt2,2)
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -7874,9 +7864,7 @@ Subroutine CouplinghhcVWmVWmT(gt1,g2,vd,vu,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1
-Real(dp), Intent(in) :: g2,vd,vu
-
-Complex(dp), Intent(in) :: ZH(4,4)
+Real(dp), Intent(in) :: g2,vd,vu,ZH(4,4)
 
 Complex(dp), Intent(out) :: res 
  
@@ -7893,8 +7881,8 @@ If ((gt1.Lt.1).Or.(gt1.Gt.4)) Then
 End If 
 
 res = 0._dp 
-res = res+(g2**2*vd*Conjg(ZH(gt1,1)))/2._dp
-res = res+(g2**2*vu*Conjg(ZH(gt1,2)))/2._dp
+res = res+(g2**2*vd*ZH(gt1,1))/2._dp
+res = res+(g2**2*vu*ZH(gt1,2))/2._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -7911,9 +7899,7 @@ Subroutine CouplinghhVZVZT(gt1,g1,g2,vd,vu,ZH,TW,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1
-Real(dp), Intent(in) :: g1,g2,vd,vu,TW
-
-Complex(dp), Intent(in) :: ZH(4,4)
+Real(dp), Intent(in) :: g1,g2,vd,vu,ZH(4,4),TW
 
 Complex(dp), Intent(out) :: res 
  
@@ -7930,12 +7916,12 @@ If ((gt1.Lt.1).Or.(gt1.Gt.4)) Then
 End If 
 
 res = 0._dp 
-res = res+(g2**2*vd*Conjg(ZH(gt1,1))*Cos(TW)**2)/2._dp
-res = res+(g2**2*vu*Conjg(ZH(gt1,2))*Cos(TW)**2)/2._dp
-res = res+g1*g2*vd*Conjg(ZH(gt1,1))*Cos(TW)*Sin(TW)
-res = res+g1*g2*vu*Conjg(ZH(gt1,2))*Cos(TW)*Sin(TW)
-res = res+(g1**2*vd*Conjg(ZH(gt1,1))*Sin(TW)**2)/2._dp
-res = res+(g1**2*vu*Conjg(ZH(gt1,2))*Sin(TW)**2)/2._dp
+res = res+(g2**2*vd*Cos(TW)**2*ZH(gt1,1))/2._dp
+res = res+g1*g2*vd*Cos(TW)*Sin(TW)*ZH(gt1,1)
+res = res+(g1**2*vd*Sin(TW)**2*ZH(gt1,1))/2._dp
+res = res+(g2**2*vu*Cos(TW)**2*ZH(gt1,2))/2._dp
+res = res+g1*g2*vu*Cos(TW)*Sin(TW)*ZH(gt1,2)
+res = res+(g1**2*vu*Sin(TW)**2*ZH(gt1,2))/2._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -8100,9 +8086,7 @@ Subroutine CouplinghhhhcVWmVWmT(gt1,gt2,g2,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2
-Real(dp), Intent(in) :: g2
-
-Complex(dp), Intent(in) :: ZH(4,4)
+Real(dp), Intent(in) :: g2,ZH(4,4)
 
 Complex(dp), Intent(out) :: res 
  
@@ -8127,10 +8111,10 @@ If ((gt2.Lt.1).Or.(gt2.Gt.4)) Then
 End If 
 
 res = 0._dp 
-res = res+(g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1)))/2._dp
-res = res+(g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2)))/2._dp
-res = res+(g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3)))/2._dp
-res = res+(g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4)))/2._dp
+res = res+(g2**2*ZH(gt1,1)*ZH(gt2,1))/2._dp
+res = res+(g2**2*ZH(gt1,2)*ZH(gt2,2))/2._dp
+res = res+(g2**2*ZH(gt1,3)*ZH(gt2,3))/2._dp
+res = res+(g2**2*ZH(gt1,4)*ZH(gt2,4))/2._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -8147,9 +8131,7 @@ Subroutine CouplinghhhhVZVZT(gt1,gt2,g1,g2,ZH,TW,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2
-Real(dp), Intent(in) :: g1,g2,TW
-
-Complex(dp), Intent(in) :: ZH(4,4)
+Real(dp), Intent(in) :: g1,g2,ZH(4,4),TW
 
 Complex(dp), Intent(out) :: res 
  
@@ -8174,18 +8156,18 @@ If ((gt2.Lt.1).Or.(gt2.Gt.4)) Then
 End If 
 
 res = 0._dp 
-res = res+(g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Cos(TW)**2)/2._dp
-res = res+(g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Cos(TW)**2)/2._dp
-res = res+(g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Cos(TW)**2)/2._dp
-res = res+(g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Cos(TW)**2)/2._dp
-res = res+g1*g2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Cos(TW)*Sin(TW)
-res = res+g1*g2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Cos(TW)*Sin(TW)
-res = res+g1*g2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Cos(TW)*Sin(TW)
-res = res+g1*g2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Cos(TW)*Sin(TW)
-res = res+(g1**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Sin(TW)**2)/2._dp
-res = res+(g1**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Sin(TW)**2)/2._dp
-res = res+(g1**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Sin(TW)**2)/2._dp
-res = res+(g1**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Sin(TW)**2)/2._dp
+res = res+(g2**2*Cos(TW)**2*ZH(gt1,1)*ZH(gt2,1))/2._dp
+res = res+g1*g2*Cos(TW)*Sin(TW)*ZH(gt1,1)*ZH(gt2,1)
+res = res+(g1**2*Sin(TW)**2*ZH(gt1,1)*ZH(gt2,1))/2._dp
+res = res+(g2**2*Cos(TW)**2*ZH(gt1,2)*ZH(gt2,2))/2._dp
+res = res+g1*g2*Cos(TW)*Sin(TW)*ZH(gt1,2)*ZH(gt2,2)
+res = res+(g1**2*Sin(TW)**2*ZH(gt1,2)*ZH(gt2,2))/2._dp
+res = res+(g2**2*Cos(TW)**2*ZH(gt1,3)*ZH(gt2,3))/2._dp
+res = res+g1*g2*Cos(TW)*Sin(TW)*ZH(gt1,3)*ZH(gt2,3)
+res = res+(g1**2*Sin(TW)**2*ZH(gt1,3)*ZH(gt2,3))/2._dp
+res = res+(g2**2*Cos(TW)**2*ZH(gt1,4)*ZH(gt2,4))/2._dp
+res = res+g1*g2*Cos(TW)*Sin(TW)*ZH(gt1,4)*ZH(gt2,4)
+res = res+(g1**2*Sin(TW)**2*ZH(gt1,4)*ZH(gt2,4))/2._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -8202,9 +8184,9 @@ Subroutine CouplinghhHpmcVWmVPT(gt1,gt2,g1,g2,ZH,ZP,TW,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2
-Real(dp), Intent(in) :: g1,g2,TW
+Real(dp), Intent(in) :: g1,g2,ZH(4,4),TW
 
-Complex(dp), Intent(in) :: ZH(4,4),ZP(2,2)
+Complex(dp), Intent(in) :: ZP(2,2)
 
 Complex(dp), Intent(out) :: res 
  
@@ -8229,10 +8211,10 @@ If ((gt2.Lt.1).Or.(gt2.Gt.2)) Then
 End If 
 
 res = 0._dp 
-res = res-(g1*g2*Conjg(ZH(gt1,1))*Conjg(ZP(gt2,1))*Cos(TW))/2._dp
-res = res+1._dp/2._dp*(0.,1._dp)*g1*g2*Conjg(ZH(gt1,3))*Conjg(ZP(gt2,1))*Cos(TW)
-res = res+(g1*g2*Conjg(ZH(gt1,2))*Conjg(ZP(gt2,2))*Cos(TW))/2._dp
-res = res+1._dp/2._dp*(0.,1._dp)*g1*g2*Conjg(ZH(gt1,4))*Conjg(ZP(gt2,2))*Cos(TW)
+res = res-(g1*g2*Conjg(ZP(gt2,1))*Cos(TW)*ZH(gt1,1))/2._dp
+res = res+(g1*g2*Conjg(ZP(gt2,2))*Cos(TW)*ZH(gt1,2))/2._dp
+res = res+1._dp/2._dp*(0.,1._dp)*g1*g2*Conjg(ZP(gt2,1))*Cos(TW)*ZH(gt1,3)
+res = res+1._dp/2._dp*(0.,1._dp)*g1*g2*Conjg(ZP(gt2,2))*Cos(TW)*ZH(gt1,4)
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -8249,9 +8231,9 @@ Subroutine CouplinghhHpmcVWmVZT(gt1,gt2,g1,g2,ZH,ZP,TW,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2
-Real(dp), Intent(in) :: g1,g2,TW
+Real(dp), Intent(in) :: g1,g2,ZH(4,4),TW
 
-Complex(dp), Intent(in) :: ZH(4,4),ZP(2,2)
+Complex(dp), Intent(in) :: ZP(2,2)
 
 Complex(dp), Intent(out) :: res 
  
@@ -8276,10 +8258,10 @@ If ((gt2.Lt.1).Or.(gt2.Gt.2)) Then
 End If 
 
 res = 0._dp 
-res = res+(g1*g2*Conjg(ZH(gt1,1))*Conjg(ZP(gt2,1))*Sin(TW))/2._dp
-res = res-1._dp/2._dp*(0.,1._dp)*g1*g2*Conjg(ZH(gt1,3))*Conjg(ZP(gt2,1))*Sin(TW)
-res = res-(g1*g2*Conjg(ZH(gt1,2))*Conjg(ZP(gt2,2))*Sin(TW))/2._dp
-res = res-1._dp/2._dp*(0.,1._dp)*g1*g2*Conjg(ZH(gt1,4))*Conjg(ZP(gt2,2))*Sin(TW)
+res = res+(g1*g2*Conjg(ZP(gt2,1))*Sin(TW)*ZH(gt1,1))/2._dp
+res = res-(g1*g2*Conjg(ZP(gt2,2))*Sin(TW)*ZH(gt1,2))/2._dp
+res = res-1._dp/2._dp*(0.,1._dp)*g1*g2*Conjg(ZP(gt2,1))*Sin(TW)*ZH(gt1,3)
+res = res-1._dp/2._dp*(0.,1._dp)*g1*g2*Conjg(ZP(gt2,2))*Sin(TW)*ZH(gt1,4)
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -8296,9 +8278,9 @@ Subroutine CouplinghhcHpmVPVWmT(gt1,gt2,g1,g2,ZH,ZP,TW,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2
-Real(dp), Intent(in) :: g1,g2,TW
+Real(dp), Intent(in) :: g1,g2,ZH(4,4),TW
 
-Complex(dp), Intent(in) :: ZH(4,4),ZP(2,2)
+Complex(dp), Intent(in) :: ZP(2,2)
 
 Complex(dp), Intent(out) :: res 
  
@@ -8323,10 +8305,10 @@ If ((gt2.Lt.1).Or.(gt2.Gt.2)) Then
 End If 
 
 res = 0._dp 
-res = res-(g1*g2*Conjg(ZH(gt1,1))*Cos(TW)*ZP(gt2,1))/2._dp
-res = res-1._dp/2._dp*(0.,1._dp)*g1*g2*Conjg(ZH(gt1,3))*Cos(TW)*ZP(gt2,1)
-res = res+(g1*g2*Conjg(ZH(gt1,2))*Cos(TW)*ZP(gt2,2))/2._dp
-res = res-1._dp/2._dp*(0.,1._dp)*g1*g2*Conjg(ZH(gt1,4))*Cos(TW)*ZP(gt2,2)
+res = res-(g1*g2*Cos(TW)*ZH(gt1,1)*ZP(gt2,1))/2._dp
+res = res-1._dp/2._dp*(0.,1._dp)*g1*g2*Cos(TW)*ZH(gt1,3)*ZP(gt2,1)
+res = res+(g1*g2*Cos(TW)*ZH(gt1,2)*ZP(gt2,2))/2._dp
+res = res-1._dp/2._dp*(0.,1._dp)*g1*g2*Cos(TW)*ZH(gt1,4)*ZP(gt2,2)
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -8343,9 +8325,9 @@ Subroutine CouplinghhcHpmVWmVZT(gt1,gt2,g1,g2,ZH,ZP,TW,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2
-Real(dp), Intent(in) :: g1,g2,TW
+Real(dp), Intent(in) :: g1,g2,ZH(4,4),TW
 
-Complex(dp), Intent(in) :: ZH(4,4),ZP(2,2)
+Complex(dp), Intent(in) :: ZP(2,2)
 
 Complex(dp), Intent(out) :: res 
  
@@ -8370,10 +8352,10 @@ If ((gt2.Lt.1).Or.(gt2.Gt.2)) Then
 End If 
 
 res = 0._dp 
-res = res+(g1*g2*Conjg(ZH(gt1,1))*Sin(TW)*ZP(gt2,1))/2._dp
-res = res+1._dp/2._dp*(0.,1._dp)*g1*g2*Conjg(ZH(gt1,3))*Sin(TW)*ZP(gt2,1)
-res = res-(g1*g2*Conjg(ZH(gt1,2))*Sin(TW)*ZP(gt2,2))/2._dp
-res = res+1._dp/2._dp*(0.,1._dp)*g1*g2*Conjg(ZH(gt1,4))*Sin(TW)*ZP(gt2,2)
+res = res+(g1*g2*Sin(TW)*ZH(gt1,1)*ZP(gt2,1))/2._dp
+res = res+1._dp/2._dp*(0.,1._dp)*g1*g2*Sin(TW)*ZH(gt1,3)*ZP(gt2,1)
+res = res-(g1*g2*Sin(TW)*ZH(gt1,2)*ZP(gt2,2))/2._dp
+res = res+1._dp/2._dp*(0.,1._dp)*g1*g2*Sin(TW)*ZH(gt1,4)*ZP(gt2,2)
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -10323,9 +10305,9 @@ Subroutine CouplingcChaChahhT(gt1,gt2,gt3,g2,eta,ZH,UM,UP,resL,resR)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Real(dp), Intent(in) :: g2,eta
+Real(dp), Intent(in) :: g2,eta,ZH(4,4)
 
-Complex(dp), Intent(in) :: ZH(4,4),UM(2,2),UP(2,2)
+Complex(dp), Intent(in) :: UM(2,2),UP(2,2)
 
 Complex(dp), Intent(out) :: resL, resR 
  
@@ -10358,15 +10340,15 @@ If ((gt3.Lt.1).Or.(gt3.Gt.4)) Then
 End If 
 
 resL = 0._dp 
-resL = resL-((g2*Conjg(UM(gt2,2))*Conjg(UP(gt1,1))*Conjg(ZH(gt3,1)))/sqrt(2._dp))
-resL = resL-((g2*Conjg(UM(gt2,1))*Conjg(UP(gt1,2))*Conjg(ZH(gt3,2)))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta)))
-resL = resL+((0._dp,1._dp)*g2*Conjg(UM(gt2,2))*Conjg(UP(gt1,1))*Conjg(ZH(gt3,3)))/sqrt(2._dp)
-resL = resL+((0._dp,1._dp)*g2*Conjg(UM(gt2,1))*Conjg(UP(gt1,2))*Conjg(ZH(gt3,4)))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+resL = resL-((g2*Conjg(UM(gt2,2))*Conjg(UP(gt1,1))*ZH(gt3,1))/sqrt(2._dp))
+resL = resL-((g2*Conjg(UM(gt2,1))*Conjg(UP(gt1,2))*ZH(gt3,2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta)))
+resL = resL+((0._dp,1._dp)*g2*Conjg(UM(gt2,2))*Conjg(UP(gt1,1))*ZH(gt3,3))/sqrt(2._dp)
+resL = resL+((0._dp,1._dp)*g2*Conjg(UM(gt2,1))*Conjg(UP(gt1,2))*ZH(gt3,4))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 resR = 0._dp 
-resR = resR-((g2*Conjg(ZH(gt3,1))*UM(gt1,2)*UP(gt2,1))/sqrt(2._dp))
-resR = resR+(-1*(0.,1._dp)*g2*Conjg(ZH(gt3,3))*UM(gt1,2)*UP(gt2,1))/sqrt(2._dp)
-resR = resR-((exp((0._dp,1._dp)*eta)*g2*Conjg(ZH(gt3,2))*UM(gt1,1)*UP(gt2,2))/sqrt(2._dp))
-resR = resR+(-1*(0.,1._dp)*exp((0._dp,1._dp)*eta)*g2*Conjg(ZH(gt3,4))*UM(gt1,1)*UP(gt2,2))/sqrt(2._dp)
+resR = resR-((g2*UM(gt1,2)*UP(gt2,1)*ZH(gt3,1))/sqrt(2._dp))
+resR = resR-((exp((0._dp,1._dp)*eta)*g2*UM(gt1,1)*UP(gt2,2)*ZH(gt3,2))/sqrt(2._dp))
+resR = resR+(-1*(0.,1._dp)*g2*UM(gt1,2)*UP(gt2,1)*ZH(gt3,3))/sqrt(2._dp)
+resR = resR+(-1*(0.,1._dp)*exp((0._dp,1._dp)*eta)*g2*UM(gt1,1)*UP(gt2,2)*ZH(gt3,4))/sqrt(2._dp)
 If ((Real(resL,dp).ne.Real(resL,dp)).or.(Real(resR,dp).ne.Real(resR,dp))) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -10508,9 +10490,9 @@ Subroutine CouplingChiChihhT(gt1,gt2,gt3,g1,g2,eta,ZH,ZN,resL,resR)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Real(dp), Intent(in) :: g1,g2,eta
+Real(dp), Intent(in) :: g1,g2,eta,ZH(4,4)
 
-Complex(dp), Intent(in) :: ZH(4,4),ZN(4,4)
+Complex(dp), Intent(in) :: ZN(4,4)
 
 Complex(dp), Intent(out) :: resL, resR 
  
@@ -10543,39 +10525,39 @@ If ((gt3.Lt.1).Or.(gt3.Gt.4)) Then
 End If 
 
 resL = 0._dp 
-resL = resL+(g1*Conjg(ZH(gt3,1))*Conjg(ZN(gt1,3))*Conjg(ZN(gt2,1)))/2._dp
-resL = resL-1._dp/2._dp*(0.,1._dp)*g1*Conjg(ZH(gt3,3))*Conjg(ZN(gt1,3))*Conjg(ZN(gt2,1))
-resL = resL-(g1*Conjg(ZH(gt3,2))*Conjg(ZN(gt1,4))*Conjg(ZN(gt2,1)))/(2._dp*exp((0._dp,1._dp)*eta))
-resL = resL+(1._dp/2._dp*(0.,1._dp)*g1*Conjg(ZH(gt3,4))*Conjg(ZN(gt1,4))*Conjg(ZN(gt2,1)))/exp((0._dp,1._dp)*eta)
-resL = resL-(g2*Conjg(ZH(gt3,1))*Conjg(ZN(gt1,3))*Conjg(ZN(gt2,2)))/2._dp
-resL = resL+1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZH(gt3,3))*Conjg(ZN(gt1,3))*Conjg(ZN(gt2,2))
-resL = resL+(g2*Conjg(ZH(gt3,2))*Conjg(ZN(gt1,4))*Conjg(ZN(gt2,2)))/(2._dp*exp((0._dp,1._dp)*eta))
-resL = resL+(-1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZH(gt3,4))*Conjg(ZN(gt1,4))*Conjg(ZN(gt2,2)))/exp((0._dp,1._dp)*eta)
-resL = resL+(g1*Conjg(ZH(gt3,1))*Conjg(ZN(gt1,1))*Conjg(ZN(gt2,3)))/2._dp
-resL = resL-1._dp/2._dp*(0.,1._dp)*g1*Conjg(ZH(gt3,3))*Conjg(ZN(gt1,1))*Conjg(ZN(gt2,3))
-resL = resL-(g2*Conjg(ZH(gt3,1))*Conjg(ZN(gt1,2))*Conjg(ZN(gt2,3)))/2._dp
-resL = resL+1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZH(gt3,3))*Conjg(ZN(gt1,2))*Conjg(ZN(gt2,3))
-resL = resL-(g1*Conjg(ZH(gt3,2))*Conjg(ZN(gt1,1))*Conjg(ZN(gt2,4)))/(2._dp*exp((0._dp,1._dp)*eta))
-resL = resL+(1._dp/2._dp*(0.,1._dp)*g1*Conjg(ZH(gt3,4))*Conjg(ZN(gt1,1))*Conjg(ZN(gt2,4)))/exp((0._dp,1._dp)*eta)
-resL = resL+(g2*Conjg(ZH(gt3,2))*Conjg(ZN(gt1,2))*Conjg(ZN(gt2,4)))/(2._dp*exp((0._dp,1._dp)*eta))
-resL = resL+(-1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZH(gt3,4))*Conjg(ZN(gt1,2))*Conjg(ZN(gt2,4)))/exp((0._dp,1._dp)*eta)
+resL = resL+(g1*Conjg(ZN(gt1,3))*Conjg(ZN(gt2,1))*ZH(gt3,1))/2._dp
+resL = resL-(g2*Conjg(ZN(gt1,3))*Conjg(ZN(gt2,2))*ZH(gt3,1))/2._dp
+resL = resL+(g1*Conjg(ZN(gt1,1))*Conjg(ZN(gt2,3))*ZH(gt3,1))/2._dp
+resL = resL-(g2*Conjg(ZN(gt1,2))*Conjg(ZN(gt2,3))*ZH(gt3,1))/2._dp
+resL = resL-(g1*Conjg(ZN(gt1,4))*Conjg(ZN(gt2,1))*ZH(gt3,2))/(2._dp*exp((0._dp,1._dp)*eta))
+resL = resL+(g2*Conjg(ZN(gt1,4))*Conjg(ZN(gt2,2))*ZH(gt3,2))/(2._dp*exp((0._dp,1._dp)*eta))
+resL = resL-(g1*Conjg(ZN(gt1,1))*Conjg(ZN(gt2,4))*ZH(gt3,2))/(2._dp*exp((0._dp,1._dp)*eta))
+resL = resL+(g2*Conjg(ZN(gt1,2))*Conjg(ZN(gt2,4))*ZH(gt3,2))/(2._dp*exp((0._dp,1._dp)*eta))
+resL = resL-1._dp/2._dp*(0.,1._dp)*g1*Conjg(ZN(gt1,3))*Conjg(ZN(gt2,1))*ZH(gt3,3)
+resL = resL+1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZN(gt1,3))*Conjg(ZN(gt2,2))*ZH(gt3,3)
+resL = resL-1._dp/2._dp*(0.,1._dp)*g1*Conjg(ZN(gt1,1))*Conjg(ZN(gt2,3))*ZH(gt3,3)
+resL = resL+1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZN(gt1,2))*Conjg(ZN(gt2,3))*ZH(gt3,3)
+resL = resL+(1._dp/2._dp*(0.,1._dp)*g1*Conjg(ZN(gt1,4))*Conjg(ZN(gt2,1))*ZH(gt3,4))/exp((0._dp,1._dp)*eta)
+resL = resL+(-1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZN(gt1,4))*Conjg(ZN(gt2,2))*ZH(gt3,4))/exp((0._dp,1._dp)*eta)
+resL = resL+(1._dp/2._dp*(0.,1._dp)*g1*Conjg(ZN(gt1,1))*Conjg(ZN(gt2,4))*ZH(gt3,4))/exp((0._dp,1._dp)*eta)
+resL = resL+(-1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZN(gt1,2))*Conjg(ZN(gt2,4))*ZH(gt3,4))/exp((0._dp,1._dp)*eta)
 resR = 0._dp 
-resR = resR+(g1*Conjg(ZH(gt3,1))*ZN(gt1,3)*ZN(gt2,1))/2._dp
-resR = resR+1._dp/2._dp*(0.,1._dp)*g1*Conjg(ZH(gt3,3))*ZN(gt1,3)*ZN(gt2,1)
-resR = resR-(exp((0._dp,1._dp)*eta)*g1*Conjg(ZH(gt3,2))*ZN(gt1,4)*ZN(gt2,1))/2._dp
-resR = resR-1._dp/2._dp*(0.,1._dp)*exp((0._dp,1._dp)*eta)*g1*Conjg(ZH(gt3,4))*ZN(gt1,4)*ZN(gt2,1)
-resR = resR-(g2*Conjg(ZH(gt3,1))*ZN(gt1,3)*ZN(gt2,2))/2._dp
-resR = resR-1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZH(gt3,3))*ZN(gt1,3)*ZN(gt2,2)
-resR = resR+(exp((0._dp,1._dp)*eta)*g2*Conjg(ZH(gt3,2))*ZN(gt1,4)*ZN(gt2,2))/2._dp
-resR = resR+1._dp/2._dp*(0.,1._dp)*exp((0._dp,1._dp)*eta)*g2*Conjg(ZH(gt3,4))*ZN(gt1,4)*ZN(gt2,2)
-resR = resR+(g1*Conjg(ZH(gt3,1))*ZN(gt1,1)*ZN(gt2,3))/2._dp
-resR = resR+1._dp/2._dp*(0.,1._dp)*g1*Conjg(ZH(gt3,3))*ZN(gt1,1)*ZN(gt2,3)
-resR = resR-(g2*Conjg(ZH(gt3,1))*ZN(gt1,2)*ZN(gt2,3))/2._dp
-resR = resR-1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZH(gt3,3))*ZN(gt1,2)*ZN(gt2,3)
-resR = resR-(exp((0._dp,1._dp)*eta)*g1*Conjg(ZH(gt3,2))*ZN(gt1,1)*ZN(gt2,4))/2._dp
-resR = resR-1._dp/2._dp*(0.,1._dp)*exp((0._dp,1._dp)*eta)*g1*Conjg(ZH(gt3,4))*ZN(gt1,1)*ZN(gt2,4)
-resR = resR+(exp((0._dp,1._dp)*eta)*g2*Conjg(ZH(gt3,2))*ZN(gt1,2)*ZN(gt2,4))/2._dp
-resR = resR+1._dp/2._dp*(0.,1._dp)*exp((0._dp,1._dp)*eta)*g2*Conjg(ZH(gt3,4))*ZN(gt1,2)*ZN(gt2,4)
+resR = resR+(g1*ZH(gt3,1)*ZN(gt1,3)*ZN(gt2,1))/2._dp
+resR = resR+1._dp/2._dp*(0.,1._dp)*g1*ZH(gt3,3)*ZN(gt1,3)*ZN(gt2,1)
+resR = resR-(exp((0._dp,1._dp)*eta)*g1*ZH(gt3,2)*ZN(gt1,4)*ZN(gt2,1))/2._dp
+resR = resR-1._dp/2._dp*(0.,1._dp)*exp((0._dp,1._dp)*eta)*g1*ZH(gt3,4)*ZN(gt1,4)*ZN(gt2,1)
+resR = resR-(g2*ZH(gt3,1)*ZN(gt1,3)*ZN(gt2,2))/2._dp
+resR = resR-1._dp/2._dp*(0.,1._dp)*g2*ZH(gt3,3)*ZN(gt1,3)*ZN(gt2,2)
+resR = resR+(exp((0._dp,1._dp)*eta)*g2*ZH(gt3,2)*ZN(gt1,4)*ZN(gt2,2))/2._dp
+resR = resR+1._dp/2._dp*(0.,1._dp)*exp((0._dp,1._dp)*eta)*g2*ZH(gt3,4)*ZN(gt1,4)*ZN(gt2,2)
+resR = resR+(g1*ZH(gt3,1)*ZN(gt1,1)*ZN(gt2,3))/2._dp
+resR = resR+1._dp/2._dp*(0.,1._dp)*g1*ZH(gt3,3)*ZN(gt1,1)*ZN(gt2,3)
+resR = resR-(g2*ZH(gt3,1)*ZN(gt1,2)*ZN(gt2,3))/2._dp
+resR = resR-1._dp/2._dp*(0.,1._dp)*g2*ZH(gt3,3)*ZN(gt1,2)*ZN(gt2,3)
+resR = resR-(exp((0._dp,1._dp)*eta)*g1*ZH(gt3,2)*ZN(gt1,1)*ZN(gt2,4))/2._dp
+resR = resR-1._dp/2._dp*(0.,1._dp)*exp((0._dp,1._dp)*eta)*g1*ZH(gt3,4)*ZN(gt1,1)*ZN(gt2,4)
+resR = resR+(exp((0._dp,1._dp)*eta)*g2*ZH(gt3,2)*ZN(gt1,2)*ZN(gt2,4))/2._dp
+resR = resR+1._dp/2._dp*(0.,1._dp)*exp((0._dp,1._dp)*eta)*g2*ZH(gt3,4)*ZN(gt1,2)*ZN(gt2,4)
 If ((Real(resL,dp).ne.Real(resL,dp)).or.(Real(resR,dp).ne.Real(resR,dp))) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -11242,7 +11224,9 @@ Subroutine CouplingcFdFdhhT(gt1,gt2,gt3,Yd,ZH,ZDL,ZDR,resL,resR)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Complex(dp), Intent(in) :: Yd(3,3),ZH(4,4),ZDL(3,3),ZDR(3,3)
+Real(dp), Intent(in) :: ZH(4,4)
+
+Complex(dp), Intent(in) :: Yd(3,3),ZDL(3,3),ZDR(3,3)
 
 Complex(dp), Intent(out) :: resL, resR 
  
@@ -11277,23 +11261,23 @@ End If
 resL = 0._dp 
 Do j2 = 1,3
 Do j1 = 1,3
-resL = resL-((Conjg(ZDL(gt2,j2))*Conjg(ZDR(gt1,j1))*Conjg(ZH(gt3,1))*Yd(j1,j2))/sqrt(2._dp))
+resL = resL-((Conjg(ZDL(gt2,j2))*Conjg(ZDR(gt1,j1))*Yd(j1,j2)*ZH(gt3,1))/sqrt(2._dp))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-resL = resL+(-1*(0.,1._dp)*Conjg(ZDL(gt2,j2))*Conjg(ZDR(gt1,j1))*Conjg(ZH(gt3,3))*Yd(j1,j2))/sqrt(2._dp)
+resL = resL+(-1*(0.,1._dp)*Conjg(ZDL(gt2,j2))*Conjg(ZDR(gt1,j1))*Yd(j1,j2)*ZH(gt3,3))/sqrt(2._dp)
 End Do 
 End Do 
 resR = 0._dp 
 Do j2 = 1,3
 Do j1 = 1,3
-resR = resR-((Conjg(Yd(j1,j2))*Conjg(ZH(gt3,1))*ZDL(gt1,j2)*ZDR(gt2,j1))/sqrt(2._dp))
+resR = resR-((Conjg(Yd(j1,j2))*ZDL(gt1,j2)*ZDR(gt2,j1)*ZH(gt3,1))/sqrt(2._dp))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-resR = resR+((0._dp,1._dp)*Conjg(Yd(j1,j2))*Conjg(ZH(gt3,3))*ZDL(gt1,j2)*ZDR(gt2,j1))/sqrt(2._dp)
+resR = resR+((0._dp,1._dp)*Conjg(Yd(j1,j2))*ZDL(gt1,j2)*ZDR(gt2,j1)*ZH(gt3,3))/sqrt(2._dp)
 End Do 
 End Do 
 If ((Real(resL,dp).ne.Real(resL,dp)).or.(Real(resR,dp).ne.Real(resR,dp))) Then 
@@ -11440,7 +11424,9 @@ Subroutine CouplingcFeFehhT(gt1,gt2,gt3,Ye,ZH,ZEL,ZER,resL,resR)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Complex(dp), Intent(in) :: Ye(3,3),ZH(4,4),ZEL(3,3),ZER(3,3)
+Real(dp), Intent(in) :: ZH(4,4)
+
+Complex(dp), Intent(in) :: Ye(3,3),ZEL(3,3),ZER(3,3)
 
 Complex(dp), Intent(out) :: resL, resR 
  
@@ -11475,23 +11461,23 @@ End If
 resL = 0._dp 
 Do j2 = 1,3
 Do j1 = 1,3
-resL = resL-((Conjg(ZEL(gt2,j2))*Conjg(ZER(gt1,j1))*Conjg(ZH(gt3,1))*Ye(j1,j2))/sqrt(2._dp))
+resL = resL-((Conjg(ZEL(gt2,j2))*Conjg(ZER(gt1,j1))*Ye(j1,j2)*ZH(gt3,1))/sqrt(2._dp))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-resL = resL+(-1*(0.,1._dp)*Conjg(ZEL(gt2,j2))*Conjg(ZER(gt1,j1))*Conjg(ZH(gt3,3))*Ye(j1,j2))/sqrt(2._dp)
+resL = resL+(-1*(0.,1._dp)*Conjg(ZEL(gt2,j2))*Conjg(ZER(gt1,j1))*Ye(j1,j2)*ZH(gt3,3))/sqrt(2._dp)
 End Do 
 End Do 
 resR = 0._dp 
 Do j2 = 1,3
 Do j1 = 1,3
-resR = resR-((Conjg(Ye(j1,j2))*Conjg(ZH(gt3,1))*ZEL(gt1,j2)*ZER(gt2,j1))/sqrt(2._dp))
+resR = resR-((Conjg(Ye(j1,j2))*ZEL(gt1,j2)*ZER(gt2,j1)*ZH(gt3,1))/sqrt(2._dp))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-resR = resR+((0._dp,1._dp)*Conjg(Ye(j1,j2))*Conjg(ZH(gt3,3))*ZEL(gt1,j2)*ZER(gt2,j1))/sqrt(2._dp)
+resR = resR+((0._dp,1._dp)*Conjg(Ye(j1,j2))*ZEL(gt1,j2)*ZER(gt2,j1)*ZH(gt3,3))/sqrt(2._dp)
 End Do 
 End Do 
 If ((Real(resL,dp).ne.Real(resL,dp)).or.(Real(resR,dp).ne.Real(resR,dp))) Then 
@@ -11673,9 +11659,9 @@ Subroutine CouplingcFuFuhhT(gt1,gt2,gt3,Yu,eta,ZH,ZUL,ZUR,resL,resR)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Real(dp), Intent(in) :: eta
+Real(dp), Intent(in) :: eta,ZH(4,4)
 
-Complex(dp), Intent(in) :: Yu(3,3),ZH(4,4),ZUL(3,3),ZUR(3,3)
+Complex(dp), Intent(in) :: Yu(3,3),ZUL(3,3),ZUR(3,3)
 
 Complex(dp), Intent(out) :: resL, resR 
  
@@ -11710,23 +11696,23 @@ End If
 resL = 0._dp 
 Do j2 = 1,3
 Do j1 = 1,3
-resL = resL-((exp((0._dp,1._dp)*eta)*Conjg(ZH(gt3,2))*Conjg(ZUL(gt2,j2))*Conjg(ZUR(gt1,j1))*Yu(j1,j2))/sqrt(2._dp))
+resL = resL-((exp((0._dp,1._dp)*eta)*Conjg(ZUL(gt2,j2))*Conjg(ZUR(gt1,j1))*Yu(j1,j2)*ZH(gt3,2))/sqrt(2._dp))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-resL = resL+(-1*(0.,1._dp)*exp((0._dp,1._dp)*eta)*Conjg(ZH(gt3,4))*Conjg(ZUL(gt2,j2))*Conjg(ZUR(gt1,j1))*Yu(j1,j2))/sqrt(2._dp)
+resL = resL+(-1*(0.,1._dp)*exp((0._dp,1._dp)*eta)*Conjg(ZUL(gt2,j2))*Conjg(ZUR(gt1,j1))*Yu(j1,j2)*ZH(gt3,4))/sqrt(2._dp)
 End Do 
 End Do 
 resR = 0._dp 
 Do j2 = 1,3
 Do j1 = 1,3
-resR = resR-((Conjg(Yu(j1,j2))*Conjg(ZH(gt3,2))*ZUL(gt1,j2)*ZUR(gt2,j1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta)))
+resR = resR-((Conjg(Yu(j1,j2))*ZH(gt3,2)*ZUL(gt1,j2)*ZUR(gt2,j1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta)))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-resR = resR+((0._dp,1._dp)*Conjg(Yu(j1,j2))*Conjg(ZH(gt3,4))*ZUL(gt1,j2)*ZUR(gt2,j1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+resR = resR+((0._dp,1._dp)*Conjg(Yu(j1,j2))*ZH(gt3,4)*ZUL(gt1,j2)*ZUR(gt2,j1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End Do 
 If ((Real(resL,dp).ne.Real(resL,dp)).or.(Real(resR,dp).ne.Real(resR,dp))) Then 
@@ -13472,9 +13458,7 @@ Subroutine CouplingcgZgAhhT(gt3,g1,g2,vd,vu,ZH,TW,res)
 Implicit None 
 
 Integer, Intent(in) :: gt3
-Real(dp), Intent(in) :: g1,g2,vd,vu,TW
-
-Complex(dp), Intent(in) :: ZH(4,4)
+Real(dp), Intent(in) :: g1,g2,vd,vu,ZH(4,4),TW
 
 Complex(dp), Intent(out) :: res 
  
@@ -13491,12 +13475,12 @@ If ((gt3.Lt.1).Or.(gt3.Gt.4)) Then
 End If 
 
 res = 0._dp 
-res = res+(g1*g2*vd*Conjg(ZH(gt3,1))*Cos(2._dp*(TW)))/4._dp
-res = res+(g1*g2*vu*Conjg(ZH(gt3,2))*Cos(2._dp*(TW)))/4._dp
-res = res+(g1**2*vd*Conjg(ZH(gt3,1))*Sin(2._dp*(TW)))/8._dp
-res = res-(g2**2*vd*Conjg(ZH(gt3,1))*Sin(2._dp*(TW)))/8._dp
-res = res+(g1**2*vu*Conjg(ZH(gt3,2))*Sin(2._dp*(TW)))/8._dp
-res = res-(g2**2*vu*Conjg(ZH(gt3,2))*Sin(2._dp*(TW)))/8._dp
+res = res+(g1*g2*vd*Cos(2._dp*(TW))*RXiZ*ZH(gt3,1))/4._dp
+res = res+(g1**2*vd*RXiZ*Sin(2._dp*(TW))*ZH(gt3,1))/8._dp
+res = res-(g2**2*vd*RXiZ*Sin(2._dp*(TW))*ZH(gt3,1))/8._dp
+res = res+(g1*g2*vu*Cos(2._dp*(TW))*RXiZ*ZH(gt3,2))/4._dp
+res = res+(g1**2*vu*RXiZ*Sin(2._dp*(TW))*ZH(gt3,2))/8._dp
+res = res-(g2**2*vu*RXiZ*Sin(2._dp*(TW))*ZH(gt3,2))/8._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -13532,10 +13516,10 @@ If ((gt3.Lt.1).Or.(gt3.Gt.2)) Then
 End If 
 
 res = 0._dp 
-res = res+(g1*g2*vd*Conjg(ZP(gt3,1))*Cos(TW))/4._dp
-res = res-(g1*g2*vu*Conjg(ZP(gt3,2))*Cos(TW))/4._dp
-res = res+(g2**2*vd*Conjg(ZP(gt3,1))*Sin(TW))/4._dp
-res = res-(g2**2*vu*Conjg(ZP(gt3,2))*Sin(TW))/4._dp
+res = res+(g1*g2*vd*Conjg(ZP(gt3,1))*Cos(TW)*RXiWm)/4._dp
+res = res-(g1*g2*vu*Conjg(ZP(gt3,2))*Cos(TW)*RXiWm)/4._dp
+res = res+(g2**2*vd*Conjg(ZP(gt3,1))*RXiWm*Sin(TW))/4._dp
+res = res-(g2**2*vu*Conjg(ZP(gt3,2))*RXiWm*Sin(TW))/4._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -13571,10 +13555,10 @@ If ((gt3.Lt.1).Or.(gt3.Gt.2)) Then
 End If 
 
 res = 0._dp 
-res = res+(g1*g2*vd*Cos(TW)*ZP(gt3,1))/4._dp
-res = res+(g2**2*vd*Sin(TW)*ZP(gt3,1))/4._dp
-res = res-(g1*g2*vu*Cos(TW)*ZP(gt3,2))/4._dp
-res = res-(g2**2*vu*Sin(TW)*ZP(gt3,2))/4._dp
+res = res+(g1*g2*vd*Cos(TW)*RXiWm*ZP(gt3,1))/4._dp
+res = res+(g2**2*vd*RXiWm*Sin(TW)*ZP(gt3,1))/4._dp
+res = res-(g1*g2*vu*Cos(TW)*RXiWm*ZP(gt3,2))/4._dp
+res = res-(g2**2*vu*RXiWm*Sin(TW)*ZP(gt3,2))/4._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -13591,9 +13575,7 @@ Subroutine CouplingcgWmgWmhhT(gt3,g2,vd,vu,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt3
-Real(dp), Intent(in) :: g2,vd,vu
-
-Complex(dp), Intent(in) :: ZH(4,4)
+Real(dp), Intent(in) :: g2,vd,vu,ZH(4,4)
 
 Complex(dp), Intent(out) :: res 
  
@@ -13610,10 +13592,10 @@ If ((gt3.Lt.1).Or.(gt3.Gt.4)) Then
 End If 
 
 res = 0._dp 
-res = res-(g2**2*vd*Conjg(ZH(gt3,1)))/4._dp
-res = res-(g2**2*vu*Conjg(ZH(gt3,2)))/4._dp
-res = res-1._dp/4._dp*(0.,1._dp)*g2**2*vd*Conjg(ZH(gt3,3))
-res = res+1._dp/4._dp*(0.,1._dp)*g2**2*vu*Conjg(ZH(gt3,4))
+res = res-(g2**2*vd*RXiWm*ZH(gt3,1))/4._dp
+res = res-(g2**2*vu*RXiWm*ZH(gt3,2))/4._dp
+res = res-1._dp/4._dp*(0.,1._dp)*g2**2*vd*RXiWm*ZH(gt3,3)
+res = res+1._dp/4._dp*(0.,1._dp)*g2**2*vu*RXiWm*ZH(gt3,4)
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -13649,10 +13631,10 @@ If ((gt3.Lt.1).Or.(gt3.Gt.2)) Then
 End If 
 
 res = 0._dp 
-res = res-(g2**2*vd*Cos(TW)*ZP(gt3,1))/4._dp
-res = res-(g1*g2*vd*Sin(TW)*ZP(gt3,1))/4._dp
-res = res+(g2**2*vu*Cos(TW)*ZP(gt3,2))/4._dp
-res = res+(g1*g2*vu*Sin(TW)*ZP(gt3,2))/4._dp
+res = res-(g2**2*vd*Cos(TW)*RXiZ*ZP(gt3,1))/4._dp
+res = res-(g1*g2*vd*RXiZ*Sin(TW)*ZP(gt3,1))/4._dp
+res = res+(g2**2*vu*Cos(TW)*RXiZ*ZP(gt3,2))/4._dp
+res = res+(g1*g2*vu*RXiZ*Sin(TW)*ZP(gt3,2))/4._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -13669,9 +13651,7 @@ Subroutine CouplingcgWpCgWpChhT(gt3,g2,vd,vu,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt3
-Real(dp), Intent(in) :: g2,vd,vu
-
-Complex(dp), Intent(in) :: ZH(4,4)
+Real(dp), Intent(in) :: g2,vd,vu,ZH(4,4)
 
 Complex(dp), Intent(out) :: res 
  
@@ -13688,10 +13668,10 @@ If ((gt3.Lt.1).Or.(gt3.Gt.4)) Then
 End If 
 
 res = 0._dp 
-res = res-(g2**2*vd*Conjg(ZH(gt3,1)))/4._dp
-res = res-(g2**2*vu*Conjg(ZH(gt3,2)))/4._dp
-res = res+1._dp/4._dp*(0.,1._dp)*g2**2*vd*Conjg(ZH(gt3,3))
-res = res-1._dp/4._dp*(0.,1._dp)*g2**2*vu*Conjg(ZH(gt3,4))
+res = res-(g2**2*vd*RXiWm*ZH(gt3,1))/4._dp
+res = res-(g2**2*vu*RXiWm*ZH(gt3,2))/4._dp
+res = res+1._dp/4._dp*(0.,1._dp)*g2**2*vd*RXiWm*ZH(gt3,3)
+res = res-1._dp/4._dp*(0.,1._dp)*g2**2*vu*RXiWm*ZH(gt3,4)
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -13727,10 +13707,10 @@ If ((gt3.Lt.1).Or.(gt3.Gt.2)) Then
 End If 
 
 res = 0._dp 
-res = res-(g2**2*vd*Conjg(ZP(gt3,1))*Cos(TW))/4._dp
-res = res+(g2**2*vu*Conjg(ZP(gt3,2))*Cos(TW))/4._dp
-res = res-(g1*g2*vd*Conjg(ZP(gt3,1))*Sin(TW))/4._dp
-res = res+(g1*g2*vu*Conjg(ZP(gt3,2))*Sin(TW))/4._dp
+res = res-(g2**2*vd*Conjg(ZP(gt3,1))*Cos(TW)*RXiZ)/4._dp
+res = res+(g2**2*vu*Conjg(ZP(gt3,2))*Cos(TW)*RXiZ)/4._dp
+res = res-(g1*g2*vd*Conjg(ZP(gt3,1))*RXiZ*Sin(TW))/4._dp
+res = res+(g1*g2*vu*Conjg(ZP(gt3,2))*RXiZ*Sin(TW))/4._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -13747,9 +13727,7 @@ Subroutine CouplingcgZgZhhT(gt3,g1,g2,vd,vu,ZH,TW,res)
 Implicit None 
 
 Integer, Intent(in) :: gt3
-Real(dp), Intent(in) :: g1,g2,vd,vu,TW
-
-Complex(dp), Intent(in) :: ZH(4,4)
+Real(dp), Intent(in) :: g1,g2,vd,vu,ZH(4,4),TW
 
 Complex(dp), Intent(out) :: res 
  
@@ -13766,12 +13744,12 @@ If ((gt3.Lt.1).Or.(gt3.Gt.4)) Then
 End If 
 
 res = 0._dp 
-res = res-(g2**2*vd*Conjg(ZH(gt3,1))*Cos(TW)**2)/4._dp
-res = res-(g2**2*vu*Conjg(ZH(gt3,2))*Cos(TW)**2)/4._dp
-res = res-(g1*g2*vd*Conjg(ZH(gt3,1))*Cos(TW)*Sin(TW))/2._dp
-res = res-(g1*g2*vu*Conjg(ZH(gt3,2))*Cos(TW)*Sin(TW))/2._dp
-res = res-(g1**2*vd*Conjg(ZH(gt3,1))*Sin(TW)**2)/4._dp
-res = res-(g1**2*vu*Conjg(ZH(gt3,2))*Sin(TW)**2)/4._dp
+res = res-(g2**2*vd*Cos(TW)**2*RXiZ*ZH(gt3,1))/4._dp
+res = res-(g1*g2*vd*Cos(TW)*RXiZ*Sin(TW)*ZH(gt3,1))/2._dp
+res = res-(g1**2*vd*RXiZ*Sin(TW)**2*ZH(gt3,1))/4._dp
+res = res-(g2**2*vu*Cos(TW)**2*RXiZ*ZH(gt3,2))/4._dp
+res = res-(g1*g2*vu*Cos(TW)*RXiZ*Sin(TW)*ZH(gt3,2))/2._dp
+res = res-(g1**2*vu*RXiZ*Sin(TW)**2*ZH(gt3,2))/4._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -13807,10 +13785,10 @@ If ((gt3.Lt.1).Or.(gt3.Gt.2)) Then
 End If 
 
 res = 0._dp 
-res = res+(g2**2*vd*Conjg(ZP(gt3,1))*Cos(TW))/4._dp
-res = res-(g2**2*vu*Conjg(ZP(gt3,2))*Cos(TW))/4._dp
-res = res-(g1*g2*vd*Conjg(ZP(gt3,1))*Sin(TW))/4._dp
-res = res+(g1*g2*vu*Conjg(ZP(gt3,2))*Sin(TW))/4._dp
+res = res+(g2**2*vd*Conjg(ZP(gt3,1))*Cos(TW)*RXiWm)/4._dp
+res = res-(g2**2*vu*Conjg(ZP(gt3,2))*Cos(TW)*RXiWm)/4._dp
+res = res-(g1*g2*vd*Conjg(ZP(gt3,1))*RXiWm*Sin(TW))/4._dp
+res = res+(g1*g2*vu*Conjg(ZP(gt3,2))*RXiWm*Sin(TW))/4._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -13846,10 +13824,10 @@ If ((gt3.Lt.1).Or.(gt3.Gt.2)) Then
 End If 
 
 res = 0._dp 
-res = res+(g2**2*vd*Cos(TW)*ZP(gt3,1))/4._dp
-res = res-(g1*g2*vd*Sin(TW)*ZP(gt3,1))/4._dp
-res = res-(g2**2*vu*Cos(TW)*ZP(gt3,2))/4._dp
-res = res+(g1*g2*vu*Sin(TW)*ZP(gt3,2))/4._dp
+res = res+(g2**2*vd*Cos(TW)*RXiWm*ZP(gt3,1))/4._dp
+res = res-(g1*g2*vd*RXiWm*Sin(TW)*ZP(gt3,1))/4._dp
+res = res-(g2**2*vu*Cos(TW)*RXiWm*ZP(gt3,2))/4._dp
+res = res+(g1*g2*vu*RXiWm*Sin(TW)*ZP(gt3,2))/4._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -13867,9 +13845,9 @@ Subroutine CouplingsForEffPot4(Yd,ZD,ZH,Ye,ZE,Yu,ZU,ZP,ZV,g3,cplhhhhSdcSd,      
 & cplSeSvcSecSv,cplSuSucSucSu,cplSdcSdVGVG,cplSucSuVGVG)
 
 Implicit None 
-Real(dp), Intent(in) :: g3
+Real(dp), Intent(in) :: ZH(4,4),g3
 
-Complex(dp), Intent(in) :: Yd(3,3),ZD(6,6),ZH(4,4),Ye(3,3),ZE(6,6),Yu(3,3),ZU(6,6),ZP(2,2),ZV(3,3)
+Complex(dp), Intent(in) :: Yd(3,3),ZD(6,6),Ye(3,3),ZE(6,6),Yu(3,3),ZU(6,6),ZP(2,2),ZV(3,3)
 
 Complex(dp), Intent(out) :: cplhhhhSdcSd(4,4,6,6),cplhhhhSecSe(4,4,6,6),cplhhhhSucSu(4,4,6,6),cplHpmSdcHpmcSd(2,6,2,6),& 
 & cplHpmSecHpmcSe(2,6,2,6),cplHpmSucHpmcSu(2,6,2,6),cplHpmSvcHpmcSv(2,3,2,3),            & 
@@ -14086,11 +14064,11 @@ Subroutine CouplingsForEffPot3(Mu,Yd,Td,eta,vd,ZD,ZH,Ye,Te,ZE,Yu,Tu,vu,         
 & cplcFuFuVGR,cplGluGluVGL,cplGluGluVGR)
 
 Implicit None 
-Real(dp), Intent(in) :: eta,vd,vu,g3
+Real(dp), Intent(in) :: eta,vd,ZH(4,4),vu,g3
 
-Complex(dp), Intent(in) :: Mu,Yd(3,3),Td(3,3),ZD(6,6),ZH(4,4),Ye(3,3),Te(3,3),ZE(6,6),Yu(3,3),Tu(3,3),           & 
-& ZU(6,6),ZP(2,2),ZV(3,3),UM(2,2),UP(2,2),ZUL(3,3),ZUR(3,3),ZDL(3,3),ZDR(3,3),           & 
-& ZER(3,3),ZN(4,4),ZEL(3,3),pG
+Complex(dp), Intent(in) :: Mu,Yd(3,3),Td(3,3),ZD(6,6),Ye(3,3),Te(3,3),ZE(6,6),Yu(3,3),Tu(3,3),ZU(6,6),           & 
+& ZP(2,2),ZV(3,3),UM(2,2),UP(2,2),ZUL(3,3),ZUR(3,3),ZDL(3,3),ZDR(3,3),ZER(3,3),          & 
+& ZN(4,4),ZEL(3,3),pG
 
 Complex(dp), Intent(out) :: cplhhSdcSd(4,6,6),cplhhSecSe(4,6,6),cplhhSucSu(4,6,6),cplHpmSucSd(2,6,6),             & 
 & cplHpmSvcSe(2,3,6),cplSdcHpmcSu(6,2,6),cplSecHpmcSv(6,2,3),cplSdcSdVG(6,6),            & 
@@ -14566,7 +14544,9 @@ Subroutine CouplinghhhhSdcSd2L(gt1,gt2,gt3,gt4,Yd,ZD,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3,gt4
-Complex(dp), Intent(in) :: Yd(3,3),ZD(6,6),ZH(4,4)
+Real(dp), Intent(in) :: ZH(4,4)
+
+Complex(dp), Intent(in) :: Yd(3,3),ZD(6,6)
 
 Complex(dp), Intent(out) :: res 
  
@@ -14611,7 +14591,7 @@ If ((gt1.eq.gt2).And.(gt3.eq.gt4)) Then
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-3*Conjg(Yd(j3,j1))*Conjg(ZD(gt3,3 + j3))*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Yd(j2,j1)*ZD(gt4,3 + j2)
+res = res-3*Conjg(Yd(j3,j1))*Conjg(ZD(gt3,3 + j3))*Yd(j2,j1)*ZD(gt4,3 + j2)*ZH(gt1,1)*ZH(gt2,1)
 End Do 
 End Do 
 End Do 
@@ -14620,7 +14600,7 @@ If ((gt1.eq.gt2).And.(gt3.eq.gt4)) Then
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-3*Conjg(Yd(j3,j1))*Conjg(ZD(gt3,3 + j3))*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Yd(j2,j1)*ZD(gt4,3 + j2)
+res = res-3*Conjg(Yd(j1,j3))*Conjg(ZD(gt3,j2))*Yd(j1,j2)*ZD(gt4,j3)*ZH(gt1,1)*ZH(gt2,1)
 End Do 
 End Do 
 End Do 
@@ -14629,7 +14609,7 @@ If ((gt1.eq.gt2).And.(gt3.eq.gt4)) Then
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-3*Conjg(Yd(j1,j3))*Conjg(ZD(gt3,j2))*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Yd(j1,j2)*ZD(gt4,j3)
+res = res-3*Conjg(Yd(j3,j1))*Conjg(ZD(gt3,3 + j3))*Yd(j2,j1)*ZD(gt4,3 + j2)*ZH(gt1,3)*ZH(gt2,3)
 End Do 
 End Do 
 End Do 
@@ -14638,7 +14618,7 @@ If ((gt1.eq.gt2).And.(gt3.eq.gt4)) Then
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-3*Conjg(Yd(j1,j3))*Conjg(ZD(gt3,j2))*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Yd(j1,j2)*ZD(gt4,j3)
+res = res-3*Conjg(Yd(j1,j3))*Conjg(ZD(gt3,j2))*Yd(j1,j2)*ZD(gt4,j3)*ZH(gt1,3)*ZH(gt2,3)
 End Do 
 End Do 
 End Do 
@@ -14659,7 +14639,9 @@ Subroutine CouplinghhhhSecSe2L(gt1,gt2,gt3,gt4,Ye,ZE,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3,gt4
-Complex(dp), Intent(in) :: Ye(3,3),ZE(6,6),ZH(4,4)
+Real(dp), Intent(in) :: ZH(4,4)
+
+Complex(dp), Intent(in) :: Ye(3,3),ZE(6,6)
 
 Complex(dp), Intent(out) :: res 
  
@@ -14704,7 +14686,7 @@ If ((gt1.eq.gt2).And.(gt3.eq.gt4)) Then
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(Conjg(Ye(j3,j1))*Conjg(ZE(gt3,3 + j3))*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Ye(j2,j1)*ZE(gt4,3 + j2))
+res = res-(Conjg(Ye(j3,j1))*Conjg(ZE(gt3,3 + j3))*Ye(j2,j1)*ZE(gt4,3 + j2)*ZH(gt1,1)*ZH(gt2,1))
 End Do 
 End Do 
 End Do 
@@ -14713,7 +14695,7 @@ If ((gt1.eq.gt2).And.(gt3.eq.gt4)) Then
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(Conjg(Ye(j3,j1))*Conjg(ZE(gt3,3 + j3))*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Ye(j2,j1)*ZE(gt4,3 + j2))
+res = res-(Conjg(Ye(j1,j3))*Conjg(ZE(gt3,j2))*Ye(j1,j2)*ZE(gt4,j3)*ZH(gt1,1)*ZH(gt2,1))
 End Do 
 End Do 
 End Do 
@@ -14722,7 +14704,7 @@ If ((gt1.eq.gt2).And.(gt3.eq.gt4)) Then
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(Conjg(Ye(j1,j3))*Conjg(ZE(gt3,j2))*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Ye(j1,j2)*ZE(gt4,j3))
+res = res-(Conjg(Ye(j3,j1))*Conjg(ZE(gt3,3 + j3))*Ye(j2,j1)*ZE(gt4,3 + j2)*ZH(gt1,3)*ZH(gt2,3))
 End Do 
 End Do 
 End Do 
@@ -14731,7 +14713,7 @@ If ((gt1.eq.gt2).And.(gt3.eq.gt4)) Then
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(Conjg(Ye(j1,j3))*Conjg(ZE(gt3,j2))*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Ye(j1,j2)*ZE(gt4,j3))
+res = res-(Conjg(Ye(j1,j3))*Conjg(ZE(gt3,j2))*Ye(j1,j2)*ZE(gt4,j3)*ZH(gt1,3)*ZH(gt2,3))
 End Do 
 End Do 
 End Do 
@@ -14752,7 +14734,9 @@ Subroutine CouplinghhhhSucSu2L(gt1,gt2,gt3,gt4,Yu,ZU,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3,gt4
-Complex(dp), Intent(in) :: Yu(3,3),ZU(6,6),ZH(4,4)
+Real(dp), Intent(in) :: ZH(4,4)
+
+Complex(dp), Intent(in) :: Yu(3,3),ZU(6,6)
 
 Complex(dp), Intent(out) :: res 
  
@@ -14797,7 +14781,7 @@ If ((gt1.eq.gt2).And.(gt3.eq.gt4)) Then
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-3*Conjg(Yu(j3,j1))*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Conjg(ZU(gt3,3 + j3))*Yu(j2,j1)*ZU(gt4,3 + j2)
+res = res-3*Conjg(Yu(j3,j1))*Conjg(ZU(gt3,3 + j3))*Yu(j2,j1)*ZH(gt1,2)*ZH(gt2,2)*ZU(gt4,3 + j2)
 End Do 
 End Do 
 End Do 
@@ -14806,7 +14790,7 @@ If ((gt1.eq.gt2).And.(gt3.eq.gt4)) Then
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-3*Conjg(Yu(j3,j1))*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Conjg(ZU(gt3,3 + j3))*Yu(j2,j1)*ZU(gt4,3 + j2)
+res = res-3*Conjg(Yu(j3,j1))*Conjg(ZU(gt3,3 + j3))*Yu(j2,j1)*ZH(gt1,4)*ZH(gt2,4)*ZU(gt4,3 + j2)
 End Do 
 End Do 
 End Do 
@@ -14815,7 +14799,7 @@ If ((gt1.eq.gt2).And.(gt3.eq.gt4)) Then
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-3*Conjg(Yu(j1,j3))*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Conjg(ZU(gt3,j2))*Yu(j1,j2)*ZU(gt4,j3)
+res = res-3*Conjg(Yu(j1,j3))*Conjg(ZU(gt3,j2))*Yu(j1,j2)*ZH(gt1,2)*ZH(gt2,2)*ZU(gt4,j3)
 End Do 
 End Do 
 End Do 
@@ -14824,7 +14808,7 @@ If ((gt1.eq.gt2).And.(gt3.eq.gt4)) Then
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-3*Conjg(Yu(j1,j3))*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Conjg(ZU(gt3,j2))*Yu(j1,j2)*ZU(gt4,j3)
+res = res-3*Conjg(Yu(j1,j3))*Conjg(ZU(gt3,j2))*Yu(j1,j2)*ZH(gt1,4)*ZH(gt2,4)*ZU(gt4,j3)
 End Do 
 End Do 
 End Do 
@@ -15862,9 +15846,9 @@ Subroutine CouplinghhSdcSd2L(gt1,gt2,gt3,Mu,Yd,Td,eta,vd,ZD,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Real(dp), Intent(in) :: eta,vd
+Real(dp), Intent(in) :: eta,vd,ZH(4,4)
 
-Complex(dp), Intent(in) :: Mu,Yd(3,3),Td(3,3),ZD(6,6),ZH(4,4)
+Complex(dp), Intent(in) :: Mu,Yd(3,3),Td(3,3),ZD(6,6)
 
 Complex(dp), Intent(out) :: res 
  
@@ -15899,55 +15883,55 @@ End If
 res = 0._dp 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(Conjg(Mu)*Conjg(ZD(gt2,j2))*Conjg(ZH(gt1,2))*Yd(j1,j2)*ZD(gt3,3 + j1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+res = res-((Conjg(ZD(gt2,3 + j1))*Conjg(Td(j1,j2))*ZD(gt3,j2)*ZH(gt1,1))/sqrt(2._dp))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(-1*(0.,1._dp)*Conjg(Mu)*Conjg(ZD(gt2,j2))*Conjg(ZH(gt1,4))*Yd(j1,j2)*ZD(gt3,3 + j1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+res = res+(Conjg(Mu)*Conjg(ZD(gt2,j2))*Yd(j1,j2)*ZD(gt3,3 + j1)*ZH(gt1,2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(exp((0._dp,1._dp)*eta)*Mu*Conjg(Yd(j1,j2))*Conjg(ZD(gt2,3 + j1))*Conjg(ZH(gt1,2))*ZD(gt3,j2))/sqrt(2._dp)
+res = res+(exp((0._dp,1._dp)*eta)*Mu*Conjg(Yd(j1,j2))*Conjg(ZD(gt2,3 + j1))*ZD(gt3,j2)*ZH(gt1,2))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*exp((0._dp,1._dp)*eta)*Mu*Conjg(Yd(j1,j2))*Conjg(ZD(gt2,3 + j1))*Conjg(ZH(gt1,4))*ZD(gt3,j2))/sqrt(2._dp)
+res = res+((0._dp,1._dp)*Conjg(ZD(gt2,3 + j1))*Conjg(Td(j1,j2))*ZD(gt3,j2)*ZH(gt1,3))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-((Conjg(ZD(gt2,3 + j1))*Conjg(ZH(gt1,1))*Conjg(Td(j1,j2))*ZD(gt3,j2))/sqrt(2._dp))
+res = res+(-1*(0.,1._dp)*Conjg(Mu)*Conjg(ZD(gt2,j2))*Yd(j1,j2)*ZD(gt3,3 + j1)*ZH(gt1,4))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*Conjg(ZD(gt2,3 + j1))*Conjg(ZH(gt1,3))*Conjg(Td(j1,j2))*ZD(gt3,j2))/sqrt(2._dp)
+res = res+((0._dp,1._dp)*exp((0._dp,1._dp)*eta)*Mu*Conjg(Yd(j1,j2))*Conjg(ZD(gt2,3 + j1))*ZD(gt3,j2)*ZH(gt1,4))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-((Conjg(ZD(gt2,j2))*Conjg(ZH(gt1,1))*ZD(gt3,3 + j1)*Td(j1,j2))/sqrt(2._dp))
+res = res-((Conjg(ZD(gt2,j2))*ZD(gt3,3 + j1)*ZH(gt1,1)*Td(j1,j2))/sqrt(2._dp))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(-1*(0.,1._dp)*Conjg(ZD(gt2,j2))*Conjg(ZH(gt1,3))*ZD(gt3,3 + j1)*Td(j1,j2))/sqrt(2._dp)
+res = res+(-1*(0.,1._dp)*Conjg(ZD(gt2,j2))*ZD(gt3,3 + j1)*ZH(gt1,3)*Td(j1,j2))/sqrt(2._dp)
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(vd*Conjg(Yd(j3,j1))*Conjg(ZD(gt2,3 + j3))*Conjg(ZH(gt1,1))*Yd(j2,j1)*ZD(gt3,3 + j2))
+res = res-(vd*Conjg(Yd(j3,j1))*Conjg(ZD(gt2,3 + j3))*Yd(j2,j1)*ZD(gt3,3 + j2)*ZH(gt1,1))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(vd*Conjg(Yd(j1,j3))*Conjg(ZD(gt2,j2))*Conjg(ZH(gt1,1))*Yd(j1,j2)*ZD(gt3,j3))
+res = res-(vd*Conjg(Yd(j1,j3))*Conjg(ZD(gt2,j2))*Yd(j1,j2)*ZD(gt3,j3)*ZH(gt1,1))
 End Do 
 End Do 
 End Do 
@@ -15967,9 +15951,9 @@ Subroutine CouplinghhSecSe2L(gt1,gt2,gt3,Mu,Ye,Te,eta,vd,ZE,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Real(dp), Intent(in) :: eta,vd
+Real(dp), Intent(in) :: eta,vd,ZH(4,4)
 
-Complex(dp), Intent(in) :: Mu,Ye(3,3),Te(3,3),ZE(6,6),ZH(4,4)
+Complex(dp), Intent(in) :: Mu,Ye(3,3),Te(3,3),ZE(6,6)
 
 Complex(dp), Intent(out) :: res 
  
@@ -16004,55 +15988,55 @@ End If
 res = 0._dp 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(Conjg(Mu)*Conjg(ZE(gt2,j2))*Conjg(ZH(gt1,2))*Ye(j1,j2)*ZE(gt3,3 + j1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+res = res-((Conjg(ZE(gt2,3 + j1))*Conjg(Te(j1,j2))*ZE(gt3,j2)*ZH(gt1,1))/sqrt(2._dp))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(-1*(0.,1._dp)*Conjg(Mu)*Conjg(ZE(gt2,j2))*Conjg(ZH(gt1,4))*Ye(j1,j2)*ZE(gt3,3 + j1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+res = res+(Conjg(Mu)*Conjg(ZE(gt2,j2))*Ye(j1,j2)*ZE(gt3,3 + j1)*ZH(gt1,2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(exp((0._dp,1._dp)*eta)*Mu*Conjg(Ye(j1,j2))*Conjg(ZE(gt2,3 + j1))*Conjg(ZH(gt1,2))*ZE(gt3,j2))/sqrt(2._dp)
+res = res+(exp((0._dp,1._dp)*eta)*Mu*Conjg(Ye(j1,j2))*Conjg(ZE(gt2,3 + j1))*ZE(gt3,j2)*ZH(gt1,2))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*exp((0._dp,1._dp)*eta)*Mu*Conjg(Ye(j1,j2))*Conjg(ZE(gt2,3 + j1))*Conjg(ZH(gt1,4))*ZE(gt3,j2))/sqrt(2._dp)
+res = res+((0._dp,1._dp)*Conjg(ZE(gt2,3 + j1))*Conjg(Te(j1,j2))*ZE(gt3,j2)*ZH(gt1,3))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-((Conjg(ZE(gt2,3 + j1))*Conjg(ZH(gt1,1))*Conjg(Te(j1,j2))*ZE(gt3,j2))/sqrt(2._dp))
+res = res+(-1*(0.,1._dp)*Conjg(Mu)*Conjg(ZE(gt2,j2))*Ye(j1,j2)*ZE(gt3,3 + j1)*ZH(gt1,4))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*Conjg(ZE(gt2,3 + j1))*Conjg(ZH(gt1,3))*Conjg(Te(j1,j2))*ZE(gt3,j2))/sqrt(2._dp)
+res = res+((0._dp,1._dp)*exp((0._dp,1._dp)*eta)*Mu*Conjg(Ye(j1,j2))*Conjg(ZE(gt2,3 + j1))*ZE(gt3,j2)*ZH(gt1,4))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-((Conjg(ZE(gt2,j2))*Conjg(ZH(gt1,1))*ZE(gt3,3 + j1)*Te(j1,j2))/sqrt(2._dp))
+res = res-((Conjg(ZE(gt2,j2))*ZE(gt3,3 + j1)*ZH(gt1,1)*Te(j1,j2))/sqrt(2._dp))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(-1*(0.,1._dp)*Conjg(ZE(gt2,j2))*Conjg(ZH(gt1,3))*ZE(gt3,3 + j1)*Te(j1,j2))/sqrt(2._dp)
+res = res+(-1*(0.,1._dp)*Conjg(ZE(gt2,j2))*ZE(gt3,3 + j1)*ZH(gt1,3)*Te(j1,j2))/sqrt(2._dp)
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(vd*Conjg(Ye(j3,j1))*Conjg(ZE(gt2,3 + j3))*Conjg(ZH(gt1,1))*Ye(j2,j1)*ZE(gt3,3 + j2))
+res = res-(vd*Conjg(Ye(j3,j1))*Conjg(ZE(gt2,3 + j3))*Ye(j2,j1)*ZE(gt3,3 + j2)*ZH(gt1,1))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(vd*Conjg(Ye(j1,j3))*Conjg(ZE(gt2,j2))*Conjg(ZH(gt1,1))*Ye(j1,j2)*ZE(gt3,j3))
+res = res-(vd*Conjg(Ye(j1,j3))*Conjg(ZE(gt2,j2))*Ye(j1,j2)*ZE(gt3,j3)*ZH(gt1,1))
 End Do 
 End Do 
 End Do 
@@ -16072,9 +16056,9 @@ Subroutine CouplinghhSucSu2L(gt1,gt2,gt3,Mu,Yu,Tu,eta,vu,ZU,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Real(dp), Intent(in) :: eta,vu
+Real(dp), Intent(in) :: eta,vu,ZH(4,4)
 
-Complex(dp), Intent(in) :: Mu,Yu(3,3),Tu(3,3),ZU(6,6),ZH(4,4)
+Complex(dp), Intent(in) :: Mu,Yu(3,3),Tu(3,3),ZU(6,6)
 
 Complex(dp), Intent(out) :: res 
  
@@ -16109,55 +16093,55 @@ End If
 res = 0._dp 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(Conjg(Mu)*Conjg(ZH(gt1,1))*Conjg(ZU(gt2,j2))*Yu(j1,j2)*ZU(gt3,3 + j1))/sqrt(2._dp)
+res = res+(Conjg(Mu)*Conjg(ZU(gt2,j2))*Yu(j1,j2)*ZH(gt1,1)*ZU(gt3,3 + j1))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(-1*(0.,1._dp)*Conjg(Mu)*Conjg(ZH(gt1,3))*Conjg(ZU(gt2,j2))*Yu(j1,j2)*ZU(gt3,3 + j1))/sqrt(2._dp)
+res = res+(-1*(0.,1._dp)*Conjg(Mu)*Conjg(ZU(gt2,j2))*Yu(j1,j2)*ZH(gt1,3)*ZU(gt3,3 + j1))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(Mu*Conjg(Yu(j1,j2))*Conjg(ZH(gt1,1))*Conjg(ZU(gt2,3 + j1))*ZU(gt3,j2))/sqrt(2._dp)
+res = res+(Mu*Conjg(Yu(j1,j2))*Conjg(ZU(gt2,3 + j1))*ZH(gt1,1)*ZU(gt3,j2))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*Mu*Conjg(Yu(j1,j2))*Conjg(ZH(gt1,3))*Conjg(ZU(gt2,3 + j1))*ZU(gt3,j2))/sqrt(2._dp)
+res = res-((Conjg(ZU(gt2,3 + j1))*Conjg(Tu(j1,j2))*ZH(gt1,2)*ZU(gt3,j2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta)))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-((Conjg(ZH(gt1,2))*Conjg(ZU(gt2,3 + j1))*Conjg(Tu(j1,j2))*ZU(gt3,j2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta)))
+res = res+((0._dp,1._dp)*Mu*Conjg(Yu(j1,j2))*Conjg(ZU(gt2,3 + j1))*ZH(gt1,3)*ZU(gt3,j2))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*Conjg(ZH(gt1,4))*Conjg(ZU(gt2,3 + j1))*Conjg(Tu(j1,j2))*ZU(gt3,j2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+res = res+((0._dp,1._dp)*Conjg(ZU(gt2,3 + j1))*Conjg(Tu(j1,j2))*ZH(gt1,4)*ZU(gt3,j2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-((exp((0._dp,1._dp)*eta)*Conjg(ZH(gt1,2))*Conjg(ZU(gt2,j2))*ZU(gt3,3 + j1)*Tu(j1,j2))/sqrt(2._dp))
+res = res-((exp((0._dp,1._dp)*eta)*Conjg(ZU(gt2,j2))*ZH(gt1,2)*ZU(gt3,3 + j1)*Tu(j1,j2))/sqrt(2._dp))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(-1*(0.,1._dp)*exp((0._dp,1._dp)*eta)*Conjg(ZH(gt1,4))*Conjg(ZU(gt2,j2))*ZU(gt3,3 + j1)*Tu(j1,j2))/sqrt(2._dp)
+res = res+(-1*(0.,1._dp)*exp((0._dp,1._dp)*eta)*Conjg(ZU(gt2,j2))*ZH(gt1,4)*ZU(gt3,3 + j1)*Tu(j1,j2))/sqrt(2._dp)
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(vu*Conjg(Yu(j3,j1))*Conjg(ZH(gt1,2))*Conjg(ZU(gt2,3 + j3))*Yu(j2,j1)*ZU(gt3,3 + j2))
+res = res-(vu*Conjg(Yu(j3,j1))*Conjg(ZU(gt2,3 + j3))*Yu(j2,j1)*ZH(gt1,2)*ZU(gt3,3 + j2))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(vu*Conjg(Yu(j1,j3))*Conjg(ZH(gt1,2))*Conjg(ZU(gt2,j2))*Yu(j1,j2)*ZU(gt3,j3))
+res = res-(vu*Conjg(Yu(j1,j3))*Conjg(ZU(gt2,j2))*Yu(j1,j2)*ZH(gt1,2)*ZU(gt3,j3))
 End Do 
 End Do 
 End Do 
@@ -17265,7 +17249,9 @@ Subroutine CouplingcFdFdhh2L(gt1,gt2,gt3,Yd,ZH,ZDL,ZDR,resL,resR)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Complex(dp), Intent(in) :: Yd(3,3),ZH(4,4),ZDL(3,3),ZDR(3,3)
+Real(dp), Intent(in) :: ZH(4,4)
+
+Complex(dp), Intent(in) :: Yd(3,3),ZDL(3,3),ZDR(3,3)
 
 Complex(dp), Intent(out) :: resL, resR 
  
@@ -17300,23 +17286,23 @@ End If
 resL = 0._dp 
 Do j2 = 1,3
 Do j1 = 1,3
-resL = resL-((Conjg(ZDL(gt2,j2))*Conjg(ZDR(gt1,j1))*Conjg(ZH(gt3,1))*Yd(j1,j2))/sqrt(2._dp))
+resL = resL-((Conjg(ZDL(gt2,j2))*Conjg(ZDR(gt1,j1))*Yd(j1,j2)*ZH(gt3,1))/sqrt(2._dp))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-resL = resL+(-1*(0.,1._dp)*Conjg(ZDL(gt2,j2))*Conjg(ZDR(gt1,j1))*Conjg(ZH(gt3,3))*Yd(j1,j2))/sqrt(2._dp)
+resL = resL+(-1*(0.,1._dp)*Conjg(ZDL(gt2,j2))*Conjg(ZDR(gt1,j1))*Yd(j1,j2)*ZH(gt3,3))/sqrt(2._dp)
 End Do 
 End Do 
 resR = 0._dp 
 Do j2 = 1,3
 Do j1 = 1,3
-resR = resR-((Conjg(Yd(j1,j2))*Conjg(ZH(gt3,1))*ZDL(gt1,j2)*ZDR(gt2,j1))/sqrt(2._dp))
+resR = resR-((Conjg(Yd(j1,j2))*ZDL(gt1,j2)*ZDR(gt2,j1)*ZH(gt3,1))/sqrt(2._dp))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-resR = resR+((0._dp,1._dp)*Conjg(Yd(j1,j2))*Conjg(ZH(gt3,3))*ZDL(gt1,j2)*ZDR(gt2,j1))/sqrt(2._dp)
+resR = resR+((0._dp,1._dp)*Conjg(Yd(j1,j2))*ZDL(gt1,j2)*ZDR(gt2,j1)*ZH(gt3,3))/sqrt(2._dp)
 End Do 
 End Do 
 If ((Real(resL,dp).ne.Real(resL,dp)).or.(Real(resR,dp).ne.Real(resR,dp))) Then 
@@ -17458,7 +17444,9 @@ Subroutine CouplingcFeFehh2L(gt1,gt2,gt3,Ye,ZH,ZEL,ZER,resL,resR)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Complex(dp), Intent(in) :: Ye(3,3),ZH(4,4),ZEL(3,3),ZER(3,3)
+Real(dp), Intent(in) :: ZH(4,4)
+
+Complex(dp), Intent(in) :: Ye(3,3),ZEL(3,3),ZER(3,3)
 
 Complex(dp), Intent(out) :: resL, resR 
  
@@ -17493,23 +17481,23 @@ End If
 resL = 0._dp 
 Do j2 = 1,3
 Do j1 = 1,3
-resL = resL-((Conjg(ZEL(gt2,j2))*Conjg(ZER(gt1,j1))*Conjg(ZH(gt3,1))*Ye(j1,j2))/sqrt(2._dp))
+resL = resL-((Conjg(ZEL(gt2,j2))*Conjg(ZER(gt1,j1))*Ye(j1,j2)*ZH(gt3,1))/sqrt(2._dp))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-resL = resL+(-1*(0.,1._dp)*Conjg(ZEL(gt2,j2))*Conjg(ZER(gt1,j1))*Conjg(ZH(gt3,3))*Ye(j1,j2))/sqrt(2._dp)
+resL = resL+(-1*(0.,1._dp)*Conjg(ZEL(gt2,j2))*Conjg(ZER(gt1,j1))*Ye(j1,j2)*ZH(gt3,3))/sqrt(2._dp)
 End Do 
 End Do 
 resR = 0._dp 
 Do j2 = 1,3
 Do j1 = 1,3
-resR = resR-((Conjg(Ye(j1,j2))*Conjg(ZH(gt3,1))*ZEL(gt1,j2)*ZER(gt2,j1))/sqrt(2._dp))
+resR = resR-((Conjg(Ye(j1,j2))*ZEL(gt1,j2)*ZER(gt2,j1)*ZH(gt3,1))/sqrt(2._dp))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-resR = resR+((0._dp,1._dp)*Conjg(Ye(j1,j2))*Conjg(ZH(gt3,3))*ZEL(gt1,j2)*ZER(gt2,j1))/sqrt(2._dp)
+resR = resR+((0._dp,1._dp)*Conjg(Ye(j1,j2))*ZEL(gt1,j2)*ZER(gt2,j1)*ZH(gt3,3))/sqrt(2._dp)
 End Do 
 End Do 
 If ((Real(resL,dp).ne.Real(resL,dp)).or.(Real(resR,dp).ne.Real(resR,dp))) Then 
@@ -17686,9 +17674,9 @@ Subroutine CouplingcFuFuhh2L(gt1,gt2,gt3,Yu,eta,ZH,ZUL,ZUR,resL,resR)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Real(dp), Intent(in) :: eta
+Real(dp), Intent(in) :: eta,ZH(4,4)
 
-Complex(dp), Intent(in) :: Yu(3,3),ZH(4,4),ZUL(3,3),ZUR(3,3)
+Complex(dp), Intent(in) :: Yu(3,3),ZUL(3,3),ZUR(3,3)
 
 Complex(dp), Intent(out) :: resL, resR 
  
@@ -17723,23 +17711,23 @@ End If
 resL = 0._dp 
 Do j2 = 1,3
 Do j1 = 1,3
-resL = resL-((exp((0._dp,1._dp)*eta)*Conjg(ZH(gt3,2))*Conjg(ZUL(gt2,j2))*Conjg(ZUR(gt1,j1))*Yu(j1,j2))/sqrt(2._dp))
+resL = resL-((exp((0._dp,1._dp)*eta)*Conjg(ZUL(gt2,j2))*Conjg(ZUR(gt1,j1))*Yu(j1,j2)*ZH(gt3,2))/sqrt(2._dp))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-resL = resL+(-1*(0.,1._dp)*exp((0._dp,1._dp)*eta)*Conjg(ZH(gt3,4))*Conjg(ZUL(gt2,j2))*Conjg(ZUR(gt1,j1))*Yu(j1,j2))/sqrt(2._dp)
+resL = resL+(-1*(0.,1._dp)*exp((0._dp,1._dp)*eta)*Conjg(ZUL(gt2,j2))*Conjg(ZUR(gt1,j1))*Yu(j1,j2)*ZH(gt3,4))/sqrt(2._dp)
 End Do 
 End Do 
 resR = 0._dp 
 Do j2 = 1,3
 Do j1 = 1,3
-resR = resR-((Conjg(Yu(j1,j2))*Conjg(ZH(gt3,2))*ZUL(gt1,j2)*ZUR(gt2,j1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta)))
+resR = resR-((Conjg(Yu(j1,j2))*ZH(gt3,2)*ZUL(gt1,j2)*ZUR(gt2,j1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta)))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-resR = resR+((0._dp,1._dp)*Conjg(Yu(j1,j2))*Conjg(ZH(gt3,4))*ZUL(gt1,j2)*ZUR(gt2,j1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+resR = resR+((0._dp,1._dp)*Conjg(Yu(j1,j2))*ZH(gt3,4)*ZUL(gt1,j2)*ZUR(gt2,j1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End Do 
 If ((Real(resL,dp).ne.Real(resL,dp)).or.(Real(resR,dp).ne.Real(resR,dp))) Then 
@@ -18226,11 +18214,11 @@ Subroutine CouplingsFor2LPole3(Mu,Yd,Td,eta,vd,ZD,ZH,Ye,Te,ZE,Yu,Tu,vu,         
 & cplcFuFuVGR,cplGluGluVGL,cplGluGluVGR)
 
 Implicit None 
-Real(dp), Intent(in) :: eta,vd,vu,g3
+Real(dp), Intent(in) :: eta,vd,ZH(4,4),vu,g3
 
-Complex(dp), Intent(in) :: Mu,Yd(3,3),Td(3,3),ZD(6,6),ZH(4,4),Ye(3,3),Te(3,3),ZE(6,6),Yu(3,3),Tu(3,3),           & 
-& ZU(6,6),ZP(2,2),ZV(3,3),UM(2,2),UP(2,2),ZUL(3,3),ZUR(3,3),ZDL(3,3),ZDR(3,3),           & 
-& ZER(3,3),ZN(4,4),ZEL(3,3),pG
+Complex(dp), Intent(in) :: Mu,Yd(3,3),Td(3,3),ZD(6,6),Ye(3,3),Te(3,3),ZE(6,6),Yu(3,3),Tu(3,3),ZU(6,6),           & 
+& ZP(2,2),ZV(3,3),UM(2,2),UP(2,2),ZUL(3,3),ZUR(3,3),ZDL(3,3),ZDR(3,3),ZER(3,3),          & 
+& ZN(4,4),ZEL(3,3),pG
 
 Complex(dp), Intent(out) :: cplhhSdcSd(4,6,6),cplhhSecSe(4,6,6),cplhhSucSu(4,6,6),cplHpmSucSd(2,6,6),             & 
 & cplHpmSvcSe(2,3,6),cplSdcHpmcSu(6,2,6),cplSecHpmcSv(6,2,3),cplSdcSdVG(6,6),            & 
@@ -18707,9 +18695,9 @@ Subroutine CouplinghhSdcSd2LP(gt1,gt2,gt3,Mu,Yd,Td,eta,vd,ZD,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Real(dp), Intent(in) :: eta,vd
+Real(dp), Intent(in) :: eta,vd,ZH(4,4)
 
-Complex(dp), Intent(in) :: Mu,Yd(3,3),Td(3,3),ZD(6,6),ZH(4,4)
+Complex(dp), Intent(in) :: Mu,Yd(3,3),Td(3,3),ZD(6,6)
 
 Complex(dp), Intent(out) :: res 
  
@@ -18744,55 +18732,55 @@ End If
 res = 0._dp 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(Conjg(Mu)*Conjg(ZD(gt2,j2))*Conjg(ZH(gt1,2))*Yd(j1,j2)*ZD(gt3,3 + j1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+res = res-((Conjg(ZD(gt2,3 + j1))*Conjg(Td(j1,j2))*ZD(gt3,j2)*ZH(gt1,1))/sqrt(2._dp))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(-1*(0.,1._dp)*Conjg(Mu)*Conjg(ZD(gt2,j2))*Conjg(ZH(gt1,4))*Yd(j1,j2)*ZD(gt3,3 + j1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+res = res+(Conjg(Mu)*Conjg(ZD(gt2,j2))*Yd(j1,j2)*ZD(gt3,3 + j1)*ZH(gt1,2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(exp((0._dp,1._dp)*eta)*Mu*Conjg(Yd(j1,j2))*Conjg(ZD(gt2,3 + j1))*Conjg(ZH(gt1,2))*ZD(gt3,j2))/sqrt(2._dp)
+res = res+(exp((0._dp,1._dp)*eta)*Mu*Conjg(Yd(j1,j2))*Conjg(ZD(gt2,3 + j1))*ZD(gt3,j2)*ZH(gt1,2))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*exp((0._dp,1._dp)*eta)*Mu*Conjg(Yd(j1,j2))*Conjg(ZD(gt2,3 + j1))*Conjg(ZH(gt1,4))*ZD(gt3,j2))/sqrt(2._dp)
+res = res+((0._dp,1._dp)*Conjg(ZD(gt2,3 + j1))*Conjg(Td(j1,j2))*ZD(gt3,j2)*ZH(gt1,3))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-((Conjg(ZD(gt2,3 + j1))*Conjg(ZH(gt1,1))*Conjg(Td(j1,j2))*ZD(gt3,j2))/sqrt(2._dp))
+res = res+(-1*(0.,1._dp)*Conjg(Mu)*Conjg(ZD(gt2,j2))*Yd(j1,j2)*ZD(gt3,3 + j1)*ZH(gt1,4))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*Conjg(ZD(gt2,3 + j1))*Conjg(ZH(gt1,3))*Conjg(Td(j1,j2))*ZD(gt3,j2))/sqrt(2._dp)
+res = res+((0._dp,1._dp)*exp((0._dp,1._dp)*eta)*Mu*Conjg(Yd(j1,j2))*Conjg(ZD(gt2,3 + j1))*ZD(gt3,j2)*ZH(gt1,4))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-((Conjg(ZD(gt2,j2))*Conjg(ZH(gt1,1))*ZD(gt3,3 + j1)*Td(j1,j2))/sqrt(2._dp))
+res = res-((Conjg(ZD(gt2,j2))*ZD(gt3,3 + j1)*ZH(gt1,1)*Td(j1,j2))/sqrt(2._dp))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(-1*(0.,1._dp)*Conjg(ZD(gt2,j2))*Conjg(ZH(gt1,3))*ZD(gt3,3 + j1)*Td(j1,j2))/sqrt(2._dp)
+res = res+(-1*(0.,1._dp)*Conjg(ZD(gt2,j2))*ZD(gt3,3 + j1)*ZH(gt1,3)*Td(j1,j2))/sqrt(2._dp)
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(vd*Conjg(Yd(j3,j1))*Conjg(ZD(gt2,3 + j3))*Conjg(ZH(gt1,1))*Yd(j2,j1)*ZD(gt3,3 + j2))
+res = res-(vd*Conjg(Yd(j3,j1))*Conjg(ZD(gt2,3 + j3))*Yd(j2,j1)*ZD(gt3,3 + j2)*ZH(gt1,1))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(vd*Conjg(Yd(j1,j3))*Conjg(ZD(gt2,j2))*Conjg(ZH(gt1,1))*Yd(j1,j2)*ZD(gt3,j3))
+res = res-(vd*Conjg(Yd(j1,j3))*Conjg(ZD(gt2,j2))*Yd(j1,j2)*ZD(gt3,j3)*ZH(gt1,1))
 End Do 
 End Do 
 End Do 
@@ -18812,9 +18800,9 @@ Subroutine CouplinghhSecSe2LP(gt1,gt2,gt3,Mu,Ye,Te,eta,vd,ZE,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Real(dp), Intent(in) :: eta,vd
+Real(dp), Intent(in) :: eta,vd,ZH(4,4)
 
-Complex(dp), Intent(in) :: Mu,Ye(3,3),Te(3,3),ZE(6,6),ZH(4,4)
+Complex(dp), Intent(in) :: Mu,Ye(3,3),Te(3,3),ZE(6,6)
 
 Complex(dp), Intent(out) :: res 
  
@@ -18849,55 +18837,55 @@ End If
 res = 0._dp 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(Conjg(Mu)*Conjg(ZE(gt2,j2))*Conjg(ZH(gt1,2))*Ye(j1,j2)*ZE(gt3,3 + j1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+res = res-((Conjg(ZE(gt2,3 + j1))*Conjg(Te(j1,j2))*ZE(gt3,j2)*ZH(gt1,1))/sqrt(2._dp))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(-1*(0.,1._dp)*Conjg(Mu)*Conjg(ZE(gt2,j2))*Conjg(ZH(gt1,4))*Ye(j1,j2)*ZE(gt3,3 + j1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+res = res+(Conjg(Mu)*Conjg(ZE(gt2,j2))*Ye(j1,j2)*ZE(gt3,3 + j1)*ZH(gt1,2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(exp((0._dp,1._dp)*eta)*Mu*Conjg(Ye(j1,j2))*Conjg(ZE(gt2,3 + j1))*Conjg(ZH(gt1,2))*ZE(gt3,j2))/sqrt(2._dp)
+res = res+(exp((0._dp,1._dp)*eta)*Mu*Conjg(Ye(j1,j2))*Conjg(ZE(gt2,3 + j1))*ZE(gt3,j2)*ZH(gt1,2))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*exp((0._dp,1._dp)*eta)*Mu*Conjg(Ye(j1,j2))*Conjg(ZE(gt2,3 + j1))*Conjg(ZH(gt1,4))*ZE(gt3,j2))/sqrt(2._dp)
+res = res+((0._dp,1._dp)*Conjg(ZE(gt2,3 + j1))*Conjg(Te(j1,j2))*ZE(gt3,j2)*ZH(gt1,3))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-((Conjg(ZE(gt2,3 + j1))*Conjg(ZH(gt1,1))*Conjg(Te(j1,j2))*ZE(gt3,j2))/sqrt(2._dp))
+res = res+(-1*(0.,1._dp)*Conjg(Mu)*Conjg(ZE(gt2,j2))*Ye(j1,j2)*ZE(gt3,3 + j1)*ZH(gt1,4))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*Conjg(ZE(gt2,3 + j1))*Conjg(ZH(gt1,3))*Conjg(Te(j1,j2))*ZE(gt3,j2))/sqrt(2._dp)
+res = res+((0._dp,1._dp)*exp((0._dp,1._dp)*eta)*Mu*Conjg(Ye(j1,j2))*Conjg(ZE(gt2,3 + j1))*ZE(gt3,j2)*ZH(gt1,4))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-((Conjg(ZE(gt2,j2))*Conjg(ZH(gt1,1))*ZE(gt3,3 + j1)*Te(j1,j2))/sqrt(2._dp))
+res = res-((Conjg(ZE(gt2,j2))*ZE(gt3,3 + j1)*ZH(gt1,1)*Te(j1,j2))/sqrt(2._dp))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(-1*(0.,1._dp)*Conjg(ZE(gt2,j2))*Conjg(ZH(gt1,3))*ZE(gt3,3 + j1)*Te(j1,j2))/sqrt(2._dp)
+res = res+(-1*(0.,1._dp)*Conjg(ZE(gt2,j2))*ZE(gt3,3 + j1)*ZH(gt1,3)*Te(j1,j2))/sqrt(2._dp)
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(vd*Conjg(Ye(j3,j1))*Conjg(ZE(gt2,3 + j3))*Conjg(ZH(gt1,1))*Ye(j2,j1)*ZE(gt3,3 + j2))
+res = res-(vd*Conjg(Ye(j3,j1))*Conjg(ZE(gt2,3 + j3))*Ye(j2,j1)*ZE(gt3,3 + j2)*ZH(gt1,1))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(vd*Conjg(Ye(j1,j3))*Conjg(ZE(gt2,j2))*Conjg(ZH(gt1,1))*Ye(j1,j2)*ZE(gt3,j3))
+res = res-(vd*Conjg(Ye(j1,j3))*Conjg(ZE(gt2,j2))*Ye(j1,j2)*ZE(gt3,j3)*ZH(gt1,1))
 End Do 
 End Do 
 End Do 
@@ -18917,9 +18905,9 @@ Subroutine CouplinghhSucSu2LP(gt1,gt2,gt3,Mu,Yu,Tu,eta,vu,ZU,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Real(dp), Intent(in) :: eta,vu
+Real(dp), Intent(in) :: eta,vu,ZH(4,4)
 
-Complex(dp), Intent(in) :: Mu,Yu(3,3),Tu(3,3),ZU(6,6),ZH(4,4)
+Complex(dp), Intent(in) :: Mu,Yu(3,3),Tu(3,3),ZU(6,6)
 
 Complex(dp), Intent(out) :: res 
  
@@ -18954,55 +18942,55 @@ End If
 res = 0._dp 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(Conjg(Mu)*Conjg(ZH(gt1,1))*Conjg(ZU(gt2,j2))*Yu(j1,j2)*ZU(gt3,3 + j1))/sqrt(2._dp)
+res = res+(Conjg(Mu)*Conjg(ZU(gt2,j2))*Yu(j1,j2)*ZH(gt1,1)*ZU(gt3,3 + j1))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(-1*(0.,1._dp)*Conjg(Mu)*Conjg(ZH(gt1,3))*Conjg(ZU(gt2,j2))*Yu(j1,j2)*ZU(gt3,3 + j1))/sqrt(2._dp)
+res = res+(-1*(0.,1._dp)*Conjg(Mu)*Conjg(ZU(gt2,j2))*Yu(j1,j2)*ZH(gt1,3)*ZU(gt3,3 + j1))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(Mu*Conjg(Yu(j1,j2))*Conjg(ZH(gt1,1))*Conjg(ZU(gt2,3 + j1))*ZU(gt3,j2))/sqrt(2._dp)
+res = res+(Mu*Conjg(Yu(j1,j2))*Conjg(ZU(gt2,3 + j1))*ZH(gt1,1)*ZU(gt3,j2))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*Mu*Conjg(Yu(j1,j2))*Conjg(ZH(gt1,3))*Conjg(ZU(gt2,3 + j1))*ZU(gt3,j2))/sqrt(2._dp)
+res = res-((Conjg(ZU(gt2,3 + j1))*Conjg(Tu(j1,j2))*ZH(gt1,2)*ZU(gt3,j2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta)))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-((Conjg(ZH(gt1,2))*Conjg(ZU(gt2,3 + j1))*Conjg(Tu(j1,j2))*ZU(gt3,j2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta)))
+res = res+((0._dp,1._dp)*Mu*Conjg(Yu(j1,j2))*Conjg(ZU(gt2,3 + j1))*ZH(gt1,3)*ZU(gt3,j2))/sqrt(2._dp)
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*Conjg(ZH(gt1,4))*Conjg(ZU(gt2,3 + j1))*Conjg(Tu(j1,j2))*ZU(gt3,j2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+res = res+((0._dp,1._dp)*Conjg(ZU(gt2,3 + j1))*Conjg(Tu(j1,j2))*ZH(gt1,4)*ZU(gt3,j2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-((exp((0._dp,1._dp)*eta)*Conjg(ZH(gt1,2))*Conjg(ZU(gt2,j2))*ZU(gt3,3 + j1)*Tu(j1,j2))/sqrt(2._dp))
+res = res-((exp((0._dp,1._dp)*eta)*Conjg(ZU(gt2,j2))*ZH(gt1,2)*ZU(gt3,3 + j1)*Tu(j1,j2))/sqrt(2._dp))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(-1*(0.,1._dp)*exp((0._dp,1._dp)*eta)*Conjg(ZH(gt1,4))*Conjg(ZU(gt2,j2))*ZU(gt3,3 + j1)*Tu(j1,j2))/sqrt(2._dp)
+res = res+(-1*(0.,1._dp)*exp((0._dp,1._dp)*eta)*Conjg(ZU(gt2,j2))*ZH(gt1,4)*ZU(gt3,3 + j1)*Tu(j1,j2))/sqrt(2._dp)
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(vu*Conjg(Yu(j3,j1))*Conjg(ZH(gt1,2))*Conjg(ZU(gt2,3 + j3))*Yu(j2,j1)*ZU(gt3,3 + j2))
+res = res-(vu*Conjg(Yu(j3,j1))*Conjg(ZU(gt2,3 + j3))*Yu(j2,j1)*ZH(gt1,2)*ZU(gt3,3 + j2))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(vu*Conjg(Yu(j1,j3))*Conjg(ZH(gt1,2))*Conjg(ZU(gt2,j2))*Yu(j1,j2)*ZU(gt3,j3))
+res = res-(vu*Conjg(Yu(j1,j3))*Conjg(ZU(gt2,j2))*Yu(j1,j2)*ZH(gt1,2)*ZU(gt3,j3))
 End Do 
 End Do 
 End Do 
@@ -20111,7 +20099,9 @@ Subroutine CouplingcFdFdhh2LP(gt1,gt2,gt3,Yd,ZH,ZDL,ZDR,resL,resR)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Complex(dp), Intent(in) :: Yd(3,3),ZH(4,4),ZDL(3,3),ZDR(3,3)
+Real(dp), Intent(in) :: ZH(4,4)
+
+Complex(dp), Intent(in) :: Yd(3,3),ZDL(3,3),ZDR(3,3)
 
 Complex(dp), Intent(out) :: resL, resR 
  
@@ -20146,23 +20136,23 @@ End If
 resL = 0._dp 
 Do j2 = 1,3
 Do j1 = 1,3
-resL = resL-((Conjg(ZDL(gt2,j2))*Conjg(ZDR(gt1,j1))*Conjg(ZH(gt3,1))*Yd(j1,j2))/sqrt(2._dp))
+resL = resL-((Conjg(ZDL(gt2,j2))*Conjg(ZDR(gt1,j1))*Yd(j1,j2)*ZH(gt3,1))/sqrt(2._dp))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-resL = resL+(-1*(0.,1._dp)*Conjg(ZDL(gt2,j2))*Conjg(ZDR(gt1,j1))*Conjg(ZH(gt3,3))*Yd(j1,j2))/sqrt(2._dp)
+resL = resL+(-1*(0.,1._dp)*Conjg(ZDL(gt2,j2))*Conjg(ZDR(gt1,j1))*Yd(j1,j2)*ZH(gt3,3))/sqrt(2._dp)
 End Do 
 End Do 
 resR = 0._dp 
 Do j2 = 1,3
 Do j1 = 1,3
-resR = resR-((Conjg(Yd(j1,j2))*Conjg(ZH(gt3,1))*ZDL(gt1,j2)*ZDR(gt2,j1))/sqrt(2._dp))
+resR = resR-((Conjg(Yd(j1,j2))*ZDL(gt1,j2)*ZDR(gt2,j1)*ZH(gt3,1))/sqrt(2._dp))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-resR = resR+((0._dp,1._dp)*Conjg(Yd(j1,j2))*Conjg(ZH(gt3,3))*ZDL(gt1,j2)*ZDR(gt2,j1))/sqrt(2._dp)
+resR = resR+((0._dp,1._dp)*Conjg(Yd(j1,j2))*ZDL(gt1,j2)*ZDR(gt2,j1)*ZH(gt3,3))/sqrt(2._dp)
 End Do 
 End Do 
 If ((Real(resL,dp).ne.Real(resL,dp)).or.(Real(resR,dp).ne.Real(resR,dp))) Then 
@@ -20304,7 +20294,9 @@ Subroutine CouplingcFeFehh2LP(gt1,gt2,gt3,Ye,ZH,ZEL,ZER,resL,resR)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Complex(dp), Intent(in) :: Ye(3,3),ZH(4,4),ZEL(3,3),ZER(3,3)
+Real(dp), Intent(in) :: ZH(4,4)
+
+Complex(dp), Intent(in) :: Ye(3,3),ZEL(3,3),ZER(3,3)
 
 Complex(dp), Intent(out) :: resL, resR 
  
@@ -20339,23 +20331,23 @@ End If
 resL = 0._dp 
 Do j2 = 1,3
 Do j1 = 1,3
-resL = resL-((Conjg(ZEL(gt2,j2))*Conjg(ZER(gt1,j1))*Conjg(ZH(gt3,1))*Ye(j1,j2))/sqrt(2._dp))
+resL = resL-((Conjg(ZEL(gt2,j2))*Conjg(ZER(gt1,j1))*Ye(j1,j2)*ZH(gt3,1))/sqrt(2._dp))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-resL = resL+(-1*(0.,1._dp)*Conjg(ZEL(gt2,j2))*Conjg(ZER(gt1,j1))*Conjg(ZH(gt3,3))*Ye(j1,j2))/sqrt(2._dp)
+resL = resL+(-1*(0.,1._dp)*Conjg(ZEL(gt2,j2))*Conjg(ZER(gt1,j1))*Ye(j1,j2)*ZH(gt3,3))/sqrt(2._dp)
 End Do 
 End Do 
 resR = 0._dp 
 Do j2 = 1,3
 Do j1 = 1,3
-resR = resR-((Conjg(Ye(j1,j2))*Conjg(ZH(gt3,1))*ZEL(gt1,j2)*ZER(gt2,j1))/sqrt(2._dp))
+resR = resR-((Conjg(Ye(j1,j2))*ZEL(gt1,j2)*ZER(gt2,j1)*ZH(gt3,1))/sqrt(2._dp))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-resR = resR+((0._dp,1._dp)*Conjg(Ye(j1,j2))*Conjg(ZH(gt3,3))*ZEL(gt1,j2)*ZER(gt2,j1))/sqrt(2._dp)
+resR = resR+((0._dp,1._dp)*Conjg(Ye(j1,j2))*ZEL(gt1,j2)*ZER(gt2,j1)*ZH(gt3,3))/sqrt(2._dp)
 End Do 
 End Do 
 If ((Real(resL,dp).ne.Real(resL,dp)).or.(Real(resR,dp).ne.Real(resR,dp))) Then 
@@ -20532,9 +20524,9 @@ Subroutine CouplingcFuFuhh2LP(gt1,gt2,gt3,Yu,eta,ZH,ZUL,ZUR,resL,resR)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Real(dp), Intent(in) :: eta
+Real(dp), Intent(in) :: eta,ZH(4,4)
 
-Complex(dp), Intent(in) :: Yu(3,3),ZH(4,4),ZUL(3,3),ZUR(3,3)
+Complex(dp), Intent(in) :: Yu(3,3),ZUL(3,3),ZUR(3,3)
 
 Complex(dp), Intent(out) :: resL, resR 
  
@@ -20569,23 +20561,23 @@ End If
 resL = 0._dp 
 Do j2 = 1,3
 Do j1 = 1,3
-resL = resL-((exp((0._dp,1._dp)*eta)*Conjg(ZH(gt3,2))*Conjg(ZUL(gt2,j2))*Conjg(ZUR(gt1,j1))*Yu(j1,j2))/sqrt(2._dp))
+resL = resL-((exp((0._dp,1._dp)*eta)*Conjg(ZUL(gt2,j2))*Conjg(ZUR(gt1,j1))*Yu(j1,j2)*ZH(gt3,2))/sqrt(2._dp))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-resL = resL+(-1*(0.,1._dp)*exp((0._dp,1._dp)*eta)*Conjg(ZH(gt3,4))*Conjg(ZUL(gt2,j2))*Conjg(ZUR(gt1,j1))*Yu(j1,j2))/sqrt(2._dp)
+resL = resL+(-1*(0.,1._dp)*exp((0._dp,1._dp)*eta)*Conjg(ZUL(gt2,j2))*Conjg(ZUR(gt1,j1))*Yu(j1,j2)*ZH(gt3,4))/sqrt(2._dp)
 End Do 
 End Do 
 resR = 0._dp 
 Do j2 = 1,3
 Do j1 = 1,3
-resR = resR-((Conjg(Yu(j1,j2))*Conjg(ZH(gt3,2))*ZUL(gt1,j2)*ZUR(gt2,j1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta)))
+resR = resR-((Conjg(Yu(j1,j2))*ZH(gt3,2)*ZUL(gt1,j2)*ZUR(gt2,j1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta)))
 End Do 
 End Do 
 Do j2 = 1,3
 Do j1 = 1,3
-resR = resR+((0._dp,1._dp)*Conjg(Yu(j1,j2))*Conjg(ZH(gt3,4))*ZUL(gt1,j2)*ZUR(gt2,j1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+resR = resR+((0._dp,1._dp)*Conjg(Yu(j1,j2))*ZH(gt3,4)*ZUL(gt1,j2)*ZUR(gt2,j1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End Do 
 If ((Real(resL,dp).ne.Real(resL,dp)).or.(Real(resR,dp).ne.Real(resR,dp))) Then 
@@ -21064,9 +21056,9 @@ Subroutine CouplingsFor2LPole4(Yd,ZD,ZH,Ye,ZE,Yu,ZU,eta,ZP,ZV,g3,cplhhhhSdcSd,  
 & cplSuSucSucSu)
 
 Implicit None 
-Real(dp), Intent(in) :: eta,g3
+Real(dp), Intent(in) :: ZH(4,4),eta,g3
 
-Complex(dp), Intent(in) :: Yd(3,3),ZD(6,6),ZH(4,4),Ye(3,3),ZE(6,6),Yu(3,3),ZU(6,6),ZP(2,2),ZV(3,3)
+Complex(dp), Intent(in) :: Yd(3,3),ZD(6,6),Ye(3,3),ZE(6,6),Yu(3,3),ZU(6,6),ZP(2,2),ZV(3,3)
 
 Complex(dp), Intent(out) :: cplhhhhSdcSd(4,4,6,6),cplhhhhSecSe(4,4,6,6),cplhhhhSucSu(4,4,6,6),cplhhHpmSucSd(4,2,6,6),& 
 & cplhhHpmSvcSe(4,2,3,6),cplhhSdcHpmcSu(4,6,2,6),cplhhSecHpmcSv(4,6,2,3),cplHpmSdcHpmcSd(2,6,2,6),& 
@@ -21334,7 +21326,9 @@ Subroutine CouplinghhhhSdcSd2LP(gt1,gt2,gt3,gt4,Yd,ZD,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3,gt4
-Complex(dp), Intent(in) :: Yd(3,3),ZD(6,6),ZH(4,4)
+Real(dp), Intent(in) :: ZH(4,4)
+
+Complex(dp), Intent(in) :: Yd(3,3),ZD(6,6)
 
 Complex(dp), Intent(out) :: res 
  
@@ -21378,28 +21372,28 @@ res = 0._dp
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(Conjg(Yd(j3,j1))*Conjg(ZD(gt3,3 + j3))*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Yd(j2,j1)*ZD(gt4,3 + j2))
+res = res-(Conjg(Yd(j3,j1))*Conjg(ZD(gt3,3 + j3))*Yd(j2,j1)*ZD(gt4,3 + j2)*ZH(gt1,1)*ZH(gt2,1))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(Conjg(Yd(j3,j1))*Conjg(ZD(gt3,3 + j3))*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Yd(j2,j1)*ZD(gt4,3 + j2))
+res = res-(Conjg(Yd(j1,j3))*Conjg(ZD(gt3,j2))*Yd(j1,j2)*ZD(gt4,j3)*ZH(gt1,1)*ZH(gt2,1))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(Conjg(Yd(j1,j3))*Conjg(ZD(gt3,j2))*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Yd(j1,j2)*ZD(gt4,j3))
+res = res-(Conjg(Yd(j3,j1))*Conjg(ZD(gt3,3 + j3))*Yd(j2,j1)*ZD(gt4,3 + j2)*ZH(gt1,3)*ZH(gt2,3))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(Conjg(Yd(j1,j3))*Conjg(ZD(gt3,j2))*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Yd(j1,j2)*ZD(gt4,j3))
+res = res-(Conjg(Yd(j1,j3))*Conjg(ZD(gt3,j2))*Yd(j1,j2)*ZD(gt4,j3)*ZH(gt1,3)*ZH(gt2,3))
 End Do 
 End Do 
 End Do 
@@ -21419,7 +21413,9 @@ Subroutine CouplinghhhhSecSe2LP(gt1,gt2,gt3,gt4,Ye,ZE,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3,gt4
-Complex(dp), Intent(in) :: Ye(3,3),ZE(6,6),ZH(4,4)
+Real(dp), Intent(in) :: ZH(4,4)
+
+Complex(dp), Intent(in) :: Ye(3,3),ZE(6,6)
 
 Complex(dp), Intent(out) :: res 
  
@@ -21463,28 +21459,28 @@ res = 0._dp
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(Conjg(Ye(j3,j1))*Conjg(ZE(gt3,3 + j3))*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Ye(j2,j1)*ZE(gt4,3 + j2))
+res = res-(Conjg(Ye(j3,j1))*Conjg(ZE(gt3,3 + j3))*Ye(j2,j1)*ZE(gt4,3 + j2)*ZH(gt1,1)*ZH(gt2,1))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(Conjg(Ye(j3,j1))*Conjg(ZE(gt3,3 + j3))*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Ye(j2,j1)*ZE(gt4,3 + j2))
+res = res-(Conjg(Ye(j1,j3))*Conjg(ZE(gt3,j2))*Ye(j1,j2)*ZE(gt4,j3)*ZH(gt1,1)*ZH(gt2,1))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(Conjg(Ye(j1,j3))*Conjg(ZE(gt3,j2))*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Ye(j1,j2)*ZE(gt4,j3))
+res = res-(Conjg(Ye(j3,j1))*Conjg(ZE(gt3,3 + j3))*Ye(j2,j1)*ZE(gt4,3 + j2)*ZH(gt1,3)*ZH(gt2,3))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(Conjg(Ye(j1,j3))*Conjg(ZE(gt3,j2))*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Ye(j1,j2)*ZE(gt4,j3))
+res = res-(Conjg(Ye(j1,j3))*Conjg(ZE(gt3,j2))*Ye(j1,j2)*ZE(gt4,j3)*ZH(gt1,3)*ZH(gt2,3))
 End Do 
 End Do 
 End Do 
@@ -21504,7 +21500,9 @@ Subroutine CouplinghhhhSucSu2LP(gt1,gt2,gt3,gt4,Yu,ZU,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3,gt4
-Complex(dp), Intent(in) :: Yu(3,3),ZU(6,6),ZH(4,4)
+Real(dp), Intent(in) :: ZH(4,4)
+
+Complex(dp), Intent(in) :: Yu(3,3),ZU(6,6)
 
 Complex(dp), Intent(out) :: res 
  
@@ -21548,28 +21546,28 @@ res = 0._dp
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(Conjg(Yu(j3,j1))*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Conjg(ZU(gt3,3 + j3))*Yu(j2,j1)*ZU(gt4,3 + j2))
+res = res-(Conjg(Yu(j3,j1))*Conjg(ZU(gt3,3 + j3))*Yu(j2,j1)*ZH(gt1,2)*ZH(gt2,2)*ZU(gt4,3 + j2))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(Conjg(Yu(j3,j1))*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Conjg(ZU(gt3,3 + j3))*Yu(j2,j1)*ZU(gt4,3 + j2))
+res = res-(Conjg(Yu(j3,j1))*Conjg(ZU(gt3,3 + j3))*Yu(j2,j1)*ZH(gt1,4)*ZH(gt2,4)*ZU(gt4,3 + j2))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(Conjg(Yu(j1,j3))*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Conjg(ZU(gt3,j2))*Yu(j1,j2)*ZU(gt4,j3))
+res = res-(Conjg(Yu(j1,j3))*Conjg(ZU(gt3,j2))*Yu(j1,j2)*ZH(gt1,2)*ZH(gt2,2)*ZU(gt4,j3))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(Conjg(Yu(j1,j3))*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Conjg(ZU(gt3,j2))*Yu(j1,j2)*ZU(gt4,j3))
+res = res-(Conjg(Yu(j1,j3))*Conjg(ZU(gt3,j2))*Yu(j1,j2)*ZH(gt1,4)*ZH(gt2,4)*ZU(gt4,j3))
 End Do 
 End Do 
 End Do 
@@ -21589,9 +21587,9 @@ Subroutine CouplinghhHpmSucSd2LP(gt1,gt2,gt3,gt4,Yd,Yu,eta,ZD,ZU,ZH,ZP,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3,gt4
-Real(dp), Intent(in) :: eta
+Real(dp), Intent(in) :: eta,ZH(4,4)
 
-Complex(dp), Intent(in) :: Yd(3,3),Yu(3,3),ZD(6,6),ZU(6,6),ZH(4,4),ZP(2,2)
+Complex(dp), Intent(in) :: Yd(3,3),Yu(3,3),ZD(6,6),ZU(6,6),ZP(2,2)
 
 Complex(dp), Intent(out) :: res 
  
@@ -21635,56 +21633,56 @@ res = 0._dp
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(Conjg(Yu(j3,j1))*Conjg(ZH(gt1,2))*Conjg(ZP(gt2,1))*Conjg(ZU(gt3,3 + j3))*Yd(j2,j1)*ZD(gt4,3 + j2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+res = res+(Conjg(Yu(j3,j1))*Conjg(ZP(gt2,2))*Conjg(ZU(gt3,3 + j3))*Yd(j2,j1)*ZD(gt4,3 + j2)*ZH(gt1,1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(-1*(0.,1._dp)*Conjg(Yu(j3,j1))*Conjg(ZH(gt1,4))*Conjg(ZP(gt2,1))*Conjg(ZU(gt3,3 + j3))*Yd(j2,j1)*ZD(gt4,3 + j2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+res = res+(Conjg(Yd(j1,j3))*Conjg(ZP(gt2,1))*Conjg(ZU(gt3,j2))*Yd(j1,j2)*ZD(gt4,j3)*ZH(gt1,1))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(Conjg(Yu(j3,j1))*Conjg(ZH(gt1,1))*Conjg(ZP(gt2,2))*Conjg(ZU(gt3,3 + j3))*Yd(j2,j1)*ZD(gt4,3 + j2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+res = res+(Conjg(Yu(j3,j1))*Conjg(ZP(gt2,1))*Conjg(ZU(gt3,3 + j3))*Yd(j2,j1)*ZD(gt4,3 + j2)*ZH(gt1,2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*Conjg(Yu(j3,j1))*Conjg(ZH(gt1,3))*Conjg(ZP(gt2,2))*Conjg(ZU(gt3,3 + j3))*Yd(j2,j1)*ZD(gt4,3 + j2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+res = res+(Conjg(Yu(j1,j3))*Conjg(ZP(gt2,2))*Conjg(ZU(gt3,j2))*Yu(j1,j2)*ZD(gt4,j3)*ZH(gt1,2))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(Conjg(Yd(j1,j3))*Conjg(ZH(gt1,1))*Conjg(ZP(gt2,1))*Conjg(ZU(gt3,j2))*Yd(j1,j2)*ZD(gt4,j3))/sqrt(2._dp)
+res = res+((0._dp,1._dp)*Conjg(Yu(j3,j1))*Conjg(ZP(gt2,2))*Conjg(ZU(gt3,3 + j3))*Yd(j2,j1)*ZD(gt4,3 + j2)*ZH(gt1,3))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(-1*(0.,1._dp)*Conjg(Yd(j1,j3))*Conjg(ZH(gt1,3))*Conjg(ZP(gt2,1))*Conjg(ZU(gt3,j2))*Yd(j1,j2)*ZD(gt4,j3))/sqrt(2._dp)
+res = res+(-1*(0.,1._dp)*Conjg(Yd(j1,j3))*Conjg(ZP(gt2,1))*Conjg(ZU(gt3,j2))*Yd(j1,j2)*ZD(gt4,j3)*ZH(gt1,3))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(Conjg(Yu(j1,j3))*Conjg(ZH(gt1,2))*Conjg(ZP(gt2,2))*Conjg(ZU(gt3,j2))*Yu(j1,j2)*ZD(gt4,j3))/sqrt(2._dp)
+res = res+(-1*(0.,1._dp)*Conjg(Yu(j3,j1))*Conjg(ZP(gt2,1))*Conjg(ZU(gt3,3 + j3))*Yd(j2,j1)*ZD(gt4,3 + j2)*ZH(gt1,4))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*Conjg(Yu(j1,j3))*Conjg(ZH(gt1,4))*Conjg(ZP(gt2,2))*Conjg(ZU(gt3,j2))*Yu(j1,j2)*ZD(gt4,j3))/sqrt(2._dp)
+res = res+((0._dp,1._dp)*Conjg(Yu(j1,j3))*Conjg(ZP(gt2,2))*Conjg(ZU(gt3,j2))*Yu(j1,j2)*ZD(gt4,j3)*ZH(gt1,4))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
@@ -21704,7 +21702,9 @@ Subroutine CouplinghhHpmSvcSe2LP(gt1,gt2,gt3,gt4,Ye,ZE,ZV,ZH,ZP,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3,gt4
-Complex(dp), Intent(in) :: Ye(3,3),ZE(6,6),ZV(3,3),ZH(4,4),ZP(2,2)
+Real(dp), Intent(in) :: ZH(4,4)
+
+Complex(dp), Intent(in) :: Ye(3,3),ZE(6,6),ZV(3,3),ZP(2,2)
 
 Complex(dp), Intent(out) :: res 
  
@@ -21748,14 +21748,14 @@ res = 0._dp
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(Conjg(Ye(j1,j3))*Conjg(ZH(gt1,1))*Conjg(ZP(gt2,1))*Conjg(ZV(gt3,j2))*Ye(j1,j2)*ZE(gt4,j3))/sqrt(2._dp)
+res = res+(Conjg(Ye(j1,j3))*Conjg(ZP(gt2,1))*Conjg(ZV(gt3,j2))*Ye(j1,j2)*ZE(gt4,j3)*ZH(gt1,1))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(-1*(0.,1._dp)*Conjg(Ye(j1,j3))*Conjg(ZH(gt1,3))*Conjg(ZP(gt2,1))*Conjg(ZV(gt3,j2))*Ye(j1,j2)*ZE(gt4,j3))/sqrt(2._dp)
+res = res+(-1*(0.,1._dp)*Conjg(Ye(j1,j3))*Conjg(ZP(gt2,1))*Conjg(ZV(gt3,j2))*Ye(j1,j2)*ZE(gt4,j3)*ZH(gt1,3))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
@@ -21775,9 +21775,9 @@ Subroutine CouplinghhSdcHpmcSu2LP(gt1,gt2,gt3,gt4,Yd,Yu,eta,ZD,ZU,ZH,ZP,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3,gt4
-Real(dp), Intent(in) :: eta
+Real(dp), Intent(in) :: eta,ZH(4,4)
 
-Complex(dp), Intent(in) :: Yd(3,3),Yu(3,3),ZD(6,6),ZU(6,6),ZH(4,4),ZP(2,2)
+Complex(dp), Intent(in) :: Yd(3,3),Yu(3,3),ZD(6,6),ZU(6,6),ZP(2,2)
 
 Complex(dp), Intent(out) :: res 
  
@@ -21821,56 +21821,56 @@ res = 0._dp
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(exp((0._dp,1._dp)*eta)*Conjg(Yd(j3,j1))*Conjg(ZD(gt2,3 + j3))*Conjg(ZH(gt1,2))*Yu(j2,j1)*ZP(gt3,1)*ZU(gt4,3 + j2))/sqrt(2._dp)
+res = res+(exp((0._dp,1._dp)*eta)*Conjg(Yd(j3,j1))*Conjg(ZD(gt2,3 + j3))*Yu(j2,j1)*ZH(gt1,2)*ZP(gt3,1)*ZU(gt4,3 + j2))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*exp((0._dp,1._dp)*eta)*Conjg(Yd(j3,j1))*Conjg(ZD(gt2,3 + j3))*Conjg(ZH(gt1,4))*Yu(j2,j1)*ZP(gt3,1)*ZU(gt4,3 + j2))/sqrt(2._dp)
+res = res+((0._dp,1._dp)*exp((0._dp,1._dp)*eta)*Conjg(Yd(j3,j1))*Conjg(ZD(gt2,3 + j3))*Yu(j2,j1)*ZH(gt1,4)*ZP(gt3,1)*ZU(gt4,3 + j2))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(exp((0._dp,1._dp)*eta)*Conjg(Yd(j3,j1))*Conjg(ZD(gt2,3 + j3))*Conjg(ZH(gt1,1))*Yu(j2,j1)*ZP(gt3,2)*ZU(gt4,3 + j2))/sqrt(2._dp)
+res = res+(exp((0._dp,1._dp)*eta)*Conjg(Yd(j3,j1))*Conjg(ZD(gt2,3 + j3))*Yu(j2,j1)*ZH(gt1,1)*ZP(gt3,2)*ZU(gt4,3 + j2))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(-1*(0.,1._dp)*exp((0._dp,1._dp)*eta)*Conjg(Yd(j3,j1))*Conjg(ZD(gt2,3 + j3))*Conjg(ZH(gt1,3))*Yu(j2,j1)*ZP(gt3,2)*ZU(gt4,3 + j2))/sqrt(2._dp)
+res = res+(-1*(0.,1._dp)*exp((0._dp,1._dp)*eta)*Conjg(Yd(j3,j1))*Conjg(ZD(gt2,3 + j3))*Yu(j2,j1)*ZH(gt1,3)*ZP(gt3,2)*ZU(gt4,3 + j2))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(Conjg(Yd(j1,j3))*Conjg(ZD(gt2,j2))*Conjg(ZH(gt1,1))*Yd(j1,j2)*ZP(gt3,1)*ZU(gt4,j3))/sqrt(2._dp)
+res = res+(Conjg(Yd(j1,j3))*Conjg(ZD(gt2,j2))*Yd(j1,j2)*ZH(gt1,1)*ZP(gt3,1)*ZU(gt4,j3))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*Conjg(Yd(j1,j3))*Conjg(ZD(gt2,j2))*Conjg(ZH(gt1,3))*Yd(j1,j2)*ZP(gt3,1)*ZU(gt4,j3))/sqrt(2._dp)
+res = res+((0._dp,1._dp)*Conjg(Yd(j1,j3))*Conjg(ZD(gt2,j2))*Yd(j1,j2)*ZH(gt1,3)*ZP(gt3,1)*ZU(gt4,j3))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(Conjg(Yu(j1,j3))*Conjg(ZD(gt2,j2))*Conjg(ZH(gt1,2))*Yu(j1,j2)*ZP(gt3,2)*ZU(gt4,j3))/sqrt(2._dp)
+res = res+(Conjg(Yu(j1,j3))*Conjg(ZD(gt2,j2))*Yu(j1,j2)*ZH(gt1,2)*ZP(gt3,2)*ZU(gt4,j3))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(-1*(0.,1._dp)*Conjg(Yu(j1,j3))*Conjg(ZD(gt2,j2))*Conjg(ZH(gt1,4))*Yu(j1,j2)*ZP(gt3,2)*ZU(gt4,j3))/sqrt(2._dp)
+res = res+(-1*(0.,1._dp)*Conjg(Yu(j1,j3))*Conjg(ZD(gt2,j2))*Yu(j1,j2)*ZH(gt1,4)*ZP(gt3,2)*ZU(gt4,j3))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
@@ -21890,7 +21890,9 @@ Subroutine CouplinghhSecHpmcSv2LP(gt1,gt2,gt3,gt4,Ye,ZE,ZV,ZH,ZP,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3,gt4
-Complex(dp), Intent(in) :: Ye(3,3),ZE(6,6),ZV(3,3),ZH(4,4),ZP(2,2)
+Real(dp), Intent(in) :: ZH(4,4)
+
+Complex(dp), Intent(in) :: Ye(3,3),ZE(6,6),ZV(3,3),ZP(2,2)
 
 Complex(dp), Intent(out) :: res 
  
@@ -21934,14 +21936,14 @@ res = 0._dp
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+(Conjg(Ye(j1,j3))*Conjg(ZE(gt2,j2))*Conjg(ZH(gt1,1))*Ye(j1,j2)*ZP(gt3,1)*ZV(gt4,j3))/sqrt(2._dp)
+res = res+(Conjg(Ye(j1,j3))*Conjg(ZE(gt2,j2))*Ye(j1,j2)*ZH(gt1,1)*ZP(gt3,1)*ZV(gt4,j3))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
 Do j3 = 1,3
 Do j2 = 1,3
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*Conjg(Ye(j1,j3))*Conjg(ZE(gt2,j2))*Conjg(ZH(gt1,3))*Ye(j1,j2)*ZP(gt3,1)*ZV(gt4,j3))/sqrt(2._dp)
+res = res+((0._dp,1._dp)*Conjg(Ye(j1,j3))*Conjg(ZE(gt2,j2))*Ye(j1,j2)*ZH(gt1,3)*ZP(gt3,1)*ZV(gt4,j3))/sqrt(2._dp)
 End Do 
 End Do 
 End Do 
@@ -22995,11 +22997,11 @@ Subroutine CouplingsForLoopMasses(g2,Yd,Yu,UM,UP,ZUL,ZUR,g1,ZN,ZDL,ZDR,         
 & cplcVWmcVWmVWmVWm1,cplcVWmcVWmVWmVWm2,cplcVWmcVWmVWmVWm3)
 
 Implicit None 
-Real(dp), Intent(in) :: g2,g1,g3,eta,vd,vu,TW
+Real(dp), Intent(in) :: g2,g1,g3,eta,vd,vu,ZH(4,4),TW
 
 Complex(dp), Intent(in) :: Yd(3,3),Yu(3,3),UM(2,2),UP(2,2),ZUL(3,3),ZUR(3,3),ZN(4,4),ZDL(3,3),ZDR(3,3),          & 
-& pG,Mu,Td(3,3),ZD(6,6),ZH(4,4),Tu(3,3),ZU(6,6),ZP(2,2),Ye(3,3),ZE(6,6),ZEL(3,3),        & 
-& ZER(3,3),Te(3,3),ZV(3,3)
+& pG,Mu,Td(3,3),ZD(6,6),Tu(3,3),ZU(6,6),ZP(2,2),Ye(3,3),ZE(6,6),ZEL(3,3),ZER(3,3),       & 
+& Te(3,3),ZV(3,3)
 
 Complex(dp), Intent(out) :: cplChaFucUSdL(2,3,6),cplChaFucUSdR(2,3,6),cplChiFdcUSdL(4,3,6),cplChiFdcUSdR(4,3,6),  & 
 & cplGluFdcUSdL(3,6),cplGluFdcUSdR(3,6),cplhhSdcUSd(4,6,6),cplHpmSucUSd(2,6,6),          & 
@@ -25446,9 +25448,9 @@ Subroutine CouplinghhSdcUSdL(gt1,gt2,gt3,g1,g2,Mu,Yd,Td,eta,vd,vu,ZD,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Real(dp), Intent(in) :: g1,g2,eta,vd,vu
+Real(dp), Intent(in) :: g1,g2,eta,vd,vu,ZH(4,4)
 
-Complex(dp), Intent(in) :: Mu,Yd(3,3),Td(3,3),ZD(6,6),ZH(4,4)
+Complex(dp), Intent(in) :: Mu,Yd(3,3),Td(3,3),ZD(6,6)
 
 Complex(dp), Intent(out) :: res 
  
@@ -25483,75 +25485,75 @@ End If
 res = 0._dp 
 If ((gt3.le.3).And.(gt3.ge.1)) Then 
 Do j1 = 1,3
-res = res+(exp((0._dp,1._dp)*eta)*Mu*Conjg(Yd(j1,gt3))*Conjg(ZD(gt2,3 + j1))*Conjg(ZH(gt1,2)))/sqrt(2._dp)
+res = res-((Conjg(ZD(gt2,3 + j1))*Conjg(Td(j1,gt3))*ZH(gt1,1))/sqrt(2._dp))
 End Do 
 End If 
 If ((gt3.le.3).And.(gt3.ge.1)) Then 
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*exp((0._dp,1._dp)*eta)*Mu*Conjg(Yd(j1,gt3))*Conjg(ZD(gt2,3 + j1))*Conjg(ZH(gt1,4)))/sqrt(2._dp)
+res = res+(exp((0._dp,1._dp)*eta)*Mu*Conjg(Yd(j1,gt3))*Conjg(ZD(gt2,3 + j1))*ZH(gt1,2))/sqrt(2._dp)
 End Do 
 End If 
 If ((gt3.le.3).And.(gt3.ge.1)) Then 
 Do j1 = 1,3
-res = res-((Conjg(ZD(gt2,3 + j1))*Conjg(ZH(gt1,1))*Conjg(Td(j1,gt3)))/sqrt(2._dp))
+res = res+((0._dp,1._dp)*Conjg(ZD(gt2,3 + j1))*Conjg(Td(j1,gt3))*ZH(gt1,3))/sqrt(2._dp)
 End Do 
 End If 
 If ((gt3.le.3).And.(gt3.ge.1)) Then 
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*Conjg(ZD(gt2,3 + j1))*Conjg(ZH(gt1,3))*Conjg(Td(j1,gt3)))/sqrt(2._dp)
+res = res+((0._dp,1._dp)*exp((0._dp,1._dp)*eta)*Mu*Conjg(Yd(j1,gt3))*Conjg(ZD(gt2,3 + j1))*ZH(gt1,4))/sqrt(2._dp)
 End Do 
 End If 
 If ((gt3.le.3).And.(gt3.ge.1)) Then 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(vd*Conjg(Yd(j1,gt3))*Conjg(ZD(gt2,j2))*Conjg(ZH(gt1,1))*Yd(j1,j2))
+res = res-(vd*Conjg(Yd(j1,gt3))*Conjg(ZD(gt2,j2))*Yd(j1,j2)*ZH(gt1,1))
 End Do 
 End Do 
 End If 
 If ((-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
 Do j2 = 1,3
-res = res+(Conjg(Mu)*Conjg(ZD(gt2,j2))*Conjg(ZH(gt1,2))*Yd(-3 + gt3,j2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+res = res+(Conjg(Mu)*Conjg(ZD(gt2,j2))*Yd(-3 + gt3,j2)*ZH(gt1,2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End If 
 If ((-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
 Do j2 = 1,3
-res = res+(-1*(0.,1._dp)*Conjg(Mu)*Conjg(ZD(gt2,j2))*Conjg(ZH(gt1,4))*Yd(-3 + gt3,j2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+res = res+(-1*(0.,1._dp)*Conjg(Mu)*Conjg(ZD(gt2,j2))*Yd(-3 + gt3,j2)*ZH(gt1,4))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End If 
 If ((-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
 Do j2 = 1,3
-res = res-((Conjg(ZD(gt2,j2))*Conjg(ZH(gt1,1))*Td(-3 + gt3,j2))/sqrt(2._dp))
+res = res-((Conjg(ZD(gt2,j2))*ZH(gt1,1)*Td(-3 + gt3,j2))/sqrt(2._dp))
 End Do 
 End If 
 If ((-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
 Do j2 = 1,3
-res = res+(-1*(0.,1._dp)*Conjg(ZD(gt2,j2))*Conjg(ZH(gt1,3))*Td(-3 + gt3,j2))/sqrt(2._dp)
+res = res+(-1*(0.,1._dp)*Conjg(ZD(gt2,j2))*ZH(gt1,3)*Td(-3 + gt3,j2))/sqrt(2._dp)
 End Do 
 End If 
 If ((-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
 Do j3 = 1,3
 Do j1 = 1,3
-res = res-(vd*Conjg(Yd(j3,j1))*Conjg(ZD(gt2,3 + j3))*Conjg(ZH(gt1,1))*Yd(-3 + gt3,j1))
+res = res-(vd*Conjg(Yd(j3,j1))*Conjg(ZD(gt2,3 + j3))*Yd(-3 + gt3,j1)*ZH(gt1,1))
 End Do 
 End Do 
 End If 
 If ((-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
-res = res+(g1**2*vd*Conjg(ZD(gt2,gt3))*Conjg(ZH(gt1,1)))/6._dp
+res = res+(g1**2*vd*Conjg(ZD(gt2,gt3))*ZH(gt1,1))/6._dp
+End If 
+If ((gt3.le.3).And.(gt3.ge.1)) Then 
+res = res+(g1**2*vd*Conjg(ZD(gt2,gt3))*ZH(gt1,1))/12._dp
+End If 
+If ((gt3.le.3).And.(gt3.ge.1)) Then 
+res = res+(g2**2*vd*Conjg(ZD(gt2,gt3))*ZH(gt1,1))/4._dp
 End If 
 If ((-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
-res = res-(g1**2*vu*Conjg(ZD(gt2,gt3))*Conjg(ZH(gt1,2)))/6._dp
+res = res-(g1**2*vu*Conjg(ZD(gt2,gt3))*ZH(gt1,2))/6._dp
 End If 
 If ((gt3.le.3).And.(gt3.ge.1)) Then 
-res = res+(g1**2*vd*Conjg(ZD(gt2,gt3))*Conjg(ZH(gt1,1)))/12._dp
+res = res-(g1**2*vu*Conjg(ZD(gt2,gt3))*ZH(gt1,2))/12._dp
 End If 
 If ((gt3.le.3).And.(gt3.ge.1)) Then 
-res = res+(g2**2*vd*Conjg(ZD(gt2,gt3))*Conjg(ZH(gt1,1)))/4._dp
-End If 
-If ((gt3.le.3).And.(gt3.ge.1)) Then 
-res = res-(g1**2*vu*Conjg(ZD(gt2,gt3))*Conjg(ZH(gt1,2)))/12._dp
-End If 
-If ((gt3.le.3).And.(gt3.ge.1)) Then 
-res = res-(g2**2*vu*Conjg(ZD(gt2,gt3))*Conjg(ZH(gt1,2)))/4._dp
+res = res-(g2**2*vu*Conjg(ZD(gt2,gt3))*ZH(gt1,2))/4._dp
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -25870,9 +25872,9 @@ Subroutine CouplinghhhhUSdcUSdL(gt1,gt2,gt3,gt4,g1,g2,Yd,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3,gt4
-Real(dp), Intent(in) :: g1,g2
+Real(dp), Intent(in) :: g1,g2,ZH(4,4)
 
-Complex(dp), Intent(in) :: Yd(3,3),ZH(4,4)
+Complex(dp), Intent(in) :: Yd(3,3)
 
 Complex(dp), Intent(out) :: res 
  
@@ -25915,59 +25917,59 @@ End If
 res = 0._dp 
 If ((-3 + gt3.le.3).And.(-3 + gt3.ge.1).And.(-3 + gt4.le.3).And.(-3 + gt4.ge.1)) Then 
 Do j1 = 1,3
-res = res-(Conjg(Yd(-3 + gt3,j1))*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Yd(-3 + gt4,j1))
+res = res-(Conjg(Yd(-3 + gt3,j1))*Yd(-3 + gt4,j1)*ZH(gt1,1)*ZH(gt2,1))
+End Do 
+End If 
+If ((gt3.le.3).And.(gt3.ge.1).And.(gt4.le.3).And.(gt4.ge.1)) Then 
+Do j1 = 1,3
+res = res-(Conjg(Yd(j1,gt4))*Yd(j1,gt3)*ZH(gt1,1)*ZH(gt2,1))
 End Do 
 End If 
 If ((-3 + gt3.le.3).And.(-3 + gt3.ge.1).And.(-3 + gt4.le.3).And.(-3 + gt4.ge.1)) Then 
 Do j1 = 1,3
-res = res-(Conjg(Yd(-3 + gt3,j1))*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Yd(-3 + gt4,j1))
+res = res-(Conjg(Yd(-3 + gt3,j1))*Yd(-3 + gt4,j1)*ZH(gt1,3)*ZH(gt2,3))
 End Do 
 End If 
 If ((gt3.le.3).And.(gt3.ge.1).And.(gt4.le.3).And.(gt4.ge.1)) Then 
 Do j1 = 1,3
-res = res-(Conjg(Yd(j1,gt4))*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Yd(j1,gt3))
-End Do 
-End If 
-If ((gt3.le.3).And.(gt3.ge.1).And.(gt4.le.3).And.(gt4.ge.1)) Then 
-Do j1 = 1,3
-res = res-(Conjg(Yd(j1,gt4))*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Yd(j1,gt3))
+res = res-(Conjg(Yd(j1,gt4))*Yd(j1,gt3)*ZH(gt1,3)*ZH(gt2,3))
 End Do 
 End If 
 If ((gt3.eq.gt4).And.(-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
-res = res+(g1**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1)))/6._dp
+res = res+(g1**2*ZH(gt1,1)*ZH(gt2,1))/6._dp
+End If 
+If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
+res = res+(g1**2*ZH(gt1,1)*ZH(gt2,1))/12._dp
+End If 
+If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
+res = res+(g2**2*ZH(gt1,1)*ZH(gt2,1))/4._dp
 End If 
 If ((gt3.eq.gt4).And.(-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
-res = res-(g1**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2)))/6._dp
+res = res-(g1**2*ZH(gt1,2)*ZH(gt2,2))/6._dp
+End If 
+If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
+res = res-(g1**2*ZH(gt1,2)*ZH(gt2,2))/12._dp
+End If 
+If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
+res = res-(g2**2*ZH(gt1,2)*ZH(gt2,2))/4._dp
 End If 
 If ((gt3.eq.gt4).And.(-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
-res = res+(g1**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3)))/6._dp
+res = res+(g1**2*ZH(gt1,3)*ZH(gt2,3))/6._dp
+End If 
+If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
+res = res+(g1**2*ZH(gt1,3)*ZH(gt2,3))/12._dp
+End If 
+If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
+res = res+(g2**2*ZH(gt1,3)*ZH(gt2,3))/4._dp
 End If 
 If ((gt3.eq.gt4).And.(-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
-res = res-(g1**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4)))/6._dp
+res = res-(g1**2*ZH(gt1,4)*ZH(gt2,4))/6._dp
 End If 
 If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res+(g1**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1)))/12._dp
+res = res-(g1**2*ZH(gt1,4)*ZH(gt2,4))/12._dp
 End If 
 If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res+(g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1)))/4._dp
-End If 
-If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res-(g1**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2)))/12._dp
-End If 
-If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res-(g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2)))/4._dp
-End If 
-If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res+(g1**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3)))/12._dp
-End If 
-If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res+(g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3)))/4._dp
-End If 
-If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res-(g1**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4)))/12._dp
-End If 
-If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res-(g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4)))/4._dp
+res = res-(g2**2*ZH(gt1,4)*ZH(gt2,4))/4._dp
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -26931,9 +26933,9 @@ Subroutine CouplinghhSucUSuL(gt1,gt2,gt3,g1,g2,Mu,Yu,Tu,eta,vd,vu,ZU,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Real(dp), Intent(in) :: g1,g2,eta,vd,vu
+Real(dp), Intent(in) :: g1,g2,eta,vd,vu,ZH(4,4)
 
-Complex(dp), Intent(in) :: Mu,Yu(3,3),Tu(3,3),ZU(6,6),ZH(4,4)
+Complex(dp), Intent(in) :: Mu,Yu(3,3),Tu(3,3),ZU(6,6)
 
 Complex(dp), Intent(out) :: res 
  
@@ -26968,75 +26970,75 @@ End If
 res = 0._dp 
 If ((gt3.le.3).And.(gt3.ge.1)) Then 
 Do j1 = 1,3
-res = res+(Mu*Conjg(Yu(j1,gt3))*Conjg(ZH(gt1,1))*Conjg(ZU(gt2,3 + j1)))/sqrt(2._dp)
+res = res+(Mu*Conjg(Yu(j1,gt3))*Conjg(ZU(gt2,3 + j1))*ZH(gt1,1))/sqrt(2._dp)
 End Do 
 End If 
 If ((gt3.le.3).And.(gt3.ge.1)) Then 
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*Mu*Conjg(Yu(j1,gt3))*Conjg(ZH(gt1,3))*Conjg(ZU(gt2,3 + j1)))/sqrt(2._dp)
+res = res-((Conjg(ZU(gt2,3 + j1))*Conjg(Tu(j1,gt3))*ZH(gt1,2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta)))
 End Do 
 End If 
 If ((gt3.le.3).And.(gt3.ge.1)) Then 
 Do j1 = 1,3
-res = res-((Conjg(ZH(gt1,2))*Conjg(ZU(gt2,3 + j1))*Conjg(Tu(j1,gt3)))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta)))
+res = res+((0._dp,1._dp)*Mu*Conjg(Yu(j1,gt3))*Conjg(ZU(gt2,3 + j1))*ZH(gt1,3))/sqrt(2._dp)
 End Do 
 End If 
 If ((gt3.le.3).And.(gt3.ge.1)) Then 
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*Conjg(ZH(gt1,4))*Conjg(ZU(gt2,3 + j1))*Conjg(Tu(j1,gt3)))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+res = res+((0._dp,1._dp)*Conjg(ZU(gt2,3 + j1))*Conjg(Tu(j1,gt3))*ZH(gt1,4))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End If 
 If ((gt3.le.3).And.(gt3.ge.1)) Then 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(vu*Conjg(Yu(j1,gt3))*Conjg(ZH(gt1,2))*Conjg(ZU(gt2,j2))*Yu(j1,j2))
+res = res-(vu*Conjg(Yu(j1,gt3))*Conjg(ZU(gt2,j2))*Yu(j1,j2)*ZH(gt1,2))
 End Do 
 End Do 
 End If 
 If ((-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
 Do j2 = 1,3
-res = res+(Conjg(Mu)*Conjg(ZH(gt1,1))*Conjg(ZU(gt2,j2))*Yu(-3 + gt3,j2))/sqrt(2._dp)
+res = res+(Conjg(Mu)*Conjg(ZU(gt2,j2))*Yu(-3 + gt3,j2)*ZH(gt1,1))/sqrt(2._dp)
 End Do 
 End If 
 If ((-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
 Do j2 = 1,3
-res = res+(-1*(0.,1._dp)*Conjg(Mu)*Conjg(ZH(gt1,3))*Conjg(ZU(gt2,j2))*Yu(-3 + gt3,j2))/sqrt(2._dp)
+res = res+(-1*(0.,1._dp)*Conjg(Mu)*Conjg(ZU(gt2,j2))*Yu(-3 + gt3,j2)*ZH(gt1,3))/sqrt(2._dp)
 End Do 
 End If 
 If ((-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
 Do j2 = 1,3
-res = res-((exp((0._dp,1._dp)*eta)*Conjg(ZH(gt1,2))*Conjg(ZU(gt2,j2))*Tu(-3 + gt3,j2))/sqrt(2._dp))
+res = res-((exp((0._dp,1._dp)*eta)*Conjg(ZU(gt2,j2))*ZH(gt1,2)*Tu(-3 + gt3,j2))/sqrt(2._dp))
 End Do 
 End If 
 If ((-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
 Do j2 = 1,3
-res = res+(-1*(0.,1._dp)*exp((0._dp,1._dp)*eta)*Conjg(ZH(gt1,4))*Conjg(ZU(gt2,j2))*Tu(-3 + gt3,j2))/sqrt(2._dp)
+res = res+(-1*(0.,1._dp)*exp((0._dp,1._dp)*eta)*Conjg(ZU(gt2,j2))*ZH(gt1,4)*Tu(-3 + gt3,j2))/sqrt(2._dp)
 End Do 
 End If 
 If ((-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
 Do j3 = 1,3
 Do j1 = 1,3
-res = res-(vu*Conjg(Yu(j3,j1))*Conjg(ZH(gt1,2))*Conjg(ZU(gt2,3 + j3))*Yu(-3 + gt3,j1))
+res = res-(vu*Conjg(Yu(j3,j1))*Conjg(ZU(gt2,3 + j3))*Yu(-3 + gt3,j1)*ZH(gt1,2))
 End Do 
 End Do 
 End If 
 If ((-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
-res = res-(g1**2*vd*Conjg(ZH(gt1,1))*Conjg(ZU(gt2,gt3)))/3._dp
+res = res-(g1**2*vd*Conjg(ZU(gt2,gt3))*ZH(gt1,1))/3._dp
+End If 
+If ((gt3.le.3).And.(gt3.ge.1)) Then 
+res = res+(g1**2*vd*Conjg(ZU(gt2,gt3))*ZH(gt1,1))/12._dp
+End If 
+If ((gt3.le.3).And.(gt3.ge.1)) Then 
+res = res-(g2**2*vd*Conjg(ZU(gt2,gt3))*ZH(gt1,1))/4._dp
 End If 
 If ((-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
-res = res+(g1**2*vu*Conjg(ZH(gt1,2))*Conjg(ZU(gt2,gt3)))/3._dp
+res = res+(g1**2*vu*Conjg(ZU(gt2,gt3))*ZH(gt1,2))/3._dp
 End If 
 If ((gt3.le.3).And.(gt3.ge.1)) Then 
-res = res+(g1**2*vd*Conjg(ZH(gt1,1))*Conjg(ZU(gt2,gt3)))/12._dp
+res = res-(g1**2*vu*Conjg(ZU(gt2,gt3))*ZH(gt1,2))/12._dp
 End If 
 If ((gt3.le.3).And.(gt3.ge.1)) Then 
-res = res-(g2**2*vd*Conjg(ZH(gt1,1))*Conjg(ZU(gt2,gt3)))/4._dp
-End If 
-If ((gt3.le.3).And.(gt3.ge.1)) Then 
-res = res-(g1**2*vu*Conjg(ZH(gt1,2))*Conjg(ZU(gt2,gt3)))/12._dp
-End If 
-If ((gt3.le.3).And.(gt3.ge.1)) Then 
-res = res+(g2**2*vu*Conjg(ZH(gt1,2))*Conjg(ZU(gt2,gt3)))/4._dp
+res = res+(g2**2*vu*Conjg(ZU(gt2,gt3))*ZH(gt1,2))/4._dp
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -27356,9 +27358,9 @@ Subroutine CouplinghhhhUSucUSuL(gt1,gt2,gt3,gt4,g1,g2,Yu,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3,gt4
-Real(dp), Intent(in) :: g1,g2
+Real(dp), Intent(in) :: g1,g2,ZH(4,4)
 
-Complex(dp), Intent(in) :: Yu(3,3),ZH(4,4)
+Complex(dp), Intent(in) :: Yu(3,3)
 
 Complex(dp), Intent(out) :: res 
  
@@ -27401,59 +27403,59 @@ End If
 res = 0._dp 
 If ((-3 + gt3.le.3).And.(-3 + gt3.ge.1).And.(-3 + gt4.le.3).And.(-3 + gt4.ge.1)) Then 
 Do j1 = 1,3
-res = res-(Conjg(Yu(-3 + gt3,j1))*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Yu(-3 + gt4,j1))
+res = res-(Conjg(Yu(-3 + gt3,j1))*Yu(-3 + gt4,j1)*ZH(gt1,2)*ZH(gt2,2))
+End Do 
+End If 
+If ((gt3.le.3).And.(gt3.ge.1).And.(gt4.le.3).And.(gt4.ge.1)) Then 
+Do j1 = 1,3
+res = res-(Conjg(Yu(j1,gt4))*Yu(j1,gt3)*ZH(gt1,2)*ZH(gt2,2))
 End Do 
 End If 
 If ((-3 + gt3.le.3).And.(-3 + gt3.ge.1).And.(-3 + gt4.le.3).And.(-3 + gt4.ge.1)) Then 
 Do j1 = 1,3
-res = res-(Conjg(Yu(-3 + gt3,j1))*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Yu(-3 + gt4,j1))
+res = res-(Conjg(Yu(-3 + gt3,j1))*Yu(-3 + gt4,j1)*ZH(gt1,4)*ZH(gt2,4))
 End Do 
 End If 
 If ((gt3.le.3).And.(gt3.ge.1).And.(gt4.le.3).And.(gt4.ge.1)) Then 
 Do j1 = 1,3
-res = res-(Conjg(Yu(j1,gt4))*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Yu(j1,gt3))
-End Do 
-End If 
-If ((gt3.le.3).And.(gt3.ge.1).And.(gt4.le.3).And.(gt4.ge.1)) Then 
-Do j1 = 1,3
-res = res-(Conjg(Yu(j1,gt4))*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Yu(j1,gt3))
+res = res-(Conjg(Yu(j1,gt4))*Yu(j1,gt3)*ZH(gt1,4)*ZH(gt2,4))
 End Do 
 End If 
 If ((gt3.eq.gt4).And.(-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
-res = res-(g1**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1)))/3._dp
+res = res-(g1**2*ZH(gt1,1)*ZH(gt2,1))/3._dp
+End If 
+If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
+res = res+(g1**2*ZH(gt1,1)*ZH(gt2,1))/12._dp
+End If 
+If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
+res = res-(g2**2*ZH(gt1,1)*ZH(gt2,1))/4._dp
 End If 
 If ((gt3.eq.gt4).And.(-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
-res = res+(g1**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2)))/3._dp
+res = res+(g1**2*ZH(gt1,2)*ZH(gt2,2))/3._dp
+End If 
+If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
+res = res-(g1**2*ZH(gt1,2)*ZH(gt2,2))/12._dp
+End If 
+If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
+res = res+(g2**2*ZH(gt1,2)*ZH(gt2,2))/4._dp
 End If 
 If ((gt3.eq.gt4).And.(-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
-res = res-(g1**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3)))/3._dp
+res = res-(g1**2*ZH(gt1,3)*ZH(gt2,3))/3._dp
+End If 
+If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
+res = res+(g1**2*ZH(gt1,3)*ZH(gt2,3))/12._dp
+End If 
+If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
+res = res-(g2**2*ZH(gt1,3)*ZH(gt2,3))/4._dp
 End If 
 If ((gt3.eq.gt4).And.(-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
-res = res+(g1**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4)))/3._dp
+res = res+(g1**2*ZH(gt1,4)*ZH(gt2,4))/3._dp
 End If 
 If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res+(g1**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1)))/12._dp
+res = res-(g1**2*ZH(gt1,4)*ZH(gt2,4))/12._dp
 End If 
 If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res-(g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1)))/4._dp
-End If 
-If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res-(g1**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2)))/12._dp
-End If 
-If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res+(g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2)))/4._dp
-End If 
-If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res+(g1**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3)))/12._dp
-End If 
-If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res-(g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3)))/4._dp
-End If 
-If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res-(g1**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4)))/12._dp
-End If 
-If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res+(g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4)))/4._dp
+res = res+(g2**2*ZH(gt1,4)*ZH(gt2,4))/4._dp
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -28346,9 +28348,9 @@ Subroutine CouplinghhSecUSeL(gt1,gt2,gt3,g1,g2,Mu,Ye,Te,eta,vd,vu,ZE,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Real(dp), Intent(in) :: g1,g2,eta,vd,vu
+Real(dp), Intent(in) :: g1,g2,eta,vd,vu,ZH(4,4)
 
-Complex(dp), Intent(in) :: Mu,Ye(3,3),Te(3,3),ZE(6,6),ZH(4,4)
+Complex(dp), Intent(in) :: Mu,Ye(3,3),Te(3,3),ZE(6,6)
 
 Complex(dp), Intent(out) :: res 
  
@@ -28383,75 +28385,75 @@ End If
 res = 0._dp 
 If ((gt3.le.3).And.(gt3.ge.1)) Then 
 Do j1 = 1,3
-res = res+(exp((0._dp,1._dp)*eta)*Mu*Conjg(Ye(j1,gt3))*Conjg(ZE(gt2,3 + j1))*Conjg(ZH(gt1,2)))/sqrt(2._dp)
+res = res-((Conjg(ZE(gt2,3 + j1))*Conjg(Te(j1,gt3))*ZH(gt1,1))/sqrt(2._dp))
 End Do 
 End If 
 If ((gt3.le.3).And.(gt3.ge.1)) Then 
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*exp((0._dp,1._dp)*eta)*Mu*Conjg(Ye(j1,gt3))*Conjg(ZE(gt2,3 + j1))*Conjg(ZH(gt1,4)))/sqrt(2._dp)
+res = res+(exp((0._dp,1._dp)*eta)*Mu*Conjg(Ye(j1,gt3))*Conjg(ZE(gt2,3 + j1))*ZH(gt1,2))/sqrt(2._dp)
 End Do 
 End If 
 If ((gt3.le.3).And.(gt3.ge.1)) Then 
 Do j1 = 1,3
-res = res-((Conjg(ZE(gt2,3 + j1))*Conjg(ZH(gt1,1))*Conjg(Te(j1,gt3)))/sqrt(2._dp))
+res = res+((0._dp,1._dp)*Conjg(ZE(gt2,3 + j1))*Conjg(Te(j1,gt3))*ZH(gt1,3))/sqrt(2._dp)
 End Do 
 End If 
 If ((gt3.le.3).And.(gt3.ge.1)) Then 
 Do j1 = 1,3
-res = res+((0._dp,1._dp)*Conjg(ZE(gt2,3 + j1))*Conjg(ZH(gt1,3))*Conjg(Te(j1,gt3)))/sqrt(2._dp)
+res = res+((0._dp,1._dp)*exp((0._dp,1._dp)*eta)*Mu*Conjg(Ye(j1,gt3))*Conjg(ZE(gt2,3 + j1))*ZH(gt1,4))/sqrt(2._dp)
 End Do 
 End If 
 If ((gt3.le.3).And.(gt3.ge.1)) Then 
 Do j2 = 1,3
 Do j1 = 1,3
-res = res-(vd*Conjg(Ye(j1,gt3))*Conjg(ZE(gt2,j2))*Conjg(ZH(gt1,1))*Ye(j1,j2))
+res = res-(vd*Conjg(Ye(j1,gt3))*Conjg(ZE(gt2,j2))*Ye(j1,j2)*ZH(gt1,1))
 End Do 
 End Do 
 End If 
 If ((-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
 Do j2 = 1,3
-res = res+(Conjg(Mu)*Conjg(ZE(gt2,j2))*Conjg(ZH(gt1,2))*Ye(-3 + gt3,j2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+res = res+(Conjg(Mu)*Conjg(ZE(gt2,j2))*Ye(-3 + gt3,j2)*ZH(gt1,2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End If 
 If ((-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
 Do j2 = 1,3
-res = res+(-1*(0.,1._dp)*Conjg(Mu)*Conjg(ZE(gt2,j2))*Conjg(ZH(gt1,4))*Ye(-3 + gt3,j2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+res = res+(-1*(0.,1._dp)*Conjg(Mu)*Conjg(ZE(gt2,j2))*Ye(-3 + gt3,j2)*ZH(gt1,4))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End If 
 If ((-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
 Do j2 = 1,3
-res = res-((Conjg(ZE(gt2,j2))*Conjg(ZH(gt1,1))*Te(-3 + gt3,j2))/sqrt(2._dp))
+res = res-((Conjg(ZE(gt2,j2))*ZH(gt1,1)*Te(-3 + gt3,j2))/sqrt(2._dp))
 End Do 
 End If 
 If ((-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
 Do j2 = 1,3
-res = res+(-1*(0.,1._dp)*Conjg(ZE(gt2,j2))*Conjg(ZH(gt1,3))*Te(-3 + gt3,j2))/sqrt(2._dp)
+res = res+(-1*(0.,1._dp)*Conjg(ZE(gt2,j2))*ZH(gt1,3)*Te(-3 + gt3,j2))/sqrt(2._dp)
 End Do 
 End If 
 If ((-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
 Do j3 = 1,3
 Do j1 = 1,3
-res = res-(vd*Conjg(Ye(j3,j1))*Conjg(ZE(gt2,3 + j3))*Conjg(ZH(gt1,1))*Ye(-3 + gt3,j1))
+res = res-(vd*Conjg(Ye(j3,j1))*Conjg(ZE(gt2,3 + j3))*Ye(-3 + gt3,j1)*ZH(gt1,1))
 End Do 
 End Do 
 End If 
 If ((-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
-res = res+(g1**2*vd*Conjg(ZE(gt2,gt3))*Conjg(ZH(gt1,1)))/2._dp
+res = res+(g1**2*vd*Conjg(ZE(gt2,gt3))*ZH(gt1,1))/2._dp
+End If 
+If ((gt3.le.3).And.(gt3.ge.1)) Then 
+res = res-(g1**2*vd*Conjg(ZE(gt2,gt3))*ZH(gt1,1))/4._dp
+End If 
+If ((gt3.le.3).And.(gt3.ge.1)) Then 
+res = res+(g2**2*vd*Conjg(ZE(gt2,gt3))*ZH(gt1,1))/4._dp
 End If 
 If ((-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
-res = res-(g1**2*vu*Conjg(ZE(gt2,gt3))*Conjg(ZH(gt1,2)))/2._dp
+res = res-(g1**2*vu*Conjg(ZE(gt2,gt3))*ZH(gt1,2))/2._dp
 End If 
 If ((gt3.le.3).And.(gt3.ge.1)) Then 
-res = res-(g1**2*vd*Conjg(ZE(gt2,gt3))*Conjg(ZH(gt1,1)))/4._dp
+res = res+(g1**2*vu*Conjg(ZE(gt2,gt3))*ZH(gt1,2))/4._dp
 End If 
 If ((gt3.le.3).And.(gt3.ge.1)) Then 
-res = res+(g2**2*vd*Conjg(ZE(gt2,gt3))*Conjg(ZH(gt1,1)))/4._dp
-End If 
-If ((gt3.le.3).And.(gt3.ge.1)) Then 
-res = res+(g1**2*vu*Conjg(ZE(gt2,gt3))*Conjg(ZH(gt1,2)))/4._dp
-End If 
-If ((gt3.le.3).And.(gt3.ge.1)) Then 
-res = res-(g2**2*vu*Conjg(ZE(gt2,gt3))*Conjg(ZH(gt1,2)))/4._dp
+res = res-(g2**2*vu*Conjg(ZE(gt2,gt3))*ZH(gt1,2))/4._dp
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -28693,9 +28695,9 @@ Subroutine CouplinghhhhUSecUSeL(gt1,gt2,gt3,gt4,g1,g2,Ye,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3,gt4
-Real(dp), Intent(in) :: g1,g2
+Real(dp), Intent(in) :: g1,g2,ZH(4,4)
 
-Complex(dp), Intent(in) :: Ye(3,3),ZH(4,4)
+Complex(dp), Intent(in) :: Ye(3,3)
 
 Complex(dp), Intent(out) :: res 
  
@@ -28738,59 +28740,59 @@ End If
 res = 0._dp 
 If ((-3 + gt3.le.3).And.(-3 + gt3.ge.1).And.(-3 + gt4.le.3).And.(-3 + gt4.ge.1)) Then 
 Do j1 = 1,3
-res = res-(Conjg(Ye(-3 + gt3,j1))*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Ye(-3 + gt4,j1))
+res = res-(Conjg(Ye(-3 + gt3,j1))*Ye(-3 + gt4,j1)*ZH(gt1,1)*ZH(gt2,1))
+End Do 
+End If 
+If ((gt3.le.3).And.(gt3.ge.1).And.(gt4.le.3).And.(gt4.ge.1)) Then 
+Do j1 = 1,3
+res = res-(Conjg(Ye(j1,gt4))*Ye(j1,gt3)*ZH(gt1,1)*ZH(gt2,1))
 End Do 
 End If 
 If ((-3 + gt3.le.3).And.(-3 + gt3.ge.1).And.(-3 + gt4.le.3).And.(-3 + gt4.ge.1)) Then 
 Do j1 = 1,3
-res = res-(Conjg(Ye(-3 + gt3,j1))*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Ye(-3 + gt4,j1))
+res = res-(Conjg(Ye(-3 + gt3,j1))*Ye(-3 + gt4,j1)*ZH(gt1,3)*ZH(gt2,3))
 End Do 
 End If 
 If ((gt3.le.3).And.(gt3.ge.1).And.(gt4.le.3).And.(gt4.ge.1)) Then 
 Do j1 = 1,3
-res = res-(Conjg(Ye(j1,gt4))*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Ye(j1,gt3))
-End Do 
-End If 
-If ((gt3.le.3).And.(gt3.ge.1).And.(gt4.le.3).And.(gt4.ge.1)) Then 
-Do j1 = 1,3
-res = res-(Conjg(Ye(j1,gt4))*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Ye(j1,gt3))
+res = res-(Conjg(Ye(j1,gt4))*Ye(j1,gt3)*ZH(gt1,3)*ZH(gt2,3))
 End Do 
 End If 
 If ((gt3.eq.gt4).And.(-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
-res = res+(g1**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1)))/2._dp
+res = res+(g1**2*ZH(gt1,1)*ZH(gt2,1))/2._dp
+End If 
+If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
+res = res-(g1**2*ZH(gt1,1)*ZH(gt2,1))/4._dp
+End If 
+If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
+res = res+(g2**2*ZH(gt1,1)*ZH(gt2,1))/4._dp
 End If 
 If ((gt3.eq.gt4).And.(-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
-res = res-(g1**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2)))/2._dp
+res = res-(g1**2*ZH(gt1,2)*ZH(gt2,2))/2._dp
+End If 
+If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
+res = res+(g1**2*ZH(gt1,2)*ZH(gt2,2))/4._dp
+End If 
+If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
+res = res-(g2**2*ZH(gt1,2)*ZH(gt2,2))/4._dp
 End If 
 If ((gt3.eq.gt4).And.(-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
-res = res+(g1**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3)))/2._dp
+res = res+(g1**2*ZH(gt1,3)*ZH(gt2,3))/2._dp
+End If 
+If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
+res = res-(g1**2*ZH(gt1,3)*ZH(gt2,3))/4._dp
+End If 
+If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
+res = res+(g2**2*ZH(gt1,3)*ZH(gt2,3))/4._dp
 End If 
 If ((gt3.eq.gt4).And.(-3 + gt3.le.3).And.(-3 + gt3.ge.1)) Then 
-res = res-(g1**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4)))/2._dp
+res = res-(g1**2*ZH(gt1,4)*ZH(gt2,4))/2._dp
 End If 
 If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res-(g1**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1)))/4._dp
+res = res+(g1**2*ZH(gt1,4)*ZH(gt2,4))/4._dp
 End If 
 If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res+(g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1)))/4._dp
-End If 
-If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res+(g1**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2)))/4._dp
-End If 
-If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res-(g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2)))/4._dp
-End If 
-If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res-(g1**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3)))/4._dp
-End If 
-If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res+(g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3)))/4._dp
-End If 
-If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res+(g1**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4)))/4._dp
-End If 
-If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res-(g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4)))/4._dp
+res = res-(g2**2*ZH(gt1,4)*ZH(gt2,4))/4._dp
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -29620,9 +29622,9 @@ Subroutine CouplinghhSvcUSvL(gt1,gt2,gt3,g1,g2,vd,vu,ZV,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Real(dp), Intent(in) :: g1,g2,vd,vu
+Real(dp), Intent(in) :: g1,g2,vd,vu,ZH(4,4)
 
-Complex(dp), Intent(in) :: ZV(3,3),ZH(4,4)
+Complex(dp), Intent(in) :: ZV(3,3)
 
 Complex(dp), Intent(out) :: res 
  
@@ -29656,16 +29658,16 @@ End If
 
 res = 0._dp 
 If ((gt3.le.3).And.(gt3.ge.1)) Then 
-res = res-(g1**2*vd*Conjg(ZH(gt1,1))*Conjg(ZV(gt2,gt3)))/4._dp
+res = res-(g1**2*vd*Conjg(ZV(gt2,gt3))*ZH(gt1,1))/4._dp
 End If 
 If ((gt3.le.3).And.(gt3.ge.1)) Then 
-res = res-(g2**2*vd*Conjg(ZH(gt1,1))*Conjg(ZV(gt2,gt3)))/4._dp
+res = res-(g2**2*vd*Conjg(ZV(gt2,gt3))*ZH(gt1,1))/4._dp
 End If 
 If ((gt3.le.3).And.(gt3.ge.1)) Then 
-res = res+(g1**2*vu*Conjg(ZH(gt1,2))*Conjg(ZV(gt2,gt3)))/4._dp
+res = res+(g1**2*vu*Conjg(ZV(gt2,gt3))*ZH(gt1,2))/4._dp
 End If 
 If ((gt3.le.3).And.(gt3.ge.1)) Then 
-res = res+(g2**2*vu*Conjg(ZH(gt1,2))*Conjg(ZV(gt2,gt3)))/4._dp
+res = res+(g2**2*vu*Conjg(ZV(gt2,gt3))*ZH(gt1,2))/4._dp
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -29852,9 +29854,7 @@ Subroutine CouplinghhhhUSvcUSvL(gt1,gt2,gt3,gt4,g1,g2,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3,gt4
-Real(dp), Intent(in) :: g1,g2
-
-Complex(dp), Intent(in) :: ZH(4,4)
+Real(dp), Intent(in) :: g1,g2,ZH(4,4)
 
 Complex(dp), Intent(out) :: res 
  
@@ -29896,28 +29896,28 @@ End If
 
 res = 0._dp 
 If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res-(g1**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1)))/4._dp
+res = res-(g1**2*ZH(gt1,1)*ZH(gt2,1))/4._dp
 End If 
 If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res-(g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1)))/4._dp
+res = res-(g2**2*ZH(gt1,1)*ZH(gt2,1))/4._dp
 End If 
 If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res+(g1**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2)))/4._dp
+res = res+(g1**2*ZH(gt1,2)*ZH(gt2,2))/4._dp
 End If 
 If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res+(g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2)))/4._dp
+res = res+(g2**2*ZH(gt1,2)*ZH(gt2,2))/4._dp
 End If 
 If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res-(g1**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3)))/4._dp
+res = res-(g1**2*ZH(gt1,3)*ZH(gt2,3))/4._dp
 End If 
 If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res-(g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3)))/4._dp
+res = res-(g2**2*ZH(gt1,3)*ZH(gt2,3))/4._dp
 End If 
 If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res+(g1**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4)))/4._dp
+res = res+(g1**2*ZH(gt1,4)*ZH(gt2,4))/4._dp
 End If 
 If ((gt3.eq.gt4).And.(gt3.le.3).And.(gt3.ge.1)) Then 
-res = res+(g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4)))/4._dp
+res = res+(g2**2*ZH(gt1,4)*ZH(gt2,4))/4._dp
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -30931,16 +30931,16 @@ End If
 
 res = 0._dp 
 If ((1.eq.gt3)) Then 
-res = res-(g2**2*vd)/4._dp
+res = res-(g2**2*vd*RXiWm)/4._dp
 End If 
 If ((2.eq.gt3)) Then 
-res = res-(g2**2*vu)/4._dp
+res = res-(g2**2*vu*RXiWm)/4._dp
 End If 
 If ((3.eq.gt3)) Then 
-res = res-1._dp/4._dp*(0.,1._dp)*g2**2*vd
+res = res-1._dp/4._dp*(0.,1._dp)*g2**2*vd*RXiWm
 End If 
 If ((4.eq.gt3)) Then 
-res = res+1._dp/4._dp*(0.,1._dp)*g2**2*vu
+res = res+1._dp/4._dp*(0.,1._dp)*g2**2*vu*RXiWm
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -30976,16 +30976,16 @@ End If
 
 res = 0._dp 
 If ((1.eq.gt3)) Then 
-res = res-(g2**2*vd)/4._dp
+res = res-(g2**2*vd*RXiWm)/4._dp
 End If 
 If ((2.eq.gt3)) Then 
-res = res-(g2**2*vu)/4._dp
+res = res-(g2**2*vu*RXiWm)/4._dp
 End If 
 If ((3.eq.gt3)) Then 
-res = res+1._dp/4._dp*(0.,1._dp)*g2**2*vd
+res = res+1._dp/4._dp*(0.,1._dp)*g2**2*vd*RXiWm
 End If 
 If ((4.eq.gt3)) Then 
-res = res-1._dp/4._dp*(0.,1._dp)*g2**2*vu
+res = res-1._dp/4._dp*(0.,1._dp)*g2**2*vu*RXiWm
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -31021,22 +31021,22 @@ End If
 
 res = 0._dp 
 If ((1.eq.gt3)) Then 
-res = res-(g2**2*vd*Cos(TW)**2)/4._dp
+res = res-(g2**2*vd*Cos(TW)**2*RXiZ)/4._dp
 End If 
 If ((2.eq.gt3)) Then 
-res = res-(g2**2*vu*Cos(TW)**2)/4._dp
+res = res-(g2**2*vu*Cos(TW)**2*RXiZ)/4._dp
 End If 
 If ((1.eq.gt3)) Then 
-res = res-(g1*g2*vd*Cos(TW)*Sin(TW))/2._dp
+res = res-(g1*g2*vd*Cos(TW)*RXiZ*Sin(TW))/2._dp
 End If 
 If ((2.eq.gt3)) Then 
-res = res-(g1*g2*vu*Cos(TW)*Sin(TW))/2._dp
+res = res-(g1*g2*vu*Cos(TW)*RXiZ*Sin(TW))/2._dp
 End If 
 If ((1.eq.gt3)) Then 
-res = res-(g1**2*vd*Sin(TW)**2)/4._dp
+res = res-(g1**2*vd*RXiZ*Sin(TW)**2)/4._dp
 End If 
 If ((2.eq.gt3)) Then 
-res = res-(g1**2*vu*Sin(TW)**2)/4._dp
+res = res-(g1**2*vu*RXiZ*Sin(TW)**2)/4._dp
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -31054,9 +31054,7 @@ Subroutine CouplingUhhhhhhL(gt1,gt2,gt3,g1,g2,vd,vu,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Real(dp), Intent(in) :: g1,g2,vd,vu
-
-Complex(dp), Intent(in) :: ZH(4,4)
+Real(dp), Intent(in) :: g1,g2,vd,vu,ZH(4,4)
 
 Complex(dp), Intent(out) :: res 
  
@@ -31090,124 +31088,124 @@ End If
 
 res = 0._dp 
 If ((1.eq.gt1)) Then 
-res = res+(-3*g1**2*vd*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,1)))/4._dp
+res = res+(-3*g1**2*vd*ZH(gt2,1)*ZH(gt3,1))/4._dp
 End If 
 If ((1.eq.gt1)) Then 
-res = res+(-3*g2**2*vd*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,1)))/4._dp
+res = res+(-3*g2**2*vd*ZH(gt2,1)*ZH(gt3,1))/4._dp
+End If 
+If ((2.eq.gt1)) Then 
+res = res+(g1**2*vu*ZH(gt2,1)*ZH(gt3,1))/4._dp
+End If 
+If ((2.eq.gt1)) Then 
+res = res+(g2**2*vu*ZH(gt2,1)*ZH(gt3,1))/4._dp
 End If 
 If ((1.eq.gt1)) Then 
-res = res+(g1**2*vu*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,1)))/4._dp
+res = res+(g1**2*vu*ZH(gt2,2)*ZH(gt3,1))/4._dp
 End If 
 If ((1.eq.gt1)) Then 
-res = res+(g2**2*vu*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,1)))/4._dp
-End If 
-If ((1.eq.gt1)) Then 
-res = res+(g1**2*vu*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,2)))/4._dp
-End If 
-If ((1.eq.gt1)) Then 
-res = res+(g2**2*vu*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,2)))/4._dp
-End If 
-If ((1.eq.gt1)) Then 
-res = res+(g1**2*vd*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,2)))/4._dp
-End If 
-If ((1.eq.gt1)) Then 
-res = res+(g2**2*vd*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,2)))/4._dp
-End If 
-If ((1.eq.gt1)) Then 
-res = res-(g1**2*vd*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,3)))/4._dp
-End If 
-If ((1.eq.gt1)) Then 
-res = res-(g2**2*vd*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,3)))/4._dp
-End If 
-If ((1.eq.gt1)) Then 
-res = res+(g1**2*vd*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,4)))/4._dp
-End If 
-If ((1.eq.gt1)) Then 
-res = res+(g2**2*vd*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,4)))/4._dp
+res = res+(g2**2*vu*ZH(gt2,2)*ZH(gt3,1))/4._dp
 End If 
 If ((2.eq.gt1)) Then 
-res = res+(g1**2*vu*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,1)))/4._dp
+res = res+(g1**2*vd*ZH(gt2,2)*ZH(gt3,1))/4._dp
 End If 
 If ((2.eq.gt1)) Then 
-res = res+(g2**2*vu*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,1)))/4._dp
-End If 
-If ((2.eq.gt1)) Then 
-res = res+(g1**2*vd*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,1)))/4._dp
-End If 
-If ((2.eq.gt1)) Then 
-res = res+(g2**2*vd*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,1)))/4._dp
-End If 
-If ((2.eq.gt1)) Then 
-res = res+(g1**2*vd*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,2)))/4._dp
-End If 
-If ((2.eq.gt1)) Then 
-res = res+(g2**2*vd*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,2)))/4._dp
-End If 
-If ((2.eq.gt1)) Then 
-res = res+(-3*g1**2*vu*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,2)))/4._dp
-End If 
-If ((2.eq.gt1)) Then 
-res = res+(-3*g2**2*vu*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,2)))/4._dp
-End If 
-If ((2.eq.gt1)) Then 
-res = res+(g1**2*vu*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,3)))/4._dp
-End If 
-If ((2.eq.gt1)) Then 
-res = res+(g2**2*vu*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,3)))/4._dp
-End If 
-If ((2.eq.gt1)) Then 
-res = res-(g1**2*vu*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,4)))/4._dp
-End If 
-If ((2.eq.gt1)) Then 
-res = res-(g2**2*vu*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,4)))/4._dp
+res = res+(g2**2*vd*ZH(gt2,2)*ZH(gt3,1))/4._dp
 End If 
 If ((3.eq.gt1)) Then 
-res = res-(g1**2*vd*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,1)))/4._dp
+res = res-(g1**2*vd*ZH(gt2,3)*ZH(gt3,1))/4._dp
 End If 
 If ((3.eq.gt1)) Then 
-res = res-(g2**2*vd*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,1)))/4._dp
+res = res-(g2**2*vd*ZH(gt2,3)*ZH(gt3,1))/4._dp
+End If 
+If ((4.eq.gt1)) Then 
+res = res+(g1**2*vd*ZH(gt2,4)*ZH(gt3,1))/4._dp
+End If 
+If ((4.eq.gt1)) Then 
+res = res+(g2**2*vd*ZH(gt2,4)*ZH(gt3,1))/4._dp
+End If 
+If ((1.eq.gt1)) Then 
+res = res+(g1**2*vu*ZH(gt2,1)*ZH(gt3,2))/4._dp
+End If 
+If ((1.eq.gt1)) Then 
+res = res+(g2**2*vu*ZH(gt2,1)*ZH(gt3,2))/4._dp
+End If 
+If ((2.eq.gt1)) Then 
+res = res+(g1**2*vd*ZH(gt2,1)*ZH(gt3,2))/4._dp
+End If 
+If ((2.eq.gt1)) Then 
+res = res+(g2**2*vd*ZH(gt2,1)*ZH(gt3,2))/4._dp
+End If 
+If ((1.eq.gt1)) Then 
+res = res+(g1**2*vd*ZH(gt2,2)*ZH(gt3,2))/4._dp
+End If 
+If ((1.eq.gt1)) Then 
+res = res+(g2**2*vd*ZH(gt2,2)*ZH(gt3,2))/4._dp
+End If 
+If ((2.eq.gt1)) Then 
+res = res+(-3*g1**2*vu*ZH(gt2,2)*ZH(gt3,2))/4._dp
+End If 
+If ((2.eq.gt1)) Then 
+res = res+(-3*g2**2*vu*ZH(gt2,2)*ZH(gt3,2))/4._dp
 End If 
 If ((3.eq.gt1)) Then 
-res = res+(g1**2*vu*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,2)))/4._dp
+res = res+(g1**2*vu*ZH(gt2,3)*ZH(gt3,2))/4._dp
 End If 
 If ((3.eq.gt1)) Then 
-res = res+(g2**2*vu*Conjg(ZH(gt2,3))*Conjg(ZH(gt3,2)))/4._dp
+res = res+(g2**2*vu*ZH(gt2,3)*ZH(gt3,2))/4._dp
+End If 
+If ((4.eq.gt1)) Then 
+res = res-(g1**2*vu*ZH(gt2,4)*ZH(gt3,2))/4._dp
+End If 
+If ((4.eq.gt1)) Then 
+res = res-(g2**2*vu*ZH(gt2,4)*ZH(gt3,2))/4._dp
 End If 
 If ((3.eq.gt1)) Then 
-res = res-(g1**2*vd*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,3)))/4._dp
+res = res-(g1**2*vd*ZH(gt2,1)*ZH(gt3,3))/4._dp
 End If 
 If ((3.eq.gt1)) Then 
-res = res-(g2**2*vd*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,3)))/4._dp
+res = res-(g2**2*vd*ZH(gt2,1)*ZH(gt3,3))/4._dp
 End If 
 If ((3.eq.gt1)) Then 
-res = res+(g1**2*vu*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,3)))/4._dp
+res = res+(g1**2*vu*ZH(gt2,2)*ZH(gt3,3))/4._dp
 End If 
 If ((3.eq.gt1)) Then 
-res = res+(g2**2*vu*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,3)))/4._dp
+res = res+(g2**2*vu*ZH(gt2,2)*ZH(gt3,3))/4._dp
+End If 
+If ((1.eq.gt1)) Then 
+res = res-(g1**2*vd*ZH(gt2,3)*ZH(gt3,3))/4._dp
+End If 
+If ((1.eq.gt1)) Then 
+res = res-(g2**2*vd*ZH(gt2,3)*ZH(gt3,3))/4._dp
+End If 
+If ((2.eq.gt1)) Then 
+res = res+(g1**2*vu*ZH(gt2,3)*ZH(gt3,3))/4._dp
+End If 
+If ((2.eq.gt1)) Then 
+res = res+(g2**2*vu*ZH(gt2,3)*ZH(gt3,3))/4._dp
 End If 
 If ((4.eq.gt1)) Then 
-res = res+(g1**2*vd*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,1)))/4._dp
+res = res+(g1**2*vd*ZH(gt2,1)*ZH(gt3,4))/4._dp
 End If 
 If ((4.eq.gt1)) Then 
-res = res+(g2**2*vd*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,1)))/4._dp
+res = res+(g2**2*vd*ZH(gt2,1)*ZH(gt3,4))/4._dp
 End If 
 If ((4.eq.gt1)) Then 
-res = res-(g1**2*vu*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,2)))/4._dp
+res = res-(g1**2*vu*ZH(gt2,2)*ZH(gt3,4))/4._dp
 End If 
 If ((4.eq.gt1)) Then 
-res = res-(g2**2*vu*Conjg(ZH(gt2,4))*Conjg(ZH(gt3,2)))/4._dp
+res = res-(g2**2*vu*ZH(gt2,2)*ZH(gt3,4))/4._dp
 End If 
-If ((4.eq.gt1)) Then 
-res = res+(g1**2*vd*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,4)))/4._dp
+If ((1.eq.gt1)) Then 
+res = res+(g1**2*vd*ZH(gt2,4)*ZH(gt3,4))/4._dp
 End If 
-If ((4.eq.gt1)) Then 
-res = res+(g2**2*vd*Conjg(ZH(gt2,1))*Conjg(ZH(gt3,4)))/4._dp
+If ((1.eq.gt1)) Then 
+res = res+(g2**2*vd*ZH(gt2,4)*ZH(gt3,4))/4._dp
 End If 
-If ((4.eq.gt1)) Then 
-res = res-(g1**2*vu*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,4)))/4._dp
+If ((2.eq.gt1)) Then 
+res = res-(g1**2*vu*ZH(gt2,4)*ZH(gt3,4))/4._dp
 End If 
-If ((4.eq.gt1)) Then 
-res = res-(g2**2*vu*Conjg(ZH(gt2,2))*Conjg(ZH(gt3,4)))/4._dp
+If ((2.eq.gt1)) Then 
+res = res-(g2**2*vu*ZH(gt2,4)*ZH(gt3,4))/4._dp
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -31225,9 +31223,7 @@ Subroutine CouplingUhhhhVZL(gt1,gt2,g1,g2,ZH,TW,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2
-Real(dp), Intent(in) :: g1,g2,TW
-
-Complex(dp), Intent(in) :: ZH(4,4)
+Real(dp), Intent(in) :: g1,g2,ZH(4,4),TW
 
 Complex(dp), Intent(out) :: res 
  
@@ -31252,29 +31248,29 @@ If ((gt2.Lt.1).Or.(gt2.Gt.4)) Then
 End If 
 
 res = 0._dp 
-If ((1.eq.gt1)) Then 
-res = res+(g2*Conjg(ZH(gt2,3))*Cos(TW))/2._dp
-End If 
-If ((2.eq.gt1)) Then 
-res = res-(g2*Conjg(ZH(gt2,4))*Cos(TW))/2._dp
+If ((3.eq.gt1)) Then 
+res = res-(g2*Cos(TW)*ZH(gt2,1))/2._dp
 End If 
 If ((3.eq.gt1)) Then 
-res = res-(g2*Conjg(ZH(gt2,1))*Cos(TW))/2._dp
+res = res-(g1*Sin(TW)*ZH(gt2,1))/2._dp
 End If 
 If ((4.eq.gt1)) Then 
-res = res+(g2*Conjg(ZH(gt2,2))*Cos(TW))/2._dp
+res = res+(g2*Cos(TW)*ZH(gt2,2))/2._dp
+End If 
+If ((4.eq.gt1)) Then 
+res = res+(g1*Sin(TW)*ZH(gt2,2))/2._dp
 End If 
 If ((1.eq.gt1)) Then 
-res = res+(g1*Conjg(ZH(gt2,3))*Sin(TW))/2._dp
+res = res+(g2*Cos(TW)*ZH(gt2,3))/2._dp
+End If 
+If ((1.eq.gt1)) Then 
+res = res+(g1*Sin(TW)*ZH(gt2,3))/2._dp
 End If 
 If ((2.eq.gt1)) Then 
-res = res-(g1*Conjg(ZH(gt2,4))*Sin(TW))/2._dp
+res = res-(g2*Cos(TW)*ZH(gt2,4))/2._dp
 End If 
-If ((3.eq.gt1)) Then 
-res = res-(g1*Conjg(ZH(gt2,1))*Sin(TW))/2._dp
-End If 
-If ((4.eq.gt1)) Then 
-res = res+(g1*Conjg(ZH(gt2,2))*Sin(TW))/2._dp
+If ((2.eq.gt1)) Then 
+res = res-(g1*Sin(TW)*ZH(gt2,4))/2._dp
 End If 
 res = (0.,1.)*res 
  
@@ -32064,9 +32060,7 @@ Subroutine CouplingUhhUhhhhhhL(gt1,gt2,gt3,gt4,g1,g2,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3,gt4
-Real(dp), Intent(in) :: g1,g2
-
-Complex(dp), Intent(in) :: ZH(4,4)
+Real(dp), Intent(in) :: g1,g2,ZH(4,4)
 
 Complex(dp), Intent(out) :: res 
  
@@ -32108,244 +32102,244 @@ End If
 
 res = 0._dp 
 If ((1.eq.gt1).And.(1.eq.gt2)) Then 
-res = res+(-3*g1**2*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,1)))/4._dp
+res = res+(-3*g1**2*ZH(gt3,1)*ZH(gt4,1))/4._dp
 End If 
 If ((1.eq.gt1).And.(1.eq.gt2)) Then 
-res = res+(-3*g2**2*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,1)))/4._dp
+res = res+(-3*g2**2*ZH(gt3,1)*ZH(gt4,1))/4._dp
 End If 
-If ((1.eq.gt1).And.(1.eq.gt2)) Then 
-res = res+(g1**2*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,2)))/4._dp
+If ((2.eq.gt1).And.(2.eq.gt2)) Then 
+res = res+(g1**2*ZH(gt3,1)*ZH(gt4,1))/4._dp
 End If 
-If ((1.eq.gt1).And.(1.eq.gt2)) Then 
-res = res+(g2**2*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,2)))/4._dp
+If ((2.eq.gt1).And.(2.eq.gt2)) Then 
+res = res+(g2**2*ZH(gt3,1)*ZH(gt4,1))/4._dp
 End If 
-If ((1.eq.gt1).And.(1.eq.gt2)) Then 
-res = res-(g1**2*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,3)))/4._dp
+If ((3.eq.gt1).And.(3.eq.gt2)) Then 
+res = res-(g1**2*ZH(gt3,1)*ZH(gt4,1))/4._dp
 End If 
-If ((1.eq.gt1).And.(1.eq.gt2)) Then 
-res = res-(g2**2*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,3)))/4._dp
+If ((3.eq.gt1).And.(3.eq.gt2)) Then 
+res = res-(g2**2*ZH(gt3,1)*ZH(gt4,1))/4._dp
 End If 
-If ((1.eq.gt1).And.(1.eq.gt2)) Then 
-res = res+(g1**2*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,4)))/4._dp
+If ((4.eq.gt1).And.(4.eq.gt2)) Then 
+res = res+(g1**2*ZH(gt3,1)*ZH(gt4,1))/4._dp
 End If 
-If ((1.eq.gt1).And.(1.eq.gt2)) Then 
-res = res+(g2**2*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,4)))/4._dp
+If ((4.eq.gt1).And.(4.eq.gt2)) Then 
+res = res+(g2**2*ZH(gt3,1)*ZH(gt4,1))/4._dp
 End If 
 If ((1.eq.gt2).And.(2.eq.gt1)) Then 
-res = res+(g1**2*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,1)))/4._dp
+res = res+(g1**2*ZH(gt3,2)*ZH(gt4,1))/4._dp
 End If 
 If ((1.eq.gt2).And.(2.eq.gt1)) Then 
-res = res+(g2**2*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,1)))/4._dp
+res = res+(g2**2*ZH(gt3,2)*ZH(gt4,1))/4._dp
+End If 
+If ((1.eq.gt1).And.(2.eq.gt2)) Then 
+res = res+(g1**2*ZH(gt3,2)*ZH(gt4,1))/4._dp
+End If 
+If ((1.eq.gt1).And.(2.eq.gt2)) Then 
+res = res+(g2**2*ZH(gt3,2)*ZH(gt4,1))/4._dp
+End If 
+If ((1.eq.gt2).And.(3.eq.gt1)) Then 
+res = res-(g1**2*ZH(gt3,3)*ZH(gt4,1))/4._dp
+End If 
+If ((1.eq.gt2).And.(3.eq.gt1)) Then 
+res = res-(g2**2*ZH(gt3,3)*ZH(gt4,1))/4._dp
+End If 
+If ((1.eq.gt1).And.(3.eq.gt2)) Then 
+res = res-(g1**2*ZH(gt3,3)*ZH(gt4,1))/4._dp
+End If 
+If ((1.eq.gt1).And.(3.eq.gt2)) Then 
+res = res-(g2**2*ZH(gt3,3)*ZH(gt4,1))/4._dp
+End If 
+If ((1.eq.gt2).And.(4.eq.gt1)) Then 
+res = res+(g1**2*ZH(gt3,4)*ZH(gt4,1))/4._dp
+End If 
+If ((1.eq.gt2).And.(4.eq.gt1)) Then 
+res = res+(g2**2*ZH(gt3,4)*ZH(gt4,1))/4._dp
+End If 
+If ((1.eq.gt1).And.(4.eq.gt2)) Then 
+res = res+(g1**2*ZH(gt3,4)*ZH(gt4,1))/4._dp
+End If 
+If ((1.eq.gt1).And.(4.eq.gt2)) Then 
+res = res+(g2**2*ZH(gt3,4)*ZH(gt4,1))/4._dp
 End If 
 If ((1.eq.gt2).And.(2.eq.gt1)) Then 
-res = res+(g1**2*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,2)))/4._dp
+res = res+(g1**2*ZH(gt3,1)*ZH(gt4,2))/4._dp
 End If 
 If ((1.eq.gt2).And.(2.eq.gt1)) Then 
-res = res+(g2**2*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,2)))/4._dp
+res = res+(g2**2*ZH(gt3,1)*ZH(gt4,2))/4._dp
 End If 
 If ((1.eq.gt1).And.(2.eq.gt2)) Then 
-res = res+(g1**2*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,1)))/4._dp
+res = res+(g1**2*ZH(gt3,1)*ZH(gt4,2))/4._dp
 End If 
 If ((1.eq.gt1).And.(2.eq.gt2)) Then 
-res = res+(g2**2*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,1)))/4._dp
+res = res+(g2**2*ZH(gt3,1)*ZH(gt4,2))/4._dp
 End If 
-If ((1.eq.gt1).And.(2.eq.gt2)) Then 
-res = res+(g1**2*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,2)))/4._dp
+If ((1.eq.gt1).And.(1.eq.gt2)) Then 
+res = res+(g1**2*ZH(gt3,2)*ZH(gt4,2))/4._dp
 End If 
-If ((1.eq.gt1).And.(2.eq.gt2)) Then 
-res = res+(g2**2*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,2)))/4._dp
-End If 
-If ((2.eq.gt1).And.(2.eq.gt2)) Then 
-res = res+(g1**2*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,1)))/4._dp
+If ((1.eq.gt1).And.(1.eq.gt2)) Then 
+res = res+(g2**2*ZH(gt3,2)*ZH(gt4,2))/4._dp
 End If 
 If ((2.eq.gt1).And.(2.eq.gt2)) Then 
-res = res+(g2**2*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,1)))/4._dp
+res = res+(-3*g1**2*ZH(gt3,2)*ZH(gt4,2))/4._dp
 End If 
 If ((2.eq.gt1).And.(2.eq.gt2)) Then 
-res = res+(-3*g1**2*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,2)))/4._dp
+res = res+(-3*g2**2*ZH(gt3,2)*ZH(gt4,2))/4._dp
 End If 
-If ((2.eq.gt1).And.(2.eq.gt2)) Then 
-res = res+(-3*g2**2*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,2)))/4._dp
+If ((3.eq.gt1).And.(3.eq.gt2)) Then 
+res = res+(g1**2*ZH(gt3,2)*ZH(gt4,2))/4._dp
 End If 
-If ((2.eq.gt1).And.(2.eq.gt2)) Then 
-res = res+(g1**2*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,3)))/4._dp
+If ((3.eq.gt1).And.(3.eq.gt2)) Then 
+res = res+(g2**2*ZH(gt3,2)*ZH(gt4,2))/4._dp
 End If 
-If ((2.eq.gt1).And.(2.eq.gt2)) Then 
-res = res+(g2**2*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,3)))/4._dp
+If ((4.eq.gt1).And.(4.eq.gt2)) Then 
+res = res-(g1**2*ZH(gt3,2)*ZH(gt4,2))/4._dp
 End If 
-If ((2.eq.gt1).And.(2.eq.gt2)) Then 
-res = res-(g1**2*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,4)))/4._dp
-End If 
-If ((2.eq.gt1).And.(2.eq.gt2)) Then 
-res = res-(g2**2*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,4)))/4._dp
-End If 
-If ((1.eq.gt2).And.(3.eq.gt1)) Then 
-res = res-(g1**2*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,1)))/4._dp
-End If 
-If ((1.eq.gt2).And.(3.eq.gt1)) Then 
-res = res-(g2**2*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,1)))/4._dp
-End If 
-If ((1.eq.gt2).And.(3.eq.gt1)) Then 
-res = res-(g1**2*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,3)))/4._dp
-End If 
-If ((1.eq.gt2).And.(3.eq.gt1)) Then 
-res = res-(g2**2*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,3)))/4._dp
+If ((4.eq.gt1).And.(4.eq.gt2)) Then 
+res = res-(g2**2*ZH(gt3,2)*ZH(gt4,2))/4._dp
 End If 
 If ((2.eq.gt2).And.(3.eq.gt1)) Then 
-res = res+(g1**2*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,2)))/4._dp
+res = res+(g1**2*ZH(gt3,3)*ZH(gt4,2))/4._dp
 End If 
 If ((2.eq.gt2).And.(3.eq.gt1)) Then 
-res = res+(g2**2*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,2)))/4._dp
+res = res+(g2**2*ZH(gt3,3)*ZH(gt4,2))/4._dp
+End If 
+If ((2.eq.gt1).And.(3.eq.gt2)) Then 
+res = res+(g1**2*ZH(gt3,3)*ZH(gt4,2))/4._dp
+End If 
+If ((2.eq.gt1).And.(3.eq.gt2)) Then 
+res = res+(g2**2*ZH(gt3,3)*ZH(gt4,2))/4._dp
+End If 
+If ((2.eq.gt2).And.(4.eq.gt1)) Then 
+res = res-(g1**2*ZH(gt3,4)*ZH(gt4,2))/4._dp
+End If 
+If ((2.eq.gt2).And.(4.eq.gt1)) Then 
+res = res-(g2**2*ZH(gt3,4)*ZH(gt4,2))/4._dp
+End If 
+If ((2.eq.gt1).And.(4.eq.gt2)) Then 
+res = res-(g1**2*ZH(gt3,4)*ZH(gt4,2))/4._dp
+End If 
+If ((2.eq.gt1).And.(4.eq.gt2)) Then 
+res = res-(g2**2*ZH(gt3,4)*ZH(gt4,2))/4._dp
+End If 
+If ((1.eq.gt2).And.(3.eq.gt1)) Then 
+res = res-(g1**2*ZH(gt3,1)*ZH(gt4,3))/4._dp
+End If 
+If ((1.eq.gt2).And.(3.eq.gt1)) Then 
+res = res-(g2**2*ZH(gt3,1)*ZH(gt4,3))/4._dp
+End If 
+If ((1.eq.gt1).And.(3.eq.gt2)) Then 
+res = res-(g1**2*ZH(gt3,1)*ZH(gt4,3))/4._dp
+End If 
+If ((1.eq.gt1).And.(3.eq.gt2)) Then 
+res = res-(g2**2*ZH(gt3,1)*ZH(gt4,3))/4._dp
 End If 
 If ((2.eq.gt2).And.(3.eq.gt1)) Then 
-res = res+(g1**2*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,3)))/4._dp
+res = res+(g1**2*ZH(gt3,2)*ZH(gt4,3))/4._dp
 End If 
 If ((2.eq.gt2).And.(3.eq.gt1)) Then 
-res = res+(g2**2*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,3)))/4._dp
-End If 
-If ((1.eq.gt1).And.(3.eq.gt2)) Then 
-res = res-(g1**2*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,1)))/4._dp
-End If 
-If ((1.eq.gt1).And.(3.eq.gt2)) Then 
-res = res-(g2**2*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,1)))/4._dp
-End If 
-If ((1.eq.gt1).And.(3.eq.gt2)) Then 
-res = res-(g1**2*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,3)))/4._dp
-End If 
-If ((1.eq.gt1).And.(3.eq.gt2)) Then 
-res = res-(g2**2*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,3)))/4._dp
+res = res+(g2**2*ZH(gt3,2)*ZH(gt4,3))/4._dp
 End If 
 If ((2.eq.gt1).And.(3.eq.gt2)) Then 
-res = res+(g1**2*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,2)))/4._dp
+res = res+(g1**2*ZH(gt3,2)*ZH(gt4,3))/4._dp
 End If 
 If ((2.eq.gt1).And.(3.eq.gt2)) Then 
-res = res+(g2**2*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,2)))/4._dp
+res = res+(g2**2*ZH(gt3,2)*ZH(gt4,3))/4._dp
 End If 
-If ((2.eq.gt1).And.(3.eq.gt2)) Then 
-res = res+(g1**2*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,3)))/4._dp
+If ((1.eq.gt1).And.(1.eq.gt2)) Then 
+res = res-(g1**2*ZH(gt3,3)*ZH(gt4,3))/4._dp
 End If 
-If ((2.eq.gt1).And.(3.eq.gt2)) Then 
-res = res+(g2**2*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,3)))/4._dp
+If ((1.eq.gt1).And.(1.eq.gt2)) Then 
+res = res-(g2**2*ZH(gt3,3)*ZH(gt4,3))/4._dp
 End If 
-If ((3.eq.gt1).And.(3.eq.gt2)) Then 
-res = res-(g1**2*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,1)))/4._dp
+If ((2.eq.gt1).And.(2.eq.gt2)) Then 
+res = res+(g1**2*ZH(gt3,3)*ZH(gt4,3))/4._dp
 End If 
-If ((3.eq.gt1).And.(3.eq.gt2)) Then 
-res = res-(g2**2*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,1)))/4._dp
-End If 
-If ((3.eq.gt1).And.(3.eq.gt2)) Then 
-res = res+(g1**2*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,2)))/4._dp
+If ((2.eq.gt1).And.(2.eq.gt2)) Then 
+res = res+(g2**2*ZH(gt3,3)*ZH(gt4,3))/4._dp
 End If 
 If ((3.eq.gt1).And.(3.eq.gt2)) Then 
-res = res+(g2**2*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,2)))/4._dp
+res = res+(-3*g1**2*ZH(gt3,3)*ZH(gt4,3))/4._dp
 End If 
 If ((3.eq.gt1).And.(3.eq.gt2)) Then 
-res = res+(-3*g1**2*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,3)))/4._dp
+res = res+(-3*g2**2*ZH(gt3,3)*ZH(gt4,3))/4._dp
 End If 
-If ((3.eq.gt1).And.(3.eq.gt2)) Then 
-res = res+(-3*g2**2*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,3)))/4._dp
+If ((4.eq.gt1).And.(4.eq.gt2)) Then 
+res = res+(g1**2*ZH(gt3,3)*ZH(gt4,3))/4._dp
 End If 
-If ((3.eq.gt1).And.(3.eq.gt2)) Then 
-res = res+(g1**2*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,4)))/4._dp
-End If 
-If ((3.eq.gt1).And.(3.eq.gt2)) Then 
-res = res+(g2**2*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,4)))/4._dp
-End If 
-If ((1.eq.gt2).And.(4.eq.gt1)) Then 
-res = res+(g1**2*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,1)))/4._dp
-End If 
-If ((1.eq.gt2).And.(4.eq.gt1)) Then 
-res = res+(g2**2*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,1)))/4._dp
-End If 
-If ((1.eq.gt2).And.(4.eq.gt1)) Then 
-res = res+(g1**2*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,4)))/4._dp
-End If 
-If ((1.eq.gt2).And.(4.eq.gt1)) Then 
-res = res+(g2**2*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,4)))/4._dp
-End If 
-If ((2.eq.gt2).And.(4.eq.gt1)) Then 
-res = res-(g1**2*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,2)))/4._dp
-End If 
-If ((2.eq.gt2).And.(4.eq.gt1)) Then 
-res = res-(g2**2*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,2)))/4._dp
-End If 
-If ((2.eq.gt2).And.(4.eq.gt1)) Then 
-res = res-(g1**2*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,4)))/4._dp
-End If 
-If ((2.eq.gt2).And.(4.eq.gt1)) Then 
-res = res-(g2**2*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,4)))/4._dp
+If ((4.eq.gt1).And.(4.eq.gt2)) Then 
+res = res+(g2**2*ZH(gt3,3)*ZH(gt4,3))/4._dp
 End If 
 If ((3.eq.gt2).And.(4.eq.gt1)) Then 
-res = res+(g1**2*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,3)))/4._dp
+res = res+(g1**2*ZH(gt3,4)*ZH(gt4,3))/4._dp
 End If 
 If ((3.eq.gt2).And.(4.eq.gt1)) Then 
-res = res+(g2**2*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,3)))/4._dp
+res = res+(g2**2*ZH(gt3,4)*ZH(gt4,3))/4._dp
+End If 
+If ((3.eq.gt1).And.(4.eq.gt2)) Then 
+res = res+(g1**2*ZH(gt3,4)*ZH(gt4,3))/4._dp
+End If 
+If ((3.eq.gt1).And.(4.eq.gt2)) Then 
+res = res+(g2**2*ZH(gt3,4)*ZH(gt4,3))/4._dp
+End If 
+If ((1.eq.gt2).And.(4.eq.gt1)) Then 
+res = res+(g1**2*ZH(gt3,1)*ZH(gt4,4))/4._dp
+End If 
+If ((1.eq.gt2).And.(4.eq.gt1)) Then 
+res = res+(g2**2*ZH(gt3,1)*ZH(gt4,4))/4._dp
+End If 
+If ((1.eq.gt1).And.(4.eq.gt2)) Then 
+res = res+(g1**2*ZH(gt3,1)*ZH(gt4,4))/4._dp
+End If 
+If ((1.eq.gt1).And.(4.eq.gt2)) Then 
+res = res+(g2**2*ZH(gt3,1)*ZH(gt4,4))/4._dp
+End If 
+If ((2.eq.gt2).And.(4.eq.gt1)) Then 
+res = res-(g1**2*ZH(gt3,2)*ZH(gt4,4))/4._dp
+End If 
+If ((2.eq.gt2).And.(4.eq.gt1)) Then 
+res = res-(g2**2*ZH(gt3,2)*ZH(gt4,4))/4._dp
+End If 
+If ((2.eq.gt1).And.(4.eq.gt2)) Then 
+res = res-(g1**2*ZH(gt3,2)*ZH(gt4,4))/4._dp
+End If 
+If ((2.eq.gt1).And.(4.eq.gt2)) Then 
+res = res-(g2**2*ZH(gt3,2)*ZH(gt4,4))/4._dp
 End If 
 If ((3.eq.gt2).And.(4.eq.gt1)) Then 
-res = res+(g1**2*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,4)))/4._dp
+res = res+(g1**2*ZH(gt3,3)*ZH(gt4,4))/4._dp
 End If 
 If ((3.eq.gt2).And.(4.eq.gt1)) Then 
-res = res+(g2**2*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,4)))/4._dp
-End If 
-If ((1.eq.gt1).And.(4.eq.gt2)) Then 
-res = res+(g1**2*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,1)))/4._dp
-End If 
-If ((1.eq.gt1).And.(4.eq.gt2)) Then 
-res = res+(g2**2*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,1)))/4._dp
-End If 
-If ((1.eq.gt1).And.(4.eq.gt2)) Then 
-res = res+(g1**2*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,4)))/4._dp
-End If 
-If ((1.eq.gt1).And.(4.eq.gt2)) Then 
-res = res+(g2**2*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,4)))/4._dp
-End If 
-If ((2.eq.gt1).And.(4.eq.gt2)) Then 
-res = res-(g1**2*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,2)))/4._dp
-End If 
-If ((2.eq.gt1).And.(4.eq.gt2)) Then 
-res = res-(g2**2*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,2)))/4._dp
-End If 
-If ((2.eq.gt1).And.(4.eq.gt2)) Then 
-res = res-(g1**2*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,4)))/4._dp
-End If 
-If ((2.eq.gt1).And.(4.eq.gt2)) Then 
-res = res-(g2**2*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,4)))/4._dp
+res = res+(g2**2*ZH(gt3,3)*ZH(gt4,4))/4._dp
 End If 
 If ((3.eq.gt1).And.(4.eq.gt2)) Then 
-res = res+(g1**2*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,3)))/4._dp
+res = res+(g1**2*ZH(gt3,3)*ZH(gt4,4))/4._dp
 End If 
 If ((3.eq.gt1).And.(4.eq.gt2)) Then 
-res = res+(g2**2*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,3)))/4._dp
+res = res+(g2**2*ZH(gt3,3)*ZH(gt4,4))/4._dp
 End If 
-If ((3.eq.gt1).And.(4.eq.gt2)) Then 
-res = res+(g1**2*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,4)))/4._dp
+If ((1.eq.gt1).And.(1.eq.gt2)) Then 
+res = res+(g1**2*ZH(gt3,4)*ZH(gt4,4))/4._dp
 End If 
-If ((3.eq.gt1).And.(4.eq.gt2)) Then 
-res = res+(g2**2*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,4)))/4._dp
+If ((1.eq.gt1).And.(1.eq.gt2)) Then 
+res = res+(g2**2*ZH(gt3,4)*ZH(gt4,4))/4._dp
 End If 
-If ((4.eq.gt1).And.(4.eq.gt2)) Then 
-res = res+(g1**2*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,1)))/4._dp
+If ((2.eq.gt1).And.(2.eq.gt2)) Then 
+res = res-(g1**2*ZH(gt3,4)*ZH(gt4,4))/4._dp
 End If 
-If ((4.eq.gt1).And.(4.eq.gt2)) Then 
-res = res+(g2**2*Conjg(ZH(gt3,1))*Conjg(ZH(gt4,1)))/4._dp
+If ((2.eq.gt1).And.(2.eq.gt2)) Then 
+res = res-(g2**2*ZH(gt3,4)*ZH(gt4,4))/4._dp
 End If 
-If ((4.eq.gt1).And.(4.eq.gt2)) Then 
-res = res-(g1**2*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,2)))/4._dp
+If ((3.eq.gt1).And.(3.eq.gt2)) Then 
+res = res+(g1**2*ZH(gt3,4)*ZH(gt4,4))/4._dp
 End If 
-If ((4.eq.gt1).And.(4.eq.gt2)) Then 
-res = res-(g2**2*Conjg(ZH(gt3,2))*Conjg(ZH(gt4,2)))/4._dp
-End If 
-If ((4.eq.gt1).And.(4.eq.gt2)) Then 
-res = res+(g1**2*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,3)))/4._dp
+If ((3.eq.gt1).And.(3.eq.gt2)) Then 
+res = res+(g2**2*ZH(gt3,4)*ZH(gt4,4))/4._dp
 End If 
 If ((4.eq.gt1).And.(4.eq.gt2)) Then 
-res = res+(g2**2*Conjg(ZH(gt3,3))*Conjg(ZH(gt4,3)))/4._dp
+res = res+(-3*g1**2*ZH(gt3,4)*ZH(gt4,4))/4._dp
 End If 
 If ((4.eq.gt1).And.(4.eq.gt2)) Then 
-res = res+(-3*g1**2*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,4)))/4._dp
-End If 
-If ((4.eq.gt1).And.(4.eq.gt2)) Then 
-res = res+(-3*g2**2*Conjg(ZH(gt3,4))*Conjg(ZH(gt4,4)))/4._dp
+res = res+(-3*g2**2*ZH(gt3,4)*ZH(gt4,4))/4._dp
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -33403,16 +33397,16 @@ End If
 
 res = 0._dp 
 If ((1.eq.gt3)) Then 
-res = res-(g2**2*vd*Cos(TW))/4._dp
+res = res-(g2**2*vd*Cos(TW)*RXiZ)/4._dp
 End If 
 If ((2.eq.gt3)) Then 
-res = res+(g2**2*vu*Cos(TW))/4._dp
+res = res+(g2**2*vu*Cos(TW)*RXiZ)/4._dp
 End If 
 If ((1.eq.gt3)) Then 
-res = res-(g1*g2*vd*Sin(TW))/4._dp
+res = res-(g1*g2*vd*RXiZ*Sin(TW))/4._dp
 End If 
 If ((2.eq.gt3)) Then 
-res = res+(g1*g2*vu*Sin(TW))/4._dp
+res = res+(g1*g2*vu*RXiZ*Sin(TW))/4._dp
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -33448,16 +33442,16 @@ End If
 
 res = 0._dp 
 If ((1.eq.gt3)) Then 
-res = res+(g2**2*vd*Cos(TW))/4._dp
+res = res+(g2**2*vd*Cos(TW)*RXiWm)/4._dp
 End If 
 If ((2.eq.gt3)) Then 
-res = res-(g2**2*vu*Cos(TW))/4._dp
+res = res-(g2**2*vu*Cos(TW)*RXiWm)/4._dp
 End If 
 If ((1.eq.gt3)) Then 
-res = res-(g1*g2*vd*Sin(TW))/4._dp
+res = res-(g1*g2*vd*RXiWm*Sin(TW))/4._dp
 End If 
 If ((2.eq.gt3)) Then 
-res = res+(g1*g2*vu*Sin(TW))/4._dp
+res = res+(g1*g2*vu*RXiWm*Sin(TW))/4._dp
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -33493,16 +33487,16 @@ End If
 
 res = 0._dp 
 If ((1.eq.gt3)) Then 
-res = res+(g2**2*vd*Cos(TW))/4._dp
+res = res+(g2**2*vd*Cos(TW)*RXiWm)/4._dp
 End If 
 If ((2.eq.gt3)) Then 
-res = res-(g2**2*vu*Cos(TW))/4._dp
+res = res-(g2**2*vu*Cos(TW)*RXiWm)/4._dp
 End If 
 If ((1.eq.gt3)) Then 
-res = res-(g1*g2*vd*Sin(TW))/4._dp
+res = res-(g1*g2*vd*RXiWm*Sin(TW))/4._dp
 End If 
 If ((2.eq.gt3)) Then 
-res = res+(g1*g2*vu*Sin(TW))/4._dp
+res = res+(g1*g2*vu*RXiWm*Sin(TW))/4._dp
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -33538,16 +33532,16 @@ End If
 
 res = 0._dp 
 If ((1.eq.gt3)) Then 
-res = res-(g2**2*vd*Cos(TW))/4._dp
+res = res-(g2**2*vd*Cos(TW)*RXiZ)/4._dp
 End If 
 If ((2.eq.gt3)) Then 
-res = res+(g2**2*vu*Cos(TW))/4._dp
+res = res+(g2**2*vu*Cos(TW)*RXiZ)/4._dp
 End If 
 If ((1.eq.gt3)) Then 
-res = res-(g1*g2*vd*Sin(TW))/4._dp
+res = res-(g1*g2*vd*RXiZ*Sin(TW))/4._dp
 End If 
 If ((2.eq.gt3)) Then 
-res = res+(g1*g2*vu*Sin(TW))/4._dp
+res = res+(g1*g2*vu*RXiZ*Sin(TW))/4._dp
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -33565,9 +33559,9 @@ Subroutine CouplinghhHpmcUHpmL(gt1,gt2,gt3,g1,g2,vd,vu,ZH,ZP,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Real(dp), Intent(in) :: g1,g2,vd,vu
+Real(dp), Intent(in) :: g1,g2,vd,vu,ZH(4,4)
 
-Complex(dp), Intent(in) :: ZH(4,4),ZP(2,2)
+Complex(dp), Intent(in) :: ZP(2,2)
 
 Complex(dp), Intent(out) :: res 
  
@@ -33601,52 +33595,52 @@ End If
 
 res = 0._dp 
 If ((1.eq.gt3)) Then 
-res = res-(g1**2*vd*Conjg(ZH(gt1,1))*Conjg(ZP(gt2,1)))/4._dp
+res = res-(g1**2*vd*Conjg(ZP(gt2,1))*ZH(gt1,1))/4._dp
 End If 
 If ((1.eq.gt3)) Then 
-res = res-(g2**2*vd*Conjg(ZH(gt1,1))*Conjg(ZP(gt2,1)))/4._dp
+res = res-(g2**2*vd*Conjg(ZP(gt2,1))*ZH(gt1,1))/4._dp
 End If 
 If ((1.eq.gt3)) Then 
-res = res+(g1**2*vu*Conjg(ZH(gt1,2))*Conjg(ZP(gt2,1)))/4._dp
+res = res-(g2**2*vu*Conjg(ZP(gt2,2))*ZH(gt1,1))/4._dp
+End If 
+If ((2.eq.gt3)) Then 
+res = res-(g2**2*vu*Conjg(ZP(gt2,1))*ZH(gt1,1))/4._dp
+End If 
+If ((2.eq.gt3)) Then 
+res = res+(g1**2*vd*Conjg(ZP(gt2,2))*ZH(gt1,1))/4._dp
+End If 
+If ((2.eq.gt3)) Then 
+res = res-(g2**2*vd*Conjg(ZP(gt2,2))*ZH(gt1,1))/4._dp
 End If 
 If ((1.eq.gt3)) Then 
-res = res-(g2**2*vu*Conjg(ZH(gt1,2))*Conjg(ZP(gt2,1)))/4._dp
+res = res+(g1**2*vu*Conjg(ZP(gt2,1))*ZH(gt1,2))/4._dp
 End If 
 If ((1.eq.gt3)) Then 
-res = res-(g2**2*vu*Conjg(ZH(gt1,1))*Conjg(ZP(gt2,2)))/4._dp
+res = res-(g2**2*vu*Conjg(ZP(gt2,1))*ZH(gt1,2))/4._dp
 End If 
 If ((1.eq.gt3)) Then 
-res = res-(g2**2*vd*Conjg(ZH(gt1,2))*Conjg(ZP(gt2,2)))/4._dp
+res = res-(g2**2*vd*Conjg(ZP(gt2,2))*ZH(gt1,2))/4._dp
+End If 
+If ((2.eq.gt3)) Then 
+res = res-(g2**2*vd*Conjg(ZP(gt2,1))*ZH(gt1,2))/4._dp
+End If 
+If ((2.eq.gt3)) Then 
+res = res-(g1**2*vu*Conjg(ZP(gt2,2))*ZH(gt1,2))/4._dp
+End If 
+If ((2.eq.gt3)) Then 
+res = res-(g2**2*vu*Conjg(ZP(gt2,2))*ZH(gt1,2))/4._dp
 End If 
 If ((1.eq.gt3)) Then 
-res = res-1._dp/4._dp*(0.,1._dp)*g2**2*vu*Conjg(ZH(gt1,3))*Conjg(ZP(gt2,2))
+res = res-1._dp/4._dp*(0.,1._dp)*g2**2*vu*Conjg(ZP(gt2,2))*ZH(gt1,3)
+End If 
+If ((2.eq.gt3)) Then 
+res = res+1._dp/4._dp*(0.,1._dp)*g2**2*vu*Conjg(ZP(gt2,1))*ZH(gt1,3)
 End If 
 If ((1.eq.gt3)) Then 
-res = res-1._dp/4._dp*(0.,1._dp)*g2**2*vd*Conjg(ZH(gt1,4))*Conjg(ZP(gt2,2))
+res = res-1._dp/4._dp*(0.,1._dp)*g2**2*vd*Conjg(ZP(gt2,2))*ZH(gt1,4)
 End If 
 If ((2.eq.gt3)) Then 
-res = res-(g2**2*vu*Conjg(ZH(gt1,1))*Conjg(ZP(gt2,1)))/4._dp
-End If 
-If ((2.eq.gt3)) Then 
-res = res-(g2**2*vd*Conjg(ZH(gt1,2))*Conjg(ZP(gt2,1)))/4._dp
-End If 
-If ((2.eq.gt3)) Then 
-res = res+1._dp/4._dp*(0.,1._dp)*g2**2*vu*Conjg(ZH(gt1,3))*Conjg(ZP(gt2,1))
-End If 
-If ((2.eq.gt3)) Then 
-res = res+1._dp/4._dp*(0.,1._dp)*g2**2*vd*Conjg(ZH(gt1,4))*Conjg(ZP(gt2,1))
-End If 
-If ((2.eq.gt3)) Then 
-res = res+(g1**2*vd*Conjg(ZH(gt1,1))*Conjg(ZP(gt2,2)))/4._dp
-End If 
-If ((2.eq.gt3)) Then 
-res = res-(g2**2*vd*Conjg(ZH(gt1,1))*Conjg(ZP(gt2,2)))/4._dp
-End If 
-If ((2.eq.gt3)) Then 
-res = res-(g1**2*vu*Conjg(ZH(gt1,2))*Conjg(ZP(gt2,2)))/4._dp
-End If 
-If ((2.eq.gt3)) Then 
-res = res-(g2**2*vu*Conjg(ZH(gt1,2))*Conjg(ZP(gt2,2)))/4._dp
+res = res+1._dp/4._dp*(0.,1._dp)*g2**2*vd*Conjg(ZP(gt2,1))*ZH(gt1,4)
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -33664,9 +33658,7 @@ Subroutine CouplinghhcUHpmVWmL(gt1,gt2,g2,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2
-Real(dp), Intent(in) :: g2
-
-Complex(dp), Intent(in) :: ZH(4,4)
+Real(dp), Intent(in) :: g2,ZH(4,4)
 
 Complex(dp), Intent(out) :: res 
  
@@ -33692,16 +33684,16 @@ End If
 
 res = 0._dp 
 If ((1.eq.gt2)) Then 
-res = res+(g2*Conjg(ZH(gt1,1)))/2._dp
+res = res+(g2*ZH(gt1,1))/2._dp
+End If 
+If ((2.eq.gt2)) Then 
+res = res-(g2*ZH(gt1,2))/2._dp
 End If 
 If ((1.eq.gt2)) Then 
-res = res+1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZH(gt1,3))
+res = res+1._dp/2._dp*(0.,1._dp)*g2*ZH(gt1,3)
 End If 
 If ((2.eq.gt2)) Then 
-res = res-(g2*Conjg(ZH(gt1,2)))/2._dp
-End If 
-If ((2.eq.gt2)) Then 
-res = res+1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZH(gt1,4))
+res = res+1._dp/2._dp*(0.,1._dp)*g2*ZH(gt1,4)
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -34117,9 +34109,7 @@ Subroutine CouplinghhhhUHpmcUHpmL(gt1,gt2,gt3,gt4,g1,g2,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3,gt4
-Real(dp), Intent(in) :: g1,g2
-
-Complex(dp), Intent(in) :: ZH(4,4)
+Real(dp), Intent(in) :: g1,g2,ZH(4,4)
 
 Complex(dp), Intent(out) :: res 
  
@@ -34161,100 +34151,100 @@ End If
 
 res = 0._dp 
 If ((1.eq.gt3).And.(1.eq.gt4)) Then 
-res = res-(g1**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1)))/4._dp
+res = res-(g1**2*ZH(gt1,1)*ZH(gt2,1))/4._dp
 End If 
 If ((1.eq.gt3).And.(1.eq.gt4)) Then 
-res = res-(g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1)))/4._dp
+res = res-(g2**2*ZH(gt1,1)*ZH(gt2,1))/4._dp
+End If 
+If ((2.eq.gt3).And.(2.eq.gt4)) Then 
+res = res+(g1**2*ZH(gt1,1)*ZH(gt2,1))/4._dp
+End If 
+If ((2.eq.gt3).And.(2.eq.gt4)) Then 
+res = res-(g2**2*ZH(gt1,1)*ZH(gt2,1))/4._dp
+End If 
+If ((1.eq.gt4).And.(2.eq.gt3)) Then 
+res = res-(g2**2*ZH(gt1,2)*ZH(gt2,1))/4._dp
+End If 
+If ((1.eq.gt3).And.(2.eq.gt4)) Then 
+res = res-(g2**2*ZH(gt1,2)*ZH(gt2,1))/4._dp
+End If 
+If ((1.eq.gt4).And.(2.eq.gt3)) Then 
+res = res-1._dp/4._dp*(0.,1._dp)*g2**2*ZH(gt1,4)*ZH(gt2,1)
+End If 
+If ((1.eq.gt3).And.(2.eq.gt4)) Then 
+res = res+1._dp/4._dp*(0.,1._dp)*g2**2*ZH(gt1,4)*ZH(gt2,1)
+End If 
+If ((1.eq.gt4).And.(2.eq.gt3)) Then 
+res = res-(g2**2*ZH(gt1,1)*ZH(gt2,2))/4._dp
+End If 
+If ((1.eq.gt3).And.(2.eq.gt4)) Then 
+res = res-(g2**2*ZH(gt1,1)*ZH(gt2,2))/4._dp
 End If 
 If ((1.eq.gt3).And.(1.eq.gt4)) Then 
-res = res+(g1**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2)))/4._dp
+res = res+(g1**2*ZH(gt1,2)*ZH(gt2,2))/4._dp
 End If 
 If ((1.eq.gt3).And.(1.eq.gt4)) Then 
-res = res-(g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2)))/4._dp
+res = res-(g2**2*ZH(gt1,2)*ZH(gt2,2))/4._dp
+End If 
+If ((2.eq.gt3).And.(2.eq.gt4)) Then 
+res = res-(g1**2*ZH(gt1,2)*ZH(gt2,2))/4._dp
+End If 
+If ((2.eq.gt3).And.(2.eq.gt4)) Then 
+res = res-(g2**2*ZH(gt1,2)*ZH(gt2,2))/4._dp
+End If 
+If ((1.eq.gt4).And.(2.eq.gt3)) Then 
+res = res-1._dp/4._dp*(0.,1._dp)*g2**2*ZH(gt1,3)*ZH(gt2,2)
+End If 
+If ((1.eq.gt3).And.(2.eq.gt4)) Then 
+res = res+1._dp/4._dp*(0.,1._dp)*g2**2*ZH(gt1,3)*ZH(gt2,2)
+End If 
+If ((1.eq.gt4).And.(2.eq.gt3)) Then 
+res = res-1._dp/4._dp*(0.,1._dp)*g2**2*ZH(gt1,2)*ZH(gt2,3)
+End If 
+If ((1.eq.gt3).And.(2.eq.gt4)) Then 
+res = res+1._dp/4._dp*(0.,1._dp)*g2**2*ZH(gt1,2)*ZH(gt2,3)
 End If 
 If ((1.eq.gt3).And.(1.eq.gt4)) Then 
-res = res-(g1**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3)))/4._dp
+res = res-(g1**2*ZH(gt1,3)*ZH(gt2,3))/4._dp
 End If 
 If ((1.eq.gt3).And.(1.eq.gt4)) Then 
-res = res-(g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3)))/4._dp
+res = res-(g2**2*ZH(gt1,3)*ZH(gt2,3))/4._dp
+End If 
+If ((2.eq.gt3).And.(2.eq.gt4)) Then 
+res = res+(g1**2*ZH(gt1,3)*ZH(gt2,3))/4._dp
+End If 
+If ((2.eq.gt3).And.(2.eq.gt4)) Then 
+res = res-(g2**2*ZH(gt1,3)*ZH(gt2,3))/4._dp
+End If 
+If ((1.eq.gt4).And.(2.eq.gt3)) Then 
+res = res+(g2**2*ZH(gt1,4)*ZH(gt2,3))/4._dp
+End If 
+If ((1.eq.gt3).And.(2.eq.gt4)) Then 
+res = res+(g2**2*ZH(gt1,4)*ZH(gt2,3))/4._dp
+End If 
+If ((1.eq.gt4).And.(2.eq.gt3)) Then 
+res = res-1._dp/4._dp*(0.,1._dp)*g2**2*ZH(gt1,1)*ZH(gt2,4)
+End If 
+If ((1.eq.gt3).And.(2.eq.gt4)) Then 
+res = res+1._dp/4._dp*(0.,1._dp)*g2**2*ZH(gt1,1)*ZH(gt2,4)
+End If 
+If ((1.eq.gt4).And.(2.eq.gt3)) Then 
+res = res+(g2**2*ZH(gt1,3)*ZH(gt2,4))/4._dp
+End If 
+If ((1.eq.gt3).And.(2.eq.gt4)) Then 
+res = res+(g2**2*ZH(gt1,3)*ZH(gt2,4))/4._dp
 End If 
 If ((1.eq.gt3).And.(1.eq.gt4)) Then 
-res = res+(g1**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4)))/4._dp
+res = res+(g1**2*ZH(gt1,4)*ZH(gt2,4))/4._dp
 End If 
 If ((1.eq.gt3).And.(1.eq.gt4)) Then 
-res = res-(g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4)))/4._dp
-End If 
-If ((1.eq.gt4).And.(2.eq.gt3)) Then 
-res = res-(g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,1)))/4._dp
-End If 
-If ((1.eq.gt4).And.(2.eq.gt3)) Then 
-res = res-1._dp/4._dp*(0.,1._dp)*g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,1))
-End If 
-If ((1.eq.gt4).And.(2.eq.gt3)) Then 
-res = res-(g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,2)))/4._dp
-End If 
-If ((1.eq.gt4).And.(2.eq.gt3)) Then 
-res = res-1._dp/4._dp*(0.,1._dp)*g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,2))
-End If 
-If ((1.eq.gt4).And.(2.eq.gt3)) Then 
-res = res-1._dp/4._dp*(0.,1._dp)*g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,3))
-End If 
-If ((1.eq.gt4).And.(2.eq.gt3)) Then 
-res = res+(g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,3)))/4._dp
-End If 
-If ((1.eq.gt4).And.(2.eq.gt3)) Then 
-res = res-1._dp/4._dp*(0.,1._dp)*g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,4))
-End If 
-If ((1.eq.gt4).And.(2.eq.gt3)) Then 
-res = res+(g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,4)))/4._dp
-End If 
-If ((1.eq.gt3).And.(2.eq.gt4)) Then 
-res = res-(g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,1)))/4._dp
-End If 
-If ((1.eq.gt3).And.(2.eq.gt4)) Then 
-res = res+1._dp/4._dp*(0.,1._dp)*g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,1))
-End If 
-If ((1.eq.gt3).And.(2.eq.gt4)) Then 
-res = res-(g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,2)))/4._dp
-End If 
-If ((1.eq.gt3).And.(2.eq.gt4)) Then 
-res = res+1._dp/4._dp*(0.,1._dp)*g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,2))
-End If 
-If ((1.eq.gt3).And.(2.eq.gt4)) Then 
-res = res+1._dp/4._dp*(0.,1._dp)*g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,3))
-End If 
-If ((1.eq.gt3).And.(2.eq.gt4)) Then 
-res = res+(g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,3)))/4._dp
-End If 
-If ((1.eq.gt3).And.(2.eq.gt4)) Then 
-res = res+1._dp/4._dp*(0.,1._dp)*g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,4))
-End If 
-If ((1.eq.gt3).And.(2.eq.gt4)) Then 
-res = res+(g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,4)))/4._dp
+res = res-(g2**2*ZH(gt1,4)*ZH(gt2,4))/4._dp
 End If 
 If ((2.eq.gt3).And.(2.eq.gt4)) Then 
-res = res+(g1**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1)))/4._dp
+res = res-(g1**2*ZH(gt1,4)*ZH(gt2,4))/4._dp
 End If 
 If ((2.eq.gt3).And.(2.eq.gt4)) Then 
-res = res-(g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1)))/4._dp
-End If 
-If ((2.eq.gt3).And.(2.eq.gt4)) Then 
-res = res-(g1**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2)))/4._dp
-End If 
-If ((2.eq.gt3).And.(2.eq.gt4)) Then 
-res = res-(g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2)))/4._dp
-End If 
-If ((2.eq.gt3).And.(2.eq.gt4)) Then 
-res = res+(g1**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3)))/4._dp
-End If 
-If ((2.eq.gt3).And.(2.eq.gt4)) Then 
-res = res-(g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3)))/4._dp
-End If 
-If ((2.eq.gt3).And.(2.eq.gt4)) Then 
-res = res-(g1**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4)))/4._dp
-End If 
-If ((2.eq.gt3).And.(2.eq.gt4)) Then 
-res = res-(g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4)))/4._dp
+res = res-(g2**2*ZH(gt1,4)*ZH(gt2,4))/4._dp
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -35050,9 +35040,9 @@ Subroutine CouplingUChiChihhL(gt1,gt2,gt3,g1,g2,eta,ZH,ZN,resL,resR)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Real(dp), Intent(in) :: g1,g2,eta
+Real(dp), Intent(in) :: g1,g2,eta,ZH(4,4)
 
-Complex(dp), Intent(in) :: ZH(4,4),ZN(4,4)
+Complex(dp), Intent(in) :: ZN(4,4)
 
 Complex(dp), Intent(out) :: resL, resR 
  
@@ -35086,101 +35076,101 @@ End If
 
 resL = 0._dp 
 If ((1.eq.gt1)) Then 
-resL = resL+(g1*Conjg(ZH(gt3,1))*Conjg(ZN(gt2,3)))/2._dp
+resL = resL+(g1*Conjg(ZN(gt2,3))*ZH(gt3,1))/2._dp
+End If 
+If ((2.eq.gt1)) Then 
+resL = resL-(g2*Conjg(ZN(gt2,3))*ZH(gt3,1))/2._dp
+End If 
+If ((3.eq.gt1)) Then 
+resL = resL+(g1*Conjg(ZN(gt2,1))*ZH(gt3,1))/2._dp
+End If 
+If ((3.eq.gt1)) Then 
+resL = resL-(g2*Conjg(ZN(gt2,2))*ZH(gt3,1))/2._dp
 End If 
 If ((1.eq.gt1)) Then 
-resL = resL-1._dp/2._dp*(0.,1._dp)*g1*Conjg(ZH(gt3,3))*Conjg(ZN(gt2,3))
+resL = resL-(g1*Conjg(ZN(gt2,4))*ZH(gt3,2))/(2._dp*exp((0._dp,1._dp)*eta))
+End If 
+If ((2.eq.gt1)) Then 
+resL = resL+(g2*Conjg(ZN(gt2,4))*ZH(gt3,2))/(2._dp*exp((0._dp,1._dp)*eta))
+End If 
+If ((4.eq.gt1)) Then 
+resL = resL-(g1*Conjg(ZN(gt2,1))*ZH(gt3,2))/(2._dp*exp((0._dp,1._dp)*eta))
+End If 
+If ((4.eq.gt1)) Then 
+resL = resL+(g2*Conjg(ZN(gt2,2))*ZH(gt3,2))/(2._dp*exp((0._dp,1._dp)*eta))
 End If 
 If ((1.eq.gt1)) Then 
-resL = resL-(g1*Conjg(ZH(gt3,2))*Conjg(ZN(gt2,4)))/(2._dp*exp((0._dp,1._dp)*eta))
+resL = resL-1._dp/2._dp*(0.,1._dp)*g1*Conjg(ZN(gt2,3))*ZH(gt3,3)
+End If 
+If ((2.eq.gt1)) Then 
+resL = resL+1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZN(gt2,3))*ZH(gt3,3)
+End If 
+If ((3.eq.gt1)) Then 
+resL = resL-1._dp/2._dp*(0.,1._dp)*g1*Conjg(ZN(gt2,1))*ZH(gt3,3)
+End If 
+If ((3.eq.gt1)) Then 
+resL = resL+1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZN(gt2,2))*ZH(gt3,3)
 End If 
 If ((1.eq.gt1)) Then 
-resL = resL+(1._dp/2._dp*(0.,1._dp)*g1*Conjg(ZH(gt3,4))*Conjg(ZN(gt2,4)))/exp((0._dp,1._dp)*eta)
+resL = resL+(1._dp/2._dp*(0.,1._dp)*g1*Conjg(ZN(gt2,4))*ZH(gt3,4))/exp((0._dp,1._dp)*eta)
 End If 
 If ((2.eq.gt1)) Then 
-resL = resL-(g2*Conjg(ZH(gt3,1))*Conjg(ZN(gt2,3)))/2._dp
-End If 
-If ((2.eq.gt1)) Then 
-resL = resL+1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZH(gt3,3))*Conjg(ZN(gt2,3))
-End If 
-If ((2.eq.gt1)) Then 
-resL = resL+(g2*Conjg(ZH(gt3,2))*Conjg(ZN(gt2,4)))/(2._dp*exp((0._dp,1._dp)*eta))
-End If 
-If ((2.eq.gt1)) Then 
-resL = resL+(-1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZH(gt3,4))*Conjg(ZN(gt2,4)))/exp((0._dp,1._dp)*eta)
-End If 
-If ((3.eq.gt1)) Then 
-resL = resL+(g1*Conjg(ZH(gt3,1))*Conjg(ZN(gt2,1)))/2._dp
-End If 
-If ((3.eq.gt1)) Then 
-resL = resL-1._dp/2._dp*(0.,1._dp)*g1*Conjg(ZH(gt3,3))*Conjg(ZN(gt2,1))
-End If 
-If ((3.eq.gt1)) Then 
-resL = resL-(g2*Conjg(ZH(gt3,1))*Conjg(ZN(gt2,2)))/2._dp
-End If 
-If ((3.eq.gt1)) Then 
-resL = resL+1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZH(gt3,3))*Conjg(ZN(gt2,2))
+resL = resL+(-1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZN(gt2,4))*ZH(gt3,4))/exp((0._dp,1._dp)*eta)
 End If 
 If ((4.eq.gt1)) Then 
-resL = resL-(g1*Conjg(ZH(gt3,2))*Conjg(ZN(gt2,1)))/(2._dp*exp((0._dp,1._dp)*eta))
+resL = resL+(1._dp/2._dp*(0.,1._dp)*g1*Conjg(ZN(gt2,1))*ZH(gt3,4))/exp((0._dp,1._dp)*eta)
 End If 
 If ((4.eq.gt1)) Then 
-resL = resL+(1._dp/2._dp*(0.,1._dp)*g1*Conjg(ZH(gt3,4))*Conjg(ZN(gt2,1)))/exp((0._dp,1._dp)*eta)
-End If 
-If ((4.eq.gt1)) Then 
-resL = resL+(g2*Conjg(ZH(gt3,2))*Conjg(ZN(gt2,2)))/(2._dp*exp((0._dp,1._dp)*eta))
-End If 
-If ((4.eq.gt1)) Then 
-resL = resL+(-1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZH(gt3,4))*Conjg(ZN(gt2,2)))/exp((0._dp,1._dp)*eta)
+resL = resL+(-1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZN(gt2,2))*ZH(gt3,4))/exp((0._dp,1._dp)*eta)
 End If 
 resR = 0._dp 
 If ((3.eq.gt1)) Then 
-resR = resR+(g1*Conjg(ZH(gt3,1))*ZN(gt2,1))/2._dp
+resR = resR+(g1*ZH(gt3,1)*ZN(gt2,1))/2._dp
+End If 
+If ((4.eq.gt1)) Then 
+resR = resR-(exp((0._dp,1._dp)*eta)*g1*ZH(gt3,2)*ZN(gt2,1))/2._dp
 End If 
 If ((3.eq.gt1)) Then 
-resR = resR+1._dp/2._dp*(0.,1._dp)*g1*Conjg(ZH(gt3,3))*ZN(gt2,1)
+resR = resR+1._dp/2._dp*(0.,1._dp)*g1*ZH(gt3,3)*ZN(gt2,1)
 End If 
 If ((4.eq.gt1)) Then 
-resR = resR-(exp((0._dp,1._dp)*eta)*g1*Conjg(ZH(gt3,2))*ZN(gt2,1))/2._dp
-End If 
-If ((4.eq.gt1)) Then 
-resR = resR-1._dp/2._dp*(0.,1._dp)*exp((0._dp,1._dp)*eta)*g1*Conjg(ZH(gt3,4))*ZN(gt2,1)
+resR = resR-1._dp/2._dp*(0.,1._dp)*exp((0._dp,1._dp)*eta)*g1*ZH(gt3,4)*ZN(gt2,1)
 End If 
 If ((3.eq.gt1)) Then 
-resR = resR-(g2*Conjg(ZH(gt3,1))*ZN(gt2,2))/2._dp
+resR = resR-(g2*ZH(gt3,1)*ZN(gt2,2))/2._dp
+End If 
+If ((4.eq.gt1)) Then 
+resR = resR+(exp((0._dp,1._dp)*eta)*g2*ZH(gt3,2)*ZN(gt2,2))/2._dp
 End If 
 If ((3.eq.gt1)) Then 
-resR = resR-1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZH(gt3,3))*ZN(gt2,2)
+resR = resR-1._dp/2._dp*(0.,1._dp)*g2*ZH(gt3,3)*ZN(gt2,2)
 End If 
 If ((4.eq.gt1)) Then 
-resR = resR+(exp((0._dp,1._dp)*eta)*g2*Conjg(ZH(gt3,2))*ZN(gt2,2))/2._dp
-End If 
-If ((4.eq.gt1)) Then 
-resR = resR+1._dp/2._dp*(0.,1._dp)*exp((0._dp,1._dp)*eta)*g2*Conjg(ZH(gt3,4))*ZN(gt2,2)
+resR = resR+1._dp/2._dp*(0.,1._dp)*exp((0._dp,1._dp)*eta)*g2*ZH(gt3,4)*ZN(gt2,2)
 End If 
 If ((1.eq.gt1)) Then 
-resR = resR+(g1*Conjg(ZH(gt3,1))*ZN(gt2,3))/2._dp
+resR = resR+(g1*ZH(gt3,1)*ZN(gt2,3))/2._dp
+End If 
+If ((2.eq.gt1)) Then 
+resR = resR-(g2*ZH(gt3,1)*ZN(gt2,3))/2._dp
 End If 
 If ((1.eq.gt1)) Then 
-resR = resR+1._dp/2._dp*(0.,1._dp)*g1*Conjg(ZH(gt3,3))*ZN(gt2,3)
+resR = resR+1._dp/2._dp*(0.,1._dp)*g1*ZH(gt3,3)*ZN(gt2,3)
 End If 
 If ((2.eq.gt1)) Then 
-resR = resR-(g2*Conjg(ZH(gt3,1))*ZN(gt2,3))/2._dp
-End If 
-If ((2.eq.gt1)) Then 
-resR = resR-1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZH(gt3,3))*ZN(gt2,3)
+resR = resR-1._dp/2._dp*(0.,1._dp)*g2*ZH(gt3,3)*ZN(gt2,3)
 End If 
 If ((1.eq.gt1)) Then 
-resR = resR-(exp((0._dp,1._dp)*eta)*g1*Conjg(ZH(gt3,2))*ZN(gt2,4))/2._dp
+resR = resR-(exp((0._dp,1._dp)*eta)*g1*ZH(gt3,2)*ZN(gt2,4))/2._dp
+End If 
+If ((2.eq.gt1)) Then 
+resR = resR+(exp((0._dp,1._dp)*eta)*g2*ZH(gt3,2)*ZN(gt2,4))/2._dp
 End If 
 If ((1.eq.gt1)) Then 
-resR = resR-1._dp/2._dp*(0.,1._dp)*exp((0._dp,1._dp)*eta)*g1*Conjg(ZH(gt3,4))*ZN(gt2,4)
+resR = resR-1._dp/2._dp*(0.,1._dp)*exp((0._dp,1._dp)*eta)*g1*ZH(gt3,4)*ZN(gt2,4)
 End If 
 If ((2.eq.gt1)) Then 
-resR = resR+(exp((0._dp,1._dp)*eta)*g2*Conjg(ZH(gt3,2))*ZN(gt2,4))/2._dp
-End If 
-If ((2.eq.gt1)) Then 
-resR = resR+1._dp/2._dp*(0.,1._dp)*exp((0._dp,1._dp)*eta)*g2*Conjg(ZH(gt3,4))*ZN(gt2,4)
+resR = resR+1._dp/2._dp*(0.,1._dp)*exp((0._dp,1._dp)*eta)*g2*ZH(gt3,4)*ZN(gt2,4)
 End If 
 If ((Real(resL,dp).ne.Real(resL,dp)).or.(Real(resR,dp).ne.Real(resR,dp))) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -35567,9 +35557,9 @@ Subroutine CouplingcUChaChahhL(gt1,gt2,gt3,g2,eta,ZH,UM,UP,resL,resR)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Real(dp), Intent(in) :: g2,eta
+Real(dp), Intent(in) :: g2,eta,ZH(4,4)
 
-Complex(dp), Intent(in) :: ZH(4,4),UM(2,2),UP(2,2)
+Complex(dp), Intent(in) :: UM(2,2),UP(2,2)
 
 Complex(dp), Intent(out) :: resL, resR 
  
@@ -35603,29 +35593,29 @@ End If
 
 resL = 0._dp 
 If ((1.eq.gt1)) Then 
-resL = resL-((g2*Conjg(UM(gt2,2))*Conjg(ZH(gt3,1)))/sqrt(2._dp))
+resL = resL-((g2*Conjg(UM(gt2,2))*ZH(gt3,1))/sqrt(2._dp))
+End If 
+If ((2.eq.gt1)) Then 
+resL = resL-((g2*Conjg(UM(gt2,1))*ZH(gt3,2))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta)))
 End If 
 If ((1.eq.gt1)) Then 
-resL = resL+((0._dp,1._dp)*g2*Conjg(UM(gt2,2))*Conjg(ZH(gt3,3)))/sqrt(2._dp)
+resL = resL+((0._dp,1._dp)*g2*Conjg(UM(gt2,2))*ZH(gt3,3))/sqrt(2._dp)
 End If 
 If ((2.eq.gt1)) Then 
-resL = resL-((g2*Conjg(UM(gt2,1))*Conjg(ZH(gt3,2)))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta)))
-End If 
-If ((2.eq.gt1)) Then 
-resL = resL+((0._dp,1._dp)*g2*Conjg(UM(gt2,1))*Conjg(ZH(gt3,4)))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+resL = resL+((0._dp,1._dp)*g2*Conjg(UM(gt2,1))*ZH(gt3,4))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End If 
 resR = 0._dp 
 If ((2.eq.gt1)) Then 
-resR = resR-((g2*Conjg(ZH(gt3,1))*UP(gt2,1))/sqrt(2._dp))
+resR = resR-((g2*UP(gt2,1)*ZH(gt3,1))/sqrt(2._dp))
+End If 
+If ((1.eq.gt1)) Then 
+resR = resR-((exp((0._dp,1._dp)*eta)*g2*UP(gt2,2)*ZH(gt3,2))/sqrt(2._dp))
 End If 
 If ((2.eq.gt1)) Then 
-resR = resR+(-1*(0.,1._dp)*g2*Conjg(ZH(gt3,3))*UP(gt2,1))/sqrt(2._dp)
+resR = resR+(-1*(0.,1._dp)*g2*UP(gt2,1)*ZH(gt3,3))/sqrt(2._dp)
 End If 
 If ((1.eq.gt1)) Then 
-resR = resR-((exp((0._dp,1._dp)*eta)*g2*Conjg(ZH(gt3,2))*UP(gt2,2))/sqrt(2._dp))
-End If 
-If ((1.eq.gt1)) Then 
-resR = resR+(-1*(0.,1._dp)*exp((0._dp,1._dp)*eta)*g2*Conjg(ZH(gt3,4))*UP(gt2,2))/sqrt(2._dp)
+resR = resR+(-1*(0.,1._dp)*exp((0._dp,1._dp)*eta)*g2*UP(gt2,2)*ZH(gt3,4))/sqrt(2._dp)
 End If 
 If ((Real(resL,dp).ne.Real(resL,dp)).or.(Real(resR,dp).ne.Real(resR,dp))) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -36290,7 +36280,9 @@ Subroutine CouplingcUFeFehhL(gt1,gt2,gt3,Ye,ZH,ZEL,ZER,resL,resR)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Complex(dp), Intent(in) :: Ye(3,3),ZH(4,4),ZEL(3,3),ZER(3,3)
+Real(dp), Intent(in) :: ZH(4,4)
+
+Complex(dp), Intent(in) :: Ye(3,3),ZEL(3,3),ZER(3,3)
 
 Complex(dp), Intent(out) :: resL, resR 
  
@@ -36325,23 +36317,23 @@ End If
 resL = 0._dp 
 If ((gt1.le.3).And.(gt1.ge.1)) Then 
 Do j2 = 1,3
-resL = resL-((Conjg(ZEL(gt2,j2))*Conjg(ZH(gt3,1))*Ye(gt1,j2))/sqrt(2._dp))
+resL = resL-((Conjg(ZEL(gt2,j2))*Ye(gt1,j2)*ZH(gt3,1))/sqrt(2._dp))
 End Do 
 End If 
 If ((gt1.le.3).And.(gt1.ge.1)) Then 
 Do j2 = 1,3
-resL = resL+(-1*(0.,1._dp)*Conjg(ZEL(gt2,j2))*Conjg(ZH(gt3,3))*Ye(gt1,j2))/sqrt(2._dp)
+resL = resL+(-1*(0.,1._dp)*Conjg(ZEL(gt2,j2))*Ye(gt1,j2)*ZH(gt3,3))/sqrt(2._dp)
 End Do 
 End If 
 resR = 0._dp 
 If ((gt1.le.3).And.(gt1.ge.1)) Then 
 Do j1 = 1,3
-resR = resR-((Conjg(Ye(j1,gt1))*Conjg(ZH(gt3,1))*ZER(gt2,j1))/sqrt(2._dp))
+resR = resR-((Conjg(Ye(j1,gt1))*ZER(gt2,j1)*ZH(gt3,1))/sqrt(2._dp))
 End Do 
 End If 
 If ((gt1.le.3).And.(gt1.ge.1)) Then 
 Do j1 = 1,3
-resR = resR+((0._dp,1._dp)*Conjg(Ye(j1,gt1))*Conjg(ZH(gt3,3))*ZER(gt2,j1))/sqrt(2._dp)
+resR = resR+((0._dp,1._dp)*Conjg(Ye(j1,gt1))*ZER(gt2,j1)*ZH(gt3,3))/sqrt(2._dp)
 End Do 
 End If 
 If ((Real(resL,dp).ne.Real(resL,dp)).or.(Real(resR,dp).ne.Real(resR,dp))) Then 
@@ -36700,7 +36692,9 @@ Subroutine CouplingcUFdFdhhL(gt1,gt2,gt3,Yd,ZH,ZDL,ZDR,resL,resR)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Complex(dp), Intent(in) :: Yd(3,3),ZH(4,4),ZDL(3,3),ZDR(3,3)
+Real(dp), Intent(in) :: ZH(4,4)
+
+Complex(dp), Intent(in) :: Yd(3,3),ZDL(3,3),ZDR(3,3)
 
 Complex(dp), Intent(out) :: resL, resR 
  
@@ -36735,23 +36729,23 @@ End If
 resL = 0._dp 
 If ((gt1.le.3).And.(gt1.ge.1)) Then 
 Do j2 = 1,3
-resL = resL-((Conjg(ZDL(gt2,j2))*Conjg(ZH(gt3,1))*Yd(gt1,j2))/sqrt(2._dp))
+resL = resL-((Conjg(ZDL(gt2,j2))*Yd(gt1,j2)*ZH(gt3,1))/sqrt(2._dp))
 End Do 
 End If 
 If ((gt1.le.3).And.(gt1.ge.1)) Then 
 Do j2 = 1,3
-resL = resL+(-1*(0.,1._dp)*Conjg(ZDL(gt2,j2))*Conjg(ZH(gt3,3))*Yd(gt1,j2))/sqrt(2._dp)
+resL = resL+(-1*(0.,1._dp)*Conjg(ZDL(gt2,j2))*Yd(gt1,j2)*ZH(gt3,3))/sqrt(2._dp)
 End Do 
 End If 
 resR = 0._dp 
 If ((gt1.le.3).And.(gt1.ge.1)) Then 
 Do j1 = 1,3
-resR = resR-((Conjg(Yd(j1,gt1))*Conjg(ZH(gt3,1))*ZDR(gt2,j1))/sqrt(2._dp))
+resR = resR-((Conjg(Yd(j1,gt1))*ZDR(gt2,j1)*ZH(gt3,1))/sqrt(2._dp))
 End Do 
 End If 
 If ((gt1.le.3).And.(gt1.ge.1)) Then 
 Do j1 = 1,3
-resR = resR+((0._dp,1._dp)*Conjg(Yd(j1,gt1))*Conjg(ZH(gt3,3))*ZDR(gt2,j1))/sqrt(2._dp)
+resR = resR+((0._dp,1._dp)*Conjg(Yd(j1,gt1))*ZDR(gt2,j1)*ZH(gt3,3))/sqrt(2._dp)
 End Do 
 End If 
 If ((Real(resL,dp).ne.Real(resL,dp)).or.(Real(resR,dp).ne.Real(resR,dp))) Then 
@@ -37265,9 +37259,9 @@ Subroutine CouplingcUFuFuhhL(gt1,gt2,gt3,Yu,eta,ZH,ZUL,ZUR,resL,resR)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2,gt3
-Real(dp), Intent(in) :: eta
+Real(dp), Intent(in) :: eta,ZH(4,4)
 
-Complex(dp), Intent(in) :: Yu(3,3),ZH(4,4),ZUL(3,3),ZUR(3,3)
+Complex(dp), Intent(in) :: Yu(3,3),ZUL(3,3),ZUR(3,3)
 
 Complex(dp), Intent(out) :: resL, resR 
  
@@ -37302,23 +37296,23 @@ End If
 resL = 0._dp 
 If ((gt1.le.3).And.(gt1.ge.1)) Then 
 Do j2 = 1,3
-resL = resL-((exp((0._dp,1._dp)*eta)*Conjg(ZH(gt3,2))*Conjg(ZUL(gt2,j2))*Yu(gt1,j2))/sqrt(2._dp))
+resL = resL-((exp((0._dp,1._dp)*eta)*Conjg(ZUL(gt2,j2))*Yu(gt1,j2)*ZH(gt3,2))/sqrt(2._dp))
 End Do 
 End If 
 If ((gt1.le.3).And.(gt1.ge.1)) Then 
 Do j2 = 1,3
-resL = resL+(-1*(0.,1._dp)*exp((0._dp,1._dp)*eta)*Conjg(ZH(gt3,4))*Conjg(ZUL(gt2,j2))*Yu(gt1,j2))/sqrt(2._dp)
+resL = resL+(-1*(0.,1._dp)*exp((0._dp,1._dp)*eta)*Conjg(ZUL(gt2,j2))*Yu(gt1,j2)*ZH(gt3,4))/sqrt(2._dp)
 End Do 
 End If 
 resR = 0._dp 
 If ((gt1.le.3).And.(gt1.ge.1)) Then 
 Do j1 = 1,3
-resR = resR-((Conjg(Yu(j1,gt1))*Conjg(ZH(gt3,2))*ZUR(gt2,j1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta)))
+resR = resR-((Conjg(Yu(j1,gt1))*ZH(gt3,2)*ZUR(gt2,j1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta)))
 End Do 
 End If 
 If ((gt1.le.3).And.(gt1.ge.1)) Then 
 Do j1 = 1,3
-resR = resR+((0._dp,1._dp)*Conjg(Yu(j1,gt1))*Conjg(ZH(gt3,4))*ZUR(gt2,j1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
+resR = resR+((0._dp,1._dp)*Conjg(Yu(j1,gt1))*ZH(gt3,4)*ZUR(gt2,j1))/(sqrt(2._dp)*exp((0._dp,1._dp)*eta))
 End Do 
 End If 
 If ((Real(resL,dp).ne.Real(resL,dp)).or.(Real(resR,dp).ne.Real(resR,dp))) Then 
@@ -38094,9 +38088,7 @@ Subroutine CouplinghhhhVZL(gt1,gt2,g1,g2,ZH,TW,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2
-Real(dp), Intent(in) :: g1,g2,TW
-
-Complex(dp), Intent(in) :: ZH(4,4)
+Real(dp), Intent(in) :: g1,g2,ZH(4,4),TW
 
 Complex(dp), Intent(out) :: res 
  
@@ -38121,14 +38113,14 @@ If ((gt2.Lt.1).Or.(gt2.Gt.4)) Then
 End If 
 
 res = 0._dp 
-res = res-(g2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,1))*Cos(TW))/2._dp
-res = res+(g2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,2))*Cos(TW))/2._dp
-res = res+(g2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,3))*Cos(TW))/2._dp
-res = res-(g2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,4))*Cos(TW))/2._dp
-res = res-(g1*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,1))*Sin(TW))/2._dp
-res = res+(g1*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,2))*Sin(TW))/2._dp
-res = res+(g1*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,3))*Sin(TW))/2._dp
-res = res-(g1*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,4))*Sin(TW))/2._dp
+res = res-(g2*Cos(TW)*ZH(gt1,3)*ZH(gt2,1))/2._dp
+res = res-(g1*Sin(TW)*ZH(gt1,3)*ZH(gt2,1))/2._dp
+res = res+(g2*Cos(TW)*ZH(gt1,4)*ZH(gt2,2))/2._dp
+res = res+(g1*Sin(TW)*ZH(gt1,4)*ZH(gt2,2))/2._dp
+res = res+(g2*Cos(TW)*ZH(gt1,1)*ZH(gt2,3))/2._dp
+res = res+(g1*Sin(TW)*ZH(gt1,1)*ZH(gt2,3))/2._dp
+res = res-(g2*Cos(TW)*ZH(gt1,2)*ZH(gt2,4))/2._dp
+res = res-(g1*Sin(TW)*ZH(gt1,2)*ZH(gt2,4))/2._dp
 res = (0.,1.)*res 
  
 If (Real(res,dp).ne.Real(res,dp)) Then 
@@ -38147,9 +38139,7 @@ Subroutine CouplinghhVZVZL(gt1,g1,g2,vd,vu,ZH,TW,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1
-Real(dp), Intent(in) :: g1,g2,vd,vu,TW
-
-Complex(dp), Intent(in) :: ZH(4,4)
+Real(dp), Intent(in) :: g1,g2,vd,vu,ZH(4,4),TW
 
 Complex(dp), Intent(out) :: res 
  
@@ -38166,12 +38156,12 @@ If ((gt1.Lt.1).Or.(gt1.Gt.4)) Then
 End If 
 
 res = 0._dp 
-res = res+(g2**2*vd*Conjg(ZH(gt1,1))*Cos(TW)**2)/2._dp
-res = res+(g2**2*vu*Conjg(ZH(gt1,2))*Cos(TW)**2)/2._dp
-res = res+g1*g2*vd*Conjg(ZH(gt1,1))*Cos(TW)*Sin(TW)
-res = res+g1*g2*vu*Conjg(ZH(gt1,2))*Cos(TW)*Sin(TW)
-res = res+(g1**2*vd*Conjg(ZH(gt1,1))*Sin(TW)**2)/2._dp
-res = res+(g1**2*vu*Conjg(ZH(gt1,2))*Sin(TW)**2)/2._dp
+res = res+(g2**2*vd*Cos(TW)**2*ZH(gt1,1))/2._dp
+res = res+g1*g2*vd*Cos(TW)*Sin(TW)*ZH(gt1,1)
+res = res+(g1**2*vd*Sin(TW)**2*ZH(gt1,1))/2._dp
+res = res+(g2**2*vu*Cos(TW)**2*ZH(gt1,2))/2._dp
+res = res+g1*g2*vu*Cos(TW)*Sin(TW)*ZH(gt1,2)
+res = res+(g1**2*vu*Sin(TW)**2*ZH(gt1,2))/2._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -38500,9 +38490,7 @@ Subroutine CouplinghhhhVZVZL(gt1,gt2,g1,g2,ZH,TW,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2
-Real(dp), Intent(in) :: g1,g2,TW
-
-Complex(dp), Intent(in) :: ZH(4,4)
+Real(dp), Intent(in) :: g1,g2,ZH(4,4),TW
 
 Complex(dp), Intent(out) :: res 
  
@@ -38527,18 +38515,18 @@ If ((gt2.Lt.1).Or.(gt2.Gt.4)) Then
 End If 
 
 res = 0._dp 
-res = res+(g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Cos(TW)**2)/2._dp
-res = res+(g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Cos(TW)**2)/2._dp
-res = res+(g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Cos(TW)**2)/2._dp
-res = res+(g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Cos(TW)**2)/2._dp
-res = res+g1*g2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Cos(TW)*Sin(TW)
-res = res+g1*g2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Cos(TW)*Sin(TW)
-res = res+g1*g2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Cos(TW)*Sin(TW)
-res = res+g1*g2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Cos(TW)*Sin(TW)
-res = res+(g1**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1))*Sin(TW)**2)/2._dp
-res = res+(g1**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2))*Sin(TW)**2)/2._dp
-res = res+(g1**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3))*Sin(TW)**2)/2._dp
-res = res+(g1**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4))*Sin(TW)**2)/2._dp
+res = res+(g2**2*Cos(TW)**2*ZH(gt1,1)*ZH(gt2,1))/2._dp
+res = res+g1*g2*Cos(TW)*Sin(TW)*ZH(gt1,1)*ZH(gt2,1)
+res = res+(g1**2*Sin(TW)**2*ZH(gt1,1)*ZH(gt2,1))/2._dp
+res = res+(g2**2*Cos(TW)**2*ZH(gt1,2)*ZH(gt2,2))/2._dp
+res = res+g1*g2*Cos(TW)*Sin(TW)*ZH(gt1,2)*ZH(gt2,2)
+res = res+(g1**2*Sin(TW)**2*ZH(gt1,2)*ZH(gt2,2))/2._dp
+res = res+(g2**2*Cos(TW)**2*ZH(gt1,3)*ZH(gt2,3))/2._dp
+res = res+g1*g2*Cos(TW)*Sin(TW)*ZH(gt1,3)*ZH(gt2,3)
+res = res+(g1**2*Sin(TW)**2*ZH(gt1,3)*ZH(gt2,3))/2._dp
+res = res+(g2**2*Cos(TW)**2*ZH(gt1,4)*ZH(gt2,4))/2._dp
+res = res+g1*g2*Cos(TW)*Sin(TW)*ZH(gt1,4)*ZH(gt2,4)
+res = res+(g1**2*Sin(TW)**2*ZH(gt1,4)*ZH(gt2,4))/2._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -39090,9 +39078,9 @@ Subroutine CouplinghhHpmcVWmL(gt1,gt2,g2,ZH,ZP,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2
-Real(dp), Intent(in) :: g2
+Real(dp), Intent(in) :: g2,ZH(4,4)
 
-Complex(dp), Intent(in) :: ZH(4,4),ZP(2,2)
+Complex(dp), Intent(in) :: ZP(2,2)
 
 Complex(dp), Intent(out) :: res 
  
@@ -39117,10 +39105,10 @@ If ((gt2.Lt.1).Or.(gt2.Gt.2)) Then
 End If 
 
 res = 0._dp 
-res = res-(g2*Conjg(ZH(gt1,1))*Conjg(ZP(gt2,1)))/2._dp
-res = res+1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZH(gt1,3))*Conjg(ZP(gt2,1))
-res = res+(g2*Conjg(ZH(gt1,2))*Conjg(ZP(gt2,2)))/2._dp
-res = res+1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZH(gt1,4))*Conjg(ZP(gt2,2))
+res = res-(g2*Conjg(ZP(gt2,1))*ZH(gt1,1))/2._dp
+res = res+(g2*Conjg(ZP(gt2,2))*ZH(gt1,2))/2._dp
+res = res+1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZP(gt2,1))*ZH(gt1,3)
+res = res+1._dp/2._dp*(0.,1._dp)*g2*Conjg(ZP(gt2,2))*ZH(gt1,4)
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -39137,9 +39125,7 @@ Subroutine CouplinghhcVWmVWmL(gt1,g2,vd,vu,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1
-Real(dp), Intent(in) :: g2,vd,vu
-
-Complex(dp), Intent(in) :: ZH(4,4)
+Real(dp), Intent(in) :: g2,vd,vu,ZH(4,4)
 
 Complex(dp), Intent(out) :: res 
  
@@ -39156,8 +39142,8 @@ If ((gt1.Lt.1).Or.(gt1.Gt.4)) Then
 End If 
 
 res = 0._dp 
-res = res+(g2**2*vd*Conjg(ZH(gt1,1)))/2._dp
-res = res+(g2**2*vu*Conjg(ZH(gt1,2)))/2._dp
+res = res+(g2**2*vd*ZH(gt1,1))/2._dp
+res = res+(g2**2*vu*ZH(gt1,2))/2._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -39328,9 +39314,7 @@ Subroutine CouplinghhhhcVWmVWmL(gt1,gt2,g2,ZH,res)
 Implicit None 
 
 Integer, Intent(in) :: gt1,gt2
-Real(dp), Intent(in) :: g2
-
-Complex(dp), Intent(in) :: ZH(4,4)
+Real(dp), Intent(in) :: g2,ZH(4,4)
 
 Complex(dp), Intent(out) :: res 
  
@@ -39355,10 +39339,10 @@ If ((gt2.Lt.1).Or.(gt2.Gt.4)) Then
 End If 
 
 res = 0._dp 
-res = res+(g2**2*Conjg(ZH(gt1,1))*Conjg(ZH(gt2,1)))/2._dp
-res = res+(g2**2*Conjg(ZH(gt1,2))*Conjg(ZH(gt2,2)))/2._dp
-res = res+(g2**2*Conjg(ZH(gt1,3))*Conjg(ZH(gt2,3)))/2._dp
-res = res+(g2**2*Conjg(ZH(gt1,4))*Conjg(ZH(gt2,4)))/2._dp
+res = res+(g2**2*ZH(gt1,1)*ZH(gt2,1))/2._dp
+res = res+(g2**2*ZH(gt1,2)*ZH(gt2,2))/2._dp
+res = res+(g2**2*ZH(gt1,3)*ZH(gt2,3))/2._dp
+res = res+(g2**2*ZH(gt1,4)*ZH(gt2,4))/2._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -39669,10 +39653,10 @@ Subroutine CouplingsForVectorBosons(g1,g2,UM,UP,TW,ZN,ZH,vd,vu,ZP,ZD,ZE,        
 & cplcVWmVPVPVWm3,cplcVWmcVWmVWmVWm1,cplcVWmcVWmVWmVWm2,cplcVWmcVWmVWmVWm3)
 
 Implicit None 
-Real(dp), Intent(in) :: g1,g2,TW,vd,vu
+Real(dp), Intent(in) :: g1,g2,TW,ZH(4,4),vd,vu
 
-Complex(dp), Intent(in) :: UM(2,2),UP(2,2),ZN(4,4),ZH(4,4),ZP(2,2),ZD(6,6),ZE(6,6),ZU(6,6),ZDL(3,3),             & 
-& ZUL(3,3),ZEL(3,3),ZV(3,3)
+Complex(dp), Intent(in) :: UM(2,2),UP(2,2),ZN(4,4),ZP(2,2),ZD(6,6),ZE(6,6),ZU(6,6),ZDL(3,3),ZUL(3,3),            & 
+& ZEL(3,3),ZV(3,3)
 
 Complex(dp), Intent(out) :: cplcChaChaVZL(2,2),cplcChaChaVZR(2,2),cplChiChiVZL(4,4),cplChiChiVZR(4,4),            & 
 & cplcFdFdVZL(3,3),cplcFdFdVZR(3,3),cplcFeFeVZL(3,3),cplcFeFeVZR(3,3),cplcFuFuVZL(3,3),  & 
@@ -40076,10 +40060,10 @@ Subroutine CouplingsForSMfermions(g2,Ye,ZV,UM,UP,g1,ZE,ZN,ZH,ZEL,ZER,TW,        
 & cplcUFuFuVZL,cplcUFuFuVZR,cplcUFuGluSuL,cplcUFuGluSuR,cplcChacUFuSdL,cplcChacUFuSdR)
 
 Implicit None 
-Real(dp), Intent(in) :: g2,g1,TW,g3,eta
+Real(dp), Intent(in) :: g2,g1,ZH(4,4),TW,g3,eta
 
-Complex(dp), Intent(in) :: Ye(3,3),ZV(3,3),UM(2,2),UP(2,2),ZE(6,6),ZN(4,4),ZH(4,4),ZEL(3,3),ZER(3,3),            & 
-& ZP(2,2),Yd(3,3),Yu(3,3),ZU(6,6),ZD(6,6),ZDL(3,3),ZDR(3,3),ZUL(3,3),ZUR(3,3),pG
+Complex(dp), Intent(in) :: Ye(3,3),ZV(3,3),UM(2,2),UP(2,2),ZE(6,6),ZN(4,4),ZEL(3,3),ZER(3,3),ZP(2,2),            & 
+& Yd(3,3),Yu(3,3),ZU(6,6),ZD(6,6),ZDL(3,3),ZDR(3,3),ZUL(3,3),ZUR(3,3),pG
 
 Complex(dp), Intent(out) :: cplcUFeChaSvL(3,2,3),cplcUFeChaSvR(3,2,3),cplcUFeChiSeL(3,4,6),cplcUFeChiSeR(3,4,6),  & 
 & cplcUFeFehhL(3,3,4),cplcUFeFehhR(3,3,4),cplcUFeFeVPL(3,3),cplcUFeFeVPR(3,3),           & 
@@ -40397,11 +40381,10 @@ Subroutine CouplingsForTadpoles(g2,eta,UM,UP,g1,ZN,Yd,ZDL,ZDR,Ye,ZEL,ZER,       
 & cplUhhUhhSecSe,cplUhhUhhSucSu,cplUhhUhhSvcSv,cplUhhUhhcVWmVWm,cplUhhUhhVZVZ)
 
 Implicit None 
-Real(dp), Intent(in) :: g2,eta,g1,vd,vu,TW
+Real(dp), Intent(in) :: g2,eta,g1,vd,vu,TW,ZH(4,4)
 
 Complex(dp), Intent(in) :: UM(2,2),UP(2,2),ZN(4,4),Yd(3,3),ZDL(3,3),ZDR(3,3),Ye(3,3),ZEL(3,3),ZER(3,3),          & 
-& Yu(3,3),ZUL(3,3),ZUR(3,3),ZH(4,4),ZP(2,2),Mu,Td(3,3),ZD(6,6),Te(3,3),ZE(6,6),          & 
-& Tu(3,3),ZU(6,6)
+& Yu(3,3),ZUL(3,3),ZUR(3,3),ZP(2,2),Mu,Td(3,3),ZD(6,6),Te(3,3),ZE(6,6),Tu(3,3),ZU(6,6)
 
 Complex(dp), Intent(out) :: cplcChaChaUhhL(2,2,4),cplcChaChaUhhR(2,2,4),cplChiChiUhhL(4,4,4),cplChiChiUhhR(4,4,4),& 
 & cplcFdFdUhhL(3,3,4),cplcFdFdUhhR(3,3,4),cplcFeFeUhhL(3,3,4),cplcFeFeUhhR(3,3,4),       & 

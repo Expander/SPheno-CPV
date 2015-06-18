@@ -1,9 +1,9 @@
 ! -----------------------------------------------------------------------------  
-! This file was automatically created by SARAH version 4.5.7 
+! This file was automatically created by SARAH version 4.5.8b1 
 ! SARAH References: arXiv:0806.0538, 0909.2863, 1002.0840, 1207.0906, 1309.7223  
 ! (c) Florian Staub, 2013  
 ! ------------------------------------------------------------------------------  
-! File created at 13:45 on 16.6.2015   
+! File created at 22:40 on 17.6.2015   
 ! ----------------------------------------------------------------------  
  
  
@@ -17,7 +17,7 @@ Use SugraRuns_MSSMCPV
  
 Use EffPotFunctions 
 Logical,Save::LesHouches_Format
-Character(len=8),Save,Private::versionSARAH="4.5.7"
+Character(len=8),Save,Private::versionSARAH="4.5.8b1"
 Integer,Private::i_cpv=0
 Integer,Save,Private::in_kont(2)
 Logical,Save::Add_Rparity= .False. 
@@ -692,6 +692,9 @@ End Subroutine Read_EXTPAR
 
      Case(5)
       If (Int(wert).Ne.0) FermionMassResummation = .False.
+      
+     Case(6)
+       RXiNew = wert      
 
      Case(7)
        If (wert.eq.1) then
@@ -2725,42 +2728,22 @@ End If
 
 End if 
 Write(io_L,106) "Block SCALARMIX Q=",Q,"# ()" 
-Write(io_L,107)1,1,Real(ZH(1,1),dp), "# Real(ZH(1,1),dp)" 
-Write(io_L,107)1,2,Real(ZH(1,2),dp), "# Real(ZH(1,2),dp)" 
-Write(io_L,107)1,3,Real(ZH(1,3),dp), "# Real(ZH(1,3),dp)" 
-Write(io_L,107)1,4,Real(ZH(1,4),dp), "# Real(ZH(1,4),dp)" 
-Write(io_L,107)2,1,Real(ZH(2,1),dp), "# Real(ZH(2,1),dp)" 
-Write(io_L,107)2,2,Real(ZH(2,2),dp), "# Real(ZH(2,2),dp)" 
-Write(io_L,107)2,3,Real(ZH(2,3),dp), "# Real(ZH(2,3),dp)" 
-Write(io_L,107)2,4,Real(ZH(2,4),dp), "# Real(ZH(2,4),dp)" 
-Write(io_L,107)3,1,Real(ZH(3,1),dp), "# Real(ZH(3,1),dp)" 
-Write(io_L,107)3,2,Real(ZH(3,2),dp), "# Real(ZH(3,2),dp)" 
-Write(io_L,107)3,3,Real(ZH(3,3),dp), "# Real(ZH(3,3),dp)" 
-Write(io_L,107)3,4,Real(ZH(3,4),dp), "# Real(ZH(3,4),dp)" 
-Write(io_L,107)4,1,Real(ZH(4,1),dp), "# Real(ZH(4,1),dp)" 
-Write(io_L,107)4,2,Real(ZH(4,2),dp), "# Real(ZH(4,2),dp)" 
-Write(io_L,107)4,3,Real(ZH(4,3),dp), "# Real(ZH(4,3),dp)" 
-Write(io_L,107)4,4,Real(ZH(4,4),dp), "# Real(ZH(4,4),dp)" 
-If (MaxVal(Abs(AImag(ZH))).gt.0._dp) Then 
-Write(io_L,106) "Block IMSCALARMIX Q=",Q,"# ()" 
-Write(io_L,107)1,1,Aimag(ZH(1,1)), "# Aimag(ZH(1,1))" 
-Write(io_L,107)1,2,Aimag(ZH(1,2)), "# Aimag(ZH(1,2))" 
-Write(io_L,107)1,3,Aimag(ZH(1,3)), "# Aimag(ZH(1,3))" 
-Write(io_L,107)1,4,Aimag(ZH(1,4)), "# Aimag(ZH(1,4))" 
-Write(io_L,107)2,1,Aimag(ZH(2,1)), "# Aimag(ZH(2,1))" 
-Write(io_L,107)2,2,Aimag(ZH(2,2)), "# Aimag(ZH(2,2))" 
-Write(io_L,107)2,3,Aimag(ZH(2,3)), "# Aimag(ZH(2,3))" 
-Write(io_L,107)2,4,Aimag(ZH(2,4)), "# Aimag(ZH(2,4))" 
-Write(io_L,107)3,1,Aimag(ZH(3,1)), "# Aimag(ZH(3,1))" 
-Write(io_L,107)3,2,Aimag(ZH(3,2)), "# Aimag(ZH(3,2))" 
-Write(io_L,107)3,3,Aimag(ZH(3,3)), "# Aimag(ZH(3,3))" 
-Write(io_L,107)3,4,Aimag(ZH(3,4)), "# Aimag(ZH(3,4))" 
-Write(io_L,107)4,1,Aimag(ZH(4,1)), "# Aimag(ZH(4,1))" 
-Write(io_L,107)4,2,Aimag(ZH(4,2)), "# Aimag(ZH(4,2))" 
-Write(io_L,107)4,3,Aimag(ZH(4,3)), "# Aimag(ZH(4,3))" 
-Write(io_L,107)4,4,Aimag(ZH(4,4)), "# Aimag(ZH(4,4))" 
-End If 
-
+Write(io_L,107)1,1,ZH(1,1), "# ZH(1,1)" 
+Write(io_L,107)1,2,ZH(1,2), "# ZH(1,2)" 
+Write(io_L,107)1,3,ZH(1,3), "# ZH(1,3)" 
+Write(io_L,107)1,4,ZH(1,4), "# ZH(1,4)" 
+Write(io_L,107)2,1,ZH(2,1), "# ZH(2,1)" 
+Write(io_L,107)2,2,ZH(2,2), "# ZH(2,2)" 
+Write(io_L,107)2,3,ZH(2,3), "# ZH(2,3)" 
+Write(io_L,107)2,4,ZH(2,4), "# ZH(2,4)" 
+Write(io_L,107)3,1,ZH(3,1), "# ZH(3,1)" 
+Write(io_L,107)3,2,ZH(3,2), "# ZH(3,2)" 
+Write(io_L,107)3,3,ZH(3,3), "# ZH(3,3)" 
+Write(io_L,107)3,4,ZH(3,4), "# ZH(3,4)" 
+Write(io_L,107)4,1,ZH(4,1), "# ZH(4,1)" 
+Write(io_L,107)4,2,ZH(4,2), "# ZH(4,2)" 
+Write(io_L,107)4,3,ZH(4,3), "# ZH(4,3)" 
+Write(io_L,107)4,4,ZH(4,4), "# ZH(4,4)" 
 Write(io_L,106) "Block CHARGEMIX Q=",Q,"# ()" 
 Write(io_L,107)1,1,Real(ZP(1,1),dp), "# Real(ZP(1,1),dp)" 
 Write(io_L,107)1,2,Real(ZP(1,2),dp), "# Real(ZP(1,2),dp)" 
@@ -16678,82 +16661,22 @@ Write(123,*) "ZV32_r = ", -AImag(ZV(3,2))
 Write(123,*) "ZV33_i = ", Real(ZV(3,3),dp)
 Write(123,*) "ZV33_r = ", -AImag(ZV(3,3))
 End if 
-If (Mhh(1).Gt.0._dp) Then 
-Write(123,*) "ZH11_r = ", Real(ZH(1,1),dp)
-Write(123,*) "ZH11_i = ", AImag(ZH(1,1))
-Write(123,*) "ZH12_r = ", Real(ZH(1,2),dp)
-Write(123,*) "ZH12_i = ", AImag(ZH(1,2))
-Write(123,*) "ZH13_r = ", Real(ZH(1,3),dp)
-Write(123,*) "ZH13_i = ", AImag(ZH(1,3))
-Write(123,*) "ZH14_r = ", Real(ZH(1,4),dp)
-Write(123,*) "ZH14_i = ", AImag(ZH(1,4))
-Else 
-Write(123,*) "ZH11_i = ", Real(ZH(1,1),dp)
-Write(123,*) "ZH11_r = ", -AImag(ZH(1,1))
-Write(123,*) "ZH12_i = ", Real(ZH(1,2),dp)
-Write(123,*) "ZH12_r = ", -AImag(ZH(1,2))
-Write(123,*) "ZH13_i = ", Real(ZH(1,3),dp)
-Write(123,*) "ZH13_r = ", -AImag(ZH(1,3))
-Write(123,*) "ZH14_i = ", Real(ZH(1,4),dp)
-Write(123,*) "ZH14_r = ", -AImag(ZH(1,4))
-End if 
-If (Mhh(2).Gt.0._dp) Then 
-Write(123,*) "ZH21_r = ", Real(ZH(2,1),dp)
-Write(123,*) "ZH21_i = ", AImag(ZH(2,1))
-Write(123,*) "ZH22_r = ", Real(ZH(2,2),dp)
-Write(123,*) "ZH22_i = ", AImag(ZH(2,2))
-Write(123,*) "ZH23_r = ", Real(ZH(2,3),dp)
-Write(123,*) "ZH23_i = ", AImag(ZH(2,3))
-Write(123,*) "ZH24_r = ", Real(ZH(2,4),dp)
-Write(123,*) "ZH24_i = ", AImag(ZH(2,4))
-Else 
-Write(123,*) "ZH21_i = ", Real(ZH(2,1),dp)
-Write(123,*) "ZH21_r = ", -AImag(ZH(2,1))
-Write(123,*) "ZH22_i = ", Real(ZH(2,2),dp)
-Write(123,*) "ZH22_r = ", -AImag(ZH(2,2))
-Write(123,*) "ZH23_i = ", Real(ZH(2,3),dp)
-Write(123,*) "ZH23_r = ", -AImag(ZH(2,3))
-Write(123,*) "ZH24_i = ", Real(ZH(2,4),dp)
-Write(123,*) "ZH24_r = ", -AImag(ZH(2,4))
-End if 
-If (Mhh(3).Gt.0._dp) Then 
-Write(123,*) "ZH31_r = ", Real(ZH(3,1),dp)
-Write(123,*) "ZH31_i = ", AImag(ZH(3,1))
-Write(123,*) "ZH32_r = ", Real(ZH(3,2),dp)
-Write(123,*) "ZH32_i = ", AImag(ZH(3,2))
-Write(123,*) "ZH33_r = ", Real(ZH(3,3),dp)
-Write(123,*) "ZH33_i = ", AImag(ZH(3,3))
-Write(123,*) "ZH34_r = ", Real(ZH(3,4),dp)
-Write(123,*) "ZH34_i = ", AImag(ZH(3,4))
-Else 
-Write(123,*) "ZH31_i = ", Real(ZH(3,1),dp)
-Write(123,*) "ZH31_r = ", -AImag(ZH(3,1))
-Write(123,*) "ZH32_i = ", Real(ZH(3,2),dp)
-Write(123,*) "ZH32_r = ", -AImag(ZH(3,2))
-Write(123,*) "ZH33_i = ", Real(ZH(3,3),dp)
-Write(123,*) "ZH33_r = ", -AImag(ZH(3,3))
-Write(123,*) "ZH34_i = ", Real(ZH(3,4),dp)
-Write(123,*) "ZH34_r = ", -AImag(ZH(3,4))
-End if 
-If (Mhh(4).Gt.0._dp) Then 
-Write(123,*) "ZH41_r = ", Real(ZH(4,1),dp)
-Write(123,*) "ZH41_i = ", AImag(ZH(4,1))
-Write(123,*) "ZH42_r = ", Real(ZH(4,2),dp)
-Write(123,*) "ZH42_i = ", AImag(ZH(4,2))
-Write(123,*) "ZH43_r = ", Real(ZH(4,3),dp)
-Write(123,*) "ZH43_i = ", AImag(ZH(4,3))
-Write(123,*) "ZH44_r = ", Real(ZH(4,4),dp)
-Write(123,*) "ZH44_i = ", AImag(ZH(4,4))
-Else 
-Write(123,*) "ZH41_i = ", Real(ZH(4,1),dp)
-Write(123,*) "ZH41_r = ", -AImag(ZH(4,1))
-Write(123,*) "ZH42_i = ", Real(ZH(4,2),dp)
-Write(123,*) "ZH42_r = ", -AImag(ZH(4,2))
-Write(123,*) "ZH43_i = ", Real(ZH(4,3),dp)
-Write(123,*) "ZH43_r = ", -AImag(ZH(4,3))
-Write(123,*) "ZH44_i = ", Real(ZH(4,4),dp)
-Write(123,*) "ZH44_r = ", -AImag(ZH(4,4))
-End if 
+Write(123,*) "ZH11= ",ZH(1,1)
+Write(123,*) "ZH12= ",ZH(1,2)
+Write(123,*) "ZH13= ",ZH(1,3)
+Write(123,*) "ZH14= ",ZH(1,4)
+Write(123,*) "ZH21= ",ZH(2,1)
+Write(123,*) "ZH22= ",ZH(2,2)
+Write(123,*) "ZH23= ",ZH(2,3)
+Write(123,*) "ZH24= ",ZH(2,4)
+Write(123,*) "ZH31= ",ZH(3,1)
+Write(123,*) "ZH32= ",ZH(3,2)
+Write(123,*) "ZH33= ",ZH(3,3)
+Write(123,*) "ZH34= ",ZH(3,4)
+Write(123,*) "ZH41= ",ZH(4,1)
+Write(123,*) "ZH42= ",ZH(4,2)
+Write(123,*) "ZH43= ",ZH(4,3)
+Write(123,*) "ZH44= ",ZH(4,4)
 If (MHpm(1).Gt.0._dp) Then 
 Write(123,*) "ZP11_r = ", Real(ZP(1,1),dp)
 Write(123,*) "ZP11_i = ", AImag(ZP(1,1))
