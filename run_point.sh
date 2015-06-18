@@ -2,7 +2,7 @@
 
 point="$1"
 
-source run_sg.sh
+. ./run_sg.sh
 
 run_sg --sg=bin/SPheno                --point="$point" --pattern="mh_sp,h0"   --verbose=1
 run_sg --sg=bin/SPhenoMSSMCPV         --point="$point" --pattern="mh_sa,hh_2" --verbose=1
