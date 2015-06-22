@@ -1,9 +1,9 @@
 ! -----------------------------------------------------------------------------  
-! This file was automatically created by SARAH version 4.5.7 
+! This file was automatically created by SARAH version 4.5.8 
 ! SARAH References: arXiv:0806.0538, 0909.2863, 1002.0840, 1207.0906, 1309.7223  
 ! (c) Florian Staub, 2013  
 ! ------------------------------------------------------------------------------  
-! File created at 13:37 on 22.6.2015   
+! File created at 13:54 on 22.6.2015   
 ! ----------------------------------------------------------------------  
  
  
@@ -15481,8 +15481,8 @@ If ((gt3.Lt.1).Or.(gt3.Gt.2)) Then
 End If 
 
 res = 0._dp 
-res = res+(g2**2*vd*ZA(gt3,1))/4._dp
-res = res-(g2**2*vu*ZA(gt3,2))/4._dp
+res = res+(g2**2*vd*RXiWm*ZA(gt3,1))/4._dp
+res = res-(g2**2*vu*RXiWm*ZA(gt3,2))/4._dp
 res = (0.,1.)*res 
  
 If (Real(res,dp).ne.Real(res,dp)) Then 
@@ -15518,8 +15518,8 @@ If ((gt3.Lt.1).Or.(gt3.Gt.2)) Then
 End If 
 
 res = 0._dp 
-res = res-(g2**2*vd*ZA(gt3,1))/4._dp
-res = res+(g2**2*vu*ZA(gt3,2))/4._dp
+res = res-(g2**2*vd*RXiWm*ZA(gt3,1))/4._dp
+res = res+(g2**2*vu*RXiWm*ZA(gt3,2))/4._dp
 res = (0.,1.)*res 
  
 If (Real(res,dp).ne.Real(res,dp)) Then 
@@ -15555,12 +15555,12 @@ If ((gt3.Lt.1).Or.(gt3.Gt.2)) Then
 End If 
 
 res = 0._dp 
-res = res+(g1*g2*vd*Cos(2._dp*(TW))*ZH(gt3,1))/4._dp
-res = res+(g1**2*vd*Sin(2._dp*(TW))*ZH(gt3,1))/8._dp
-res = res-(g2**2*vd*Sin(2._dp*(TW))*ZH(gt3,1))/8._dp
-res = res+(g1*g2*vu*Cos(2._dp*(TW))*ZH(gt3,2))/4._dp
-res = res+(g1**2*vu*Sin(2._dp*(TW))*ZH(gt3,2))/8._dp
-res = res-(g2**2*vu*Sin(2._dp*(TW))*ZH(gt3,2))/8._dp
+res = res+(g1*g2*vd*Cos(2._dp*(TW))*RXiZ*ZH(gt3,1))/4._dp
+res = res+(g1**2*vd*RXiZ*Sin(2._dp*(TW))*ZH(gt3,1))/8._dp
+res = res-(g2**2*vd*RXiZ*Sin(2._dp*(TW))*ZH(gt3,1))/8._dp
+res = res+(g1*g2*vu*Cos(2._dp*(TW))*RXiZ*ZH(gt3,2))/4._dp
+res = res+(g1**2*vu*RXiZ*Sin(2._dp*(TW))*ZH(gt3,2))/8._dp
+res = res-(g2**2*vu*RXiZ*Sin(2._dp*(TW))*ZH(gt3,2))/8._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -15594,10 +15594,10 @@ If ((gt3.Lt.1).Or.(gt3.Gt.2)) Then
 End If 
 
 res = 0._dp 
-res = res+(g1*g2*vd*Cos(TW)*ZP(gt3,1))/4._dp
-res = res+(g2**2*vd*Sin(TW)*ZP(gt3,1))/4._dp
-res = res-(g1*g2*vu*Cos(TW)*ZP(gt3,2))/4._dp
-res = res-(g2**2*vu*Sin(TW)*ZP(gt3,2))/4._dp
+res = res+(g1*g2*vd*Cos(TW)*RXiWm*ZP(gt3,1))/4._dp
+res = res+(g2**2*vd*RXiWm*Sin(TW)*ZP(gt3,1))/4._dp
+res = res-(g1*g2*vu*Cos(TW)*RXiWm*ZP(gt3,2))/4._dp
+res = res-(g2**2*vu*RXiWm*Sin(TW)*ZP(gt3,2))/4._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -15631,10 +15631,10 @@ If ((gt3.Lt.1).Or.(gt3.Gt.2)) Then
 End If 
 
 res = 0._dp 
-res = res+(g1*g2*vd*Cos(TW)*ZP(gt3,1))/4._dp
-res = res+(g2**2*vd*Sin(TW)*ZP(gt3,1))/4._dp
-res = res-(g1*g2*vu*Cos(TW)*ZP(gt3,2))/4._dp
-res = res-(g2**2*vu*Sin(TW)*ZP(gt3,2))/4._dp
+res = res+(g1*g2*vd*Cos(TW)*RXiWm*ZP(gt3,1))/4._dp
+res = res+(g2**2*vd*RXiWm*Sin(TW)*ZP(gt3,1))/4._dp
+res = res-(g1*g2*vu*Cos(TW)*RXiWm*ZP(gt3,2))/4._dp
+res = res-(g2**2*vu*RXiWm*Sin(TW)*ZP(gt3,2))/4._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -15668,8 +15668,8 @@ If ((gt3.Lt.1).Or.(gt3.Gt.2)) Then
 End If 
 
 res = 0._dp 
-res = res-(g2**2*vd*ZH(gt3,1))/4._dp
-res = res-(g2**2*vu*ZH(gt3,2))/4._dp
+res = res-(g2**2*vd*RXiWm*ZH(gt3,1))/4._dp
+res = res-(g2**2*vu*RXiWm*ZH(gt3,2))/4._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -15703,10 +15703,10 @@ If ((gt3.Lt.1).Or.(gt3.Gt.2)) Then
 End If 
 
 res = 0._dp 
-res = res-(g2**2*vd*Cos(TW)*ZP(gt3,1))/4._dp
-res = res-(g1*g2*vd*Sin(TW)*ZP(gt3,1))/4._dp
-res = res+(g2**2*vu*Cos(TW)*ZP(gt3,2))/4._dp
-res = res+(g1*g2*vu*Sin(TW)*ZP(gt3,2))/4._dp
+res = res-(g2**2*vd*Cos(TW)*RXiZ*ZP(gt3,1))/4._dp
+res = res-(g1*g2*vd*RXiZ*Sin(TW)*ZP(gt3,1))/4._dp
+res = res+(g2**2*vu*Cos(TW)*RXiZ*ZP(gt3,2))/4._dp
+res = res+(g1*g2*vu*RXiZ*Sin(TW)*ZP(gt3,2))/4._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -15740,8 +15740,8 @@ If ((gt3.Lt.1).Or.(gt3.Gt.2)) Then
 End If 
 
 res = 0._dp 
-res = res-(g2**2*vd*ZH(gt3,1))/4._dp
-res = res-(g2**2*vu*ZH(gt3,2))/4._dp
+res = res-(g2**2*vd*RXiWm*ZH(gt3,1))/4._dp
+res = res-(g2**2*vu*RXiWm*ZH(gt3,2))/4._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -15775,10 +15775,10 @@ If ((gt3.Lt.1).Or.(gt3.Gt.2)) Then
 End If 
 
 res = 0._dp 
-res = res-(g2**2*vd*Cos(TW)*ZP(gt3,1))/4._dp
-res = res-(g1*g2*vd*Sin(TW)*ZP(gt3,1))/4._dp
-res = res+(g2**2*vu*Cos(TW)*ZP(gt3,2))/4._dp
-res = res+(g1*g2*vu*Sin(TW)*ZP(gt3,2))/4._dp
+res = res-(g2**2*vd*Cos(TW)*RXiZ*ZP(gt3,1))/4._dp
+res = res-(g1*g2*vd*RXiZ*Sin(TW)*ZP(gt3,1))/4._dp
+res = res+(g2**2*vu*Cos(TW)*RXiZ*ZP(gt3,2))/4._dp
+res = res+(g1*g2*vu*RXiZ*Sin(TW)*ZP(gt3,2))/4._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -15812,12 +15812,12 @@ If ((gt3.Lt.1).Or.(gt3.Gt.2)) Then
 End If 
 
 res = 0._dp 
-res = res-(g2**2*vd*Cos(TW)**2*ZH(gt3,1))/4._dp
-res = res-(g1*g2*vd*Cos(TW)*Sin(TW)*ZH(gt3,1))/2._dp
-res = res-(g1**2*vd*Sin(TW)**2*ZH(gt3,1))/4._dp
-res = res-(g2**2*vu*Cos(TW)**2*ZH(gt3,2))/4._dp
-res = res-(g1*g2*vu*Cos(TW)*Sin(TW)*ZH(gt3,2))/2._dp
-res = res-(g1**2*vu*Sin(TW)**2*ZH(gt3,2))/4._dp
+res = res-(g2**2*vd*Cos(TW)**2*RXiZ*ZH(gt3,1))/4._dp
+res = res-(g1*g2*vd*Cos(TW)*RXiZ*Sin(TW)*ZH(gt3,1))/2._dp
+res = res-(g1**2*vd*RXiZ*Sin(TW)**2*ZH(gt3,1))/4._dp
+res = res-(g2**2*vu*Cos(TW)**2*RXiZ*ZH(gt3,2))/4._dp
+res = res-(g1*g2*vu*Cos(TW)*RXiZ*Sin(TW)*ZH(gt3,2))/2._dp
+res = res-(g1**2*vu*RXiZ*Sin(TW)**2*ZH(gt3,2))/4._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -15851,10 +15851,10 @@ If ((gt3.Lt.1).Or.(gt3.Gt.2)) Then
 End If 
 
 res = 0._dp 
-res = res+(g2**2*vd*Cos(TW)*ZP(gt3,1))/4._dp
-res = res-(g1*g2*vd*Sin(TW)*ZP(gt3,1))/4._dp
-res = res-(g2**2*vu*Cos(TW)*ZP(gt3,2))/4._dp
-res = res+(g1*g2*vu*Sin(TW)*ZP(gt3,2))/4._dp
+res = res+(g2**2*vd*Cos(TW)*RXiWm*ZP(gt3,1))/4._dp
+res = res-(g1*g2*vd*RXiWm*Sin(TW)*ZP(gt3,1))/4._dp
+res = res-(g2**2*vu*Cos(TW)*RXiWm*ZP(gt3,2))/4._dp
+res = res+(g1*g2*vu*RXiWm*Sin(TW)*ZP(gt3,2))/4._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -15888,10 +15888,10 @@ If ((gt3.Lt.1).Or.(gt3.Gt.2)) Then
 End If 
 
 res = 0._dp 
-res = res+(g2**2*vd*Cos(TW)*ZP(gt3,1))/4._dp
-res = res-(g1*g2*vd*Sin(TW)*ZP(gt3,1))/4._dp
-res = res-(g2**2*vu*Cos(TW)*ZP(gt3,2))/4._dp
-res = res+(g1*g2*vu*Sin(TW)*ZP(gt3,2))/4._dp
+res = res+(g2**2*vd*Cos(TW)*RXiWm*ZP(gt3,1))/4._dp
+res = res-(g1*g2*vd*RXiWm*Sin(TW)*ZP(gt3,1))/4._dp
+res = res-(g2**2*vu*Cos(TW)*RXiWm*ZP(gt3,2))/4._dp
+res = res+(g1*g2*vu*RXiWm*Sin(TW)*ZP(gt3,2))/4._dp
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
  Call TerminateProgram 
@@ -35479,10 +35479,10 @@ End If
 
 res = 0._dp 
 If ((1.eq.gt3)) Then 
-res = res-(g2**2*vd)/4._dp
+res = res-(g2**2*vd*RXiWm)/4._dp
 End If 
 If ((2.eq.gt3)) Then 
-res = res-(g2**2*vu)/4._dp
+res = res-(g2**2*vu*RXiWm)/4._dp
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -35518,10 +35518,10 @@ End If
 
 res = 0._dp 
 If ((1.eq.gt3)) Then 
-res = res-(g2**2*vd)/4._dp
+res = res-(g2**2*vd*RXiWm)/4._dp
 End If 
 If ((2.eq.gt3)) Then 
-res = res-(g2**2*vu)/4._dp
+res = res-(g2**2*vu*RXiWm)/4._dp
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -35557,22 +35557,22 @@ End If
 
 res = 0._dp 
 If ((1.eq.gt3)) Then 
-res = res-(g2**2*vd*Cos(TW)**2)/4._dp
+res = res-(g2**2*vd*Cos(TW)**2*RXiZ)/4._dp
 End If 
 If ((2.eq.gt3)) Then 
-res = res-(g2**2*vu*Cos(TW)**2)/4._dp
+res = res-(g2**2*vu*Cos(TW)**2*RXiZ)/4._dp
 End If 
 If ((1.eq.gt3)) Then 
-res = res-(g1*g2*vd*Cos(TW)*Sin(TW))/2._dp
+res = res-(g1*g2*vd*Cos(TW)*RXiZ*Sin(TW))/2._dp
 End If 
 If ((2.eq.gt3)) Then 
-res = res-(g1*g2*vu*Cos(TW)*Sin(TW))/2._dp
+res = res-(g1*g2*vu*Cos(TW)*RXiZ*Sin(TW))/2._dp
 End If 
 If ((1.eq.gt3)) Then 
-res = res-(g1**2*vd*Sin(TW)**2)/4._dp
+res = res-(g1**2*vd*RXiZ*Sin(TW)**2)/4._dp
 End If 
 If ((2.eq.gt3)) Then 
-res = res-(g1**2*vu*Sin(TW)**2)/4._dp
+res = res-(g1**2*vu*RXiZ*Sin(TW)**2)/4._dp
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -37593,10 +37593,10 @@ End If
 
 res = 0._dp 
 If ((1.eq.gt3)) Then 
-res = res+(g2**2*vd)/4._dp
+res = res+(g2**2*vd*RXiWm)/4._dp
 End If 
 If ((2.eq.gt3)) Then 
-res = res-(g2**2*vu)/4._dp
+res = res-(g2**2*vu*RXiWm)/4._dp
 End If 
 res = (0.,1.)*res 
  
@@ -37634,10 +37634,10 @@ End If
 
 res = 0._dp 
 If ((1.eq.gt3)) Then 
-res = res-(g2**2*vd)/4._dp
+res = res-(g2**2*vd*RXiWm)/4._dp
 End If 
 If ((2.eq.gt3)) Then 
-res = res+(g2**2*vu)/4._dp
+res = res+(g2**2*vu*RXiWm)/4._dp
 End If 
 res = (0.,1.)*res 
  
@@ -39155,16 +39155,16 @@ End If
 
 res = 0._dp 
 If ((1.eq.gt3)) Then 
-res = res-(g2**2*vd*Cos(TW))/4._dp
+res = res-(g2**2*vd*Cos(TW)*RXiZ)/4._dp
 End If 
 If ((2.eq.gt3)) Then 
-res = res+(g2**2*vu*Cos(TW))/4._dp
+res = res+(g2**2*vu*Cos(TW)*RXiZ)/4._dp
 End If 
 If ((1.eq.gt3)) Then 
-res = res-(g1*g2*vd*Sin(TW))/4._dp
+res = res-(g1*g2*vd*RXiZ*Sin(TW))/4._dp
 End If 
 If ((2.eq.gt3)) Then 
-res = res+(g1*g2*vu*Sin(TW))/4._dp
+res = res+(g1*g2*vu*RXiZ*Sin(TW))/4._dp
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -39200,16 +39200,16 @@ End If
 
 res = 0._dp 
 If ((1.eq.gt3)) Then 
-res = res+(g2**2*vd*Cos(TW))/4._dp
+res = res+(g2**2*vd*Cos(TW)*RXiWm)/4._dp
 End If 
 If ((2.eq.gt3)) Then 
-res = res-(g2**2*vu*Cos(TW))/4._dp
+res = res-(g2**2*vu*Cos(TW)*RXiWm)/4._dp
 End If 
 If ((1.eq.gt3)) Then 
-res = res-(g1*g2*vd*Sin(TW))/4._dp
+res = res-(g1*g2*vd*RXiWm*Sin(TW))/4._dp
 End If 
 If ((2.eq.gt3)) Then 
-res = res+(g1*g2*vu*Sin(TW))/4._dp
+res = res+(g1*g2*vu*RXiWm*Sin(TW))/4._dp
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -39245,16 +39245,16 @@ End If
 
 res = 0._dp 
 If ((1.eq.gt3)) Then 
-res = res+(g2**2*vd*Cos(TW))/4._dp
+res = res+(g2**2*vd*Cos(TW)*RXiWm)/4._dp
 End If 
 If ((2.eq.gt3)) Then 
-res = res-(g2**2*vu*Cos(TW))/4._dp
+res = res-(g2**2*vu*Cos(TW)*RXiWm)/4._dp
 End If 
 If ((1.eq.gt3)) Then 
-res = res-(g1*g2*vd*Sin(TW))/4._dp
+res = res-(g1*g2*vd*RXiWm*Sin(TW))/4._dp
 End If 
 If ((2.eq.gt3)) Then 
-res = res+(g1*g2*vu*Sin(TW))/4._dp
+res = res+(g1*g2*vu*RXiWm*Sin(TW))/4._dp
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
@@ -39290,16 +39290,16 @@ End If
 
 res = 0._dp 
 If ((1.eq.gt3)) Then 
-res = res-(g2**2*vd*Cos(TW))/4._dp
+res = res-(g2**2*vd*Cos(TW)*RXiZ)/4._dp
 End If 
 If ((2.eq.gt3)) Then 
-res = res+(g2**2*vu*Cos(TW))/4._dp
+res = res+(g2**2*vu*Cos(TW)*RXiZ)/4._dp
 End If 
 If ((1.eq.gt3)) Then 
-res = res-(g1*g2*vd*Sin(TW))/4._dp
+res = res-(g1*g2*vd*RXiZ*Sin(TW))/4._dp
 End If 
 If ((2.eq.gt3)) Then 
-res = res+(g1*g2*vu*Sin(TW))/4._dp
+res = res+(g1*g2*vu*RXiZ*Sin(TW))/4._dp
 End If 
 If (Real(res,dp).ne.Real(res,dp)) Then 
  Write(*,*) "NaN appearing in ",NameOfUnit(Iname) 
