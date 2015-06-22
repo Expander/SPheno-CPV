@@ -1,9 +1,13 @@
 ! -----------------------------------------------------------------------------  
-! This file was automatically created by SARAH version 4.5.8b1 
+! This file was automatically created by SARAH version 4.5.8 
 ! SARAH References: arXiv:0806.0538, 0909.2863, 1002.0840, 1207.0906, 1309.7223  
 ! (c) Florian Staub, 2013  
 ! ------------------------------------------------------------------------------  
+<<<<<<< HEAD
 ! File created at 15:20 on 22.6.2015   
+=======
+! File created at 14:00 on 22.6.2015   
+>>>>>>> 7e4986aeb2586d02f5d1a2dd1cc138adf64211e5
 ! ----------------------------------------------------------------------  
  
  
@@ -489,7 +493,7 @@ coup1L = cplChaFvcSeL(i1,gt1,i2)
 coup1R = cplChaFvcSeR(i1,gt1,i2)
 coup2R = Conjg(cplChaFvcSeL(i1,gt2,i2))
 coup2L = Conjg(cplChaFvcSeR(i1,gt2,i2))
-sumI = sumI + chargefactor*0.5_dp*coup1L*coup2R*B1(0._dp,MCha2(i1),MSe2(i2))  
+sumI = sumI + chargefactor*0.5_dp*coup1L*Conjg(coup2R)*B1(0._dp,MCha2(i1),MSe2(i2))  
 End if 
    End Do
   End Do
@@ -505,7 +509,7 @@ coup1L = cplChiFvcSvL(i1,gt1,i2)
 coup1R = cplChiFvcSvR(i1,gt1,i2)
 coup2R = Conjg(cplChiFvcSvL(i1,gt2,i2))
 coup2L = Conjg(cplChiFvcSvR(i1,gt2,i2))
-sumI = sumI + chargefactor*0.5_dp*coup1L*coup2R*B1(0._dp,MChi2(i1),MSv2(i2))  
+sumI = sumI + chargefactor*0.5_dp*coup1L*Conjg(coup2R)*B1(0._dp,MChi2(i1),MSv2(i2))  
 End if 
    End Do
   End Do
@@ -521,7 +525,7 @@ coup1L = cplcFeFvHpmL(i2,gt1,i1)
 coup1R = cplcFeFvHpmR(i2,gt1,i1)
 coup2R = Conjg(cplcFeFvHpmL(i2,gt2,i1))
 coup2L = Conjg(cplcFeFvHpmR(i2,gt2,i1))
-sumI = sumI + chargefactor*0.5_dp*coup1L*coup2R*B1(0._dp,MFe2(i2),MHpm2(i1))  
+sumI = sumI + chargefactor*0.5_dp*coup1L*Conjg(coup2R)*B1(0._dp,MFe2(i2),MHpm2(i1))  
 End if 
    End Do
   End Do
@@ -546,7 +550,7 @@ coup1L = cplChiFecSeL(i1,gt1,i2)
 coup1R = cplChiFecSeR(i1,gt1,i2)
 coup2R = Conjg(cplChiFecSeL(i1,gt2,i2))
 coup2L = Conjg(cplChiFecSeR(i1,gt2,i2))
-sumI = sumI + chargefactor*0.5_dp*coup1L*coup2R*B1(0._dp,MChi2(i1),MSe2(i2))  
+sumI = sumI + chargefactor*0.5_dp*coup1L*Conjg(coup2R)*B1(0._dp,MChi2(i1),MSe2(i2))  
 End if 
    End Do
   End Do
@@ -562,7 +566,7 @@ coup1L = cplcFeFehhL(i2,gt1,i1)
 coup1R = cplcFeFehhR(i2,gt1,i1)
 coup2R = Conjg(cplcFeFehhL(i2,gt2,i1))
 coup2L = Conjg(cplcFeFehhR(i2,gt2,i1))
-sumI = sumI + chargefactor*0.5_dp*coup1L*coup2R*B1(0._dp,MFe2(i2),Mhh2(i1))  
+sumI = sumI + chargefactor*0.5_dp*coup1L*Conjg(coup2R)*B1(0._dp,MFe2(i2),Mhh2(i1))  
 End if 
    End Do
   End Do
@@ -578,7 +582,7 @@ coup1L = cplcChaFecSvL(i1,gt1,i2)
 coup1R = cplcChaFecSvR(i1,gt1,i2)
 coup2R = Conjg(cplcChaFecSvL(i1,gt2,i2))
 coup2L = Conjg(cplcChaFecSvR(i1,gt2,i2))
-sumI = sumI + chargefactor*0.5_dp*coup1L*coup2R*B1(0._dp,MCha2(i1),MSv2(i2))  
+sumI = sumI + chargefactor*0.5_dp*coup1L*Conjg(coup2R)*B1(0._dp,MCha2(i1),MSv2(i2))  
 End if 
    End Do
   End Do
@@ -594,7 +598,7 @@ coup1L = cplcFvFecHpmL(i1,gt1,i2)
 coup1R = cplcFvFecHpmR(i1,gt1,i2)
 coup2R = Conjg(cplcFvFecHpmL(i1,gt2,i2))
 coup2L = Conjg(cplcFvFecHpmR(i1,gt2,i2))
-sumI = sumI + chargefactor*0.5_dp*coup1L*coup2R*B1(0._dp,0._dp,MHpm2(i2))  
+sumI = sumI + chargefactor*0.5_dp*coup1L*Conjg(coup2R)*B1(0._dp,0._dp,MHpm2(i2))  
 End if 
    End Do
   End Do

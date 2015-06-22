@@ -1,9 +1,13 @@
 ! -----------------------------------------------------------------------------  
-! This file was automatically created by SARAH version 4.5.8b1 
+! This file was automatically created by SARAH version 4.5.8 
 ! SARAH References: arXiv:0806.0538, 0909.2863, 1002.0840, 1207.0906, 1309.7223  
 ! (c) Florian Staub, 2013  
 ! ------------------------------------------------------------------------------  
+<<<<<<< HEAD
 ! File created at 15:21 on 22.6.2015   
+=======
+! File created at 14:00 on 22.6.2015   
+>>>>>>> 7e4986aeb2586d02f5d1a2dd1cc138adf64211e5
 ! ----------------------------------------------------------------------  
  
  

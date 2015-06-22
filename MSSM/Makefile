@@ -22,7 +22,7 @@ comp= -c -g -module ${Mdir} -I${InDir}
 LFlagsB= -g  
 endif  
 # gfortran  
-ifeq (${F90},gfortran)  
+ifneq (,$(findstring gfortran,${F90}))
 comp= -c -g -ffree-line-length-none -J${Mdir} -I${InDir}  
 LFlagsB= -g  
 endif  

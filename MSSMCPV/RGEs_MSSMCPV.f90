@@ -1,9 +1,13 @@
 ! -----------------------------------------------------------------------------  
-! This file was automatically created by SARAH version 4.5.8b1 
+! This file was automatically created by SARAH version 4.5.8 
 ! SARAH References: arXiv:0806.0538, 0909.2863, 1002.0840, 1207.0906, 1309.7223  
 ! (c) Florian Staub, 2013  
 ! ------------------------------------------------------------------------------  
+<<<<<<< HEAD
 ! File created at 15:20 on 22.6.2015   
+=======
+! File created at 13:59 on 22.6.2015   
+>>>>>>> 7e4986aeb2586d02f5d1a2dd1cc138adf64211e5
 ! ----------------------------------------------------------------------  
  
  
@@ -1422,16 +1426,17 @@ betaTe1  = 5._dp*(TeadjYeYe) + ((18*g1p2*M1)/5._dp + 6*g2p2*M2 + 6._dp*(TradjYdT
  
  
 If (TwoLoopRGE) Then 
-betaTe2 = (-12*g1p2*TeadjYeYe + 120*g2p2*TeadjYeYe - 60._dp*(TeadjYeYeadjYeYe) - 150*TeadjYeYe*TrYdadjYd -& 
-&  50*TeadjYeYe*TrYeadjYe - 4*(135*g1p4*M1 + 9*g1p2*g2p2*M1 + 9*g1p2*g2p2*M2 +           & 
-&  75*g2p4*M2 + 2*g1p2*TradjYdTd - 80*g3p2*TradjYdTd - 6*g1p2*TradjYeTe + (-             & 
-& 2*g1p2*M1 + 80*g3p2*M3)*TrYdadjYd + 90._dp*(TrYdadjYdTdadjYd) + 15._dp*(TrYdadjYuTuadjYd) +& 
-&  6*g1p2*M1*TrYeadjYe + 30._dp*(TrYeadjYeTeadjYe) + 15._dp*(TrYuadjYdTdadjYu))*Ye +     & 
-&  12*g1p2*YeadjYeTe + 60*g2p2*YeadjYeTe - 120*TrYdadjYd*YeadjYeTe - 40*TrYeadjYe*YeadjYeTe -& 
-&  80._dp*(YeadjYeTeadjYeYe) - 60*(2*g2p2*M2 + 3._dp*(TradjYdTd) + TradjYeTe)*YeadjYeYe -& 
-&  60._dp*(YeadjYeYeadjYeTe) + 135*g1p4*Te + 18*g1p2*g2p2*Te + 75*g2p4*Te -              & 
-&  4*g1p2*TrYdadjYd*Te + 160*g3p2*TrYdadjYd*Te - 90*TrYdadjYdYdadjYd*Te - 30*TrYdadjYuYuadjYd*Te +& 
-&  12*g1p2*TrYeadjYe*Te - 30*TrYeadjYeYeadjYe*Te)/10._dp
+betaTe2 = (-6*g1p2*TeadjYeYe)/5._dp + 12*g2p2*TeadjYeYe - 6._dp*(TeadjYeYeadjYeYe) -            & 
+&  15*TeadjYeYe*TrYdadjYd - 5*TeadjYeYe*TrYeadjYe - (2*(135*g1p4*M1 + 9*g1p2*g2p2*M1 +   & 
+&  9*g1p2*g2p2*M2 + 75*g2p4*M2 + 2*g1p2*TradjYdTd - 80*g3p2*TradjYdTd - 6*g1p2*TradjYeTe +& 
+&  (-2*g1p2*M1 + 80*g3p2*M3)*TrYdadjYd + 90._dp*(TrYdadjYdTdadjYd) + 15._dp*(TrYdadjYuTuadjYd) +& 
+&  6*g1p2*M1*TrYeadjYe + 30._dp*(TrYeadjYeTeadjYe) + 15._dp*(TrYuadjYdTdadjYu))*Ye)/5._dp +& 
+&  (6*g1p2*YeadjYeTe)/5._dp + 6*g2p2*YeadjYeTe - 12*TrYdadjYd*YeadjYeTe - 4*TrYeadjYe*YeadjYeTe -& 
+&  8._dp*(YeadjYeTeadjYeYe) - 6*(2*g2p2*M2 + 3._dp*(TradjYdTd) + TradjYeTe)*YeadjYeYe -  & 
+&  6._dp*(YeadjYeYeadjYeTe) + (27*g1p4*Te)/2._dp + (9*g1p2*g2p2*Te)/5._dp +              & 
+&  (15*g2p4*Te)/2._dp - (2*g1p2*TrYdadjYd*Te)/5._dp + 16*g3p2*TrYdadjYd*Te -             & 
+&  9*TrYdadjYdYdadjYd*Te - 3*TrYdadjYuYuadjYd*Te + (6*g1p2*TrYeadjYe*Te)/5._dp -         & 
+&  3*TrYeadjYeYeadjYe*Te
 
  
 DTe = oo16pi2*( betaTe1 + oo16pi2 * betaTe2 ) 
@@ -2924,16 +2929,17 @@ betaTe1  = 5._dp*(TeadjYeYe) + ((18*g1p2*M1)/5._dp + 6*g2p2*M2 + 6._dp*(TradjYdT
  
  
 If (TwoLoopRGE) Then 
-betaTe2 = (-12*g1p2*TeadjYeYe + 120*g2p2*TeadjYeYe - 60._dp*(TeadjYeYeadjYeYe) - 150*TeadjYeYe*TrYdadjYd -& 
-&  50*TeadjYeYe*TrYeadjYe - 4*(135*g1p4*M1 + 9*g1p2*g2p2*M1 + 9*g1p2*g2p2*M2 +           & 
-&  75*g2p4*M2 + 2*g1p2*TradjYdTd - 80*g3p2*TradjYdTd - 6*g1p2*TradjYeTe + (-             & 
-& 2*g1p2*M1 + 80*g3p2*M3)*TrYdadjYd + 90._dp*(TrYdadjYdTdadjYd) + 15._dp*(TrYdadjYuTuadjYd) +& 
-&  6*g1p2*M1*TrYeadjYe + 30._dp*(TrYeadjYeTeadjYe) + 15._dp*(TrYuadjYdTdadjYu))*Ye +     & 
-&  12*g1p2*YeadjYeTe + 60*g2p2*YeadjYeTe - 120*TrYdadjYd*YeadjYeTe - 40*TrYeadjYe*YeadjYeTe -& 
-&  80._dp*(YeadjYeTeadjYeYe) - 60*(2*g2p2*M2 + 3._dp*(TradjYdTd) + TradjYeTe)*YeadjYeYe -& 
-&  60._dp*(YeadjYeYeadjYeTe) + 135*g1p4*Te + 18*g1p2*g2p2*Te + 75*g2p4*Te -              & 
-&  4*g1p2*TrYdadjYd*Te + 160*g3p2*TrYdadjYd*Te - 90*TrYdadjYdYdadjYd*Te - 30*TrYdadjYuYuadjYd*Te +& 
-&  12*g1p2*TrYeadjYe*Te - 30*TrYeadjYeYeadjYe*Te)/10._dp
+betaTe2 = (-6*g1p2*TeadjYeYe)/5._dp + 12*g2p2*TeadjYeYe - 6._dp*(TeadjYeYeadjYeYe) -            & 
+&  15*TeadjYeYe*TrYdadjYd - 5*TeadjYeYe*TrYeadjYe - (2*(135*g1p4*M1 + 9*g1p2*g2p2*M1 +   & 
+&  9*g1p2*g2p2*M2 + 75*g2p4*M2 + 2*g1p2*TradjYdTd - 80*g3p2*TradjYdTd - 6*g1p2*TradjYeTe +& 
+&  (-2*g1p2*M1 + 80*g3p2*M3)*TrYdadjYd + 90._dp*(TrYdadjYdTdadjYd) + 15._dp*(TrYdadjYuTuadjYd) +& 
+&  6*g1p2*M1*TrYeadjYe + 30._dp*(TrYeadjYeTeadjYe) + 15._dp*(TrYuadjYdTdadjYu))*Ye)/5._dp +& 
+&  (6*g1p2*YeadjYeTe)/5._dp + 6*g2p2*YeadjYeTe - 12*TrYdadjYd*YeadjYeTe - 4*TrYeadjYe*YeadjYeTe -& 
+&  8._dp*(YeadjYeTeadjYeYe) - 6*(2*g2p2*M2 + 3._dp*(TradjYdTd) + TradjYeTe)*YeadjYeYe -  & 
+&  6._dp*(YeadjYeYeadjYeTe) + (27*g1p4*Te)/2._dp + (9*g1p2*g2p2*Te)/5._dp +              & 
+&  (15*g2p4*Te)/2._dp - (2*g1p2*TrYdadjYd*Te)/5._dp + 16*g3p2*TrYdadjYd*Te -             & 
+&  9*TrYdadjYdYdadjYd*Te - 3*TrYdadjYuYuadjYd*Te + (6*g1p2*TrYeadjYe*Te)/5._dp -         & 
+&  3*TrYeadjYeYeadjYe*Te
 
  
 DTe = oo16pi2*( betaTe1 + oo16pi2 * betaTe2 ) 
