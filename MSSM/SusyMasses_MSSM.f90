@@ -1,9 +1,9 @@
 ! -----------------------------------------------------------------------------  
-! This file was automatically created by SARAH version 4.5.7 
+! This file was automatically created by SARAH version 4.5.8 
 ! SARAH References: arXiv:0806.0538, 0909.2863, 1002.0840, 1207.0906, 1309.7223  
 ! (c) Florian Staub, 2013  
 ! ------------------------------------------------------------------------------  
-! File created at 13:36 on 22.6.2015   
+! File created at 13:54 on 22.6.2015   
 ! ----------------------------------------------------------------------  
  
  
@@ -124,10 +124,6 @@ End if
 ! Setting Goldstone masses 
 ! -------------------------------- 
  
-MAh(1)=MVZ
-MAh2(1)=MVZ2
-MHpm(1)=MVWm
-MHpm2(1)=MVWm2
 v = Sqrt(vd**2 + vu**2)
 betaH = ASin(Abs(ZP(1,2)))
 alphaH = ACos(ZH(1,2))
@@ -3859,7 +3855,7 @@ Real(dp) :: MHpmtemp(2)
 Complex(dp) :: ZHpmtemp(2,2) 
 
 
-pos = MinLoc(Abs(MAh2-MVZ2),1) 
+pos = MinLoc(Abs(MAh2-MVZ2*RXiZ),1) 
 If (pos.ne.1) Then 
   MAhtemp = MAh2 
   ZAhtemp = ZA 
@@ -3885,7 +3881,7 @@ MAh = sqrt(MAh2)
 
  
  
-pos = MinLoc(Abs(MHpm2-MVWm2),1) 
+pos = MinLoc(Abs(MHpm2-MVWm2*RXiWm),1) 
 If (pos.ne.1) Then 
   MHpmtemp = MHpm2 
   ZHpmtemp = ZP 
