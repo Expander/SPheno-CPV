@@ -3,7 +3,7 @@
 ! SARAH References: arXiv:0806.0538, 0909.2863, 1002.0840, 1207.0906, 1309.7223  
 ! (c) Florian Staub, 2013  
 ! ------------------------------------------------------------------------------  
-! File created at 11:04 on 19.6.2015   
+! File created at 15:23 on 22.6.2015   
 ! ----------------------------------------------------------------------  
  
  
@@ -1247,7 +1247,7 @@ mass_old(n_tot:n_tot+1) = MCha
 n_tot = n_tot + 2 
 mass_old(n_tot:n_tot+0) = MGlu
 If (.Not.UseFixedScale) Then 
-mudim=Max(mZ**2,Abs(MSu(1)*MSu(6))) 
+mudim=Max(mZ**2,Abs(Sqrt(Real((mq2(3,3) + (vu**2*Conjg(Yu(3,3))*Yu(3,3))/2._dp)*(mu2(3,3) + (vu**2*Conjg(Yu(3,3))*Yu(3,3))/2._dp) - ((vd*Mu*Conjg(Yu(3,3)) - vu*Conjg(Tu(3,3)))*(vd*Conjg(Mu)*Yu(3,3) - vu*Tu(3,3)))/2._dp,dp)))) 
 Call SetRGEScale(mudim) 
 UseFixedScale= .False. 
 End If 
@@ -1512,7 +1512,7 @@ If (SignOfMuChanged) Then
 End If
 mass_old=mass_new 
 If (.Not.UseFixedScale) Then 
-mudimNew=Max(mZ**2,Abs(MSu(1)*MSu(6))) 
+mudimNew=Max(mZ**2,Abs(Sqrt(Real((mq2(3,3) + (vu**2*Conjg(Yu(3,3))*Yu(3,3))/2._dp)*(mu2(3,3) + (vu**2*Conjg(Yu(3,3))*Yu(3,3))/2._dp) - ((vd*Mu*Conjg(Yu(3,3)) - vu*Conjg(Tu(3,3)))*(vd*Conjg(Mu)*Yu(3,3) - vu*Tu(3,3)))/2._dp,dp)))) 
 If (HighScaleModel.eq."LOW") GUT_Scale = sqrt(mudimNew) 
  UseFixedScale= .False. 
 End If 
