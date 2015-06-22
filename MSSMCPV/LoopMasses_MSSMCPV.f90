@@ -1,13 +1,9 @@
 ! -----------------------------------------------------------------------------  
-! This file was automatically created by SARAH version 4.5.8 
+! This file was automatically created by SARAH version 4.5.8b1 
 ! SARAH References: arXiv:0806.0538, 0909.2863, 1002.0840, 1207.0906, 1309.7223  
 ! (c) Florian Staub, 2013  
 ! ------------------------------------------------------------------------------  
-<<<<<<< HEAD
 ! File created at 15:23 on 22.6.2015   
-=======
-! File created at 14:03 on 22.6.2015   
->>>>>>> 7e4986aeb2586d02f5d1a2dd1cc138adf64211e5
 ! ----------------------------------------------------------------------  
  
  
@@ -46,8 +42,8 @@ Real(dp), Private :: MVZ_1L, MVZ2_1L
 Real(dp), Private :: MVWm_1L, MVWm2_1L  
 Real(dp), save :: rMS = 0._dp 
 Real(dp) :: pi2A0  
-Real(dp) :: ti_ep2L(2)  
-Real(dp) :: pi_ep2L(2,2)
+Real(dp) :: ti_ep2L(4)  
+Real(dp) :: pi_ep2L(4,4)
 Real(dp) :: Pi2S_EffPot(4,4)
 Real(dp) :: PiP2S_EffPot(4,4)
 Contains 
@@ -199,6 +195,12 @@ vu=tanbQ*vd
 Call SolveTadpoleEquations(g1,g2,g3,Yd,Ye,Yu,Mu,Td,Te,Tu,Bmu,mq2,ml2,mHd2,            & 
 & mHu2,md2,mu2,me2,M1,M2,M3,vd,vu,(/ ZeroC, ZeroC, ZeroC, ZeroC /))
 
+! Set Gauge fixing parameters 
+RXi= RXiNew 
+RXiG = RXi 
+RXiP = RXi 
+RXiWm = RXi 
+RXiZ = RXi 
 Call TreeMasses(MCha,MCha2,MChi,MChi2,MFd,MFd2,MFe,MFe2,MFu,MFu2,MGlu,MGlu2,          & 
 & Mhh,Mhh2,MHpm,MHpm2,MSd,MSd2,MSe,MSe2,MSu,MSu2,MSv,MSv2,MVWm,MVWm2,MVZ,MVZ2,           & 
 & pG,TW,UM,UP,v,ZD,ZDL,ZDR,ZE,ZEL,ZER,ZH,ZN,ZP,ZU,ZUL,ZUR,ZV,ZW,ZZ,vd,vu,g1,             & 
@@ -382,7 +384,7 @@ End If
    where (aint(Abs(me2)).eq.me2) me2=me2*(1 + 11*1.0E-12_dp)
 
 Call CalculatePi2S(0._dp,vd,vu,g1,g2,g3,Yd,Ye,Yu,Mu,Td,Te,Tu,Bmu,mq2,ml2,             & 
-& mHd2,mHu2,md2,mu2,me2,M1,M2,M3,kont,ti_ep2L,Pi2S_EffPot)
+& mHd2,mHu2,md2,mu2,me2,M1,M2,M3,kont,ti_ep2L,Pi2S_EffPot,PiP2S_EffPot)
 
    Yd =Yd_saveEP 
    Ye =Ye_saveEP 
@@ -419,7 +421,7 @@ Call SolveTadpoleEquations(g1,g2,g3,Yd,Ye,Yu,Mu,Td,Te,Tu,Bmu,mq2,ml2,mHd2,      
 
 Mu1L = Mu
 Bmu1L = Bmu
-Tad1Loop(1:2) = Tad1Loop(1:2) - ti_ep2L 
+! Tad1Loop(1:2) = Tad1Loop(1:2) - ti_ep2L 
 Call SolveTadpoleEquations(g1,g2,g3,Yd,Ye,Yu,Mu,Td,Te,Tu,Bmu,mq2,ml2,mHd2,            & 
 & mHu2,md2,mu2,me2,M1,M2,M3,vd,vu,Tad1Loop)
 
@@ -539,6 +541,11 @@ MFu2(1:3) = mf_u**2
 MFd(1:3) = mf_d 
 MFd2(1:3) = mf_d**2 
 ! Shift Everything to t'Hooft Gauge
+RXi=  1._dp 
+RXiG = 1._dp 
+RXiP = 1._dp 
+RXiWm = 1._dp 
+RXiZ = 1._dp 
 Mhh(1)=MVZ
 Mhh2(1)=MVZ2
 MHpm(1)=MVWm
@@ -656,7 +663,7 @@ End Do
  !------------------------ 
 ! bar[gWm] 
 !------------------------ 
-A0m = 1._dp*A0(MVWm2) 
+A0m = 1._dp*A0(MVWm2*RXi) 
   Do gO1 = 1, 4
     coup = cplcgWmgWmUhh(gO1)
     sumI(gO1) = coup*A0m 
@@ -666,7 +673,7 @@ tadpoles =  tadpoles + 1._dp*sumI
 !------------------------ 
 ! bar[gWmC] 
 !------------------------ 
-A0m = 1._dp*A0(MVWm2) 
+A0m = 1._dp*A0(MVWm2*RXi) 
   Do gO1 = 1, 4
     coup = cplcgWpCgWpCUhh(gO1)
     sumI(gO1) = coup*A0m 
@@ -676,7 +683,7 @@ tadpoles =  tadpoles + 1._dp*sumI
 !------------------------ 
 ! bar[gZ] 
 !------------------------ 
-A0m = 1._dp*A0(MVZ2) 
+A0m = 1._dp*A0(MVZ2*RXi) 
   Do gO1 = 1, 4
     coup = cplcgZgZUhh(gO1)
     sumI(gO1) = coup*A0m 
@@ -758,7 +765,7 @@ End Do
  !------------------------ 
 ! conj[VWm] 
 !------------------------ 
-A0m = 4._dp*(A0(MVWm2) - 0.5_dp*MVWm2*rMS) 
+A0m = 3._dp*A0(MVWm2)+RXi*A0(MVWm2*RXi) - 2._dp*MVWm2*rMS 
   Do gO1 = 1, 4
     coup = cplUhhcVWmVWm(gO1)
     sumI(gO1) = coup*A0m 
@@ -768,7 +775,7 @@ tadpoles =  tadpoles + 1._dp*sumI
 !------------------------ 
 ! VZ 
 !------------------------ 
-A0m = 4._dp*(A0(MVZ2) - 0.5_dp*MVZ2*rMS) 
+A0m = 3._dp*A0(MVZ2)+RXi*A0(MVZ2*RXi) - 2._dp*MVZ2*rMS 
   Do gO1 = 1, 4
     coup = cplUhhVZVZ(gO1)
     sumI(gO1) = coup*A0m 
@@ -1179,7 +1186,7 @@ res = res +1._dp* SumI
 sumI = 0._dp 
  
       Do i2 = 1, 6
- F0m2 = Floop(p2,MSd2(i2),0._dp) 
+ F0m2 = FloopRXi(p2,MSd2(i2),0._dp) 
 Do gO1 = 1, 6
   Do gO2 = gO1, 6
 coup1 = cplSdcUSdVG(i2,gO1)
@@ -1195,7 +1202,7 @@ res = res +4._dp/3._dp* SumI
 sumI = 0._dp 
  
       Do i2 = 1, 6
- F0m2 = Floop(p2,MSd2(i2),0._dp) 
+ F0m2 = FloopRXi(p2,MSd2(i2),0._dp) 
 Do gO1 = 1, 6
   Do gO2 = gO1, 6
 coup1 = cplSdcUSdVP(i2,gO1)
@@ -1211,7 +1218,7 @@ res = res +1._dp* SumI
 sumI = 0._dp 
  
       Do i2 = 1, 6
- F0m2 = Floop(p2,MSd2(i2),MVZ2) 
+ F0m2 = FloopRXi(p2,MSd2(i2),MVZ2) 
 Do gO1 = 1, 6
   Do gO2 = gO1, 6
 coup1 = cplSdcUSdVZ(i2,gO1)
@@ -1227,7 +1234,7 @@ res = res +1._dp* SumI
 sumI = 0._dp 
  
       Do i2 = 1, 6
- F0m2 = Floop(p2,MSu2(i2),MVWm2) 
+ F0m2 = FloopRXi(p2,MSu2(i2),MVWm2) 
 Do gO1 = 1, 6
   Do gO2 = gO1, 6
 coup1 = cplSucUSdVWm(i2,gO1)
@@ -1342,7 +1349,7 @@ sumI = 0._dp
 !------------------------ 
 sumI = 0._dp 
  
-A0m2 = A0(MVWm2) - 0.5_dp*MVWm2*rMS 
+A0m2 = 0.75_dp*A0(MVWm2) + 0.25_dp*RXi*A0(MVWm2*RXi) - 2.0_dp*MVWm2*rMS 
 Do gO1 = 1, 6
   Do gO2 = gO1, 6
 coup1 = cplUSdcUSdcVWmVWm(gO2,gO1)
@@ -1355,7 +1362,7 @@ res = res +4._dp* SumI
 !------------------------ 
 sumI = 0._dp 
  
-A0m2 = A0(MVZ2) - 0.5_dp*MVZ2*rMS 
+A0m2 = 0.75_dp*A0(MVZ2) + 0.25_dp*RXi*A0(MVZ2*RXi) - 2.0_dp*MVZ2*rMS 
 Do gO1 = 1, 6
   Do gO2 = gO1, 6
 coup1 = cplUSdcUSdVZVZ(gO2,gO1)
@@ -1773,7 +1780,7 @@ res = res +1._dp* SumI
 sumI = 0._dp 
  
       Do i2 = 1, 6
- F0m2 = Floop(p2,MSd2(i2),MVWm2) 
+ F0m2 = FloopRXi(p2,MSd2(i2),MVWm2) 
 Do gO1 = 1, 6
   Do gO2 = gO1, 6
 coup1 = cplSdcUSucVWm(i2,gO1)
@@ -1789,7 +1796,7 @@ res = res +1._dp* SumI
 sumI = 0._dp 
  
       Do i2 = 1, 6
- F0m2 = Floop(p2,MSu2(i2),0._dp) 
+ F0m2 = FloopRXi(p2,MSu2(i2),0._dp) 
 Do gO1 = 1, 6
   Do gO2 = gO1, 6
 coup1 = cplSucUSuVG(i2,gO1)
@@ -1805,7 +1812,7 @@ res = res +4._dp/3._dp* SumI
 sumI = 0._dp 
  
       Do i2 = 1, 6
- F0m2 = Floop(p2,MSu2(i2),0._dp) 
+ F0m2 = FloopRXi(p2,MSu2(i2),0._dp) 
 Do gO1 = 1, 6
   Do gO2 = gO1, 6
 coup1 = cplSucUSuVP(i2,gO1)
@@ -1821,7 +1828,7 @@ res = res +1._dp* SumI
 sumI = 0._dp 
  
       Do i2 = 1, 6
- F0m2 = Floop(p2,MSu2(i2),MVZ2) 
+ F0m2 = FloopRXi(p2,MSu2(i2),MVZ2) 
 Do gO1 = 1, 6
   Do gO2 = gO1, 6
 coup1 = cplSucUSuVZ(i2,gO1)
@@ -1936,7 +1943,7 @@ sumI = 0._dp
 !------------------------ 
 sumI = 0._dp 
  
-A0m2 = A0(MVWm2) - 0.5_dp*MVWm2*rMS 
+A0m2 = 0.75_dp*A0(MVWm2) + 0.25_dp*RXi*A0(MVWm2*RXi) - 2.0_dp*MVWm2*rMS 
 Do gO1 = 1, 6
   Do gO2 = gO1, 6
 coup1 = cplUSucUSucVWmVWm(gO2,gO1)
@@ -1949,7 +1956,7 @@ res = res +4._dp* SumI
 !------------------------ 
 sumI = 0._dp 
  
-A0m2 = A0(MVZ2) - 0.5_dp*MVZ2*rMS 
+A0m2 = 0.75_dp*A0(MVZ2) + 0.25_dp*RXi*A0(MVZ2*RXi) - 2.0_dp*MVZ2*rMS 
 Do gO1 = 1, 6
   Do gO2 = gO1, 6
 coup1 = cplUSucUSuVZVZ(gO2,gO1)
@@ -2341,7 +2348,7 @@ res = res +1._dp* SumI
 sumI = 0._dp 
  
       Do i2 = 1, 6
- F0m2 = Floop(p2,MSe2(i2),0._dp) 
+ F0m2 = FloopRXi(p2,MSe2(i2),0._dp) 
 Do gO1 = 1, 6
   Do gO2 = gO1, 6
 coup1 = cplSecUSeVP(i2,gO1)
@@ -2357,7 +2364,7 @@ res = res +1._dp* SumI
 sumI = 0._dp 
  
       Do i2 = 1, 6
- F0m2 = Floop(p2,MSe2(i2),MVZ2) 
+ F0m2 = FloopRXi(p2,MSe2(i2),MVZ2) 
 Do gO1 = 1, 6
   Do gO2 = gO1, 6
 coup1 = cplSecUSeVZ(i2,gO1)
@@ -2373,7 +2380,7 @@ res = res +1._dp* SumI
 sumI = 0._dp 
  
       Do i2 = 1, 3
- F0m2 = Floop(p2,MSv2(i2),MVWm2) 
+ F0m2 = FloopRXi(p2,MSv2(i2),MVWm2) 
 Do gO1 = 1, 6
   Do gO2 = gO1, 6
 coup1 = cplSvcUSeVWm(i2,gO1)
@@ -2483,7 +2490,7 @@ sumI = 0._dp
 !------------------------ 
 sumI = 0._dp 
  
-A0m2 = A0(MVWm2) - 0.5_dp*MVWm2*rMS 
+A0m2 = 0.75_dp*A0(MVWm2) + 0.25_dp*RXi*A0(MVWm2*RXi) - 2.0_dp*MVWm2*rMS 
 Do gO1 = 1, 6
   Do gO2 = gO1, 6
 coup1 = cplUSecUSecVWmVWm(gO2,gO1)
@@ -2496,7 +2503,7 @@ res = res +4._dp* SumI
 !------------------------ 
 sumI = 0._dp 
  
-A0m2 = A0(MVZ2) - 0.5_dp*MVZ2*rMS 
+A0m2 = 0.75_dp*A0(MVZ2) + 0.25_dp*RXi*A0(MVZ2*RXi) - 2.0_dp*MVZ2*rMS 
 Do gO1 = 1, 6
   Do gO2 = gO1, 6
 coup1 = cplUSecUSeVZVZ(gO2,gO1)
@@ -2804,7 +2811,7 @@ res = res +1._dp* SumI
 sumI = 0._dp 
  
       Do i2 = 1, 6
- F0m2 = Floop(p2,MSe2(i2),MVWm2) 
+ F0m2 = FloopRXi(p2,MSe2(i2),MVWm2) 
 Do gO1 = 1, 3
   Do gO2 = gO1, 3
 coup1 = cplSecUSvcVWm(i2,gO1)
@@ -2820,7 +2827,7 @@ res = res +1._dp* SumI
 sumI = 0._dp 
  
       Do i2 = 1, 3
- F0m2 = Floop(p2,MSv2(i2),MVZ2) 
+ F0m2 = FloopRXi(p2,MSv2(i2),MVZ2) 
 Do gO1 = 1, 3
   Do gO2 = gO1, 3
 coup1 = cplSvcUSvVZ(i2,gO1)
@@ -2925,7 +2932,7 @@ res = res +1._dp* SumI
 !------------------------ 
 sumI = 0._dp 
  
-A0m2 = A0(MVWm2) - 0.5_dp*MVWm2*rMS 
+A0m2 = 0.75_dp*A0(MVWm2) + 0.25_dp*RXi*A0(MVWm2*RXi) - 2.0_dp*MVWm2*rMS 
 Do gO1 = 1, 3
   Do gO2 = gO1, 3
 coup1 = cplUSvcUSvcVWmVWm(gO2,gO1)
@@ -2938,7 +2945,7 @@ res = res +4._dp* SumI
 !------------------------ 
 sumI = 0._dp 
  
-A0m2 = A0(MVZ2) - 0.5_dp*MVZ2*rMS 
+A0m2 = 0.75_dp*A0(MVZ2) + 0.25_dp*RXi*A0(MVZ2*RXi) - 2.0_dp*MVZ2*rMS 
 Do gO1 = 1, 3
   Do gO2 = gO1, 3
 coup1 = cplUSvcUSvVZVZ(gO2,gO1)
@@ -3053,7 +3060,7 @@ mat2a(4,4) = mat2a(4,4)+(g1**2*vu**2*RXiZ*Sin(TW)**2)/4._dp
  
  Do i1=2,4
   Do i2 = 1, i1-1 
-  mat2a(i1,i2) = Conjg(mat2a(i2,i1)) 
+  mat2a(i1,i2) = (mat2a(i2,i1)) 
   End do 
 End do 
 
@@ -3327,7 +3334,7 @@ res = res +3._dp* SumI
 !------------------------ 
 sumI = 0._dp 
  
-F0m2 = -Real(B0(p2,MVWm2,MVWm2),dp) 
+F0m2 = -Real(B0(p2,MVWm2*RXi,MVWm2*RXi),dp) 
  Do gO1 = 1, 4
   Do gO2 = gO1, 4
 coup1 = cplcgWmgWmUhh(gO1)
@@ -3341,7 +3348,7 @@ res = res +1._dp* SumI
 !------------------------ 
 sumI = 0._dp 
  
-F0m2 = -Real(B0(p2,MVWm2,MVWm2),dp) 
+F0m2 = -Real(B0(p2,MVWm2*RXi,MVWm2*RXi),dp) 
  Do gO1 = 1, 4
   Do gO2 = gO1, 4
 coup1 = cplcgWpCgWpCUhh(gO1)
@@ -3355,7 +3362,7 @@ res = res +1._dp* SumI
 !------------------------ 
 sumI = 0._dp 
  
-F0m2 = -Real(B0(p2,MVZ2,MVZ2),dp) 
+F0m2 = -Real(B0(p2,MVZ2*RXi,MVZ2*RXi),dp) 
  Do gO1 = 1, 4
   Do gO2 = gO1, 4
 coup1 = cplcgZgZUhh(gO1)
@@ -3388,7 +3395,7 @@ res = res +1._dp/2._dp* SumI
 sumI = 0._dp 
  
       Do i2 = 1, 4
- F0m2 = Floop(p2,Mhh2(i2),MVZ2) 
+ F0m2 = FloopRXi(p2,Mhh2(i2),MVZ2) 
 Do gO1 = 1, 4
   Do gO2 = gO1, 4
 coup1 = cplUhhhhVZ(gO1,i2)
@@ -3422,7 +3429,7 @@ res = res +1._dp* SumI
 sumI = 0._dp 
  
       Do i2 = 1, 2
- F0m2 = Floop(p2,MHpm2(i2),MVWm2) 
+ F0m2 = FloopRXi(p2,MHpm2(i2),MVWm2) 
 Do gO1 = 1, 4
   Do gO2 = gO1, 4
 coup1 = cplUhhHpmcVWm(gO1,i2)
@@ -3509,7 +3516,7 @@ res = res +1._dp* SumI
 !------------------------ 
 sumI = 0._dp 
  
-F0m2 = 4._dp*Real(B0(p2,MVWm2,MVWm2)-0.5_dp*rMS,dp)  
+F0m2 = SVVloop(p2,MVWm2,MVWm2)   
  Do gO1 = 1, 4
   Do gO2 = gO1, 4
 coup1 = cplUhhcVWmVWm(gO1)
@@ -3523,7 +3530,7 @@ res = res +1._dp* SumI
 !------------------------ 
 sumI = 0._dp 
  
-F0m2 = 4._dp*Real(B0(p2,MVZ2,MVZ2)-0.5_dp*rMS,dp)  
+F0m2 = SVVloop(p2,MVZ2,MVZ2)   
  Do gO1 = 1, 4
   Do gO2 = gO1, 4
 coup1 = cplUhhVZVZ(gO1)
@@ -3627,7 +3634,7 @@ res = res +1._dp* SumI
 !------------------------ 
 sumI = 0._dp 
  
-A0m2 = A0(MVWm2) - 0.5_dp*MVWm2*rMS 
+A0m2 = 0.75_dp*A0(MVWm2) + 0.25_dp*RXi*A0(MVWm2*RXi) - 2.0_dp*MVWm2*rMS 
 Do gO1 = 1, 4
   Do gO2 = gO1, 4
 coup1 = cplUhhUhhcVWmVWm(gO1,gO2)
@@ -3640,7 +3647,7 @@ res = res +4._dp* SumI
 !------------------------ 
 sumI = 0._dp 
  
-A0m2 = A0(MVZ2) - 0.5_dp*MVZ2*rMS 
+A0m2 = 0.75_dp*A0(MVZ2) + 0.25_dp*RXi*A0(MVZ2*RXi) - 2.0_dp*MVZ2*rMS 
 Do gO1 = 1, 4
   Do gO2 = gO1, 4
 coup1 = cplUhhUhhVZVZ(gO1,gO2)
@@ -3652,7 +3659,7 @@ res = res +2._dp* SumI
 
 Do gO2 = 1, 4
   Do gO1 = gO2+1, 4
-     res(gO1,gO2) = Conjg(res(gO2,gO1))  
+     res(gO1,gO2) = (res(gO2,gO1))  
    End Do 
 End Do 
  
@@ -3950,7 +3957,7 @@ res = res +1._dp* SumI
 !------------------------ 
 sumI = 0._dp 
  
-F0m2 = -Real(B0(p2,MVWm2,MVZ2),dp) 
+F0m2 = -Real(B0(p2,MVWm2*RXi,MVZ2*RXi),dp) 
  Do gO1 = 1, 2
   Do gO2 = gO1, 2
 coup1 = cplcgZgWmcUHpm(gO1)
@@ -3964,7 +3971,7 @@ res = res +1._dp* SumI
 !------------------------ 
 sumI = 0._dp 
  
-F0m2 = -Real(B0(p2,MVZ2,MVWm2),dp) 
+F0m2 = -Real(B0(p2,MVZ2*RXi,MVWm2*RXi),dp) 
  Do gO1 = 1, 2
   Do gO2 = gO1, 2
 coup1 = cplcgWpCgZcUHpm(gO1)
@@ -3997,7 +4004,7 @@ res = res +1._dp* SumI
 sumI = 0._dp 
  
       Do i2 = 1, 4
- F0m2 = Floop(p2,Mhh2(i2),MVWm2) 
+ F0m2 = FloopRXi(p2,Mhh2(i2),MVWm2) 
 Do gO1 = 1, 2
   Do gO2 = gO1, 2
 coup1 = cplhhcUHpmVWm(i2,gO1)
@@ -4013,7 +4020,7 @@ res = res +1._dp* SumI
 sumI = 0._dp 
  
       Do i2 = 1, 2
- F0m2 = Floop(p2,MHpm2(i2),0._dp) 
+ F0m2 = FloopRXi(p2,MHpm2(i2),0._dp) 
 Do gO1 = 1, 2
   Do gO2 = gO1, 2
 coup1 = cplHpmcUHpmVP(i2,gO1)
@@ -4029,7 +4036,7 @@ res = res +1._dp* SumI
 sumI = 0._dp 
  
       Do i2 = 1, 2
- F0m2 = Floop(p2,MHpm2(i2),MVZ2) 
+ F0m2 = FloopRXi(p2,MHpm2(i2),MVZ2) 
 Do gO1 = 1, 2
   Do gO2 = gO1, 2
 coup1 = cplHpmcUHpmVZ(i2,gO1)
@@ -4080,7 +4087,7 @@ res = res +1._dp* SumI
 !------------------------ 
 sumI = 0._dp 
  
-F0m2 = 4._dp*Real(B0(p2,0._dp,MVWm2)-0.5_dp*rMS,dp)  
+F0m2 = SVVloop(p2,0._dp,MVWm2)   
  Do gO1 = 1, 2
   Do gO2 = gO1, 2
 coup1 = cplcUHpmVPVWm(gO1)
@@ -4094,7 +4101,7 @@ res = res +1._dp* SumI
 !------------------------ 
 sumI = 0._dp 
  
-F0m2 = 4._dp*Real(B0(p2,MVWm2,MVZ2)-0.5_dp*rMS,dp)  
+F0m2 = SVVloop(p2,MVWm2,MVZ2)   
  Do gO1 = 1, 2
   Do gO2 = gO1, 2
 coup1 = cplcUHpmVWmVZ(gO1)
@@ -4203,7 +4210,7 @@ sumI = 0._dp
 !------------------------ 
 sumI = 0._dp 
  
-A0m2 = A0(MVWm2) - 0.5_dp*MVWm2*rMS 
+A0m2 = 0.75_dp*A0(MVWm2) + 0.25_dp*RXi*A0(MVWm2*RXi) - 2.0_dp*MVWm2*rMS 
 Do gO1 = 1, 2
   Do gO2 = gO1, 2
 coup1 = cplUHpmcUHpmcVWmVWm(gO2,gO1)
@@ -4216,7 +4223,7 @@ res = res +4._dp* SumI
 !------------------------ 
 sumI = 0._dp 
  
-A0m2 = A0(MVZ2) - 0.5_dp*MVZ2*rMS 
+A0m2 = 0.75_dp*A0(MVZ2) + 0.25_dp*RXi*A0(MVZ2*RXi) - 2.0_dp*MVZ2*rMS 
 Do gO1 = 1, 2
   Do gO2 = gO1, 2
 coup1 = cplUHpmcUHpmVZVZ(gO2,gO1)
@@ -8149,4 +8156,52 @@ SigS = oo16pi2*SigS
  
 End Subroutine Sigma1LoopFuMZ 
  
+Complex(dp) Function FloopRXi(p2,m12,m22) 
+Implicit None 
+
+Real(dp),Intent(in)::p2,m12,m22 
+
+If (RXi.eq.1._dp) Then 
+  FloopRXi=Floop(p2,m12,m22)
+Else
+  If ((m12.gt.0).and.(m22.gt.0)) Then 
+      FloopRXi=A0(m12)-A0(m22)+((m12-p2)*A0(m22))/m22-&
+      & ((m12-p2+m22*RXi)*A0(m22*RXi))/m22+(-m12+m22+p2)*b0(p2,m12,m22)-&
+      & (m12-(m12-p2)**2/m22+3._dp*p2)*b0(p2,m12,m22)-((m12-p2)**2*b0(p2,m12,m22*RXi))/m22
+  Else
+     FloopRXi=Floop(p2,m12,m22)
+   End if
+End if
+End Function FloopRXi
+
+
+Complex(dp) Function SVVloop(p2,m12,m22) 
+Implicit None 
+
+Real(dp),Intent(in)::p2,m12,m22 
+
+If (RXi.eq.1._dp) Then 
+  SVVloop=4._dp*Real(B0(p2,m12,m22)-0.5_dp*rMS,dp)  
+Else
+  If ((m12.gt.0).and.(m22.gt.0)) Then 
+      SVVloop=rMS-A0(m12)/(8._dp*m12)+(RXi*A0(m12))/(8._dp*m12)-A0(m22)/(8._dp*m22)+(RXi*A0(m22))/(8._dp*m22)+A0(m12*RXi)/(8._dp*m12) &
+       & -(RXi*A0(m12*RXi))/(8._dp*m12)+A0(m22*RXi)/(8._dp*m22)-&
+       & (RXi*A0(m22*RXi))/(8._dp*m22)-(5._dp*B0(p2,m12,m22))/4._dp-(m12*B0(p2,m12,m22))/(8._dp*m22) &
+       & -(m22*B0(p2,m12,m22))/(8._dp*m12)+(p2*B0(p2,m12,m22))/(4._dp*m12)+(p2*B0(p2,m12,m22))/(4._dp*m22)-&
+       & (p2**2*B0(p2,m12,m22))/(8._dp*m12*m22)+(m12*B0(p2,m12,m22*RXi))/(8._dp*m22)-(p2*B0(p2,m12,m22*RXi))/(4._dp*m22) &
+       &+(p2**2*B0(p2,m12,m22*RXi))/(8._dp*m12*m22)-(RXi*B0(p2,m12,m22*RXi))/4._dp-&
+       & (p2*RXi*B0(p2,m12,m22*RXi))/(4._dp*m12)+(m22*RXi**2*B0(p2,m12,m22*RXi))/(8._dp*m12)&
+       &+(m22*B0(p2,m22,m12*RXi))/(8._dp*m12)-(p2*B0(p2,m22,m12*RXi))/(4._dp*m12)+&
+       & (p2**2*B0(p2,m22,m12*RXi))/(8._dp*m12*m22)-(RXi*B0(p2,m22,m12*RXi))/4._dp-(p2*RXi*B0(p2,m22,m12*RXi))/(4._dp*m22)&
+       & +(m12*RXi**2*B0(p2,m22,m12*RXi))/(8._dp*m22)-&
+       & (p2**2*B0(p2,m12*RXi,m22*RXi))/(8._dp*m12*m22)+(p2*RXi*B0(p2,m12*RXi,m22*RXi))/(4._dp*m12) & 
+       & +(p2*RXi*B0(p2,m12*RXi,m22*RXi))/(4._dp*m22)-(RXi**2*B0(p2,m12*RXi,m22*RXi))/4._dp-&
+       & (m12*RXi**2*B0(p2,m12*RXi,m22*RXi))/(8._dp*m22)-(m22*RXi**2*B0(p2,m12*RXi,m22*RXi))/(8._dp*m12)
+  Else
+     SVVloop=4._dp*Real(B0(p2,m12,m22)-0.5_dp*rMS,dp)  
+   End if
+End if
+End Function SVVloop
+
+
 End Module LoopMasses_MSSMCPV 

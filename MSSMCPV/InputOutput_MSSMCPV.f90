@@ -1,13 +1,9 @@
 ! -----------------------------------------------------------------------------  
-! This file was automatically created by SARAH version 4.5.8 
+! This file was automatically created by SARAH version 4.5.8b1 
 ! SARAH References: arXiv:0806.0538, 0909.2863, 1002.0840, 1207.0906, 1309.7223  
 ! (c) Florian Staub, 2013  
 ! ------------------------------------------------------------------------------  
-<<<<<<< HEAD
 ! File created at 15:25 on 22.6.2015   
-=======
-! File created at 14:06 on 22.6.2015   
->>>>>>> 7e4986aeb2586d02f5d1a2dd1cc138adf64211e5
 ! ----------------------------------------------------------------------  
  
  
@@ -21,7 +17,7 @@ Use SugraRuns_MSSMCPV
  
 Use EffPotFunctions 
 Logical,Save::LesHouches_Format
-Character(len=8),Save,Private::versionSARAH="4.5.8"
+Character(len=8),Save,Private::versionSARAH="4.5.8b1"
 Integer,Private::i_cpv=0
 Integer,Save,Private::in_kont(2)
 Logical,Save::Add_Rparity= .False. 

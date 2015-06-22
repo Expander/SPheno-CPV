@@ -12,7 +12,7 @@ Use Pole2LFunctions
 Contains 
  
 Subroutine CalculatePi2S(p2,vd,vu,g1,g2,g3,Yd,Ye,Yu,Mu,Td,Te,Tu,Bmu,mq2,              & 
-& ml2,mHd2,mHu2,md2,mu2,me2,M1,M2,M3,kont,tad2L,Pi2S)
+& ml2,mHd2,mHu2,md2,mu2,me2,M1,M2,M3,kont,tad2L,Pi2S,Pi2P)
 
 Implicit None 
 Real(dp),Intent(in) :: g1,g2,g3,mHd2,mHu2
@@ -62,6 +62,7 @@ Real(dp)  :: tempcont(4,4)
 Real(dp)  :: runningval(4,4)
 Real(dp), Intent(out) :: tad2l(4)
 Real(dp), Intent(out) :: Pi2S(4,4)
+Real(dp), Intent(out) :: Pi2P(4,4)
 complex(dp) :: coup1,coup2,coup3,coup4
 complex(dp) :: coup1L,coup1R,coup2l,coup2r,coup3l,coup3r,coup4l,coup4r
 real(dp) :: epsFmass
@@ -73,6 +74,7 @@ logical :: nonzerocoupling
 
 tad2l(:)=0
 Pi2S(:,:)=0
+Pi2P(:,:)=0
 Qscale=getrenormalizationscale()
 epsfmass=0._dp
 epscouplings=0._dp
