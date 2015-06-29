@@ -4,10 +4,10 @@ point="$1"
 
 . ./run_sg.sh
 
-run_sg --sg=bin/SPheno                --point="$point" --pattern="mh_sp,h0"      --verbose=1
-run_sg --sg=bin/SPhenoMSSMCPV         --point="$point" --pattern="mh_sa,hh_2"    --verbose=1
-run_sg --sg=bin/FlexibleSUSY-CMSSMCPV --point="$point" --pattern="mh_fscpv,hh(2" --verbose=1
-run_sg --sg=bin/FlexibleSUSY-CMSSMCPC --point="$point" --pattern="mh_fscpc,hh(1" --verbose=1
+run_sg --sg=bin/SPheno                --point="$point" --pattern="mh_sp,MASS[25]"    --verbose=1
+run_sg --sg=bin/SPhenoMSSMCPV         --point="$point" --pattern="mh_sa,MASS[25]"    --verbose=1
+run_sg --sg=bin/FlexibleSUSY-CMSSMCPV --point="$point" --pattern="mh_fscpv,MASS[25]" --verbose=1
+run_sg --sg=bin/FlexibleSUSY-CMSSMCPC --point="$point" --pattern="mh_fscpc,MASS[25]" --verbose=1
 
 echo ""
 echo "=========================="

@@ -49,11 +49,11 @@ Block EXTPAR
   100   $eta            # etaInput (for FlexibleSUSY)
 EOF
 
-    run_sg --sg=bin/SPheno                --point="$point" --pattern="mh1_sp,h0"    --pattern="mh2_sp,H0"    --pattern="mh3_sp,A0"   --verbose=0
-    run_sg --sg=bin/SPhenoMSSMCPV         --point="$point" --pattern="mh1_sa,hh_2"  --pattern="mh2_sa,hh_3"  --pattern="mh3_sa,hh_4" --verbose=0
-    run_sg --sg=bin/SPhenoMSSM            --point="$point" --pattern="mh1_sac,hh_1" --pattern="mh2_sac,hh_2" --pattern="ma2_sac,Ah_2" --verbose=0
-    run_sg --sg=bin/FlexibleSUSY-CMSSMCPV --point="$point" --pattern="mh1_fs,hh(2"  --pattern="mh2_fs,hh(3"  --pattern="mh3_fs,hh(4" --verbose=0
-    run_sg --sg=bin/FlexibleSUSY-CMSSMCPC --point="$point" --pattern="mh1_fsc,hh(1" --pattern="mh2_fsc,hh(2" --pattern="ma2_fsc,Ah(2" --verbose=0
+    run_sg --sg=bin/SPheno                --point="$point" --pattern="mh1_sp,MASS[25]"  --pattern="mh2_sp,MASS[35]"  --pattern="mh3_sp,MASS[36]"  --verbose=0
+    run_sg --sg=bin/SPhenoMSSMCPV         --point="$point" --pattern="mh1_sa,MASS[25]"  --pattern="mh2_sa,MASS[35]"  --pattern="mh3_sa,MASS[36]"  --verbose=0
+    run_sg --sg=bin/SPhenoMSSM            --point="$point" --pattern="mh1_sac,MASS[25]" --pattern="mh2_sac,MASS[35]" --pattern="ma2_sac,MASS[36]" --verbose=0
+    run_sg --sg=bin/FlexibleSUSY-CMSSMCPV --point="$point" --pattern="mh1_fs,MASS[25]"  --pattern="mh2_fs,MASS[35]"  --pattern="mh3_fs,MASS[36]"  --verbose=0
+    run_sg --sg=bin/FlexibleSUSY-CMSSMCPC --point="$point" --pattern="mh1_fsc,MASS[25]" --pattern="mh2_fsc,MASS[35]" --pattern="ma2_fsc,MASS[36]" --verbose=0
 
     printf "  $printf_pattern" "$eta" \
         "$mh1_sp"  "$mh2_sp"  "$mh3_sp" \
