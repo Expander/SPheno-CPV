@@ -53,7 +53,7 @@ EOF
     run_sg --sg=bin/SPhenoMSSMCPV         --point="$point" --pattern="mh1_sa,hh_2"  --pattern="mh2_sa,hh_3"  --pattern="mh3_sa,hh_4" --verbose=0
     run_sg --sg=bin/SPhenoMSSM            --point="$point" --pattern="mh1_sac,hh_1" --pattern="mh2_sac,hh_2" --pattern="ma2_sac,Ah_2" --verbose=0
     run_sg --sg=bin/FlexibleSUSY-CMSSMCPV --point="$point" --pattern="mh1_fs,hh(2"  --pattern="mh2_fs,hh(3"  --pattern="mh3_fs,hh(4" --verbose=0
-    run_sg --sg=bin/FlexibleSUSY-CMSSM    --point="$point" --pattern="mh1_fsc,hh(1" --pattern="mh2_fsc,hh(2" --pattern="ma2_fsc,Ah(2" --verbose=0
+    run_sg --sg=bin/FlexibleSUSY-CMSSMCPC --point="$point" --pattern="mh1_fsc,hh(1" --pattern="mh2_fsc,hh(2" --pattern="ma2_fsc,Ah(2" --verbose=0
 
     printf "  $printf_pattern" "$eta" \
         "$mh1_sp"  "$mh2_sp"  "$mh3_sp" \
